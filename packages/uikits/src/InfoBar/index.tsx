@@ -1,7 +1,7 @@
 import { HVDirection } from '@c3/utils';
 import React from 'react';
 import { BaseProps } from '../Common';
-import { Col } from '../Layout';
+import { Col } from '../layout';
 import { Row } from '../layout/Row';
 
 export interface IInfoProps extends BaseProps {
@@ -23,6 +23,6 @@ export const InfoBar: React.FC<IInfoProps> = ({
     <Layout fx={fx} fy={fy} gap="1em" {...props}>
       <icon.type flexShrink={0} width="auto" {...icon.props}></icon.type>
       <text.type rows={1} flexGrow="1" {...text.props}></text.type>
-    </Layout>
+    </layout>
   );
 };
