@@ -23,6 +23,6 @@ export const InfoBar: React.FC<IInfoProps> = ({
     <Layout fx={fx} fy={fy} gap="1em" {...props}>
       <icon.type flexShrink={0} width="auto" {...icon.props}></icon.type>
       <text.type rows={1} flexGrow="1" {...text.props}></text.type>
-    </layout>
+    </Layout>
   );
 };
