@@ -1,3 +1,4 @@
+//@ts-nocheck
 const stringifyReplacer = (name, data) =>
   typeof data === 'function'
     ? { '()': Function.prototype.toString.call(data) }

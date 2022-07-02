@@ -5,17 +5,20 @@
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/stitches.umd.js",
+  "module": "dist/stitches.es.js",
+  "types": "types/index.d.ts",
+  "type": "module",
   "directories": {
     "lib": "dist",
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "dist",
+    "types/*.d.ts"
   ],
   "publishConfig": {
     "access": "public",
-    "types": "dist/index.d.ts",
     "main": "dist/stitches.umd.js"
   },
   "repository": {
@@ -24,11 +27,9 @@
   },
   "scripts": {
     "test": "jest --config ../../jest.config.ts --rootDir .",
-    "build": "vite build   ",
+    "build": "vite build ",
     "clean": "rm -rf dist && rm -rf node_modules ",
-    "reset": "pnpm clean && pnpm install",
-    "type": "tsc --project . --paths null --emitDeclarationOnly --declaration ",
-    "watchtype": "tsc --noEmit --project . --watch"
+    "reset": "pnpm clean && pnpm install"
   },
   "bugs": {
     "url": "https://github.com/che3vinci/c3/issues"
@@ -45,6 +46,9 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "@stitches/core": "^1.2.8"
+    "@c3/css": "workspace:^1.0.148",
+    "@c3/utils": "workspace:^1.0.130",
+    "@stitches/core": "^1.2.8",
+    "styled-components": "^5.3.3"
   }
 }

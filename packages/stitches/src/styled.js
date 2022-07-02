@@ -1,28 +1,36 @@
-//@ts-nocheck
-
 import React from 'react';
-
-import { internal, createMemo } from './utils';
-import { css } from '@stitches/core';
-import Stitches from '@stitches/core/types/stitches';
-
+import { internal, createMemo, isVairants } from './utils';
 
 const createCssFunctionMap = createMemo();
 
 /** Returns a function that applies component styles. */
-export const createStyledFunction = ({ config,css }:Stitches) =>
+export const createStyledFunction = ({ config, css }) =>
   createCssFunctionMap(config, () => {
-    // const css = createCssFunction(config, sheet);
-
-    const styled = (...args:Parameters<typeof css>) => {
+    const styled = (...args) => {
       const cssComponent = css(...args);
       const DefaultType = cssComponent[internal].type;
 
       const styledComponent = React.forwardRef((props, ref) => {
         const Type = (props && props.as) || DefaultType;
 
-        const { props: forwardProps, deferredInjector } = cssComponent(props);
-
+        const newProps = { ...props };
+        for (const key of Object.keys(props)) {
+          if (
+            config.bpMapFnForVariant &&
+            Array.isArray(props[key]) &&
+            isVairants(key, args.slice(1))
+          ) {
+            newProps[key] = config.bpMapFnForVariant(props[key]);
+          }
+        }
+        const css = (props && props.css) || {};
+        if (config.bpMapFnForStyle) {
+          for (const key of Object.keys(css)) {
+            newProps.css = config.bpMapFnForStyle(key, css[key]);
+          }
+        }
+        console.log('newprops', newProps, config);
+        const { props: forwardProps, deferredInjector } = cssComponent(newProps);
         delete forwardProps.as;
 
         forwardProps.ref = ref;
