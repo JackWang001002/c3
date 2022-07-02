@@ -1,5 +1,7 @@
 import React from 'react';
-import { internal, createMemo, isVairants } from './utils';
+import { internal, createMemo, isVairants as isVariants } from './utils';
+import { isEqual } from 'lodash-es';
+import { isUndefined } from '@c3/utils';
 
 const createCssFunctionMap = createMemo();
 
@@ -18,7 +20,7 @@ export const createStyledFunction = ({ config, css }) =>
           if (
             config.bpMapFnForVariant &&
             Array.isArray(props[key]) &&
-            isVairants(key, args.slice(1))
+            isVariants(key, args.slice(1))
           ) {
             newProps[key] = config.bpMapFnForVariant(props[key]);
           }
@@ -57,7 +59,39 @@ export const createStyledFunction = ({ config, css }) =>
       styledComponent.toString = toString;
       styledComponent[internal] = cssComponent[internal];
 
-      return styledComponent;
+      return React.memo(styledComponent, (prev, next) => {
+        const prevKeys = Object.keys(prev);
+        const nextKeys = Object.keys(next);
+        if (prevKeys.length !== nextKeys.length) {
+          return false;
+        }
+
+        let eq = true;
+        for (const key of prevKeys) {
+          if (!nextKeys.includes(key)) {
+            eq = false;
+            break;
+          }
+          if (isVariants(key, args.slice(1))) {
+            if (!isEqual(prev[key], next[key])) {
+              eq = false;
+              break;
+            } else {
+              continue;
+            }
+          }
+          if (key === 'css') {
+            if (isUndefined(next[key].isImmutable) || next[key].isImmutable) {
+              continue;
+            }
+          }
+          if (next[key] !== prev[key]) {
+            eq = false;
+            break;
+          }
+        }
+        return eq;
+      });
     };
 
     return styled;
