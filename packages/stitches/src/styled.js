@@ -1,11 +1,17 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { internal, createMemo, isVairants as isVariants } from './utils';
 import { isEqual } from 'lodash-es';
 import { isUndefined } from '@c3/utils';
 =======
 import { internal, createMemo, isVairants } from './utils';
 >>>>>>> feat: support responsive array value
+=======
+import { internal, createMemo, isVairants as isVariants } from './utils';
+import { isEqual } from 'lodash-es';
+import { isUndefined } from '@c3/utils';
+>>>>>>> feat: add react.memo for styledComponent
 
 const createCssFunctionMap = createMemo();
 
@@ -25,10 +31,14 @@ export const createStyledFunction = ({ config, css }) =>
             config.bpMapFnForVariant &&
             Array.isArray(props[key]) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
             isVariants(key, args.slice(1))
 =======
             isVairants(key, args.slice(1))
 >>>>>>> feat: support responsive array value
+=======
+            isVariants(key, args.slice(1))
+>>>>>>> feat: add react.memo for styledComponent
           ) {
             newProps[key] = config.bpMapFnForVariant(props[key]);
           }
@@ -68,6 +78,9 @@ export const createStyledFunction = ({ config, css }) =>
       styledComponent[internal] = cssComponent[internal];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> feat: add react.memo for styledComponent
       return React.memo(styledComponent, (prev, next) => {
         const prevKeys = Object.keys(prev);
         const nextKeys = Object.keys(next);
@@ -101,9 +114,12 @@ export const createStyledFunction = ({ config, css }) =>
         }
         return eq;
       });
+<<<<<<< HEAD
 =======
       return styledComponent;
 >>>>>>> feat: support responsive array value
+=======
+>>>>>>> feat: add react.memo for styledComponent
     };
 
     return styled;

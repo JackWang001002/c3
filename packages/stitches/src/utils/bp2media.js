@@ -7,6 +7,7 @@ export const bp2media = bps => {
   };
   bps
 <<<<<<< HEAD
+<<<<<<< HEAD
     .map((bp, i) => ` (min-width: ${bp}px)`)
 =======
     .map((bp, i) => {
@@ -16,6 +17,9 @@ export const bp2media = bps => {
       return ` (min-width: ${bp }px)`;
     })
 >>>>>>> feat: support responsive array value
+=======
+    .map((bp, i) => ` (min-width: ${bp}px)`)
+>>>>>>> feat: add react.memo for styledComponent
     .forEach((media, i) => {
       res[`m${i + 2}`] = media;
     });
