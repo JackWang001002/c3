@@ -190,6 +190,27 @@ importers:
       '@testing-library/react-hooks': 7.0.2_sfoxds7t5ydpegc3knd667wn6m
       '@types/js-cookie': 3.0.2
 
+  packages/stitches:
+    specifiers:
+      '@rollup/plugin-commonjs': ^21.0.1
+      '@rollup/plugin-typescript': ^8.3.0
+      '@stitches/core': ^1.2.8
+      '@types/js-beautify': ^1.13.3
+      '@types/qs': ^6.9.7
+      rollup-plugin-typescript2: ^0.31.1
+      tslib: ^2.3.1
+      typescript: ^4.5.5
+    dependencies:
+      '@stitches/core': 1.2.8
+    devDependencies:
+      '@rollup/plugin-commonjs': 21.1.0_rollup@2.75.6
+      '@rollup/plugin-typescript': 8.3.3_a4s7325ov6m337p2dvgeh54tg4
+      '@types/js-beautify': 1.13.3
+      '@types/qs': 6.9.7
+      rollup-plugin-typescript2: 0.31.2_fgms252lqu3rk7srzpqqayl4ya
+      tslib: 2.4.0
+      typescript: 4.7.3
+
   packages/uikits:
     specifiers:
       '@ant-design/icons': ^4.7.0
@@ -2691,6 +2712,10 @@ packages:
     dependencies:
       '@sinonjs/commons': 1.8.3
     dev: true
+
+  /@stitches/core/1.2.8:
+    resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
+    dev: false
 
   /@storybook/addons/6.5.8_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-L3LmbsYP9tDHHvpr/yv8YuEkzym7SXp/jZ0km31tpG3EuZmgGu7MXPrZ2ymEw4PkAhQzztgRr23VTfKobGUojA==}

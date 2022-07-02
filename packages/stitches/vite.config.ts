@@ -5,15 +5,15 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     sourcemap: 'inline',
-    minify: false,
+    minify: true,
     lib: {
       entry: './src/index.ts',
       name: 'stitches',
       formats: ['iife', 'es', 'umd'],
     },
     rollupOptions: {
-      external: [/node:*/, '@c3/utils', 'tslib', '@c3/hooks', 'react'],
-      plugins: [commonjs(), rollupTypescript()], // `commonjs` plugin include 'required' to single file
+      external: [/node:*/,  'tslib', '@stitches/core', 'react'],
+      plugins: [commonjs(), rollupTypescript()],
     },
   },
 });
