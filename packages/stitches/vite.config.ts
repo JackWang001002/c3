@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     sourcemap: 'inline',
-    minify: true,
+    minify: false,
     lib: {
       entry: './src/index.js',
       name: 'stitches',

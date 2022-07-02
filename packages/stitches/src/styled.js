@@ -1,7 +1,11 @@
 import React from 'react';
+<<<<<<< HEAD
 import { internal, createMemo, isVairants as isVariants } from './utils';
 import { isEqual } from 'lodash-es';
 import { isUndefined } from '@c3/utils';
+=======
+import { internal, createMemo, isVairants } from './utils';
+>>>>>>> feat: support responsive array value
 
 const createCssFunctionMap = createMemo();
 
@@ -20,7 +24,11 @@ export const createStyledFunction = ({ config, css }) =>
           if (
             config.bpMapFnForVariant &&
             Array.isArray(props[key]) &&
+<<<<<<< HEAD
             isVariants(key, args.slice(1))
+=======
+            isVairants(key, args.slice(1))
+>>>>>>> feat: support responsive array value
           ) {
             newProps[key] = config.bpMapFnForVariant(props[key]);
           }
@@ -59,6 +67,7 @@ export const createStyledFunction = ({ config, css }) =>
       styledComponent.toString = toString;
       styledComponent[internal] = cssComponent[internal];
 
+<<<<<<< HEAD
       return React.memo(styledComponent, (prev, next) => {
         const prevKeys = Object.keys(prev);
         const nextKeys = Object.keys(next);
@@ -92,6 +101,9 @@ export const createStyledFunction = ({ config, css }) =>
         }
         return eq;
       });
+=======
+      return styledComponent;
+>>>>>>> feat: support responsive array value
     };
 
     return styled;
