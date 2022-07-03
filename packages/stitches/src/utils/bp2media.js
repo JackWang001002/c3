@@ -3,23 +3,10 @@ export const bp2media = bps => {
     return {};
   }
   const res = {
-    m1: ` (max-width: ${bps[0]}px)`,
+    m1: ` (max-width: ${bps[0]-1}px)`,
   };
   bps
-<<<<<<< HEAD
-<<<<<<< HEAD
     .map((bp, i) => ` (min-width: ${bp}px)`)
-=======
-    .map((bp, i) => {
-      // if (i <= bps.length - 2) {
-        // return `and (min-width: ${bp + 1}px) and (max-width:${bp[i + 1]}px)`;
-      // }
-      return ` (min-width: ${bp }px)`;
-    })
->>>>>>> feat: support responsive array value
-=======
-    .map((bp, i) => ` (min-width: ${bp}px)`)
->>>>>>> feat: add react.memo for styledComponent
     .forEach((media, i) => {
       res[`m${i + 2}`] = media;
     });
