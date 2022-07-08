@@ -9,12 +9,10 @@ run({
   async publish() {
     const packages = [
       'utils',
-      'css',
       'dom',
       'hooks',
       'api',
       'crypto',
-      'uikits',
     ];
     for (let pkg of packages) {
       cd(`packages/${pkg}`);
@@ -27,12 +25,10 @@ run({
 async  cleanLog(){
       const packages = [
       'utils',
-      'css',
       'dom',
       'hooks',
       'api',
       'crypto',
-      'uikits',
     ];
       for (let pkg of packages) {
       cd(`packages/${pkg}`);
