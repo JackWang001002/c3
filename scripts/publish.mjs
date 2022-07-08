@@ -11,7 +11,7 @@ run({
       'utils',
       'dom',
       'hooks',
-      'api',
+      // 'api',
       'crypto',
     ];
     for (let pkg of packages) {
@@ -27,7 +27,7 @@ async  cleanLog(){
       'utils',
       'dom',
       'hooks',
-      'api',
+      // 'api',
       'crypto',
     ];
       for (let pkg of packages) {
