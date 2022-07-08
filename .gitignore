@@ -14,3 +14,4 @@ src/frontend/Javascript/library/block-chain-stuff/ethereum/deploy-local-server/n
 .eslintcache
 tsconfig.tsbuildinfo
 packages/**/log.txt
+**/**/.pnpm-debug.log
