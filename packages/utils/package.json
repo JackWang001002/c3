@@ -39,7 +39,6 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "axios": "^0.26.1",
     "copy-to-clipboard": "^3.3.1",
     "dayjs": "^1.10.8",
     "lodash": "^4.17.21",
@@ -51,7 +50,6 @@
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/numeral": "^2.0.2",
-    "@babel/preset-env": "^7.18.2",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/jest": "^27.4.1",
