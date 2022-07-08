@@ -58,5 +58,6 @@
   "lint-staged": {
     "*.{ts,tsx}": [],
     "*.{js,jsx}": []
-  }
+  },
+  "version": "0.0.1"
 }

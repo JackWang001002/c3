@@ -21,7 +21,6 @@ export * from './useHover';
 export * from './useInfiniteScroll';
 export * from './useInjectNode';
 export * from './useIntersectionObserver';
-export * from './useIsMobile';
 export * from './useLatest';
 export * from './useLeftTime';
 export * from './useMount';
