@@ -1,4 +1,3 @@
-import { px } from '@c3/css';
 import { addEventListener, getElement, getTarget } from '@c3/dom';
 import { assert } from '@c3/utils';
 import { useEffect } from 'react';
@@ -16,7 +15,7 @@ export const useAutoSize = (el: Selector | HTMLAreaElement) => {
       const scrollHeight = target.scrollHeight || 0;
       const clientHeight = target.clientHeight || 0;
       const offsetHeight = target.offsetHeight || 0;
-      _el.style.height = px(scrollHeight + (offsetHeight - clientHeight));
+      _el.style.height = `${scrollHeight + (offsetHeight - clientHeight)}px`;
     });
   }, [el]);
 };
