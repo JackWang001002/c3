@@ -15,7 +15,6 @@ export * from './jwt/index';
 export * from './lang/index';
 export * from './math/index';
 export * from './math/percent';
-export * from './net/base/index';
 export * from './noop';
 export * from './object/index';
 export * from './pagination';
