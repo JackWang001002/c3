@@ -10,7 +10,8 @@ export const getHash = () => {
   }
   return hash.slice(1);
 };
-export const useHashChange = (onChange: Fn): [string, Fn] => {
+
+export const useHashChange = (onChange: Fn) => {
   const forceUpdate = useForceUpdate();
   useEffect(() => {
     const remove = addEventListener(window, 'hashchange', () => {
@@ -19,10 +20,10 @@ export const useHashChange = (onChange: Fn): [string, Fn] => {
     });
     return () => remove();
   }, [forceUpdate, onChange]);
-  return [
-    getHash(),
-    useCallback((hash: string) => {
-      window.location.hash = hash;
-    }, []),
-  ];
+
+  const setHash = useCallback((hash: string) => {
+    window.location.hash = hash;
+  }, []);
+
+  return [getHash(), setHash] as const;
 };
