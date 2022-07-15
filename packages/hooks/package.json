@@ -5,9 +5,9 @@
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "ISC",
-  "main": "dist/hooks.umd.js",
-  "module": "dist/hooks.es.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
   "directories": {
     "lib": "dist",
     "test": "__tests__"
@@ -16,7 +16,10 @@
     "dist"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "main": "dist/hooks.umd.js",
+    "module": "dist/hooks.es.js",
+    "types": "dist/index.d.ts"
   },
   "repository": {
     "type": "git",
@@ -38,12 +41,14 @@
   "dependencies": {
     "@c3/dom": "workspace:^",
     "@c3/utils": "workspace:^",
+    "@types/react-redux": "^7.1.24",
     "antd": "^4.18.9",
     "dayjs": "^1.10.7",
     "ethers": "^5.6.5",
     "immer": "^9.0.12",
     "js-cookie": "^3.0.1",
-    "react-redux": "^7.2.6",
+    "mitt": "^3.0.0",
+    "react-redux": "^7.2.8",
     "use-immer": "^0.6.0"
   },
   "devDependencies": {
