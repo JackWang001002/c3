@@ -33,3 +33,4 @@ export * from './useSwitch';
 export * from './useToggle';
 export * from './useTouchBottom';
 export * from './useUnmount';
+export * from './useBus';

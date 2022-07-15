@@ -12,11 +12,10 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        'polished',
         'react',
         'js-cookie',
         'tslib',
-
+        'mitt',
         'dayjs',
         'react-dom',
         '@ant-design/icons',

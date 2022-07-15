@@ -24,4 +24,26 @@ export const CHAINS: { [id: number]: Chain } = {
     },
     blockExplorerUrls: ['https://explorer.emerald.oasis.dev'],
   },
+  [ChainId.Rinkeby]: {
+    chainId: ChainId.Rinkeby,
+    chainName: 'Rinkeby Test Network',
+    rpcUrls: ['https://rinkeby.infura.io/v3/'],
+    nativeCurrency: {
+      name: 'RinkebyETH',
+      symbol: 'RinkebyETH',
+      decimals: 18,
+    },
+    blockExplorerUrls: ['https://rinkeby.etherscan.io'],
+  },
+  [ChainId.BSCTestnet]: {
+    chainId: ChainId.BSCTestnet,
+    chainName: 'BSC Test Network',
+    rpcUrls: ['https://data-seed-prebsc-2-s1.binance.org:8545'],
+    nativeCurrency: {
+      name: 'BNB',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    blockExplorerUrls: ['https://testnet.bscscan.com'],
+  },
 };

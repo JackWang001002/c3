@@ -132,21 +132,25 @@ importers:
       '@c3/utils': workspace:^
       '@testing-library/react-hooks': ^7.0.2
       '@types/js-cookie': ^3.0.2
+      '@types/react-redux': ^7.1.24
       antd: ^4.18.9
       dayjs: ^1.10.7
       ethers: ^5.6.5
       immer: ^9.0.12
       js-cookie: ^3.0.1
-      react-redux: ^7.2.6
+      mitt: ^3.0.0
+      react-redux: ^7.2.8
       use-immer: ^0.6.0
     dependencies:
       '@c3/dom': link:../dom
       '@c3/utils': link:../utils
+      '@types/react-redux': 7.1.24
       antd: 4.21.0_sfoxds7t5ydpegc3knd667wn6m
       dayjs: 1.11.3
       ethers: 5.6.8
       immer: 9.0.14
       js-cookie: 3.0.1
+      mitt: 3.0.0
       react-redux: 7.2.8_sfoxds7t5ydpegc3knd667wn6m
       use-immer: 0.6.0_immer@9.0.14+react@17.0.2
     devDependencies:
@@ -5318,6 +5322,10 @@ packages:
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
+
+  /mitt/3.0.0:
+    resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
+    dev: false
 
   /mixme/0.5.4:
     resolution: {integrity: sha512-3KYa4m4Vlqx98GPdOHghxSdNtTvcP8E0kkaJ5Dlh+h2DRzF7zpuVVcA8B0QpKd11YJeP9QQ7ASkKzOeu195Wzw==}
