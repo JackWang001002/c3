@@ -16,24 +16,10 @@ run({
     ];
     for (let pkg of packages) {
       cd(`packages/${pkg}`);
+      await $`pnpm build`;
       await $`pnpm type`;
       cd('../..');
     }
-    await $`pnpm -r build`;
     await $`pnpm publish -r  --no-git-checks `;
-  },
-  async cleanLog() {
-    const packages = [
-      'utils',
-      'dom',
-      'hooks',
-      // 'api',
-      'crypto',
-    ];
-    for (let pkg of packages) {
-      cd(`packages/${pkg}`);
-      await $`echo '' > CHANGELOG.md`;
-      cd('../..');
-    }
   },
 });
