@@ -23,7 +23,10 @@ export const useWeb3 = () => {
 
 export const useContract = (name: string) => {
   const { contracts } = useWeb3();
-  return contracts[name];
+  if (name && name in contracts) {
+    return contracts[name];
+  }
+  return [];
 };
 
 export const useAccount = () => {

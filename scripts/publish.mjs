@@ -20,20 +20,20 @@ run({
       cd('../..');
     }
     await $`pnpm -r build`;
-    await $`pnpm publish -r --report-summary --no-git-checks `;
+    await $`pnpm publish -r  --no-git-checks `;
   },
-async  cleanLog(){
-      const packages = [
+  async cleanLog() {
+    const packages = [
       'utils',
       'dom',
       'hooks',
       // 'api',
       'crypto',
     ];
-      for (let pkg of packages) {
+    for (let pkg of packages) {
       cd(`packages/${pkg}`);
       await $`echo '' > CHANGELOG.md`;
       cd('../..');
     }
-  }
+  },
 });

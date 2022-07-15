@@ -19,7 +19,7 @@ export const useWalletProvider = () => {
     getWalletProvider().then(x => x && setProvider(x));
   }, []);
 
-  useOnChainChange(get);
+  useOnChainChange(get); //TODO: is this nessary?
   useEffect(() => {
     get();
   }, [get]);

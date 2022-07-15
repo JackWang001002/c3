@@ -41,12 +41,14 @@
   "dependencies": {
     "@c3/dom": "workspace:^",
     "@c3/utils": "workspace:^",
+    "@types/react-redux": "^7.1.24",
     "antd": "^4.18.9",
     "dayjs": "^1.10.7",
     "ethers": "^5.6.5",
     "immer": "^9.0.12",
     "js-cookie": "^3.0.1",
-    "react-redux": "^7.2.6",
+    "mitt": "^3.0.0",
+    "react-redux": "^7.2.8",
     "use-immer": "^0.6.0"
   },
   "devDependencies": {
