@@ -12,7 +12,6 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        'styled-components',
         'polished',
         'react',
         'tslib',

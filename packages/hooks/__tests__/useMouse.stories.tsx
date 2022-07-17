@@ -1,16 +1,13 @@
-import useMouse from '@c3/hooks/useMouse';
+import useMouse from '../src/useMouse';
 import React from 'react';
-import styled from 'styled-components';
-const Wrapper = styled.div``;
+
 const UseMouseComponent: React.FC = () => {
   const geo = useMouse();
-  return <Wrapper>{JSON.stringify(geo)}</Wrapper>;
+  return <div>{JSON.stringify(geo)}</div>;
 };
-
-const Template = (args: any) => <UseMouseComponent {...args} />;
-export const Default = Template.bind({}) as any as { args: any };
-Default.args = {};
 export default {
   component: UseMouseComponent,
   title: 'UseMouseComponent',
 };
+
+export const Default = () => <UseMouseComponent />;
