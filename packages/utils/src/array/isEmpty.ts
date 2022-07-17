@@ -10,5 +10,5 @@ export const isEmpty = <T>(data: T[] | IndexedType<unknown> | string) => {
   if (isPlainObject(data)) {
     return Object.keys(data).length === 0;
   }
-  return false;
+  return !!data;
 };

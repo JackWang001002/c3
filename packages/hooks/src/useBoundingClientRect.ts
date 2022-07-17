@@ -4,7 +4,7 @@ import { useResizeObserver } from './useResizeObserver';
 
 export const useBoundingClientRect = (cb: (box: IBox<number>) => void) => {
   const watch = useResizeObserver(entry => {
-    cb(entry.contentRect);
+    cb(entry.target.getBoundingClientRect());
   });
   return useCallback(
     (el: Element) => {
