@@ -5,8 +5,8 @@
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "ISC",
-  "main": "dist/utils.umd.js",
-  "module": "dist/utils.es.js",
+  "main": "dist/utils-1.umd.js",
+  "module": "dist/utils-1.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --config ../../jest.config.ts --rootDir .",
@@ -26,8 +26,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/utils.umd.js",
-    "module": "dist/utils.es.js",
+    "main": "dist/utils-1.umd.js",
+    "module": "dist/utils-1.es.js",
     "types": "dist/index.d.ts"
   },
   "repository": {

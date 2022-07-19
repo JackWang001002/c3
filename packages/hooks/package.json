@@ -5,8 +5,8 @@
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "ISC",
-  "main": "dist/hooks.umd.js",
-  "module": "dist/hooks.es.js",
+  "main": "dist/hooks-1.umd.js",
+  "module": "dist/hooks-1.es.js",
   "types": "dist/index.d.ts",
   "directories": {
     "lib": "dist",

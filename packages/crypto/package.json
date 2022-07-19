@@ -5,8 +5,8 @@
   "keywords": [],
   "author": "jinbo.wang <che3vinci@gmail.com>",
   "license": "ISC",
-  "main": "dist/crypto.umd.js",
-  "module": "dist/crypto.es.js",
+  "main": "dist/crypto-1.umd.js",
+  "module": "dist/crypto-1.es.js",
   "types": "dist/index.d.ts",
   "directories": {
     "lib": "dist",

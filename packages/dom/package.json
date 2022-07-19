@@ -5,8 +5,8 @@
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "ISC",
-  "main": "dist/dom.umd.js",
-  "module": "dist/dom.es.js",
+  "main": "dist/dom-1.umd.js",
+  "module": "dist/dom-1.es.js",
   "types": "dist/index.d.ts",
   "directories": {
     "lib": "dist",
