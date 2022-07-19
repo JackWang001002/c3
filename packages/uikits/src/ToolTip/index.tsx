@@ -1,6 +1,6 @@
 import { absXCenter, ResponsiveInputValueType } from '@c3/css';
-import { getBoxInPage } from '@c3/dom';
-import { Direction, getAntiDirectin, IBox } from '@c3/utils';
+import { getBoxInPage } from '@c3/dom-1';
+import { Direction, getAntiDirectin, IBox } from '@c3/utils-1';
 import React, { useEffect, useRef, useState } from 'react';
 import { BaseProps } from '../Common/types';
 import { Arrow } from '../index';

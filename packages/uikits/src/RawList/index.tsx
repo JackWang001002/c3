@@ -1,5 +1,5 @@
 import { cssProps, gap, vgap } from '@c3/css';
-import { HVDirection, omit } from '@c3/utils';
+import { HVDirection, omit } from '@c3/utils-1';
 import React from 'react';
 import styled from 'styled-components';
 import { notInBlackList } from '..';

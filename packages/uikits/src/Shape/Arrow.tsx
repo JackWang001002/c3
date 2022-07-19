@@ -1,5 +1,5 @@
 import { ICssProps } from '@c3/css';
-import { Direction } from '@c3/utils';
+import { Direction } from '@c3/utils-1';
 import React from 'react';
 import { Box } from '../layout';
 

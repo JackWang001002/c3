@@ -1,4 +1,4 @@
-import { getTarget, isTouchBottom } from '@c3/dom';
+import { getTarget, isTouchBottom } from '@c3/dom-1';
 import { useCallback, useRef } from 'react';
 import { useSwitch } from './useSwitch';
 

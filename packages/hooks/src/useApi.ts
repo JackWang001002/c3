@@ -4,7 +4,7 @@ import {
   RawResBody,
   ReqParameter,
   ResBody,
-} from '@c3/utils';
+} from '@c3/utils-1';
 import { useCallback, useState } from 'react';
 import { useSwitch } from './useSwitch';
 

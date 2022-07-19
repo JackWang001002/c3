@@ -1,6 +1,6 @@
 import { col, row } from '@c3/css';
-import { useExclusive } from '@c3/hooks';
-import { Color, HVDirection, IDable, isEmpty } from '@c3/utils';
+import { useExclusive } from '@c3/hooks-1';
+import { Color, HVDirection, IDable, isEmpty } from '@c3/utils-1';
 import classNames from 'classnames';
 import React from 'react';
 import { BaseProps } from '../Common';

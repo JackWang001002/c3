@@ -1,5 +1,5 @@
 import { absXYCenter, mask } from '@c3/css';
-import { Fn, omit } from '@c3/utils';
+import { Fn, omit } from '@c3/utils-1';
 import classNames from 'classnames';
 import React from 'react';
 import { Col } from '../';

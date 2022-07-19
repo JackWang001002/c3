@@ -1,4 +1,4 @@
-import { isNumber } from '@c3/utils';
+import { isNumber } from '@c3/utils-1';
 import { CSSRawInputValueType } from '.';
 import { isMobile } from '../base/device';
 import { desktopDesignWidth, mobileDesignWidth } from '../theme';

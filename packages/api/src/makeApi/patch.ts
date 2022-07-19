@@ -8,7 +8,7 @@ import {
   isObject,
   isString,
   PlainObject,
-} from '@c3/utils';
+} from '@c3/utils-1';
 import { cloneDeep, isPlainObject } from 'lodash';
 
 const patchEmptyObject = (refObj: IndexedType) => {

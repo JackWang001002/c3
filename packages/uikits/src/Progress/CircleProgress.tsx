@@ -1,4 +1,4 @@
-import { GradientStop } from '@c3/utils';
+import { GradientStop } from '@c3/utils-1';
 import React from 'react';
 import { Box } from '..';
 import { BaseProps } from '../Common';

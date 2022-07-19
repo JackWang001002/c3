@@ -1,4 +1,4 @@
-import { uniq } from '@c3/utils';
+import { uniq } from '@c3/utils-1';
 import { useCallback, useState } from 'react';
 import { FormInstance } from 'antd';
 import { InternalNamePath } from 'antd/lib/form/interface';

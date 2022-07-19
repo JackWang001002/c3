@@ -1,4 +1,4 @@
-import { useSwitch } from '@c3/hooks';
+import { useSwitch } from '@c3/hooks-1';
 import React, { useCallback, useMemo } from 'react';
 import { Button, IButtonProps } from './Button';
 

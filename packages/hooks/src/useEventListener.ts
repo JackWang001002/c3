@@ -1,4 +1,4 @@
-import { addEventListener } from '@c3/dom';
+import { addEventListener } from '@c3/dom-1';
 import { MutableRefObject, useEffect } from 'react';
 
 export const useEventListener = (

@@ -1,5 +1,5 @@
-import { useSwitch } from '@c3/hooks';
-import { Fn } from '@c3/utils';
+import { useSwitch } from '@c3/hooks-1';
+import { Fn } from '@c3/utils-1';
 import React, { useCallback, useMemo } from 'react';
 import { Modal } from './index';
 import { ModalProps } from './Modal';

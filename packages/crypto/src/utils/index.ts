@@ -1,4 +1,4 @@
-import { cdbg } from '@c3/utils';
+import { cdbg } from '@c3/utils-1';
 import { getWalletProvider } from '../provider';
 
 export * from './math';

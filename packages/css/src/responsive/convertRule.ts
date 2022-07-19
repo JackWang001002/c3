@@ -1,4 +1,4 @@
-import { toArray } from '@c3/utils';
+import { toArray } from '@c3/utils-1';
 import { ResponsiveInputValueType } from '..';
 import { ResponsiveOutputValueType } from './type';
 import { origin, rvw } from './vw';

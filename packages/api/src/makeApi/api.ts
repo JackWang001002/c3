@@ -1,4 +1,4 @@
-import { assert, IndexedType, isNullish, PartialBy } from '@c3/utils';
+import { assert, IndexedType, isNullish, PartialBy } from '@c3/utils-1';
 import { stringify } from 'qs';
 import { HTTP, makeProxyHttp } from './http';
 import { patch } from './patch';

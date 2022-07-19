@@ -1,5 +1,5 @@
-import { getHash, useExclusive, useHashChange } from '@c3/hooks';
-import { HVDirection } from '@c3/utils';
+import { getHash, useExclusive, useHashChange } from '@c3/hooks-1';
+import { HVDirection } from '@c3/utils-1';
 import classNames from 'classnames';
 import React, { useEffect, useMemo } from 'react';
 import { Row } from '..';

@@ -1,4 +1,4 @@
-import { toArray } from '@c3/utils';
+import { toArray } from '@c3/utils-1';
 import { CSSRawInputValueType, ResponsiveInputValueType } from '.';
 
 // has same value on different plateform(mobile and desktop)

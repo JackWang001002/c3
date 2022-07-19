@@ -1,4 +1,4 @@
-import { IndexedType } from '@c3/utils';
+import { IndexedType } from '@c3/utils-1';
 import { BigNumber, ethers } from 'ethers';
 import React, { useCallback, useContext } from 'react';
 import { Chain } from '../network';

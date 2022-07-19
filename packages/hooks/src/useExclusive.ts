@@ -1,4 +1,4 @@
-import { assert, ID, IDable, isEqual, isNullish } from '@c3/utils';
+import { assert, ID, IDable, isEqual, isNullish } from '@c3/utils-1';
 import { useCallback } from 'react';
 
 type SwitchOnFn = (id: ID) => void;

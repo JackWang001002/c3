@@ -1,4 +1,4 @@
-import { toHexString } from '@c3/utils';
+import { toHexString } from '@c3/utils-1';
 import { useCallback } from 'react';
 import { Chain, toHexChain } from '../network/chain';
 import { useWalletProvider } from './../provider/index';

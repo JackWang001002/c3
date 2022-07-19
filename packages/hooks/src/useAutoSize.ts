@@ -1,6 +1,6 @@
 import { px } from '@c3/css';
-import { addEventListener, getElement, getTarget } from '@c3/dom';
-import { assert } from '@c3/utils';
+import { addEventListener, getElement, getTarget } from '@c3/dom-1';
+import { assert } from '@c3/utils-1';
 import { useEffect } from 'react';
 
 //auto adjust the height of textarea

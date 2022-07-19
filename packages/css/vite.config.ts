@@ -22,7 +22,7 @@ export default defineConfig({
         'lodash',
         'copy-to-clipboard',
         '@c3/uikits',
-        '@c3/utils',
+        '@c3/utils-1',
       ],
       plugins: [commonjs(), rollupTypescript()], // `commonjs` plugin include 'required' to single file
     },

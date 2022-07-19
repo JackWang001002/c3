@@ -17,7 +17,7 @@ export default defineConfig({
         'tslib',
         '@stitches/core',
         '@c3/css',
-        '@c3/utils',
+        '@c3/utils-1',
         'react',
       ],
       plugins: [commonjs()],

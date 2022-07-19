@@ -1,5 +1,5 @@
 {
-  "name": "@c3/hooks",
+  "name": "@c3/hooks-1",
   "version": "1.0.169",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
@@ -37,8 +37,8 @@
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
     "@c3/css": "workspace:^",
-    "@c3/dom": "workspace:^",
-    "@c3/utils": "workspace:^",
+    "@c3/dom-1": "workspace:^",
+    "@c3/utils-1": "workspace:^",
     "@types/react-redux": "^7.1.24",
     "antd": "^4.18.9",
     "dayjs": "^1.10.7",

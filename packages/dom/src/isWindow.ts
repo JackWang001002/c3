@@ -1,4 +1,4 @@
-import { isNullish, isObject } from '@c3/utils';
+import { isNullish, isObject } from '@c3/utils-1';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isWindow(obj: any): obj is Window {

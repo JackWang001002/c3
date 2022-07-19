@@ -12,7 +12,7 @@ export default defineConfig({
       fileName: () => 'cli.mjs',
     },
     rollupOptions: {
-      external: [/node:*/, 'fs', 'path', 'zx', 'lodash', '@c3/utils', 'tslib'],
+      external: [/node:*/, 'fs', 'path', 'zx', 'lodash', '@c3/utils-1', 'tslib'],
     },
   },
   plugins: [commonjs(), rollupTypescript()],

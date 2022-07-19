@@ -1,5 +1,5 @@
 import { nCol } from '@c3/css';
-import { s } from '@c3/utils';
+import { s } from '@c3/utils-1';
 import _ from 'lodash';
 import React from 'react';
 import { css } from 'styled-components';

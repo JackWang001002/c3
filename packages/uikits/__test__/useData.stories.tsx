@@ -1,4 +1,4 @@
-import { useData } from '@c3/hooks';
+import { useData } from '@c3/hooks-1';
 import React from 'react';
 const UseDataComponent = () => {
   const data = useData({ a: 2, obj: { b: 3 } });

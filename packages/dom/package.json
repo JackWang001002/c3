@@ -1,5 +1,5 @@
 {
-  "name": "@c3/dom",
+  "name": "@c3/dom-1",
   "version": "1.0.99",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/utils": "workspace:^"
+    "@c3/utils-1": "workspace:^"
   },
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
 }

@@ -1,5 +1,5 @@
 import { cssProps, gap, row } from '@c3/css';
-import { omit } from '@c3/utils';
+import { omit } from '@c3/utils-1';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { notInBlackList } from '.';

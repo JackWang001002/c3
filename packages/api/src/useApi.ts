@@ -1,11 +1,11 @@
-import { useSwitch } from '@c3/hooks';
+import { useSwitch } from '@c3/hooks-1';
 import {
   IAPI,
   RawReqParameter,
   RawResBody,
   ReqParameter,
   ResBody,
-} from '@c3/utils';
+} from '@c3/utils-1';
 import { useCallback, useState } from 'react';
 
 export const useApi = <

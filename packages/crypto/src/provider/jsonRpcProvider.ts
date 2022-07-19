@@ -1,4 +1,4 @@
-import { assert, isUrl, URL } from '@c3/utils';
+import { assert, isUrl, URL } from '@c3/utils-1';
 import { ethers } from 'ethers';
 
 export const getJsonRpcProvider = (rpcurl: URL) => {

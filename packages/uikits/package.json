@@ -43,9 +43,9 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@c3/css": "workspace:^",
-    "@c3/dom": "workspace:^",
-    "@c3/hooks": "workspace:^",
-    "@c3/utils": "workspace:^",
+    "@c3/dom-1": "workspace:^",
+    "@c3/hooks-1": "workspace:^",
+    "@c3/utils-1": "workspace:^",
     "classnames": "^2.3.1",
     "echarts": "^5.3.1",
     "npm-force-resolutions": "^0.0.10",

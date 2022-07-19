@@ -1,5 +1,5 @@
 #!/usr/bin/env zx
-import { run } from '@c3/cli';
+import { run } from '@scriptbot/cli';
 import { $, cd } from 'zx';
 run({
   async version() {
@@ -22,7 +22,7 @@ run({
       cd('../..');
     }
     await $`pnpm -r build`;
-    await $`pnpm publish -r --report-summary --no-git-checks `;
+    // await $`pnpm publish -r --report-summary --no-git-checks `;
   },
 async  cleanLog(){
       const packages = [

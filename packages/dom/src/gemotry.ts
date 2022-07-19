@@ -1,4 +1,4 @@
-import { dbg } from '@c3/utils';
+import { dbg } from '@c3/utils-1';
 import { isDocument, isWindow } from './isWindow';
 
 //

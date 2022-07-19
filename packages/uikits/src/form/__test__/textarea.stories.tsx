@@ -1,4 +1,4 @@
-import { useAutoSize } from '@c3/hooks';
+import { useAutoSize } from '@c3/hooks-1';
 import React from 'react';
 import { TextArea, TextAreaProps } from '../TextArea';
 

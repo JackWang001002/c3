@@ -1,4 +1,4 @@
-import { HVDirection, toArray } from '@c3/utils';
+import { HVDirection, toArray } from '@c3/utils-1';
 import { css } from 'styled-components';
 import { rcss, ResponsiveInputValueType } from '../responsive';
 import { ResponsiveCSSProperties } from './../responsive/type';

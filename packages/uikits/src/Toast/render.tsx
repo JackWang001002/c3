@@ -1,4 +1,4 @@
-import { getNewAppendedNode } from '@c3/dom';
+import { getNewAppendedNode } from '@c3/dom-1';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BaseProps } from '../Common';

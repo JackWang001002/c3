@@ -1,4 +1,4 @@
-import { assert, isString, Selector } from '@c3/utils';
+import { assert, isString, Selector } from '@c3/utils-1';
 import { query } from './query';
 
 export const getElement = <T extends HTMLElement = HTMLElement>(

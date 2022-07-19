@@ -9,7 +9,7 @@ import {
   pick,
   s,
   toArray,
-} from '@c3/utils';
+} from '@c3/utils-1';
 import { css } from 'styled-components';
 import { toResponsiveArray } from '..';
 import { status } from '../theme/status';

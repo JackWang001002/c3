@@ -1,4 +1,4 @@
-import { mock } from '@c3/utils';
+import { mock } from '@c3/utils-1';
 import React from 'react';
 import { IImageProps, Image } from './Image';
 const Template = (args: any) => <Image {...args} />;

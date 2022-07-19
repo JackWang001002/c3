@@ -1,4 +1,4 @@
-import { Direction, getAntiDirectin } from '@c3/utils';
+import { Direction, getAntiDirectin } from '@c3/utils-1';
 import { css } from 'styled-components';
 import { rcss, ResponsiveInputValueType, toResponsiveArray } from '..';
 

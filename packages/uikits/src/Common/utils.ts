@@ -6,7 +6,7 @@ import {
   Theme,
   ThKind,
 } from '@c3/css';
-import { entries, immutableAssign, omit, toArray } from '@c3/utils';
+import { entries, immutableAssign, omit, toArray } from '@c3/utils-1';
 import classNames from 'classnames';
 import { css } from 'styled-components';
 export const extractClassNameAndProps = (

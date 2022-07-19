@@ -1,6 +1,6 @@
 import { ICssProps } from '@c3/css';
-import { useMount, useUnmount } from '@c3/hooks';
-import { entries } from '@c3/utils';
+import { useMount, useUnmount } from '@c3/hooks-1';
+import { entries } from '@c3/utils-1';
 import * as echarts from 'echarts';
 import React, { useEffect, useRef } from 'react';
 import { Col } from '../../layout';

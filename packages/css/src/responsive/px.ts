@@ -1,4 +1,4 @@
-import { isNumber, isString } from '@c3/utils';
+import { isNumber, isString } from '@c3/utils-1';
 export const px = (x: number | string) => {
   if ((isString(x) && !x.endsWith('px')) || isNumber(x)) {
     return `${x}px`;

@@ -4,7 +4,7 @@ import {
   isNullish,
   makeArray,
   toArray,
-} from '@c3/utils';
+} from '@c3/utils-1';
 import { cssObj2Str } from '../base/cssObj';
 import { notLengthProp } from './constants';
 import {

@@ -4,7 +4,7 @@ import {
   ResponsiveInputValueType,
   toResponsiveArray,
 } from '@c3/css';
-import { useToggle } from '@c3/hooks';
+import { useToggle } from '@c3/hooks-1';
 import React from 'react';
 import { BaseProps } from '../Common';
 import { Abs, Relative } from '../layout';

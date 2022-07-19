@@ -1,4 +1,4 @@
-import { getTotalPage, IAPI, ndbg, RawResBody, ReqParameter } from '@c3/utils';
+import { getTotalPage, IAPI, ndbg, RawResBody, ReqParameter } from '@c3/utils-1';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useApi } from './useApi';
 import { useSwitch } from './useSwitch';

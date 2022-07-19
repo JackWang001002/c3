@@ -1,4 +1,4 @@
-import { mock } from '@c3/utils';
+import { mock } from '@c3/utils-1';
 import React from 'react';
 import { IInfoProps, InfoBar } from '.';
 import { Col, Icon, Text } from '../';

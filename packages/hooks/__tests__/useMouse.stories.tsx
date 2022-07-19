@@ -1,4 +1,4 @@
-import useMouse from '@c3/hooks/useMouse';
+import useMouse from '@c3/hooks-1/useMouse';
 import React from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.div``;

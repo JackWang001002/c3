@@ -1,4 +1,4 @@
-import { HVDirection } from '@c3/utils';
+import { HVDirection } from '@c3/utils-1';
 import React from 'react';
 import { BaseProps } from '../Common';
 import { Col } from '../layout';

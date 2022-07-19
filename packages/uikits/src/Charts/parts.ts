@@ -1,4 +1,4 @@
-import { formatNumber } from '@c3/utils';
+import { formatNumber } from '@c3/utils-1';
 
 export const showYSplitline = (show: boolean) => ({
   yAxis: {

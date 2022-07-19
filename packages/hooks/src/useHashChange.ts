@@ -1,4 +1,4 @@
-import { addEventListener } from '@c3/dom';
+import { addEventListener } from '@c3/dom-1';
 import { useCallback, useEffect } from 'react';
 import { useForceUpdate } from './useForceUpdate';
 type Fn = (hash: string) => void;

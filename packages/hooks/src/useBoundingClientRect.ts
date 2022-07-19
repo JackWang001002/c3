@@ -1,4 +1,4 @@
-import { IBox } from '@c3/utils';
+import { IBox } from '@c3/utils-1';
 import { useEffect } from 'react';
 
 export const useBoundingClientReact = (

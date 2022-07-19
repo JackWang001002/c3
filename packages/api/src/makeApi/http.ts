@@ -1,4 +1,4 @@
-import { __MOCK__ } from '@c3/utils';
+import { __MOCK__ } from '@c3/utils-1';
 import {
   IAPI,
   RawReqParameter,

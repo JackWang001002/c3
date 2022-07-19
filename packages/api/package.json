@@ -45,8 +45,8 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "@c3/hooks": "workspace:^",
-    "@c3/utils": "workspace:^",
+    "@c3/hooks-1": "workspace:^",
+    "@c3/utils-1": "workspace:^",
     "lodash": "^4.17.21",
     "qs": "^6.10.5"
   }

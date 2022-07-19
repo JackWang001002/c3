@@ -12,7 +12,7 @@ export default defineConfig({
       formats: ['iife', 'es', 'umd'],
     },
     rollupOptions: {
-      external: [/node:*/, '@c3/utils', 'tslib', '@c3/hooks', 'react'],
+      external: [/node:*/, '@c3/utils-1', 'tslib', '@c3/hooks-1', 'react'],
       plugins: [commonjs(), rollupTypescript()], // `commonjs` plugin include 'required' to single file
     },
   },

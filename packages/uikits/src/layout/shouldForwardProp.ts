@@ -4,7 +4,7 @@ import {
   shortCutMap,
   supportedPseEles,
 } from '@c3/css';
-import { keys } from '@c3/utils';
+import { keys } from '@c3/utils-1';
 import type { StyledConfig } from 'styled-components';
 
 export const forwardBlackList = [

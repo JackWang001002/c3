@@ -1,6 +1,6 @@
-import utils from '@c3/utils';
+import utils from '@c3/utils-1';
 import { argv } from 'zx';
-// import { assert, omit } from '@c3/utils';
+// import { assert, omit } from '@c3/utils-1';
 const { assert, omit } = utils;
 
 export type IRunOption = {

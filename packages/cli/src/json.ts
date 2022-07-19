@@ -1,4 +1,4 @@
-import utils from '@c3/utils';
+import utils from '@c3/utils-1';
 import type { PropertyPath } from 'lodash';
 import _ from 'lodash';
 import { parse } from 'path';

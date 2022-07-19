@@ -1,5 +1,5 @@
 import { absYCenter, hidden } from '@c3/css';
-import { assert, isDecimal, multiply } from '@c3/utils';
+import { assert, isDecimal, multiply } from '@c3/utils-1';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { BaseProps } from '../Common';
 import { Row } from '../layout';

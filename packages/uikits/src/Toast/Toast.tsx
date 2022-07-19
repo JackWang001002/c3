@@ -1,5 +1,5 @@
 import { fixedXCenter, IPosition } from '@c3/css';
-import { removeNode } from '@c3/dom';
+import { removeNode } from '@c3/dom-1';
 import classNames from 'classnames';
 import React, { useEffect, useRef } from 'react';
 import { BaseProps } from '../Common';

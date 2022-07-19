@@ -1,4 +1,4 @@
-import { useTouchBottom } from '@c3/hooks';
+import { useTouchBottom } from '@c3/hooks-1';
 import React, { useRef } from 'react';
 import { BaseProps } from '../Common';
 import { Col } from '../layout';

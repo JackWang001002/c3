@@ -8,7 +8,7 @@
 - 01fc537: changesets
 - Updated dependencies [b32a905]
 - Updated dependencies [01fc537]
-  - @c3/utils@1.0.126
+  - @c3/utils-1@1.0.126
 
 ## 1.0.106
 
@@ -16,7 +16,7 @@
 
 - 7f6f759: for test
 - Updated dependencies [7f6f759]
-  - @c3/utils@1.0.125
+  - @c3/utils-1@1.0.125
 
 ## 1.0.105
 
@@ -24,7 +24,7 @@
 
 - 260ff27: sucks
 - Updated dependencies [260ff27]
-  - @c3/utils@1.0.124
+  - @c3/utils-1@1.0.124
 
 ## 1.0.104
 
@@ -34,7 +34,7 @@
 - aspect-ratio
 - 60c7e65: remove polish
 - Updated dependencies
-  - @c3/utils@1.0.123
+  - @c3/utils-1@1.0.123
 
 ## 1.0.103
 
@@ -45,7 +45,7 @@
 - Updated dependencies
 - Updated dependencies [e462e6c]
 - Updated dependencies [b74b470]
-  - @c3/utils@1.0.122
+  - @c3/utils-1@1.0.122
 
 ## 1.0.102
 
@@ -53,7 +53,7 @@
 
 - make modal support loading
 - Updated dependencies
-  - @c3/utils@1.0.121
+  - @c3/utils-1@1.0.121
 
 ## 1.0.101
 
@@ -61,7 +61,7 @@
 
 - make tslib external
 - Updated dependencies
-  - @c3/utils@1.0.120
+  - @c3/utils-1@1.0.120
 
 ## 1.0.100
 
@@ -69,7 +69,7 @@
 
 - typescript
 - Updated dependencies
-  - @c3/utils@1.0.119
+  - @c3/utils-1@1.0.119
 
 ## 1.0.99
 
@@ -77,7 +77,7 @@
 
 - api
 - Updated dependencies
-  - @c3/utils@1.0.118
+  - @c3/utils-1@1.0.118
 
 ## 1.0.98
 
@@ -91,7 +91,7 @@
 
 - make run compatible with commonjs
 - Updated dependencies
-  - @c3/utils@1.0.117
+  - @c3/utils-1@1.0.117
 
 ## 1.0.96
 
@@ -99,7 +99,7 @@
 
 - remove yarn.lock
 - Updated dependencies
-  - @c3/utils@1.0.116
+  - @c3/utils-1@1.0.116
 
 ## 1.0.95
 
@@ -107,4 +107,4 @@
 
 - ad13d78: convert pnpm repo
 - Updated dependencies [ad13d78]
-  - @c3/utils@1.0.115
+  - @c3/utils-1@1.0.115

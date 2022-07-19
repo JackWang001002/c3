@@ -1,7 +1,7 @@
 import React from 'react';
 import { internal, createMemo, isVairants as isVariants } from './utils';
 import { isEqual } from 'lodash-es';
-import { isUndefined, __DEV__ } from '@c3/utils';
+import { isUndefined, __DEV__ } from '@c3/utils-1';
 
 const createCssFunctionMap = createMemo();
 

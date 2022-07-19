@@ -1,4 +1,4 @@
-import { IndexedType } from '@c3/utils';
+import { IndexedType } from '@c3/utils-1';
 import React, { useMemo } from 'react';
 import { ContractInitInfo, ContractPair, getContract } from '../contract/index';
 import { useWallet_ } from '../wallet';

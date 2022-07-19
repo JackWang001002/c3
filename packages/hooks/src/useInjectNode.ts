@@ -1,5 +1,5 @@
-import { queryAll } from '@c3/dom';
-import { noop } from '@c3/utils';
+import { queryAll } from '@c3/dom-1';
+import { noop } from '@c3/utils-1';
 import React, { useCallback } from 'react';
 import ReactDOM from 'react-dom';
 

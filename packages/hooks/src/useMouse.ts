@@ -1,4 +1,4 @@
-import { addEventListener } from '@c3/dom';
+import { addEventListener } from '@c3/dom-1';
 import { useEffect, useState } from 'react';
 export interface ICursorState {
   screenX: number;

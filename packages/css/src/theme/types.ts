@@ -1,4 +1,4 @@
-import { remove } from '@c3/utils';
+import { remove } from '@c3/utils-1';
 import { Typography } from '../utils';
 import { ResponsiveCSSProperties } from './../responsive/type';
 

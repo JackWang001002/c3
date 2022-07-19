@@ -1,4 +1,4 @@
-import { useCountDown } from '@c3/hooks';
+import { useCountDown } from '@c3/hooks-1';
 import React, { useCallback, useEffect } from 'react';
 import { Button, IButtonProps } from '..';
 

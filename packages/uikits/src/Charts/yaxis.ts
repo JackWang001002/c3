@@ -1,4 +1,4 @@
-import { formatNumber } from '@c3/utils';
+import { formatNumber } from '@c3/utils-1';
 import type { EChartsOption } from 'echarts';
 
 export const yAxis: (x: number) => EChartsOption['yAxis'] = (x = 5) => ({
