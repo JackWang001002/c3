@@ -28,7 +28,6 @@ importers:
       '@types/node': ^17.0.13
       '@types/react': 17.0.2
       '@types/react-dom': 17.0.2
-      '@types/styled-components': ^5.1.21
       '@typescript-eslint/eslint-plugin': ^5.15.0
       '@typescript-eslint/parser': ^5.15.0
       antd: ^4.18.9
@@ -75,7 +74,6 @@ importers:
       '@types/node': 17.0.42
       '@types/react': 17.0.2
       '@types/react-dom': 17.0.2
-      '@types/styled-components': 5.1.25
       '@typescript-eslint/eslint-plugin': 5.27.1_aq7uryhocdbvbqum33pitcm3y4
       '@typescript-eslint/parser': 5.27.1_ud6rd4xtew5bv4yhvkvu24pzm4
       babel-loader: 8.2.5_lzsemofhph6vepnub4bnemnm6m
@@ -4578,6 +4576,7 @@ packages:
     dependencies:
       '@types/react': 17.0.2
       hoist-non-react-statics: 3.3.2
+    dev: false
 
   /@types/html-minifier-terser/5.1.2:
     resolution: {integrity: sha512-h4lTMgMJctJybDp8CQrxTUiiYmedihHWkjnF/8Pxseu2S6Nlfcy8kwboQ8yejh456rP2yWoEVm1sS/FVsfM48w==}
@@ -4757,14 +4756,6 @@ packages:
 
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
-    dev: true
-
-  /@types/styled-components/5.1.25:
-    resolution: {integrity: sha512-fgwl+0Pa8pdkwXRoVPP9JbqF0Ivo9llnmsm+7TCI330kbPIFd9qv1Lrhr37shf4tnxCOSu+/IgqM7uJXLWZZNQ==}
-    dependencies:
-      '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 17.0.2
-      csstype: 3.1.0
     dev: true
 
   /@types/tapable/1.0.8:
@@ -9149,6 +9140,7 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
+    dev: false
 
   /hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}

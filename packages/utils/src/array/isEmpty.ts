@@ -1,9 +1,7 @@
-import { isPlainObject } from 'lodash';
-import { isArray, isString } from '../lang/is';
-import { IndexedType } from '../lang';
+import { isArray, isString, isPlainObject } from '../lang/is';
 
 //TODO: compare with lodash.isEmpty implementation
-export const isEmpty = <T>(data: T[] | IndexedType<unknown> | string) => {
+export const isEmpty = <T>(data: unknown) => {
   if (isArray(data) || isString(data)) {
     return data.length === 0;
   }
