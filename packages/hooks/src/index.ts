@@ -34,3 +34,4 @@ export * from './useToggle';
 export * from './useTouchBottom';
 export * from './useUnmount';
 export * from './useBus';
+export * from './useIsVisible';

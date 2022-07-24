@@ -1,20 +1,24 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useIntersectionObserver = (
-  el: Element | null,
-  callback: (entry: IntersectionObserverEntry) => void,
+  callback: IntersectionObserverCallback,
   option?: IntersectionObserverInit
 ) => {
+  const [obs, setObs] = useState<IntersectionObserver>();
   useEffect(() => {
-    if (!el) {
-      return;
-    }
-    const observer = new IntersectionObserver(entries => {
-      console.log('IntersectionObserver', entries);
-      if (entries[0].intersectionRatio <= 0) return;
-      callback(entries[0]);
-    }, option);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [callback, el, option]);
+    const observer = new IntersectionObserver(callback, option);
+    setObs(observer);
+  }, [callback, option]);
+
+  const observe = useCallback(
+    el => {
+      if (!obs) {
+        throw new Error('IntersectionObserver is not initialized');
+      }
+      obs.observe(el);
+      return () => obs.disconnect();
+    },
+    [obs]
+  );
+  return observe;
 };
