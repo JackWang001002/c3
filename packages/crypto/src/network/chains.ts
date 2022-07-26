@@ -46,4 +46,15 @@ export const CHAINS: { [id: number]: Chain } = {
     },
     blockExplorerUrls: ['https://testnet.bscscan.com'],
   },
+  [ChainId.Goerli]: {
+    chainId: ChainId.Goerli,
+    chainName: 'Goerli Test Network',
+    rpcUrls: ['https://goerli.infura.io/v3/'],
+    nativeCurrency: {
+      name: 'GoerliETH',
+      symbol: 'GoerliETH',
+      decimals: 18,
+    },
+    blockExplorerUrls: ['https://goerli.etherscan.io'],
+  },
 };
