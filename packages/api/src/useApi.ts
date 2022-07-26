@@ -1,11 +1,5 @@
 import { useSwitch } from '@c3/hooks';
-import {
-  IAPI,
-  RawReqParameter,
-  RawResBody,
-  ReqParameter,
-  ResBody,
-} from '@c3/utils';
+import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from './makeApi/api';
 import { useCallback, useState } from 'react';
 
 export const useApi = <
@@ -25,14 +19,11 @@ export const useApi = <
         const res = await api.fetch(rrp);
         if (!res) {
           setData(api.defaultData);
-          return api.defaultData;
         }
         setData(res);
+        console.log('res', res);
+      } finally {
         off();
-        return res;
-      } catch (e) {
-        off();
-        throw e;
       }
     },
     [off, on, api]

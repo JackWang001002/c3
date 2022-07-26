@@ -5,7 +5,7 @@ import { useWalletProvider } from './../provider/index';
 import { useAccount$ } from './useAccount';
 import { useBalance$ } from './useBalance';
 
-export const useWallet_ = ():any => {
+export const useWallet_ = (): any => {
   const provider = useWalletProvider();
 
   const [account] = useAccount$(provider);
@@ -34,6 +34,9 @@ export const useWallet_ = ():any => {
   );
 
   const connect = useCallback(async () => {
+    if (!provider) {
+      console.error('provider is not defined');
+    }
     await provider?.send('eth_requestAccounts', []);
   }, [provider]);
   const [balance, updateBalance] = useBalance$(account, provider);

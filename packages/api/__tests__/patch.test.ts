@@ -1,4 +1,4 @@
-import { patch } from '../makeApi/patch';
+import { patch } from '../src/makeApi/patch';
 
 describe('test cases', () => {
   it('should work ', () => {

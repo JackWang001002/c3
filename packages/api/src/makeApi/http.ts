@@ -1,15 +1,9 @@
-import { __MOCK__ } from '@c3/utils';
-import {
-  IAPI,
-  RawReqParameter,
-  RawResBody,
-  ReqParameter,
-  ResBody,
-} from './api';
+import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from './api';
 import { methods } from './methods';
 import { patch } from './patch';
 import { Method } from './type';
 import { ndbg } from './utils';
+const __MOCK__ = !!globalThis.localStorage.getItem('mock');
 
 export type HTTP = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,11 +13,7 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
   const proxyHttp = {} as HTTP;
   methods.forEach(method => {
     proxyHttp[method] = new Proxy(rawHttp[method], {
-      async apply(
-        target,
-        thisArg: IAPI<RawReqParameter, ReqParameter, RawResBody, ResBody>,
-        args
-      ) {
+      async apply(target, thisArg: IAPI<RawReqParameter, ReqParameter, RawResBody, ResBody>, args) {
         const url = thisArg.url;
         ndbg(`@network/${method}/${url}`, ...args);
         let res;
