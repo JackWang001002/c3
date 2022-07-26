@@ -21,7 +21,6 @@ export const useApi = <
           setData(api.defaultData);
         }
         setData(res);
-        console.log('res', res);
       } finally {
         off();
       }

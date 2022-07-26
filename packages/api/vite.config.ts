@@ -1,5 +1,4 @@
 import commonjs from '@rollup/plugin-commonjs';
-import rollupTypescript from '@rollup/plugin-typescript';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -12,8 +11,8 @@ export default defineConfig({
       formats: ['iife', 'es', 'umd'],
     },
     rollupOptions: {
-      external: [/node:*/, '@c3/utils', 'tslib', '@c3/hooks', 'react'],
-      plugins: [commonjs(), rollupTypescript()], // `commonjs` plugin include 'required' to single file
+      external: [/node:*/, '@c3/utils', 'tslib', '@c3/hooks', 'react', 'qs', 'lodash'],
+      plugins: [commonjs()], // `commonjs` plugin include 'required' to single file
     },
   },
 });

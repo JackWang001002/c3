@@ -11,7 +11,7 @@ run({
       'utils',
       'dom',
       'hooks',
-      // 'api',
+      'api',
       'crypto',
     ];
     for (let pkg of packages) {
