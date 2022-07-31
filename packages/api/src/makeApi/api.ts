@@ -18,14 +18,12 @@ export interface IAPI<
 > {
   method: Method;
   url: string;
-  fetch: (raw: _RawReqParameter) => Promise<_ResBody>;
+  fetch: (raw?: _RawReqParameter, ...args: any[]) => Promise<_ResBody>;
   defaultData: _ResBody;
   convert?: (response: _RawResBody) => _ResBody;
-  genReqParameter?: (
-    raw: _RawReqParameter
-  ) => Exclude<_ReqParameter, undefined>;
+  genReqParameter?: (raw?: _RawReqParameter) => Exclude<_ReqParameter, undefined>;
   mockData: _RawResBody;
-  __ctx: { rawReqParameter: _RawReqParameter };
+  __ctx: { rawReqParameter: _RawReqParameter | undefined };
   preCondition?: (...args: any[]) => boolean;
 }
 
@@ -35,10 +33,7 @@ type MakeApiOption<
   _RawResBody extends RawResBody,
   _ResBody extends ResBody
 > = PartialBy<
-  Omit<
-    IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
-    'fetch' | '__ctx'
-  >,
+  Omit<IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>, 'fetch' | '__ctx'>,
   'defaultData'
 >;
 
@@ -51,22 +46,15 @@ export const _makeApi = <
   option: MakeApiOption<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
   http: HTTP
 ): IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody> => {
-  const api = option as IAPI<
-    _RawReqParameter,
-    _ReqParameter,
-    _RawResBody,
-    _ResBody
-  >;
+  const api = option as IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>;
 
-  api.__ctx = { rawReqParameter: {} as _RawReqParameter };
+  api.__ctx;
   if (isNullish(api.defaultData)) {
     const patched = patch({}, api.mockData) as _RawResBody;
-    api.defaultData = api.convert
-      ? api.convert(patched)
-      : (patched as unknown as _ResBody);
+    api.defaultData = api.convert ? api.convert(patched) : (patched as unknown as _ResBody);
   }
 
-  api.fetch = async (raw: _RawReqParameter) => {
+  api.fetch = async (raw?: _RawReqParameter, ...args: any[]) => {
     api.__ctx = { rawReqParameter: raw };
     let rp = (raw || {}) as Exclude<_ReqParameter, undefined>;
     if (api.genReqParameter) {
@@ -94,14 +82,12 @@ export const _makeApi = <
     let rawResBody: _RawResBody;
     const _fetch = http[api.method].bind(api);
     if (['get', 'head', 'delete', 'option'].includes(api.method)) {
-      rawResBody = await _fetch(`${url}?${stringify(rp)}`);
+      rawResBody = await _fetch(`${url}?${stringify(rp)}`, ...args);
     } else {
-      rawResBody = await _fetch(url, rp);
+      rawResBody = await _fetch(url, rp, ...args);
     }
     try {
-      return api.convert
-        ? api.convert.call(api, rawResBody)
-        : (rawResBody as unknown as _ResBody); //FIXME
+      return api.convert ? api.convert.call(api, rawResBody) : (rawResBody as unknown as _ResBody); //FIXME
     } catch (e) {
       ndbg('@network/convertError: api=', api, e);
       return api.defaultData;
@@ -122,12 +108,7 @@ export const initMakeApi = (option: InitMakeApiOption) => {
     _RawResBody extends RawResBody,
     _ResBody extends ResBody
   >(
-    option: MakeApiOption<
-      _RawReqParameter,
-      _ReqParameter,
-      _RawResBody,
-      _ResBody
-    >
+    option: MakeApiOption<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>
   ) =>
     _makeApi<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>(
       option,

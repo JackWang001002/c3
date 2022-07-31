@@ -23,7 +23,6 @@ export default defineConfig({
         'antd',
         '@c3/dom',
         '@c3/css',
-        '@c3/uikits',
         '@c3/utils',
         'immer',
         'use-immer',

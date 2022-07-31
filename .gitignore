@@ -8,9 +8,7 @@ coverage/
 # .vscode/
 */**/.DS_Store
 **/**/.rollup.cache/
-**/**/.storybook/
-src/frontend/Javascript/library/block-chain-stuff/ethereum/deploy-local-server/node0*
-**/**/private
+# **/**/.storybook/
 .eslintcache
 tsconfig.tsbuildinfo
 packages/**/log.txt

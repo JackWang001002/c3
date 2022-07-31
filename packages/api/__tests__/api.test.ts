@@ -10,11 +10,11 @@ const { initMakeApi } = require('../makeApi/api');
 const makeApi = initMakeApi({ rawHttp: axios });
 
 describe('test cases', () => {
-  it('should work ', async () => {
+  it('get should work ', async () => {
     const fetchFoo = makeApi({
       method: 'get',
       url: '/foo',
-      convert: (raw: any) => raw,
+      convert: (raw) => raw,
       preCondition: () => true,
       mockData: {
         data: {
@@ -31,5 +31,19 @@ describe('test cases', () => {
     expect(fetchFoo.defaultData).toEqual({
       data: { list: [], info: { list: [] }, name: '' },
     });
+  });
+  it('post should work ', async () => {
+    globalThis.localStorage.setItem('mock', '0');
+
+    const fetchFoo = makeApi({
+      method: 'post',
+      url: 'http://localhost:3333/api/pick-free-time',
+      convert: (raw) => raw,
+      preCondition: () => true,
+      mockData: {},
+    });
+    const res = await fetchFoo.fetch({ timeId: 100, userId: 100 });
+    console.log('res', res);
+    expect(res).toEqual({});
   });
 });

@@ -13,6 +13,7 @@ export const useBus = (event?: BusEventNameType, cb?: Handler) => {
   }, [cb, event]);
 
   const emit = useCallback((event: BusEventNameType, ...args: any[]) => {
+    //@ts-ignore
     emitter.emit(event, ...args);
   }, []);
 
