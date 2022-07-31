@@ -20,13 +20,11 @@ export default defineConfig({
         'react-dom',
         '@ant-design/icons',
         'lodash',
-        'antd',
         '@c3/dom',
         '@c3/css',
         '@c3/utils',
         'immer',
         'use-immer',
-        'react-redux',
       ],
       plugins: [commonjs(), rollupTypescript()], // `commonjs` plugin include 'required' to single file
     },
