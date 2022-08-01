@@ -1,5 +1,5 @@
 import { toHexString } from '@c3/utils';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Chain, toHexChain } from '../network/chain';
 import { useWalletProvider } from './../provider/index';
 import { useAccount$ } from './useAccount';
@@ -42,11 +42,17 @@ export const useWallet_ = (): any => {
   const [balance, updateBalance] = useBalance$(account, provider);
 
   // useEffect(() => {
-  //   provider?.on('chainChanged', handleChainChanged);
+  //   window.ethereum?.on?.('accountsChanged', () => console.log('----->account changed'));
   //   return () => {
-  //     provider?.off('chainChanged');
+  //     window.ethereum?.off?.('accountsChanged');
   //   };
-  // }, [provider]);
+  // }, [provider, window.ethereum]);
+  // useEffect(() => {
+  //   window.ethereum?.on?.('chainChanged', () => console.log('----->chainChanged'));
+  //   return () => {
+  //     window.ethereum?.off?.('chainChanged');
+  //   };
+  // }, [provider, window.ethereum]);
 
   return {
     provider,

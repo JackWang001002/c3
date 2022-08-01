@@ -1,6 +1,6 @@
 {
-  "name": "@c3/dom",
-  "version": "1.1.10",
+  "name": "@c3/router-hooks",
+  "version": "1.1.13",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/dom.umd.js",
-    "module": "dist/dom.es.js",
+    "main": "dist/router-hooks.umd.js",
+    "module": "dist/router-hooks.es.js",
     "types": "dist/index.d.ts"
   },
   "repository": {
@@ -27,17 +27,34 @@
   },
   "scripts": {
     "test": "jest --config ../../jest.config.ts --rootDir .",
-    "build": "vite build  ",
+    "type": "tsc --project . --paths null --emitDeclarationOnly --declaration",
+    "build": "vite build",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
-    "type": "tsc --project . --paths null --emitDeclarationOnly --declaration"
+    "watchtype": "tsc --project . --watch",
+    "pub": "pnpm run patch && pnpm run publish"
   },
   "bugs": {
     "url": "https://github.com/che3vinci/c3/issues"
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/utils": "workspace:^"
+    "@c3/dom": "workspace:^",
+    "@c3/utils": "workspace:^",
+    "@types/react-redux": "^7.1.24",
+    "antd": "^4.18.9",
+    "dayjs": "^1.10.7",
+    "ethers": "^5.6.5",
+    "immer": "^9.0.12",
+    "js-cookie": "^3.0.1",
+    "mitt": "^3.0.0",
+    "react-redux": "^7.2.8",
+    "react-router-dom": "^6.3.0",
+    "use-immer": "^0.6.0"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/js-cookie": "^3.0.2"
   },
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
 }

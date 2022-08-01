@@ -20,6 +20,13 @@ export const useWalletProvider = () => {
   }, []);
 
   useOnChainChange(get); //TODO: is this nessary?
+
+  useEffect(() => {
+    console.log('provider', provider);
+    // provider?.on('accountsChanged', () => console.log('----->account changed'));
+    // provider?.on('chainChanged', () => console.log('----->chainChanged changed'));
+  }, [provider]);
+
   useEffect(() => {
     get();
   }, [get]);
