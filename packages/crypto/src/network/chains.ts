@@ -38,7 +38,7 @@ export const CHAINS: { [id: number]: Chain } = {
   [ChainId.BSCTestnet]: {
     chainId: ChainId.BSCTestnet,
     chainName: 'BSC Test Network',
-    rpcUrls: ['https://data-seed-prebsc-2-s1.binance.org:8545'],
+    rpcUrls: ['https://data-seed-prebsc-2-s3.binance.org:8545/'],
     nativeCurrency: {
       name: 'BNB',
       symbol: 'BNB',
