@@ -9,6 +9,7 @@ export function useBlocker(blocker: (arg: any) => void, when = true) {
     }
     //@ts-ignore
     const unblock = navigator.block(tx => {
+      console.log('111');
       blocker({
         ...tx,
         retry() {
@@ -19,7 +20,6 @@ export function useBlocker(blocker: (arg: any) => void, when = true) {
     });
     return unblock;
   }, [navigator, blocker, when]);
-  // return unblock;
 }
 
 export function usePrompt(confirm: () => Promise<boolean>, when = true) {

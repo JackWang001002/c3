@@ -43,7 +43,6 @@ describe('test cases', () => {
       mockData: {},
     });
     const res = await fetchFoo.fetch({ timeId: 100, userId: 100 });
-    console.log('res', res);
     expect(res).toEqual({});
   });
 });
