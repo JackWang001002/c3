@@ -19,7 +19,6 @@ export * from './noop';
 export * from './object/index';
 export * from './pagination';
 export * from './string/index';
-export * from './test/index';
 export * from './time/index';
 export * from './url';
 export * from './wait';

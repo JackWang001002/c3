@@ -23,3 +23,7 @@ export const set = <T extends PlainObject, K = GetValue<T>>(
   //@ts-ignore //FIXME
   tmp[last(segs)] = value;
 };
+
+export const getKeyByValue = <T extends PlainObject, V = GetValue<T>>(object: T, value: V) => {
+  return Object.keys(object).find(key => object[key] === value);
+};

@@ -8,7 +8,7 @@ run({
   },
   async publish(options) {
     const { buildOnly } = options;
-    const packages = ['utils', 'dom', 'hooks', 'api', 'crypto', 'router-hooks'];
+    const packages = ['utils', 'test', 'dom', 'hooks', 'api', 'crypto', 'router-hooks'];
     for (let pkg of packages) {
       cd(`packages/${pkg}`);
       await $`pnpm build`;

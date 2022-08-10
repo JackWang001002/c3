@@ -38,6 +38,7 @@ export const useWallet_ = (): any => {
       console.error('provider is not defined');
     }
     await provider?.send('eth_requestAccounts', []);
+    //TODO: should update wallet.account immediately?
   }, [provider]);
   const [balance, updateBalance] = useBalance$(account, provider);
 
