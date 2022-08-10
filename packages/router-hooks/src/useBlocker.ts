@@ -1,35 +1,29 @@
+import type { History, Transition } from 'history';
+import React, { useEffect, useRef } from 'react';
 import { UNSAFE_NavigationContext as NavigationContext } from 'react-router-dom';
-import React from 'react';
 
-export function useBlocker(blocker: (arg: any) => void, when = true) {
-  const { navigator } = React.useContext(NavigationContext);
+export function useBlocker(cb: (tx: Transition) => boolean) {
+  const { navigator } = React.useContext(NavigationContext) as unknown as { navigator: History };
+  const ref = useRef<() => void>();
+
   React.useEffect(() => {
-    if (!when) {
-      return;
-    }
-    //@ts-ignore
-    const unblock = navigator.block(tx => {
-      console.log('111');
-      blocker({
-        ...tx,
-        retry() {
-          unblock();
-          tx.retry();
-        },
-      });
-    });
-    return unblock;
-  }, [navigator, blocker, when]);
-}
 
-export function usePrompt(confirm: () => Promise<boolean>, when = true) {
-  const blocker = React.useCallback(
-    async (tx: any) => {
-      if (await confirm()) {
+    ref.current = navigator.block(tx => {
+      const agreeLeave = cb(tx);
+      if (agreeLeave) {
+        ref.current && ref.current();
         tx.retry();
       }
-    },
-    [confirm]
-  );
-  useBlocker(blocker, when);
+    });
+    return ref.current;
+  }, [navigator, cb]);
+
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', () => {
+      ref.current && ref.current();
+    });
+  }, []);
+
 }
+
