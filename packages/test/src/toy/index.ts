@@ -1,2 +1,2 @@
-export * from './animal/index';
-export * from './vehicle/index';
+export * from './animal';
+export * from './vehicle';

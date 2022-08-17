@@ -26,6 +26,7 @@ export const useApi = <
           setData(api.defaultData);
         }
         setData(res);
+        return res;
       } finally {
         off();
       }

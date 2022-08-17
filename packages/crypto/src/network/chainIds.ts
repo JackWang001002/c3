@@ -1,4 +1,4 @@
-export const ChainId: { [name: string]: number } = {
+export const ChainId = {
   Mainnet: 1,
   Ropsten: 3,
   Rinkeby: 4,
@@ -42,4 +42,4 @@ export const ChainId: { [name: string]: number } = {
   Velas: 106,
   VelasTestnet: 111,
   ZkSyncTestnet: 280,
-};
+} as const;

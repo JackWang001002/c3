@@ -1,7 +1,8 @@
+import { GetValue } from '@c3/utils';
 import { Chain } from './chain';
 import { ChainId } from './chainIds';
 
-export const CHAINS: { [id: number]: Chain } = {
+export const CHAINS: { [k in GetValue<typeof ChainId>]?: Chain } = {
   [ChainId.OasisEmeraldTestnet]: {
     chainId: ChainId.OasisEmeraldTestnet,
     chainName: 'OasisEmeraldTestnet',
@@ -34,6 +35,17 @@ export const CHAINS: { [id: number]: Chain } = {
       decimals: 18,
     },
     blockExplorerUrls: ['https://rinkeby.etherscan.io'],
+  },
+  [ChainId.BSC]: {
+    chainId: ChainId.BSC,
+    chainName: 'BSC Network',
+    rpcUrls: ['https://bsc-dataseed1.binance.org', 'https://bsc-dataseed2.binance.org'],
+    nativeCurrency: {
+      name: 'BNB',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    blockExplorerUrls: ['https://bscscan.com'],
   },
   [ChainId.BSCTestnet]: {
     chainId: ChainId.BSCTestnet,

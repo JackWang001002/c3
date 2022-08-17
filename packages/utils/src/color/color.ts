@@ -14,7 +14,7 @@ export type IHSLA = {
   a: number; // 0-1
 };
 
-export class XColor {
+export class Color {
   private hue = Math.random() * 359; // 0-359 //色相
   private saturation = 0.77; // 0-100% ,饱和度
   private lightness = 0.8; // 0-100%,亮度
@@ -47,7 +47,7 @@ export class XColor {
   }
 
   //
-  public static makeFromString(color: string): XColor {
+  public static makeFromString(color: string): Color {
     if (/rgb/i.test(color)) {
       const res = color.match(
         /rgba?\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,?\s*([01](\.\d+)?)?/i
@@ -55,7 +55,7 @@ export class XColor {
       if (!res) {
         throw new Error(`color format error:${color}`);
       }
-      return XColor.makeFromRGBA(+res[1], +res[2], +res[3], +res[4]); // +res[4]可能为空
+      return Color.makeFromRGBA(+res[1], +res[2], +res[3], +res[4]); // +res[4]可能为空
     }
     if (/hsl/.test(color)) {
       // @todo:h不能处理有小数的情况
@@ -65,7 +65,7 @@ export class XColor {
       if (!res) {
         throw new Error(`color format error:${color}`);
       }
-      return XColor.makeFromHSLA({
+      return Color.makeFromHSLA({
         h: Number(res[1]),
         s: Number(res[2]) / 100,
         l: Number(res[3]) / 100,
@@ -76,7 +76,7 @@ export class XColor {
       const red = +`0x${color[1]}${color[2]}`;
       const green = +`0x${color[3]}${color[4]}`;
       const blue = +`0x${color[5]}${color[6]}`;
-      return XColor.makeFromRGBA(red, green, blue, 1);
+      return Color.makeFromRGBA(red, green, blue, 1);
     }
 
     throw new Error(`format ${color}`);
@@ -95,10 +95,10 @@ export class XColor {
     ) {
       throw new Error('color is wrong');
     }
-    return new XColor(color.h, color.s, color.l, color.a);
+    return new Color(color.h, color.s, color.l, color.a);
   }
 
-  public static makeFromRGBA(...args: number[]): XColor {
+  public static makeFromRGBA(...args: number[]): Color {
     if (args.length !== 3 && args.length !== 4) {
       throw new Error('invalid arguments');
     }
@@ -163,30 +163,30 @@ export class XColor {
       s = delta / (2 - 2 * l);
     }
 
-    return new XColor(h as any, s, l, rgba.alpha);
+    return new Color(h as any, s, l, rgba.alpha);
   }
 
   public static black() {
-    return new XColor(0, 0, 0, 1);
+    return new Color(0, 0, 0, 1);
   }
 
   public static white() {
-    return new XColor(0, 1, 1, 1);
+    return new Color(0, 1, 1, 1);
   }
 
-  public static randColor(sat = 0.5, l = 0.5): XColor {
-    return new XColor(random(0, 360), sat, l, 1);
+  public static randColor(sat = 0.5, l = 0.5): Color {
+    return new Color(random(0, 360), sat, l, 1);
   }
 
-  public static randLightColor(sat = 0.7, l = 0.8): XColor {
-    return new XColor(random(0, 360), sat, l, 0.9);
+  public static randLightColor(sat = 0.7, l = 0.8): Color {
+    return new Color(random(0, 360), sat, l, 0.9);
   }
 
   public isWhite() {
     return this.lightness === 1;
   }
 
-  public lighten(step = 0): XColor {
+  public lighten(step = 0): Color {
     if (step > 1 || step < 0) {
       throw new Error('arguments error. step should be  in 0-1');
     }
@@ -214,7 +214,7 @@ export class XColor {
     return this;
   }
 
-  public setSaturation(s: number): XColor {
+  public setSaturation(s: number): Color {
     if (!this.checkSaturation()) {
       throw new Error('invalid arguments');
     }
@@ -222,7 +222,7 @@ export class XColor {
     return this;
   }
 
-  public setLightness(l: number): XColor {
+  public setLightness(l: number): Color {
     if (!this.checkLightness()) {
       throw new Error('invalid arguments');
     }
@@ -230,7 +230,7 @@ export class XColor {
     return this;
   }
 
-  public setAlpha(alpha: number): XColor {
+  public setAlpha(alpha: number): Color {
     if (!this.checkAlpha()) {
       throw new Error('invalid arguments');
     }
@@ -248,7 +248,7 @@ export class XColor {
     return color;
   }
 
-  public desaturate(step: number): XColor {
+  public desaturate(step: number): Color {
     if (step > 1 || step < 0) {
       throw new Error('arguments error. step should be  in 0-1');
     }
@@ -320,7 +320,7 @@ export class XColor {
   }
 
   public clone() {
-    return new XColor(this.hue, this.saturation, this.lightness, this.alpha);
+    return new Color(this.hue, this.saturation, this.lightness, this.alpha);
   }
 
   private checkHue() {
@@ -384,10 +384,10 @@ export class XColor {
    * 根据背景色灰度值来决定最佳的文本颜色.
    * 如果接近透明或者灰度值大于170
    */
-  get textColor(): XColor {
+  get textColor(): Color {
     return this.alpha < 0.1 || this.grayscale > 170
-      ? XColor.black()
-      : XColor.white();
+      ? Color.black()
+      : Color.white();
   }
 
   get isTransparent() {

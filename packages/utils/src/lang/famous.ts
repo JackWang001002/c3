@@ -3,7 +3,6 @@ export type Direction = 'left' | 'right' | 'top' | 'bottom';
 export type HVDirection = 'horizontal' | 'vertical';
 export type Selector = string;
 export type URL = string;
-export type Color = string;
 export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
 
 export type IDable = { id: ID };

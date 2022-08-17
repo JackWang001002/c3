@@ -6,6 +6,7 @@
     "pnpm": ">=3"
   },
   "dependencies": {
+    "@scriptbot/cli": "^1.0.131",
     "antd": "^4.18.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -20,6 +21,7 @@
     "@c3/cli": "^1.0.105",
     "@changesets/cli": "^2.22.0",
     "@jest/types": "^28.1.1",
+    "@pnpm/sort-packages": "^3.0.7",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-typescript": "^8.3.0",
     "@storybook/addon-actions": "^6.5.9",
@@ -43,11 +45,13 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "find-packages": "^9.0.9",
     "husky": ">=6",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "js-beautify": "^1.14.0",
     "lint-staged": ">=10",
+    "pkgs-graph": "^7.0.2",
     "prettier": "2.6.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5",

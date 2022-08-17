@@ -1,11 +1,11 @@
 import { toHexString } from '@c3/utils';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Chain, toHexChain } from '../network/chain';
 import { useWalletProvider } from './../provider/index';
 import { useAccount$ } from './useAccount';
 import { useBalance$ } from './useBalance';
 
-export const useWallet_ = (): any => {
+export const useWallet_ = () => {
   const provider = useWalletProvider();
 
   const [account] = useAccount$(provider);
@@ -63,5 +63,5 @@ export const useWallet_ = (): any => {
     account,
     balance,
     updateBalance,
-  };
+  } as const;
 };
