@@ -1,2 +1,2 @@
 export * from './lineGradient';
-export * from './xcolor';
+export * from './color;

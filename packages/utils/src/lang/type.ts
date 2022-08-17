@@ -1,9 +1,5 @@
 export type IsSubType<C, P> = C extends P ? true : false;
-export type IsEqual<T1, T2> = [T1] extends [T2]
-  ? [T2] extends [T1]
-    ? true
-    : false
-  : false;
+export type IsEqual<T1, T2> = [T1] extends [T2] ? ([T2] extends [T1] ? true : false) : false;
 export type Expect<T extends true> = T;
 export type Debug<T> = { [K in keyof T]: T[K] };
 
@@ -13,15 +9,16 @@ export type IndexedType<T = any> = { [key: string]: T };
 export type PlainObject<T = any> = { [key: string]: T };
 
 export type NestedPlainObject<T extends object> = {
-  [key in keyof object]: T[key] extends object
-    ? NestedPlainObject<T[key]>
-    : T[key];
+  [key in keyof object]: T[key] extends object ? NestedPlainObject<T[key]> : T[key];
 };
 
 export type Activable = { active: boolean };
 export type Key = string | number;
 export type GetValue<T> = T extends { [key: Key]: infer V } ? V : unknown;
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
+// export type Tuplable<T extends any[]> =
+export type TupleToUnion<T extends any[]> = T[number];
 
 export type Join<A, B> = A extends string | number
   ? B extends string | number
@@ -33,10 +30,7 @@ export type Join<A, B> = A extends string | number
 export type ArrayIndex = '__ARRAY_INDEX__';
 export const arrayIndex = '__ARRAY_INDEX__';
 
-export type RemoveLastX<
-  T,
-  X extends string | number
-> = T extends `${infer P1}${X}` ? `${P1}` : T;
+export type RemoveLastX<T, X extends string | number> = T extends `${infer P1}${X}` ? `${P1}` : T;
 
 type InnerPath<T> = T extends Array<any>
   ? {
@@ -49,3 +43,12 @@ type InnerPath<T> = T extends Array<any>
   : '';
 
 export type Path<T> = RemoveLastX<InnerPath<T>, '.'>;
+
+type Includes<T extends readonly any[], U> = T extends [infer F, ...infer rest]
+  ? IsEqual<F, U> extends true
+    ? true
+    : Includes<rest, U>
+  : false;
+
+
+  type x = Record<string,number>
