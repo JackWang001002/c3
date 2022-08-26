@@ -17,6 +17,7 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
         const url = thisArg.url;
         ndbg(`@network/${method}/${url}`, ...args);
         let res;
+        // console.log('xx222', __MOCK__);
         if (__MOCK__) {
           ndbg(`@network/useMockData/${url}`, thisArg);
           res = thisArg.mockData;

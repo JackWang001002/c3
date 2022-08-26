@@ -5,7 +5,8 @@ import { useWalletProvider } from './../provider/index';
 import { useAccount$ } from './useAccount';
 import { useBalance$ } from './useBalance';
 
-export const useWallet_ = () => {
+//TODO:TS2742
+export const useWallet_ = (): any => {
   const provider = useWalletProvider();
 
   const [account] = useAccount$(provider);

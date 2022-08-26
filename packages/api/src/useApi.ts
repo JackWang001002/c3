@@ -13,17 +13,18 @@ export const useApi = <
   _ResBody extends ResBody
 >(
   api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
-  option: UseApiOption<_RawReqParameter> = { fetchOnMounted: true }
+  option: UseApiOption<_RawReqParameter> = { fetchOnMounted: false }
 ) => {
   const [data, setData] = useState(api.defaultData);
   const [loading, on, off] = useSwitch(false);
   const fetch = useCallback(
-    async (rrp?: _RawReqParameter) => {
+    async (rrp?: _RawReqParameter, ...args: any[]) => {
       try {
         on();
-        const res = await api.fetch(rrp);
+        const res = await api.fetch(rrp, ...args);
         if (!res) {
           setData(api.defaultData);
+          return api.defaultData;
         }
         setData(res);
         return res;
