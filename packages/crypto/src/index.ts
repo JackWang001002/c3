@@ -1,5 +1,6 @@
+import { useOnChainChange } from './network/useOnChainChange';
 import { initCryptoDebug } from './utils';
-import { useOnChainChange, useWallet_ } from './wallet';
+import { useWallet_ } from './wallet';
 
 export * from './context';
 export * from './contract';

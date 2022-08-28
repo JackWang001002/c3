@@ -2,7 +2,7 @@ import { IndexedType } from '@c3/utils';
 import { BigNumber, ethers } from 'ethers';
 import React, { useCallback, useContext } from 'react';
 import { Chain } from '../network';
-import { useWallet_ } from '../wallet/useWallet';
+import { useWallet_ } from '../wallet/useWallet_';
 
 export type Web3ContextDataType = {
   wallet: ReturnType<typeof useWallet_>;
@@ -10,10 +10,7 @@ export type Web3ContextDataType = {
 };
 
 export const Web3Context = React.createContext({
-  wallet: {
-    account: '',
-    balance: BigNumber.from(0),
-  },
+  wallet: {},
   contracts: {},
 } as Web3ContextDataType);
 
@@ -27,24 +24,6 @@ export const useContract = (name: string) => {
     return contracts[name];
   }
   return [];
-};
-
-export const useAccount = () => {
-  const { wallet } = useWeb3();
-  return wallet.account;
-};
-
-export const useBalance = () => {
-  const { wallet } = useWeb3();
-  return [wallet.balance, wallet.updateBalance] as const;
-};
-
-export const useNetwork = () => {
-  const { wallet } = useWeb3();
-
-  return useCallback(() => {
-    return wallet.provider?.getNetwork() || ({} as Chain);
-  }, [wallet.provider]);
 };
 
 export const useWallet = () => {

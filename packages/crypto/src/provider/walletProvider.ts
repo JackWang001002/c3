@@ -1,7 +1,7 @@
 import detectEthereumProvider from '@metamask/detect-provider';
 import { ethers } from 'ethers';
 import { useCallback, useEffect, useState } from 'react';
-import { useOnChainChange } from '../wallet';
+import { useOnChainChange } from '../network';
 
 export const getWalletProvider = async () => {
   const injectedProvider: any = await detectEthereumProvider();
@@ -19,12 +19,7 @@ export const useWalletProvider = () => {
     getWalletProvider().then(x => x && setProvider(x));
   }, []);
 
-  useOnChainChange(get); //TODO: is this nessary?
-
-  useEffect(() => {
-    // provider?.on('accountsChanged', () => console.log('----->account changed'));
-    // provider?.on('chainChanged', () => console.log('----->chainChanged changed'));
-  }, [provider]);
+  useOnChainChange(get);
 
   useEffect(() => {
     get();

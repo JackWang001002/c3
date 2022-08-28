@@ -16,9 +16,3 @@ export const toHexChain = (chain: Chain) => ({
   chainId: toHexString(chain.chainId),
 });
 
-export const handleChainChanged = (_chainId: number) => {
-  // We recommend reloading the page, unless you must do otherwise
-  cyptoDbg('==>chainChanged: newChaindId=', _chainId);
-
-  // window.location.reload();
-};

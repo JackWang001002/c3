@@ -3,6 +3,7 @@ import { useCallback, useEffect } from 'react';
 export const useOnChainChange = (cb: (chainId: string) => void) => {
   const handleCb = useCallback(
     (chainId: string) => {
+      console.log('chain changed,newChainId=', chainId);
       cb(chainId);
     },
     [cb]

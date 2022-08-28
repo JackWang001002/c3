@@ -9,7 +9,7 @@ export type ContractInitInfo = {
 
 export type ContractPair = [ethers.Contract, ethers.Contract];
 
-export const getContract = (
+export const createContract = (
   contractAddress: string,
   abi: ethers.ContractInterface,
   provider: ethers.providers.JsonRpcProvider
