@@ -79,13 +79,11 @@ export const _makeApi = <
       });
     }
 
-    console.log('=====>111args', args);
     let rawResBody: _RawResBody;
     const _fetch = http[api.method].bind(api);
     if (['get', 'head', 'delete', 'option'].includes(api.method)) {
       rawResBody = await _fetch(`${url}?${stringify(rp)}`, ...args);
     } else {
-      console.log('=====>args', args);
       rawResBody = await _fetch(url, rp, ...args);
     }
     try {

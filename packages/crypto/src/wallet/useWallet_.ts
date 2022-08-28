@@ -3,14 +3,13 @@ import { BigNumber, ethers } from 'ethers';
 import { useCallback } from 'react';
 import { Chain, toHexChain } from '../network/chain';
 import { useWalletProvider } from '../provider/index';
-import { getWalletAccount } from './getWalletAccount';
 import { useAccount_ } from './useAccount_';
 
 //TODO:TS2742
-type ReturnType = {
+export type WalletType = {
   readonly provider: ethers.providers.JsonRpcProvider | undefined;
   readonly addNetwork: (chain: Chain) => Promise<any>;
-  readonly switchNetwork: (chain: Chain) => Promise<any>;
+  readonly switchNetwork: (chain: Chain) => Promise<null>;
   readonly connectWallet: () => Promise<string>;
   readonly account: string | undefined;
   readonly getBalance: () => Promise<BigNumber>;
@@ -18,7 +17,7 @@ type ReturnType = {
   readonly getChainId: () => Promise<number>;
 };
 
-export const useWallet_ = (): ReturnType => {
+export const useWallet_ = (): WalletType => {
   const provider = useWalletProvider();
 
   const account = useAccount_();
@@ -33,7 +32,7 @@ export const useWallet_ = (): ReturnType => {
   const switchNetwork = useCallback(
     async (chain: Chain) => {
       try {
-        return await provider?.send('wallet_switchEthereumChain', [
+        await provider?.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {

@@ -1,4 +1,4 @@
-import { IndexedType } from '@c3/utils';
+import { IndexedType, isEmpty } from '@c3/utils';
 import { BigNumber, ethers } from 'ethers';
 import React, { useCallback, useContext } from 'react';
 import { Chain } from '../network';
@@ -20,10 +20,13 @@ export const useWeb3 = () => {
 
 export const useContract = (name: string) => {
   const { contracts } = useWeb3();
-  if (name && name in contracts) {
-    return contracts[name];
+  if (isEmpty(contracts)) {
+    return [];
   }
-  return [];
+  if (!(name in contracts)) {
+    throw new Error(`${name} doesnt existed in contracts`);
+  }
+  return contracts[name];
 };
 
 export const useWallet = () => {
