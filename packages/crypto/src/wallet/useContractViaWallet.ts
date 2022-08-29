@@ -1,29 +1,25 @@
 import { ethers } from 'ethers';
 import { useCallback } from 'react';
 import { ContractConfigInfo } from '../context/types';
-import { CHAINS } from '../network';
+import { createContract } from '../contract';
+import { CHAIN_MAP } from '../network';
+import { getWalletProvider } from '../provider';
+import { cyptoDbg } from '../utils';
 import { useWallet, useContract } from './../context/context';
-import { WalletType } from './useWallet_';
 
 export const getRecommendChainId = (cfg: ContractConfigInfo) => {
-  if (import.meta.env.MODE === 'production') {
+  if (location.host.match(/^(www|overeality|preview)/)) {
     return cfg['mainnetChainId'];
   }
-  return cfg['mainnetChainId'];
+  return cfg['testnetChainId'];
 };
+//@ts-ignore
+window.__getRecommendChainId = getRecommendChainId;
 
 export const useContractViaWallet = (
   cfg: ContractConfigInfo,
-  action: (
-    wallet: WalletType,
-    contracts: [ethers.Contract, ethers.Contract],
-    ...args: any[]
-  ) => Promise<any>,
-  beforeAction?: (
-    wallet: WalletType,
-    contracts: [ethers.Contract, ethers.Contract],
-    ...args: any[]
-  ) => Promise<any>
+  action: (contracts: [ethers.Contract, ethers.Contract], ...args: any[]) => Promise<any>,
+  beforeAction?: (contracts: [ethers.Contract, ethers.Contract], ...args: any[]) => Promise<any>
 ) => {
   const wallet = useWallet();
   const contracts = useContract(cfg.name);
@@ -31,26 +27,30 @@ export const useContractViaWallet = (
   return useCallback(
     async (...args: any[]) => {
       const chainId = await wallet.getChainId();
-      if (contracts.length === 0) {
-        return;
-      }
+      let _contractPair = contracts;
       if (!wallet.account) {
         await wallet.connectWallet();
-        return;
+        return {};
       }
 
-      const isWrongChainId = contracts[0].address !== cfg.address[chainId];
-
+      const isWrongChainId =
+        _contractPair.length === 0 || _contractPair[0].address !== cfg.address[chainId];
+      cyptoDbg('@crypto/isWrongChainId', isWrongChainId);
       if (isWrongChainId) {
+        const targetChainId = getRecommendChainId(cfg);
         //@ts-ignore
-        await wallet.switchNetwork(CHAINS[getRecommendChainId(cfg)]);
-        //TODO: how to do action after switchnetwork directly
-        return;
+        await wallet.switchNetwork(CHAIN_MAP[targetChainId]);
+        const provider = await getWalletProvider();
+        if (!provider) {
+          throw new Error('getWalletProvider failed');
+        }
+        _contractPair = createContract(cfg.address[targetChainId], cfg.abi, provider) || [];
       }
+      //FIXME: wallet is old one. to fix it
       //@ts-ignore
-      beforeAction && beforeAction(wallet, contracts, ...args);
+      beforeAction && beforeAction(_contractPair, ...args);
       //@ts-ignore
-      return action(wallet, contracts, ...args);
+      return action(_contractPair, ...args);
     },
     [action, beforeAction, cfg, contracts, wallet]
   );
