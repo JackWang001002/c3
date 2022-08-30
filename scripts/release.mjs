@@ -1,16 +1,7 @@
 #!/usr/bin/env zx
-import {
-  run,
-  replaceText,
-  getChangedPkgs,
-  getAllPkgs,
-  path2pkg,
-  getDeps,
-  parsePkg,
-  pkg2path,
-} from '@scriptbot/cli';
-import { $, cd } from 'zx';
 import utils from '@c3/utils';
+import { getChangedPkgs, run } from '@scriptbot/cli';
+import { $ } from 'zx';
 
 const { remove } = utils;
 
@@ -41,6 +32,7 @@ run({
   async build() {
     const pkgs = await getChangedPkgs();
     for (const pkg of pkgs) {
+      // await $`pnpm --filter ${pkg} test`;
       await $`pnpm --filter ${pkg} build`;
       await $`pnpm --filter ${pkg} type`;
     }

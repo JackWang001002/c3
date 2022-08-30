@@ -1,6 +1,7 @@
 import { IndexedType } from '@c3/utils';
 import React, { useMemo } from 'react';
 import { ContractPair, createContract } from '../contract/index';
+import { dbg } from '../utils';
 import { useWallet_ } from '../wallet';
 import { Web3Context } from './context';
 import { ContractCreateParam } from './types';
@@ -13,7 +14,7 @@ type Props = {
 export const Web3Provider = (props: Props) => {
   const { value, ...restProps } = props;
   const wallet = useWallet_();
-  console.log('web3provider refreshed');
+  dbg('web3provider refreshed');
 
   //@ts-ignore
   window.__wallet = wallet;

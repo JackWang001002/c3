@@ -67,7 +67,7 @@ export const _makeApi = <
     let url = option.url;
     assert(!url.includes('?'), 'url should not include query string');
 
-    ndbg('@network/queryData:', rp);
+    ndbg('queryData:', rp);
 
     const IDREG = /\/:(\w+)/;
     if (IDREG.test(url)) {

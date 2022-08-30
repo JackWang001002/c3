@@ -3,12 +3,9 @@ import { useEffect, useRef } from 'react';
 import { useComponentName } from './useComponentName';
 
 export type IProps = Record<string, unknown>;
-const ddbg = (...args: any[]) => cdbg(...args)('@useDebug');
+const ddbg = (...args: any[]) => cdbg(...args)('@useDebug', 'color:red;');
 
-export const useDebug = (
-  props: IProps,
-  component: React.FunctionComponent<any>
-) => {
+export const useDebug = (props: IProps, component: React.FunctionComponent<any>) => {
   const componentName = useComponentName(component);
   const prevProps = useRef<IProps>({});
   useEffect(() => {

@@ -4,7 +4,7 @@ import { ContractConfigInfo } from '../context/types';
 import { createContract } from '../contract';
 import { CHAIN_MAP } from '../network';
 import { getWalletProvider } from '../provider';
-import { cyptoDbg } from '../utils';
+import { dbg } from '../utils';
 import { useWallet, useContract } from './../context/context';
 
 export const getRecommendChainId = (cfg: ContractConfigInfo) => {
@@ -30,12 +30,11 @@ export const useContractViaWallet = (
       let _contractPair = contracts;
       if (!wallet.account) {
         await wallet.connectWallet();
-        return {};
       }
 
       const isWrongChainId =
         _contractPair.length === 0 || _contractPair[0].address !== cfg.address[chainId];
-      cyptoDbg('@crypto/isWrongChainId', isWrongChainId);
+      dbg('isWrongChainId', isWrongChainId,_contractPair);
       if (isWrongChainId) {
         const targetChainId = getRecommendChainId(cfg);
         //@ts-ignore
@@ -48,7 +47,7 @@ export const useContractViaWallet = (
       }
       //FIXME: wallet is old one. to fix it
       //@ts-ignore
-      beforeAction && beforeAction(_contractPair, ...args);
+      beforeAction && await beforeAction(_contractPair, ...args);
       //@ts-ignore
       return action(_contractPair, ...args);
     },

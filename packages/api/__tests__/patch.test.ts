@@ -1,6 +1,6 @@
 import { patch } from '../src/makeApi/patch';
 
-describe('test cases', () => {
+describe.skip('test cases', () => {
   it('should work ', () => {
     const rawResBody = { d: null };
     const mockData = { d: [] };

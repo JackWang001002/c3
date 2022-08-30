@@ -1,6 +1,6 @@
 import { Chain } from './types';
 import { rawChainData } from './rawChainData';
-import { cyptoDbg } from '../utils';
+import { dbg } from '../utils';
 
 type RawChainListType = typeof rawChainData;
 type RawChainType = RawChainListType[number];

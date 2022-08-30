@@ -2,4 +2,5 @@ import { cdbg } from '@c3/utils';
 
 export * from './math';
 
-export const cyptoDbg = (...args: any[]): void => cdbg(...args)('@crypto');
+export const dbg = (...args: any[]): void =>
+  cdbg(...args)('@c3/crypto →', 'color:blue;background:white');

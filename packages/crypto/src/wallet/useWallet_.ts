@@ -5,7 +5,7 @@ import { Chain } from '../network/types';
 import { useWalletProvider } from '../provider/index';
 import { useAccount_ } from './useAccount_';
 import { toHexChain } from '../network';
-import { cyptoDbg } from '../utils';
+import { dbg } from '../utils';
 
 //TODO:TS2742
 export type WalletType = {
@@ -26,7 +26,7 @@ export const useWallet_ = (): WalletType => {
 
   const addNetwork = useCallback(
     async (chain: Chain) => {
-      cyptoDbg('@crypto/addNetwork:chain=', chain);
+      dbg('[addNetwork]:chain=', chain);
       return provider?.send('wallet_addEthereumChain', [toHexChain(chain)]);
     },
     [provider]
@@ -35,7 +35,7 @@ export const useWallet_ = (): WalletType => {
   const switchNetwork = useCallback(
     async (chain: Chain) => {
       try {
-        cyptoDbg('@crypto/switchNetwork:chain=', chain);
+        dbg('@crypto/switchNetwork:chain=', chain);
         await provider?.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
