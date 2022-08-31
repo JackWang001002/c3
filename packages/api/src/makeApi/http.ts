@@ -26,8 +26,8 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
         }
 
         const ret = patch(res, thisArg.mockData);
-        ndbg(`beforePatch/${url}:`, res);
-        ndbg(`afterPatch/${url}`, ret);
+        ndbg(`beforePatch =>${url}:`, res);
+        ndbg(`afterPatch =>${url}`, ret);
         return ret;
       },
     });

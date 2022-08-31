@@ -4,11 +4,11 @@ globalThis.localStorage?.setItem('mock', '1');
 jest.setTimeout(10000000);
 
 //@ts-ignore
-// const axios = require('axios');
-// const { initMakeApi } = require('../src/index');
+const axios = require('axios');
+const { initMakeApi } = require('../src/index');
 
-// const makeApi = initMakeApi({ rawHttp: axios });
-const makeApi = () => {};
+const makeApi = initMakeApi({ rawHttp: axios });
+// const makeApi = () => {};
 describe.skip('test cases', () => {
   it('get should work ', async () => {
     const fetchFoo = makeApi({

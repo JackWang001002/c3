@@ -1,4 +1,4 @@
-import { getWalletProvider } from '../provider';
+import { getWalletProvider } from './walletProvider';
 
 export const getWalletAccount = async (): Promise<string> => {
   const provider = await getWalletProvider();

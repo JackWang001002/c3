@@ -168,6 +168,26 @@ importers:
       '@rollup/plugin-typescript': 8.3.3_fgms252lqu3rk7srzpqqayl4ya
       ethers: 5.6.8
 
+  packages/dbg:
+    specifiers:
+      '@babel/preset-env': ^7.18.10
+      '@babel/preset-typescript': ^7.18.6
+      '@types/jest': ^27.5.2
+      '@types/lodash': ^4.14.182
+      babel-jest: ^29.0.1
+      jest: ^27.5.1
+      jest-environment-jsdom: ^29.0.1
+      lodash: ^4.17.21
+    devDependencies:
+      '@babel/preset-env': 7.18.10_@babel+core@7.18.2
+      '@babel/preset-typescript': 7.18.6_@babel+core@7.18.2
+      '@types/jest': 27.5.2
+      '@types/lodash': 4.14.182
+      babel-jest: 29.0.1_@babel+core@7.18.2
+      jest: 27.5.1
+      jest-environment-jsdom: 29.0.1
+      lodash: 4.17.21
+
   packages/dom:
     specifiers:
       '@c3/utils': workspace:^

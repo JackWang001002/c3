@@ -89,7 +89,7 @@ export const _makeApi = <
     try {
       return api.convert ? api.convert.call(api, rawResBody) : (rawResBody as unknown as _ResBody); //FIXME
     } catch (e) {
-      ndbg('@network/convertError: api=', api, e);
+      ndbg('convertError: api=', api, e);
       return api.defaultData;
     }
   };

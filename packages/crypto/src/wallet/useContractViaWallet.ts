@@ -3,9 +3,9 @@ import { useCallback } from 'react';
 import { ContractConfigInfo } from '../context/types';
 import { createContract } from '../contract';
 import { CHAIN_MAP } from '../network';
-import { getWalletProvider } from '../provider';
 import { dbg } from '../utils';
-import { useWallet, useContract } from './../context/context';
+import { useWallet, useContract } from './../context/hooks';
+import { getWalletProvider } from './walletProvider';
 
 export const getRecommendChainId = (cfg: ContractConfigInfo) => {
   if (location.host.match(/^(www|overeality|preview)/)) {
@@ -13,6 +13,8 @@ export const getRecommendChainId = (cfg: ContractConfigInfo) => {
   }
   return cfg['testnetChainId'];
 };
+
+
 //@ts-ignore
 window.__getRecommendChainId = getRecommendChainId;
 

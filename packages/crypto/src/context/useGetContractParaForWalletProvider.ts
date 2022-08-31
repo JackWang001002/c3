@@ -1,6 +1,6 @@
 import { ContractConfigInfo, ContractCreateParam } from './types';
 import { useEffect, useMemo, useState } from 'react';
-import { useWalletProvider } from '../provider';
+import { useWalletProvider } from '../wallet';
 
 export const useGetContractParaForWalletProvider = (
   cfg: ContractConfigInfo

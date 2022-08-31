@@ -1,7 +1,7 @@
 import detectEthereumProvider from '@metamask/detect-provider';
 import { ethers } from 'ethers';
 import { useCallback, useEffect, useState } from 'react';
-import { useOnChainChange } from '../network';
+import { useOnChainChange } from './useOnChainChange';
 
 export const getWalletProvider = async () => {
   const injectedProvider: any = await detectEthereumProvider();
