@@ -1,12 +1,11 @@
-import { IndexedType, isEmpty } from '@c3/utils';
-import { BigNumber, ethers } from 'ethers';
-import React, { useCallback, useContext } from 'react';
-import { Chain } from '../network';
+import { IndexedType } from '@c3/utils';
+import React from 'react';
 import { useWallet_ } from '../wallet/useWallet_';
+import { ContractPair } from './../contract/createContract';
 
 export type Web3ContextDataType = {
   wallet: ReturnType<typeof useWallet_>;
-  contracts: IndexedType<[ethers.Contract, ethers.Contract]>;
+  contracts: IndexedType<ContractPair>;
 };
 
 export const Web3Context = React.createContext({

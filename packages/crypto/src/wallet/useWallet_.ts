@@ -40,7 +40,8 @@ export const useWallet_ = (): WalletType => {
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
-        if (e.code === 4902) {
+        console.log('switchNetwork:', e);
+        if (e.code === 4902 || e.code === -32603) {
           return addNetwork(chain);
         }
         throw e;

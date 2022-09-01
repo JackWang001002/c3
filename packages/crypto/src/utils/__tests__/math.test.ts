@@ -1,4 +1,3 @@
-window.CSS = {};
 import { BigNumber } from 'ethers';
 import { makeEthFromDecimal } from '../math';
 describe('test cases', () => {

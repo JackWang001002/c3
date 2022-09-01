@@ -1,3 +1,4 @@
+import { ContractPair } from './../contract/createContract';
 import { ethers } from 'ethers';
 import { useCallback } from 'react';
 import { ContractConfigInfo } from '../context/types';
@@ -14,14 +15,10 @@ export const getRecommendChainId = (cfg: ContractConfigInfo) => {
   return cfg['testnetChainId'];
 };
 
-
-//@ts-ignore
-window.__getRecommendChainId = getRecommendChainId;
-
 export const useContractViaWallet = (
   cfg: ContractConfigInfo,
-  action: (contracts: [ethers.Contract, ethers.Contract], ...args: any[]) => Promise<any>,
-  beforeAction?: (contracts: [ethers.Contract, ethers.Contract], ...args: any[]) => Promise<any>
+  action: (contracts: ContractPair, ...args: any[]) => Promise<any>,
+  beforeAction?: (contracts: ContractPair, ...args: any[]) => Promise<any>
 ) => {
   const wallet = useWallet();
   const contracts = useContract(cfg.name);
@@ -36,7 +33,7 @@ export const useContractViaWallet = (
 
       const isWrongChainId =
         _contractPair.length === 0 || _contractPair[0].address !== cfg.address[chainId];
-      dbg('isWrongChainId', isWrongChainId,_contractPair);
+      dbg('isWrongChainId', isWrongChainId, _contractPair);
       if (isWrongChainId) {
         const targetChainId = getRecommendChainId(cfg);
         //@ts-ignore
@@ -47,11 +44,16 @@ export const useContractViaWallet = (
         }
         _contractPair = createContract(cfg.address[targetChainId], cfg.abi, provider) || [];
       }
-      //FIXME: wallet is old one. to fix it
-      //@ts-ignore
-      beforeAction && await beforeAction(_contractPair, ...args);
-      //@ts-ignore
-      return action(_contractPair, ...args);
+      // try {
+        //FIXME: wallet is old one. to fix it
+        //@ts-ignore
+        beforeAction && (await beforeAction(_contractPair, ...args));
+        //@ts-ignore
+        return await action(_contractPair, ...args);
+      // } catch (e) {
+      //   console.error(e);
+      //   throw new Error();
+      // }
     },
     [action, beforeAction, cfg, contracts, wallet]
   );

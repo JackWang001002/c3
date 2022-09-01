@@ -17,7 +17,7 @@ export const Web3Provider = (props: Props) => {
   dbg('web3provider refreshed');
 
   //@ts-ignore
-  window.__wallet = wallet;
+  globalThis.__wallet = wallet;
 
   const contracts = useMemo(() => {
     const _contracts: IndexedType<ContractPair> = {};
@@ -29,7 +29,7 @@ export const Web3Provider = (props: Props) => {
   }, [value]);
 
   //@ts-ignore
-  window.__contracts = contracts;
+  globalThis.__contracts = contracts;
 
   return <Web3Context.Provider value={{ wallet, contracts }} {...restProps} />;
 };

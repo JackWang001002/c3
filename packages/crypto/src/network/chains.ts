@@ -28,4 +28,4 @@ export const CHAIN_MAP: ChainsType = rawChainData.reduce((acc, e) => {
 }, {} as ChainsType);
 
 //@ts-ignore
-window.__chain_map = CHAIN_MAP;
+globalThis.__chain_map = CHAIN_MAP;
