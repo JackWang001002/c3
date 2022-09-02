@@ -9,7 +9,7 @@ export default defineConfig({
       formats: ['iife', 'es', 'umd'],
     },
     rollupOptions: {
-      external: ['tslib', /@c3\/*/, 'lodash'],
+      external: ['tslib', /@c3\/*/, 'lodash', 'playwright', '@playwright/test'],
       plugins: [commonjs()],
     },
   },

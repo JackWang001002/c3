@@ -272,8 +272,12 @@ importers:
   packages/test:
     specifiers:
       '@c3/utils': workspace:^
+      '@playwright/test': ^1.25.1
+      playwright: ^1.25.1
     dependencies:
       '@c3/utils': link:../utils
+      '@playwright/test': 1.25.1
+      playwright: 1.25.1
 
   packages/utils:
     specifiers:
@@ -3316,6 +3320,15 @@ packages:
       mkdirp: 1.0.4
       rimraf: 3.0.2
     dev: true
+
+  /@playwright/test/1.25.1:
+    resolution: {integrity: sha512-IJ4X0yOakXtwkhbnNzKkaIgXe6df7u3H3FnuhI9Jqh+CdO0e/lYQlDLYiyI9cnXK8E7UAppAWP+VqAv6VX7HQg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.7.13
+      playwright-core: 1.25.1
+    dev: false
 
   /@pmmmwh/react-refresh-webpack-plugin/0.5.7_aumhct55s6lhceplyc622fxoum:
     resolution: {integrity: sha512-bcKCAzF0DV2IIROp9ZHkRJa6O4jy7NlnHdWL3GmcUxYWNjLXkK5kfELELwEfSP5hXPfVL/qOGMAROuMQb9GG8Q==}
@@ -12735,6 +12748,21 @@ packages:
       '@pnpm/npm-package-arg': 1.0.0
       '@pnpm/resolve-workspace-range': 3.0.0
       ramda: /@pnpm/ramda/0.28.1
+
+  /playwright-core/1.25.1:
+    resolution: {integrity: sha512-lSvPCmA2n7LawD2Hw7gSCLScZ+vYRkhU8xH0AapMyzwN+ojoDqhkH/KIEUxwNu2PjPoE/fcE0wLAksdOhJ2O5g==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: false
+
+  /playwright/1.25.1:
+    resolution: {integrity: sha512-kOlW7mllnQ70ALTwAor73q/FhdH9EEXLUqjdzqioYLcSVC4n4NBfDqeCikGuayFZrLECLkU6Hcbziy/szqTXSA==}
+    engines: {node: '>=14'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      playwright-core: 1.25.1
+    dev: false
 
   /pnp-webpack-plugin/1.6.4_typescript@4.7.3:
     resolution: {integrity: sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg==}
