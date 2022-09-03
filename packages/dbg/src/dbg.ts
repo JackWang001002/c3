@@ -1,17 +1,16 @@
-const ls = typeof window === 'undefined' ? { getItem: () => '' } : localStorage;
+import { getFnName } from './fn';
 
-export const logLevels = `${ls.getItem('dbg')}`.split(',');
+export const isEnableDbg = globalThis.localStorage?.getItem('dbg');
 
 export const dbg = (...args: unknown[]) => {
-  if (logLevels.includes('dbg')) {
+  if (isEnableDbg) {
     console.log(...args);
   }
 };
 
 //colorful dbg
-export const cdbg = (...args: any[]) => {
-  return (keyword: string, style: string) => {
-    const styledKeywords = [`%c${keyword}`, style];
-    dbg(...styledKeywords, ...args);
+export const cdbg = (keyword: string, style: string) => {
+  return (...args: unknown[]) => {
+    dbg(`%c${keyword}`, style, ...args);
   };
 };

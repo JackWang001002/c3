@@ -1,4 +1,4 @@
-import { get } from '../src';
+import { get } from '..';
 
 describe('test cases', () => {
   it('get should work ', () => {

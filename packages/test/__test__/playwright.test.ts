@@ -15,11 +15,12 @@ testWithMeamask('import metamask ', async ({ page }) => {
   await signinWallet(page);
 });
 
-testWithMeamask('goto metamask', async ({ page, extensionId }) => {
-  await signinWallet(page);
-  await page.goto('https://dev.overeality.io/web3bridge')
-  await page.goto(
-    `chrome-extension://${extensionId}/notification.html#connect/j4XFSm4z-OQpf0IWl32OV`
-  );
-  await wait(1000000);
+testWithMeamask('goto metamask', async ({ page, extensionId, context }) => {
+  await page.goto('https://dev.overeality.io/web3bridge');
+  const metamaskPage = await context.newPage();
+  await signinWallet(metamaskPage);
+
+  await page.locator('u-item:has-text("Select a network")').click();
+  await page.locator('text=Ethereum Goerli Testnet').click();
+  await metamaskPage.goto(`chrome-extension://${extensionId}/notification.html#connect/`);
 });

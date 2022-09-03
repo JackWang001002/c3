@@ -1,4 +1,4 @@
-import { set } from '../src';
+import { set } from '..';
 
 describe('test cases', () => {
   it('should work ', () => {

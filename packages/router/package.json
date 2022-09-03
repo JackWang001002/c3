@@ -1,6 +1,6 @@
 {
   "name": "@c3/router",
-  "version": "1.1.37",
+  "version": "1.1.38",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -26,7 +26,6 @@
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
-    "test": "jest --config ../../jest.config.ts --rootDir .",
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration",
     "build": "vite build",
     "clean": "rm -rf dist && rm -rf node_modules ",

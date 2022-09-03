@@ -6,8 +6,6 @@ import { $ } from 'zx';
 const { remove } = utils;
 
 const release = async pkg => {
-  // await $`pnpm --filter ${pkg} build`;
-  // await $`pnpm --filter ${pkg} type`;
   await $`pnpm --filter ${pkg} exec pnpm version patch`;
   await $`g amend`;
   await $`pnpm --filter ${pkg} publish --no-git-checks`;
@@ -32,31 +30,9 @@ run({
   async build() {
     const pkgs = await getChangedPkgs();
     for (const pkg of pkgs) {
-      // await $`pnpm --filter ${pkg} test`;
+      await $`pnpm --filter ${pkg} test`;
       await $`pnpm --filter ${pkg} build`;
       await $`pnpm --filter ${pkg} type`;
     }
   },
-  // async beforePub(options) {
-  //   const pkgs = await getChangedPkgs();
-
-  //   for (const pkg of remove(pkgs, '@unstyled-ui/stitches')) {
-  //     const files = ['main', 'module', 'types'];
-  //     for (const file of files) {
-  //       const { stdout: name } =
-  //         await $`pnpm --filter ${pkg} exec npm pkg get publishConfig.${file}`;
-  //       const newName = name.replace(/"|\n/g, '');
-  //       await $`pnpm --filter ${pkg} exec npm pkg set ${file}=${newName}`;
-  //     }
-  //   }
-  // },
-  // async afterPub(options) {
-  //   const pkgs = await getChangedPkgs();
-  //   for (const pkg of remove(pkgs, '@unstyled-ui/stitches')) {
-  //     const files = ['main', 'module', 'types'];
-  //     for (const file of files) {
-  //       await $`pnpm --filter ${pkg} exec npm pkg set ${file}=src/index.ts`;
-  //     }
-  //   }
-  // },
 });

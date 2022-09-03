@@ -1,22 +1,22 @@
-import { cdbg } from '@c3/utils';
+import { cdbg } from '@c3/dbg';
 import { useEffect, useRef } from 'react';
 import { useComponentName } from './useComponentName';
 
 export type IProps = Record<string, unknown>;
-const ddbg = (...args: any[]) => cdbg(...args)('@useDebug', 'color:red;');
+const dbg = cdbg('@useDebug', 'color:red;');
 
 export const useDebug = (props: IProps, component: React.FunctionComponent<any>) => {
   const componentName = useComponentName(component);
   const prevProps = useRef<IProps>({});
   useEffect(() => {
-    ddbg('@useDebug/mounted:', componentName);
+    dbg('@useDebug/mounted:', componentName);
     return () => {
-      ddbg('@useDebug/unmounted:', componentName);
+      dbg('@useDebug/unmounted:', componentName);
     };
   }, [componentName]);
 
   useEffect(() => {
-    ddbg('@useDebug/rerender:', componentName);
+    dbg('@useDebug/rerender:', componentName);
     if (prevProps.current) {
       const allKeys = Object.keys({ ...prevProps.current, ...props });
       const changedProps: IProps = {};
@@ -31,7 +31,7 @@ export const useDebug = (props: IProps, component: React.FunctionComponent<any>)
       });
 
       if (Object.keys(changedProps).length) {
-        ddbg('@useDebug/changed:', componentName, changedProps);
+        dbg('@useDebug/changed:', componentName, changedProps);
       }
     }
 

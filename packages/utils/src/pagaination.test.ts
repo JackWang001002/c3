@@ -1,4 +1,4 @@
-import { getTotalPage } from '../src';
+import { getTotalPage } from '.';
 
 describe('test cases', () => {
   it('should work ', () => {

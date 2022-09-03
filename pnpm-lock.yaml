@@ -115,6 +115,7 @@ importers:
     specifiers:
       '@babel/preset-env': ^7.18.10
       '@babel/preset-typescript': ^7.18.6
+      '@c3/dbg': workspace:^1.0.8
       '@c3/hooks': workspace:^
       '@c3/utils': workspace:^
       '@rollup/plugin-commonjs': ^21.0.1
@@ -133,6 +134,7 @@ importers:
       tslib: ^2.3.1
       typescript: ^4.5.5
     dependencies:
+      '@c3/dbg': link:../dbg
       '@c3/hooks': link:../hooks
       '@c3/utils': link:../utils
       qs: 6.10.5
@@ -156,12 +158,14 @@ importers:
 
   packages/crypto:
     specifiers:
+      '@c3/dbg': workspace:^1.0.8
       '@c3/hooks': workspace:^
       '@c3/utils': workspace:^
       '@metamask/detect-provider': ^1.2.0
       '@rollup/plugin-typescript': ^8.3.0
       ethers: ^5.6.6
     dependencies:
+      '@c3/dbg': link:../dbg
       '@c3/hooks': link:../hooks
       '@c3/utils': link:../utils
       '@metamask/detect-provider': 1.2.0
@@ -190,12 +194,15 @@ importers:
 
   packages/dom:
     specifiers:
+      '@c3/dbg': workspace:^1.0.8
       '@c3/utils': workspace:^
     dependencies:
+      '@c3/dbg': link:../dbg
       '@c3/utils': link:../utils
 
   packages/hooks:
     specifiers:
+      '@c3/dbg': workspace:^1.0.8
       '@c3/dom': workspace:^
       '@c3/utils': workspace:^
       '@testing-library/react-hooks': ^7.0.2
@@ -209,6 +216,7 @@ importers:
       react-redux: ^7.2.8
       use-immer: ^0.6.0
     dependencies:
+      '@c3/dbg': link:../dbg
       '@c3/dom': link:../dom
       '@c3/utils': link:../utils
       antd: 4.21.0_sfoxds7t5ydpegc3knd667wn6m

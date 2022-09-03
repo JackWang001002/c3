@@ -14,7 +14,7 @@ describe.skip('test cases', () => {
     const fetchFoo = makeApi({
       method: 'get',
       url: '/foo',
-      convert: raw => raw,
+      convert: (raw: any) => raw,
       preCondition: () => true,
       mockData: {
         data: {
@@ -38,7 +38,7 @@ describe.skip('test cases', () => {
     const fetchFoo = makeApi({
       method: 'post',
       url: 'http://localhost:3333/api/pick-free-time',
-      convert: raw => raw,
+      convert: (raw: any) => raw,
       preCondition: () => true,
       mockData: {},
     });
