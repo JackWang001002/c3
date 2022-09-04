@@ -1,4 +1,4 @@
-import { s } from '../src';
+import { s } from './toString';
 
 describe('test cases', () => {
   it('should work ', () => {

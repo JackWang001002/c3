@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { wait, waitFor } from '../src';
+import { wait, waitFor } from '.';
 export default {
   component: () => <div></div>,
   title: 'waitFor',

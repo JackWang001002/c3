@@ -1,4 +1,3 @@
-import { getFnName } from './fn';
 
 export const isEnableDbg = globalThis.localStorage?.getItem('dbg');
 
