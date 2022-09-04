@@ -3,7 +3,7 @@ import { methods } from './methods';
 import { patch } from './patch';
 import { Method } from './type';
 import { ndbg } from './utils';
-const __MOCK__ = !!globalThis.localStorage.getItem('mock');
+const __MOCK__ = !!globalThis.localStorage?.getItem?.('mock');
 
 export type HTTP = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

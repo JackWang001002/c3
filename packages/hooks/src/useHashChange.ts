@@ -4,7 +4,7 @@ import { useForceUpdate } from './useForceUpdate';
 type Fn = (hash: string) => void;
 
 export const getHash = () => {
-  const hash: string = window.location.hash;
+  const hash: string = globalThis.location?.hash;
   if (hash.length === 0) {
     return '';
   }

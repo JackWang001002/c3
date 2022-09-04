@@ -5,7 +5,7 @@
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/api.umd.js",
   "directories": {
     "lib": "dist",
     "test": "__tests__"
@@ -23,6 +23,7 @@
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
+    "test": "jest",
     "build": "vite build   ",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
@@ -56,7 +57,9 @@
     "@c3/dbg": "workspace:^1.0.8",
     "@c3/hooks": "workspace:^",
     "@c3/utils": "workspace:^",
-    "qs": "^6.10.5"
+    "msw": "^0.47.0",
+    "qs": "^6.10.5",
+    "vitest": "^0.22.1"
   },
   "jest": {
     "transformIgnorePatterns": [],
@@ -74,5 +77,7 @@
       ],
       "@babel/preset-typescript"
     ]
-  }
+  },
+  "module": "{}",
+  "types": "dist/index.d.ts"
 }

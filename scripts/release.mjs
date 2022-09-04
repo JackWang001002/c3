@@ -35,4 +35,26 @@ run({
       await $`pnpm --filter ${pkg} type`;
     }
   },
+  async beforePub(options) {
+    const pkgs = await getChangedPkgs();
+
+    for (const pkg of pkgs) {
+      const files = ['main', 'module', 'types'];
+      for (const file of files) {
+        const { stdout: name } =
+          await $`pnpm --filter ${pkg} exec npm pkg get publishConfig.${file}`;
+        const newName = name.replace(/"|\n/g, '');
+        await $`pnpm --filter ${pkg} exec npm pkg set ${file}=${newName}`;
+      }
+    }
+  },
+  async afterPub(options) {
+    const pkgs = await getChangedPkgs();
+    for (const pkg of pkgs) {
+      const files = ['main', 'module', 'types'];
+      for (const file of files) {
+        await $`pnpm --filter ${pkg} exec npm pkg set ${file}=src/index.ts`;
+      }
+    }
+  },
 });

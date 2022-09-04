@@ -1,6 +1,5 @@
-import { useMount, useSwitch } from '@c3/hooks';
 import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from './makeApi/api';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export type UseApiOption<T extends RawReqParameter> = {
   fetchOnMounted: boolean;
@@ -16,11 +15,11 @@ export const useApi = <
   option: UseApiOption<_RawReqParameter> = { fetchOnMounted: false }
 ) => {
   const [data, setData] = useState(api.defaultData);
-  const [loading, on, off] = useSwitch(false);
+  const [loading, setLoading] = useState(false);
   const fetch = useCallback(
     async (rrp?: _RawReqParameter, ...args: any[]) => {
       try {
-        on();
+        setLoading(true);
         const res = await api.fetch(rrp, ...args);
         if (!res) {
           setData(api.defaultData);
@@ -29,16 +28,16 @@ export const useApi = <
         setData(res);
         return res;
       } finally {
-        off();
+        setLoading(false);
       }
     },
-    [off, on, api]
+    [api]
   );
-  useMount(() => {
+  useEffect(() => {
     if (option.fetchOnMounted) {
       fetch(option.defaultReqParameter);
     }
-  });
+  }, [fetch, option.defaultReqParameter, option.fetchOnMounted]);
 
   return [data, fetch, setData, loading] as const;
 };

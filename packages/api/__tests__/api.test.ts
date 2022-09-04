@@ -1,48 +1,61 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+// /**
+//  * @jest-environment jsdom
+//  * @jest-environment-options {"url": "https://jestjs.io/"}
+//  */
 
+import axios from 'axios';
+import { initMakeApi } from '../src/index';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 globalThis.localStorage?.setItem('mock', '1');
-jest.setTimeout(10000000);
-
-//@ts-ignore
-const axios = require('axios');
-const { initMakeApi } = require('../src/index');
 
 const makeApi = initMakeApi({ rawHttp: axios });
-// const makeApi = () => {};
-describe.skip('test cases', () => {
-  it('get should work ', async () => {
-    const fetchFoo = makeApi({
-      method: 'get',
-      url: '/foo',
-      convert: (raw: any) => raw,
-      preCondition: () => true,
-      mockData: {
-        data: {
-          list: [],
-          info: {
-            list: [{ names: [] }, { names: [1, 3] }, { names: [] }],
-          },
-          name: 'jinbo',
-        },
-      },
-    });
-    const res = await fetchFoo.fetch({ id: 1 });
-    console.log('res=', res);
-    expect(fetchFoo.defaultData).toEqual({
-      data: { list: [], info: { list: [] }, name: '' },
-    });
-  });
+
+const server = setupServer(
+  rest.post('http://localhost/api/pick', (req, res, ctx) => {
+    return res(ctx.json({ message: 'ok', code: 200, data: { hello: 'world' } }));
+  })
+);
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+
+
+describe('test cases', () => {
+  // it('get should work ', async () => {
+
+  //   const fetchFoo = makeApi({
+  //     method: 'get',
+  //     url: '/foo',
+  //     convert: (raw: any) => raw,
+  //     preCondition: () => true,
+  //     mockData: {
+  //       data: {
+  //         list: [],
+  //         info: {
+  //           list: [{ names: [] }, { names: [1, 3] }, { names: [] }],
+  //         },
+  //         name: 'jinbo',
+  //       },
+  //     },
+  //   });
+  //   const res = await fetchFoo.fetch({ id: 1 });
+  //   expect(fetchFoo.defaultData).toEqual({
+  //     data: { list: [], info: { list: [] }, name: '' },
+  //   });
+  // });
   it('post should work ', async () => {
-    globalThis.localStorage.setItem('mock', '0');
 
     const fetchFoo = makeApi({
       method: 'post',
-      url: 'http://localhost:3333/api/pick-free-time',
+      url: 'http://localhost/api/pick',
       convert: (raw: any) => raw,
       preCondition: () => true,
       mockData: {},
     });
+
     const res = await fetchFoo.fetch({ timeId: 100, userId: 100 });
-    expect(res).toEqual({});
+    expect(res.data.code).toEqual(200);
   });
 });
