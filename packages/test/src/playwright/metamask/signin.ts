@@ -44,4 +44,5 @@ export const signinWallet = async (page: Page) => {
     'chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#initialize/end-of-flow'
   );
   await page.locator('text=All Done').click();
+  await page.locator('.popover-header__title button').click();
 };
