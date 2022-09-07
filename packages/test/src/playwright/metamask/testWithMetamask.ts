@@ -1,9 +1,9 @@
 import { BrowserContext, Page, test as base } from '@playwright/test';
-import path from 'path';
+import path from 'node:path';
 import { chromium } from 'playwright';
 import { signinWallet } from './signin';
 
-export const testWithMeamask = base.extend<{
+export const testWithMetaMask = base.extend<{
   context: BrowserContext;
   extensionId: string;
   metaMaskPage: Page;
@@ -25,7 +25,7 @@ export const testWithMeamask = base.extend<{
     await context.close();
   },
   metaMaskPage: async ({ context, extensionId }, use) => {
-    const extensionURL = `chrome-extension://${extensionId}/popup.html?not_popup=1`;
+    const extensionURL = `chrome-extension://${extensionId}/popup.html`;
 
     const pages = context.pages();
     const page = pages.length > 0 ? pages[0] : await context.newPage();
@@ -41,7 +41,6 @@ export const testWithMeamask = base.extend<{
     // await page.close();
   },
   extensionId: async ({ context }, use) => {
-    // for manifest v2:
     let [background] = context.backgroundPages();
     if (!background) {
       background = await context.waitForEvent('backgroundpage');

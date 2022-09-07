@@ -1,6 +1,6 @@
 {
   "name": "@c3/dbg",
-  "version": "1.0.11",
+  "version": "1.0.14",
   "description": "",
   "main": "dist/dbg.umd.js",
   "module": "dist/dbg.es.js",

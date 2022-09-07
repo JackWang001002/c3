@@ -1,3 +1,3 @@
-export * from './testWithMetamask';
+export * from './testWithMetaMask';
 export * from './signin';
 export * from './metamask';
