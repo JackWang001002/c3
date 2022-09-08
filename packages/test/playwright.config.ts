@@ -12,7 +12,8 @@ const config: PlaywrightTestConfig = {
   // },
   timeout: 0,
   globalTimeout: 0,
-  reporter: 'list',
-
+  use: {
+    trace: 'on',
+  },
 };
 export default config;

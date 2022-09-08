@@ -1,5 +1,7 @@
+import { SELECTORS } from './selectors';
 import { testWithMetaMask } from './testWithMetaMask';
-import { expect } from '@playwright/test';
+import { BrowserContext, expect } from '@playwright/test';
+import { printPageUrls } from '../utils';
 
 testWithMetaMask('normal websiste ', async ({ page }) => {
   await page.goto('https://playwright.dev/');
@@ -16,14 +18,31 @@ testWithMetaMask('use metaMaskPage', async ({ metaMaskPage }) => {
   );
   await expect(metaMaskPage.locator('text=Buy')).toBeVisible();
 });
-
-testWithMetaMask('goto metamask', async ({ page, metaMaskPage }) => {
+testWithMetaMask('load new metamask page', async ({ page, metaMaskPage, context }) => {
   await page.goto('https://dev.overeality.io/web3bridge');
 
   await page.locator('u-item:has-text("Select a network")').click();
   await page.locator('text=Ethereum Goerli Testnet').click();
   await metaMaskPage.reload();
   await expect(metaMaskPage.locator('text=Next')).toBeVisible();
+
   await metaMaskPage.locator('text=Next').click();
   await metaMaskPage.locator('button[role="button"]:has-text("Connect")').click();
+});
+
+testWithMetaMask('goto metamask', async ({ page, metaMaskPage, context }) => {
+  await page.goto('https://dev.overeality.io/web3bridge');
+
+  await page.locator('u-item:has-text("Select a network")').click();
+  printPageUrls(context);
+  await page.locator('text=Ethereum Goerli Testnet').click();
+  printPageUrls(context);
+
+  await metaMaskPage.reload();
+  await expect(metaMaskPage.locator(...SELECTORS.nextBtn)).toBeVisible();
+
+  printPageUrls(context);
+
+  await metaMaskPage.locator(...SELECTORS.nextBtn).click();
+  await metaMaskPage.locator(...SELECTORS.connectBtn).click();
 });

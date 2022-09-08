@@ -1,11 +1,8 @@
-#!/usr/bin/env zx
-import utils from '@c3/utils';
+#!/usr/bin/env cnode
 import { getChangedPkgs, run } from '@scriptbot/cli';
 import { $ } from 'zx';
 
-const { remove } = utils;
-
-const release = async pkg => {
+const release = async (pkg: string) => {
   await $`pnpm --filter ${pkg} exec pnpm version patch`;
   await $`g amend`;
   await $`pnpm --filter ${pkg} publish --no-git-checks`;
@@ -22,7 +19,7 @@ run({
 
   async release() {
     await this.build();
-    let pkgs = await getChangedPkgs();
+    const pkgs = await getChangedPkgs();
     for (const dep of pkgs) {
       await release(dep);
     }
@@ -35,7 +32,7 @@ run({
       await $`pnpm --filter ${pkg} type`;
     }
   },
-  async beforePub(options) {
+  async beforePub() {
     const pkgs = await getChangedPkgs();
 
     for (const pkg of pkgs) {
