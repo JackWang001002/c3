@@ -4,7 +4,6 @@ import { $ } from 'zx';
 
 const release = async (pkg: string) => {
   await $`pnpm --filter ${pkg} exec pnpm version patch`;
-  await $`g amend`;
   await $`pnpm --filter ${pkg} publish --no-git-checks`;
 };
 run({
@@ -19,10 +18,14 @@ run({
 
   async release() {
     await this.build();
+    await this.beforePub();
+
     const pkgs = await getChangedPkgs();
     for (const dep of pkgs) {
-      await release(dep);
+      release(dep);
     }
+    await this.afterPub();
+    await $`g amend`;
   },
   async build() {
     const pkgs = await getChangedPkgs();

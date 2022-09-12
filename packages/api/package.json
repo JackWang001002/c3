@@ -1,11 +1,13 @@
 {
   "name": "@c3/api",
-  "version": "1.1.56",
+  "version": "1.1.59",
   "description": "",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "MIT",
-  "main": "dist/api.umd.js",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
   "directories": {
     "lib": "dist",
     "test": "__tests__"
@@ -24,7 +26,6 @@
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
-    "test": "jest --coverage",
     "build": "vite build   ",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
@@ -57,6 +58,7 @@
   "dependencies": {
     "@c3/dbg": "workspace:^1.0.8",
     "@c3/hooks": "workspace:^",
+    "@c3/types": "workspace:^1.0.2",
     "@c3/utils": "workspace:^",
     "msw": "^0.47.0",
     "qs": "^6.10.5",
@@ -78,7 +80,5 @@
       ],
       "@babel/preset-typescript"
     ]
-  },
-  "module": "{}",
-  "types": "dist/index.d.ts"
+  }
 }

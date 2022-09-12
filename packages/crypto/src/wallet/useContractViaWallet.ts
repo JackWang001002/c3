@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 import { useCallback } from 'react';
 import { ContractConfigInfo } from '../context/types';
 import { createContract } from '../contract';
-import { CHAIN_MAP } from '../network';
+import { ID2CHAIN_MAP } from '../network';
 import { dbg } from '../utils';
 import { useWallet, useContract } from './../context/hooks';
 import { getWalletProvider } from './walletProvider';
@@ -37,7 +37,7 @@ export const useContractViaWallet = (
       if (isWrongChainId) {
         const targetChainId = getRecommendChainId(cfg);
         //@ts-ignore
-        await wallet.switchNetwork(CHAIN_MAP[targetChainId]);
+        await wallet.switchNetwork(ID2CHAIN_MAP[targetChainId]);
         const provider = await getWalletProvider();
         if (!provider) {
           throw new Error('getWalletProvider failed');

@@ -1,13 +1,13 @@
 {
   "name": "@c3/dom",
-  "version": "1.1.31",
+  "version": "1.1.34",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "ISC",
-  "main": "dist/dom.umd.js",
-  "module": "dist/dom.es.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
   "directories": {
     "lib": "dist",
     "test": "__tests__"

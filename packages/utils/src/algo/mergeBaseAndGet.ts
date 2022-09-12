@@ -1,4 +1,4 @@
-import { IndexedType } from '../lang';
+import { IndexedType } from '@c3/types';
 import { assign } from './../object/assign';
 
 export type CfgObj<T extends IndexedType<unknown>, K extends string> = {
@@ -6,10 +6,7 @@ export type CfgObj<T extends IndexedType<unknown>, K extends string> = {
 } & {
   base?: T;
 };
-export const mergeBaseAndGet = <
-  T extends IndexedType<unknown>,
-  K extends string
->(
+export const mergeBaseAndGet = <T extends IndexedType<unknown>, K extends string>(
   obj: CfgObj<T, K>,
   path: string
 ): T => {

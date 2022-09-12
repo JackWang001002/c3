@@ -1,13 +1,13 @@
 {
   "name": "@c3/crypto",
-  "version": "1.1.50",
+  "version": "1.1.53",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
   "author": "jinbo.wang <che3vinci@gmail.com>",
   "license": "ISC",
-  "main": "dist/crypto.umd.js",
-  "module": "dist/crypto.es.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
   "directories": {
     "lib": "dist",
     "test": "__tests__"
@@ -40,6 +40,7 @@
   "dependencies": {
     "@c3/dbg": "workspace:^1.0.8",
     "@c3/hooks": "workspace:^",
+    "@c3/types": "workspace:^1.0.2",
     "@c3/utils": "workspace:^",
     "@metamask/detect-provider": "^1.2.0",
     "@rollup/plugin-typescript": "^8.3.0",

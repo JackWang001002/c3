@@ -1,4 +1,4 @@
-import { IndexedType } from '@c3/utils';
+import { IndexedType } from '@c3/types';
 import React, { useMemo } from 'react';
 import { ContractPair, createContract } from '../contract/index';
 import { dbg } from '../utils';

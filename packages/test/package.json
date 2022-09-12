@@ -1,13 +1,13 @@
 {
   "name": "@c3/test",
-  "version": "1.1.54",
-  "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+  "version": "1.1.58",
+  "description": "fuck",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
-  "license": "ISC",
-  "main": "dist/test.umd.js",
-  "module": "dist/test.es.js",
-  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
   "directories": {
     "lib": "dist",
     "test": "__tests__"
@@ -26,6 +26,7 @@
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
+    "watchtype": "tsc --project . --watch",
     "build": "vite build  && pnpm type && cp -rf src/playwright/metamask/extension dist/extension",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
@@ -36,7 +37,9 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/utils": "workspace:^"
+    "@c3/utils": "workspace:^",
+    "@playwright/test": "^1.25.1",
+    "playwright": "^1.25.1"
   },
   "peerDependencies": {
     "@playwright/test": "^1.25.1",

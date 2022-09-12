@@ -1,4 +1,4 @@
-import { Fn } from './famous';
+import { Fn } from '@c3/types';
 
 export const isNullish = (x: unknown): x is undefined | null => x === undefined || x === null;
 export const isNil = isNullish;

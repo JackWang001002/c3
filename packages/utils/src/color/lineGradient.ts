@@ -1,4 +1,4 @@
-import { PercentString } from '../lang/famous';
+import { PercentString } from '@c3/types';
 
 export type GradientStop = {
   offset: number | PercentString;

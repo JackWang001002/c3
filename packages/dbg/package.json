@@ -1,10 +1,10 @@
 {
   "name": "@c3/dbg",
-  "version": "1.0.24",
+  "version": "1.0.27",
   "description": "",
-  "main": "dist/dbg.umd.js",
-  "module": "dist/dbg.es.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
   "publishConfig": {
     "access": "public",
     "main": "dist/dbg.umd.js",

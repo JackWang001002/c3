@@ -1,4 +1,4 @@
-import { IndexedType } from '@c3/utils';
+import { IndexedType } from '@c3/types';
 import React from 'react';
 import { useWallet_ } from '../wallet/useWallet_';
 import { ContractPair } from './../contract/createContract';

@@ -1,4 +1,4 @@
-import { IndexedType, isEmpty } from '@c3/utils';
+import { isEmpty } from '@c3/utils';
 import React, { useCallback, useContext } from 'react';
 import { Web3Context } from './context';
 

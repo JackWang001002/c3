@@ -14,7 +14,7 @@ export type NestedPlainObject<T extends object> = {
 
 export type Activable = { active: boolean };
 export type Key = string | number;
-export type GetValue<T> = T extends { [key: Key]: infer V } ? V : unknown;
+// export type GetValue<T> = T extends { [key: Key]: infer V } ? V : unknown;
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 // export type Tuplable<T extends any[]> =
