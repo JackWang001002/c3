@@ -1,4 +1,4 @@
-import { IBox } from '@c3/utils';
+import { IBox } from '@c3/types';
 import { useCallback } from 'react';
 import { useResizeObserver } from './useResizeObserver';
 

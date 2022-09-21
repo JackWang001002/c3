@@ -1,11 +1,8 @@
 import { addEventListener, isTouchBottom } from '@c3/dom';
-import { dbg } from '@c3/utils';
+import { dbg } from '@c3/dbg';
 import { useEffect } from 'react';
 
-export const useTouchBottom = (
-  el: HTMLElement | null,
-  cb: (e: Event) => void
-) => {
+export const useTouchBottom = (el: HTMLElement | null, cb: (e: Event) => void) => {
   useEffect(() => {
     if (!el) {
       return;

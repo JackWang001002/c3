@@ -1,14 +1,14 @@
 import {
   assert,
   entries,
-  IndexedType,
   isArray,
   isNullish,
   isNumber,
   isObject,
   isString,
-  PlainObject,
 } from '@c3/utils';
+import { PlainObject,IndexedType } from '@c3/types';
+
 import { cloneDeep, isPlainObject } from 'lodash';
 
 const patchEmptyObject = (refObj: IndexedType) => {
@@ -69,10 +69,7 @@ const innerPatch = (target: IndexedType, refObj: IndexedType) => {
   return target;
 };
 
-export const patch = (
-  origin: IndexedType,
-  refObj: PlainObject
-): IndexedType => {
+export const patch = (origin: IndexedType, refObj: PlainObject): IndexedType => {
   const ret = cloneDeep(origin);
   return innerPatch(ret, refObj);
 };

@@ -1,39 +1,35 @@
-import { IndexedType } from '@c3/utils';
+import { IndexedType } from '@c3/types';
 import React, { useMemo } from 'react';
-import { ContractInitInfo, ContractPair, getContract } from '../contract/index';
+import { ContractPair, createContract } from '../contract/index';
+import { dbg } from '../utils';
 import { useWallet_ } from '../wallet';
 import { Web3Context } from './context';
+import { ContractCreateParam } from './types';
 
 type Props = {
-  value: ContractInitInfo[];
+  value: ContractCreateParam[];
   children: React.ReactChild;
 };
 
 export const Web3Provider = (props: Props) => {
-  const { value: contractInitInfos, ...restProps } = props;
+  const { value, ...restProps } = props;
   const wallet = useWallet_();
+  dbg('web3provider refreshed');
 
   //@ts-ignore
-  window.wallet = wallet;
+  globalThis.__wallet = wallet;
 
   const contracts = useMemo(() => {
-    const contracts: IndexedType<ContractPair> = {};
-    for (const e of contractInitInfos) {
-      const contract = getContract(e.contractAddress, e.abi, e.provider);
-      if (contract) {
-        contracts[e.contractName] = contract;
-      }
+    const _contracts: IndexedType<ContractPair> = {};
+    for (const ct of value.filter(Boolean)) {
+      const contract = createContract(ct.address, ct.abi, ct.provider);
+      contract && (_contracts[ct.name] = contract);
     }
-    return contracts;
-  }, [contractInitInfos]);
+    return _contracts;
+  }, [value]);
 
   //@ts-ignore
-  window.contracts = contracts;
+  globalThis.__contracts = contracts;
 
-  return (
-    <Web3Context.Provider
-      value={{ wallet, contracts }}
-      {...restProps}
-    ></Web3Context.Provider>
-  );
+  return <Web3Context.Provider value={{ wallet, contracts }} {...restProps} />;
 };

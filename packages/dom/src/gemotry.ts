@@ -1,9 +1,8 @@
-import { dbg } from '@c3/utils';
+import { dbg } from '@c3/dbg';
 import { isDocument, isWindow } from './isWindow';
 
 //
-export const getScrollBarWidth = () =>
-  window.innerWidth - document.documentElement.offsetWidth;
+export const getScrollBarWidth = () => window.innerWidth - document.documentElement.offsetWidth;
 
 export function getOuterWidth(el: HTMLElement) {
   if (el === document.body) {
@@ -46,14 +45,8 @@ export function getViewportSize() {
 
 export function getScroll() {
   return {
-    scrollLeft: Math.max(
-      document.documentElement.scrollLeft,
-      document.body.scrollLeft
-    ),
-    scrollTop: Math.max(
-      document.documentElement.scrollTop,
-      document.body.scrollTop
-    ),
+    scrollLeft: Math.max(document.documentElement.scrollLeft, document.body.scrollLeft),
+    scrollTop: Math.max(document.documentElement.scrollTop, document.body.scrollTop),
   };
 }
 

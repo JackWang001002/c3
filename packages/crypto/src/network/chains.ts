@@ -1,60 +1,79 @@
-import { Chain } from './chain';
-import { ChainId } from './chainIds';
+import { Chain, ChainFullInfo } from './types';
+import { rawChainData } from './rawChainData';
+import type { Find } from '@c3/types';
 
-export const CHAINS: { [id: number]: Chain } = {
-  [ChainId.OasisEmeraldTestnet]: {
-    chainId: ChainId.OasisEmeraldTestnet,
-    chainName: 'OasisEmeraldTestnet',
-    rpcUrls: ['https://testnet.emerald.oasis.dev'],
-    nativeCurrency: {
-      name: 'ROSE',
-      symbol: 'ROSE',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://testnet.explorer.emerald.oasis.dev'],
-  },
-  [ChainId.OasisEmerald]: {
-    chainId: ChainId.OasisEmerald,
-    chainName: 'OasisEmeraldMainnet',
-    rpcUrls: ['https://emerald.oasis.dev'],
-    nativeCurrency: {
-      name: 'ROSE',
-      symbol: 'ROSE',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://explorer.emerald.oasis.dev'],
-  },
-  [ChainId.Rinkeby]: {
-    chainId: ChainId.Rinkeby,
-    chainName: 'Rinkeby Test Network',
-    rpcUrls: ['https://rinkeby.infura.io/v3/'],
-    nativeCurrency: {
-      name: 'RinkebyETH',
-      symbol: 'RinkebyETH',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://rinkeby.etherscan.io'],
-  },
-  [ChainId.BSCTestnet]: {
-    chainId: ChainId.BSCTestnet,
-    chainName: 'BSC Test Network',
-    rpcUrls: ['https://data-seed-prebsc-2-s3.binance.org:8545/'],
-    nativeCurrency: {
-      name: 'BNB',
-      symbol: 'BNB',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://testnet.bscscan.com'],
-  },
-  [ChainId.Goerli]: {
-    chainId: ChainId.Goerli,
-    chainName: 'Goerli Test Network',
-    rpcUrls: ['https://goerli.infura.io/v3/'],
-    nativeCurrency: {
-      name: 'GoerliETH',
-      symbol: 'GoerliETH',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://goerli.etherscan.io'],
-  },
+type RawChainListType = typeof rawChainData;
+type RawChainUnionType = RawChainListType[number];
+
+export type Name2IdMapType = {
+  //@ts-ignore
+  [shortName in RawChainUnionType['shortName']]: Find<
+    'shortName',
+    shortName,
+    //@ts-ignore
+    RawChainListType
+  >['chainId'];
 };
+
+// @ts-ignore
+export const NAME2ID_MAP: Name2IdMapType = rawChainData.reduce(
+  // @ts-ignore
+  (acc, e) => ({ ...acc, [e.shortName]: e.chainId }),
+  {} as Name2IdMapType
+);
+
+// export type ID2FullChainTypeX<T extends number> = Find<
+//   'chainId',
+//   T,
+//   //@ts-ignore
+//   RawChainListType
+// >;
+
+export type ID2FullChainType = {
+  [chainId in RawChainUnionType['chainId']]: Find<
+    'chainId',
+    chainId,
+    //@ts-ignore
+    RawChainListType
+  >;
+};
+
+export type FullChain2Chain<T extends ChainFullInfo> = {
+  chainId: T['chainId'];
+  rpcUrls: T['rpc'];
+  chainName: T['name'];
+  nativeCurrency: T['nativeCurrency'];
+  iconUrls: [];
+  blockExplorerUrls: string[];
+};
+
+export type Id2ChainType = {
+  //@ts-ignore
+  [chainId in RawChainUnionType['chainId']]: FullChain2Chain<ID2FullChainType[chainId]>;
+};
+
+export const ID2CHAIN_MAP: Id2ChainType = rawChainData.reduce((acc, e) => {
+  return {
+    ...acc,
+    [e.chainId]: {
+      chainId: e.chainId,
+      rpcUrls: e.rpc,
+      chainName: e.name,
+      nativeCurrency: e.nativeCurrency,
+      iconUrls: [],
+      //@ts-ignore
+      blockExplorerUrls: e.explorers && e.explorers.map(e => e.url),
+    },
+  };
+}, {} as Id2ChainType);
+
+//@ts-ignore
+globalThis.__chain_map = ID2CHAIN_MAP;
+
+// export type Name2ChainType<T> =
+// export const NAME2CHAIN_MAP = Object.keys(NAME2ID_MAP).reduce((acc, curName) => {
+//   return {
+//     ...acc,
+//     [curName]: ID2CHAIN_MAP[NAME2ID_MAP[curName]],
+//   };
+// }, {});

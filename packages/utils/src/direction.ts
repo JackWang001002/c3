@@ -1,4 +1,4 @@
-import type { Direction } from './lang';
+import type { Direction } from '@c3/types';
 
 export const getAntiDirectin = (direction: Direction): Direction => {
   switch (direction) {

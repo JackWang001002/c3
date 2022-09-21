@@ -1,5 +1,5 @@
 import { assert } from '../assert';
-import { GetValue, PlainObject } from '../lang';
+import { GetValue, PlainObject } from '@c3/types';
 import { isArray } from '../lang/is';
 
 export const find = <T extends PlainObject<GetValue<T>>>(

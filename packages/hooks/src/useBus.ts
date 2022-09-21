@@ -2,8 +2,6 @@ import { useCallback, useEffect } from 'react';
 import mitt, { Handler } from 'mitt';
 
 const emitter = mitt();
-//@ts-ignore
-window.emitter = emitter;
 
 export type BusEventNameType = `@event-bus/${string}`;
 

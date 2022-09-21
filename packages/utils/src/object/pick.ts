@@ -1,5 +1,6 @@
 import { toArray } from '../array';
-import { isNullish, PlainObject } from '../lang';
+import { isNullish } from '../lang';
+import { PlainObject } from '@c3/types';
 
 export const pick = <T extends PlainObject, K extends keyof T>(
   srcObj: T,
