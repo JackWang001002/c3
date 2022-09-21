@@ -1,4 +1,5 @@
-import { IndexedType, isPrimitive, set } from '@c3/utils';
+import { isPrimitive, set } from '@c3/utils';
+import { IndexedType } from '@c3/types';
 import { cloneDeep } from 'lodash';
 import { useMemo } from 'react';
 import { useImmer } from 'use-immer';

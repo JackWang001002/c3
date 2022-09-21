@@ -30,6 +30,7 @@
     "**/dist/**",
     "./jest.config.ts",
     "./jestSetupTests.ts",
-    "./wallaby.js"
+    "./wallaby.js",
+    "packages/playwright/src/metamask/extension"
   ]
 }

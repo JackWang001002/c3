@@ -1,14 +1,6 @@
-import { cdbg } from '@c3/utils';
-import { getWalletProvider } from '../provider';
+import { cdbg } from '@c3/dbg';
 
 export * from './math';
+export * from './getReadableErrorMsg';
 
-export const cyptoDbg = (...args: any[]): void => cdbg(...args)('@crypto');
-
-export const initCryptoDebug = () => {
-  getWalletProvider().then(x => ((window as any).walletProvider = x));
-};
-
-export const xx9222 = () => {
-  console.log('xfuck');
-};
+export const dbg = cdbg('@c3/crypto →', 'color:blue;background:white');

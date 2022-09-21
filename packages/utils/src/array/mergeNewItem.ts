@@ -1,4 +1,4 @@
-import { IDable } from '../lang';
+import { IDable } from '@c3/types';
 
 export const mergeNewItem = <T extends IDable>(
   origin: T[],

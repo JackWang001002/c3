@@ -1,5 +1,5 @@
 import { last } from '../array';
-import { GetValue, PlainObject } from '../lang';
+import { GetValue, PlainObject } from '@c3/types';
 
 export const get = <T extends PlainObject>(obj: T, path: string) => {
   const segs = path.split('.');

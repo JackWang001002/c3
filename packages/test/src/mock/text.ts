@@ -1,7 +1,7 @@
 import _ from 'lodash';
-export const gtext = `This handy tool helps you create dummy text for all your layout needs.
-We are gradually adding new functionality and we welcome your suggestions and feedback.
-Please feel free to send us any additional dummy texts.
+
+// eslint-disable-next-line max-len
+export const gtext = `This handy tool helps you create dummy text for all your layout needs.We are gradually adding new functionality and we welcome your suggestions and feedback.Please feel free to send us any additional dummy texts.
 `;
 export const gtextArray = gtext.split(' ');
 

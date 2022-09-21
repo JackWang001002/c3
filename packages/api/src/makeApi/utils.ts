@@ -1,3 +1,3 @@
-import { cdbg } from '@c3/utils';
+import { cdbg } from '@c3/dbg';
 
-export const ndbg = (...args: any[]): void => cdbg(...args)('@network');
+export const ndbg = cdbg('@c3/api→', 'color:blue;background:white');

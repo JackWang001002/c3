@@ -11,8 +11,8 @@ export default defineConfig({
       formats: ['iife', 'es', 'umd'],
     },
     rollupOptions: {
-      external: [/node:*/, '@c3/utils', 'tslib', '@c3/hooks', 'react', 'qs', 'lodash'],
-      plugins: [commonjs()], 
+      external: [/node:*/, '@c3/utils', 'tslib', 'react', 'qs', 'lodash'],
+      plugins: [commonjs()],
     },
   },
 });

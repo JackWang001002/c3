@@ -3,7 +3,7 @@ import { methods } from './methods';
 import { patch } from './patch';
 import { Method } from './type';
 import { ndbg } from './utils';
-const __MOCK__ = !!globalThis.localStorage.getItem('mock');
+const __MOCK__ = !!globalThis.localStorage?.getItem?.('mock');
 
 export type HTTP = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,18 +15,18 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
     proxyHttp[method] = new Proxy(rawHttp[method], {
       async apply(target, thisArg: IAPI<RawReqParameter, ReqParameter, RawResBody, ResBody>, args) {
         const url = thisArg.url;
-        ndbg(`@network/${method}/${url}`, ...args);
+        ndbg(`[${method}]${url}`, ...args);
         let res;
         if (__MOCK__) {
-          ndbg(`@network/useMockData/${url}`, thisArg);
+          ndbg(`useMockData/${url}`, thisArg);
           res = thisArg.mockData;
         } else {
           res = await target.apply(rawHttp, args);
         }
 
         const ret = patch(res, thisArg.mockData);
-        ndbg(`@network/beforePatch/${url}:`, res);
-        ndbg(`@network/afterPatch/${url}`, ret);
+        ndbg(`beforePatch =>${url}:`, res);
+        ndbg(`afterPatch =>${url}`, ret);
         return ret;
       },
     });

@@ -15,7 +15,7 @@ export const useCountDown = (
     }
 
     if (!timeRef.current) {
-      timeRef.current = window.setInterval(() => {
+      timeRef.current = +globalThis.setInterval(() => {
         setCountLeft(left => left - 1);
       }, interval);
     }

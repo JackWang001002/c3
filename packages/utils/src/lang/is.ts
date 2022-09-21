@@ -1,7 +1,7 @@
-import { Fn } from './famous';
+import { Fn } from '@c3/types';
 
-export const isNullish = (x: unknown): x is undefined | null =>
-  x === undefined || x === null;
+export const isNullish = (x: unknown): x is undefined | null => x === undefined || x === null;
+export const isNil = isNullish;
 export const isString = (x: unknown): x is string => typeof x === 'string';
 export const isNumber = (x: unknown): x is number => typeof x === 'number';
 export const isSymbol = (x: unknown): x is symbol => typeof x === 'symbol';
@@ -17,20 +17,12 @@ export const isObject = (x: unknown): x is object => {
 };
 
 export const isPrimitive = (x: unknown) =>
-  isNullish(x) ||
-  isString(x) ||
-  isSymbol(x) ||
-  isBoolean(x) ||
-  isBigint(x) ||
-  isNumber(x);
+  isNullish(x) || isString(x) || isSymbol(x) || isBoolean(x) || isBigint(x) || isNumber(x);
 
-export const isDecimal = (x: unknown) =>
-  isNumber(x) && parseInt(`${x}`, 10) !== x;
+export const isDecimal = (x: unknown) => isNumber(x) && parseInt(`${x}`, 10) !== x;
 
-export const isInteger = (x: unknown) =>
-  isNumber(x) && parseInt(`${x}`, 10) === x;
+export const isInteger = (x: unknown) => isNumber(x) && parseInt(`${x}`, 10) === x;
 
 export const isPlainObject = (x: unknown): x is object =>
   isObject(x) &&
-  (Object.getPrototypeOf(x) === null ||
-    Object.getPrototypeOf(x) === Object.prototype);
+  (Object.getPrototypeOf(x) === null || Object.getPrototypeOf(x) === Object.prototype);

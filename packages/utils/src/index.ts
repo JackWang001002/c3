@@ -6,7 +6,6 @@ export * from './canIUse';
 export * from './canvas';
 export * from './color/index';
 export * from './copyToClipboard';
-export * from './dbg';
 export * from './direction';
 export * from './env';
 export * from './hyphenate';

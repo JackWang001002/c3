@@ -1,2 +1,1 @@
-export * from './getContract';
-export * from './util';
+export * from './createContract';

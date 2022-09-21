@@ -1,4 +1,5 @@
-import { assert, IndexedType, isNullish, PartialBy } from '@c3/utils';
+import { assert, isNullish } from '@c3/utils';
+import { IndexedType, PartialBy } from '@c3/types';
 import { stringify } from 'qs';
 import { HTTP, makeProxyHttp } from './http';
 import { patch } from './patch';
@@ -67,7 +68,7 @@ export const _makeApi = <
     let url = option.url;
     assert(!url.includes('?'), 'url should not include query string');
 
-    ndbg('@network/queryData:', rp);
+    ndbg('queryData:', rp);
 
     const IDREG = /\/:(\w+)/;
     if (IDREG.test(url)) {
@@ -89,7 +90,7 @@ export const _makeApi = <
     try {
       return api.convert ? api.convert.call(api, rawResBody) : (rawResBody as unknown as _ResBody); //FIXME
     } catch (e) {
-      ndbg('@network/convertError: api=', api, e);
+      ndbg('convertError: api=', api, e);
       return api.defaultData;
     }
   };
