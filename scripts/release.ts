@@ -26,9 +26,10 @@ run({
       release(dep);
     }
     await this.afterPub({});
-    await $`g amend`;
     const tag = (await getLastestTag())!;
     await $`git tag  ${semver.inc(tag, 'patch')}`;
+     await $`git commit -a -m "release"`;
+     await $`git push`;
   },
   async build() {
     const pkgs = await pkgMgr.getChangedPkgs();

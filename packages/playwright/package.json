@@ -1,6 +1,6 @@
 {
   "name": "@c3/playwright",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "fuck",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/test.umd.js",
-    "module": "dist/test.es.js",
+    "main": "dist/playwright.umd.js",
+    "module": "dist/playwright.es.js",
     "types": "dist/index.d.ts"
   },
   "repository": {
