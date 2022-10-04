@@ -1,7 +1,6 @@
 export * from './useAsyncEffect';
 export * from './useAsyncState';
 export * from './useAutoSize';
-export * from './useBlurSubmit';
 export * from './useBoundingClientRect';
 export * from './useCookie';
 export * from './useCountDown';
@@ -32,3 +31,4 @@ export * from './useTouchBottom';
 export * from './useUnmount';
 export * from './useBus';
 export * from './useIsVisible';
+export * from './useCallbackInEffect';
