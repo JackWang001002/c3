@@ -2,6 +2,7 @@
 import { PkgMgr, run, getLastestTag } from '@scriptbot/cli';
 import { $ } from 'zx';
 import semver from 'semver';
+
 const release = async (pkg: string) => {
   await $`pnpm --filter ${pkg} exec pnpm version patch`;
   await $`pnpm --filter ${pkg} publish --no-git-checks`;
@@ -28,8 +29,8 @@ run({
     await this.afterPub({});
     const tag = (await getLastestTag())!;
     await $`git tag  ${semver.inc(tag, 'patch')}`;
-     await $`git commit -a -m "release"`;
-     await $`git push`;
+    await $`git commit -a -m "release"`;
+    await $`git push`;
   },
   async build() {
     const pkgs = await pkgMgr.getChangedPkgs();
@@ -60,5 +61,8 @@ run({
         await $`pnpm --filter ${pkg} exec npm pkg set ${file}=src/index.ts`;
       }
     }
+  },
+  async test() {
+    console.log('x');
   },
 });

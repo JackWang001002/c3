@@ -1,6 +1,6 @@
 {
   "name": "@c3/hooks",
-  "version": "1.1.57",
+  "version": "1.1.58",
   "description": "c3/hooks",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -26,7 +26,6 @@
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
-    "test": "jest",
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration",
     "build": "vite build",
     "clean": "rm -rf dist && rm -rf node_modules ",
@@ -43,13 +42,10 @@
     "@c3/dom": "workspace:^",
     "@c3/types": "workspace:^1.0.2",
     "@c3/utils": "workspace:^",
-    "antd": "^4.18.9",
     "dayjs": "^1.10.7",
-    "ethers": "^5.6.5",
     "immer": "^9.0.12",
     "js-cookie": "^3.0.1",
     "mitt": "^3.0.0",
-    "react-redux": "^7.2.8",
     "use-immer": "^0.6.0"
   },
   "devDependencies": {

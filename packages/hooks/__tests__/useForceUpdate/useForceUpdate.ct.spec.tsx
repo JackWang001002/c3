@@ -6,8 +6,8 @@ test('mount ', async ({ page, mount }) => {
   await expect(component).toHaveText('0');
 });
 
-test('after click ', async ({ page, mount }) => {
-  const component = await mount(<App />);
-  await component.click();
-  await expect(component).toHaveText('1');
-});
+// test('after click ', async ({ page, mount }) => {
+//   // const component = await mount(<App />);
+//   // await component.click();
+//   // await expect(component).toHaveText('1');
+// });

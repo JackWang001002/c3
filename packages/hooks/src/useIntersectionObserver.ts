@@ -11,7 +11,7 @@ export const useIntersectionObserver = (
   }, [callback, option]);
 
   const observe = useCallback(
-    el => {
+    (el: HTMLElement) => {
       if (!obs) {
         throw new Error('IntersectionObserver is not initialized');
       }
