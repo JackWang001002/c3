@@ -14,4 +14,11 @@ export const mock = {
   getRandomColor: () => {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   },
+  getRandBox: (width = 160, height = 90) => {
+    return {
+      width,
+      height,
+      background: mock.getRandomColor(),
+    };
+  },
 };
