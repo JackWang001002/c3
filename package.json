@@ -9,9 +9,11 @@
     "@c3/types": "workspace:^1.0.4",
     "@c3/utils": "workspace:^1.1.59",
     "@playwright/experimental-ct-react": "^1.26.1",
+    "@playwright/test": "^1.26.1",
     "@scriptbot/cli": "^1.0.150",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "playwright": "^1.26.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
