@@ -1,6 +1,8 @@
-import { rand } from '@c3/utils';
-import { getRandomText, getRandomWord } from './text';
+import { clamp, rand } from '@c3/utils';
+import { getRandomText, getRandomWord, getRandomWords } from './text';
 import { getRandomUser } from './user';
+import _ from 'lodash';
+import React from 'react';
 let gid = 0;
 
 export const mock = {
@@ -9,16 +11,27 @@ export const mock = {
   },
   getRandomText,
   getRandomWord,
+  getRandomWords,
   getId: () => `uniq-id-${gid++}`,
   getRandomUser,
   getRandomColor: () => {
-    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    return `hsla(${rand(0, 360, false)},${rand(50, 100)}%,${rand(80, 100)}%,90%)`;
   },
-  getRandBox: (width = 160, height = 90) => {
+  getRandBox: (width = 'auto', height = 'auto') => {
     return {
       width,
       height,
       background: mock.getRandomColor(),
+      p: 4,
     };
+  },
+  getRandElements: (count = 3) => {
+    return _.times(count, i => {
+      return React.createElement(
+        'div',
+        { style: { ...mock.getRandBox() } },
+        `item-${i} ${mock.getRandomWords(3)}`
+      );
+    });
   },
 };
