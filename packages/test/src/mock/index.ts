@@ -15,22 +15,23 @@ export const mock = {
   getId: () => `uniq-id-${gid++}`,
   getRandomUser,
   getRandomColor: () => {
-    return `hsla(${rand(0, 360, false)},${rand(50, 100)}%,${rand(80, 100)}%,90%)`;
+    return `hsla(${rand(0, 360, false)},${rand(50, 100)}%,${rand(40, 80)}%,90%)`;
   },
   getRandBox: (width = 'auto', height = 'auto') => {
     return {
       width,
       height,
       background: mock.getRandomColor(),
+      fontSize: rand(20, 60),
       p: 4,
     };
   },
-  getRandElements: (count = 3) => {
+  getRandElements: (count = 3, wMin = 1, wMax = 5) => {
     return _.times(count, i => {
       return React.createElement(
         'div',
         { style: { ...mock.getRandBox() } },
-        `item-${i} ${mock.getRandomWords(3)}`
+        `i-${i} ${mock.getRandomWords(rand(wMin, wMax))}`
       );
     });
   },
