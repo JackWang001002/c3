@@ -70,10 +70,3 @@ export const ID2CHAIN_MAP: Id2ChainType = rawChainData.reduce((acc, e) => {
 //@ts-ignore
 globalThis.__chain_map = ID2CHAIN_MAP;
 
-// export type Name2ChainType<T> =
-// export const NAME2CHAIN_MAP = Object.keys(NAME2ID_MAP).reduce((acc, curName) => {
-//   return {
-//     ...acc,
-//     [curName]: ID2CHAIN_MAP[NAME2ID_MAP[curName]],
-//   };
-// }, {});

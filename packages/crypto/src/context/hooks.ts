@@ -1,5 +1,5 @@
 import { isEmpty } from '@c3/utils';
-import React, { useCallback, useContext } from 'react';
+import { useContext } from 'react';
 import { Web3Context } from './context';
 
 export const useWeb3 = () => {

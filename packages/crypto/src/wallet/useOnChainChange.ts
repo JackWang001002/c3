@@ -1,20 +1,11 @@
-import { useCallback, useEffect } from 'react';
-import { dbg } from '../utils';
+import { noop } from '@c3/utils';
+import { injectedProviders, WalletName } from './injectedProviders';
+import { useEffect } from 'react';
+import { Fn } from '@c3/types';
 
-export const useOnChainChange = (cb: (chainId: string) => void) => {
-  const handleCb = useCallback(
-    (chainId: string) => {
-      dbg('[useOnChainChange]:chain changed,newChainId=', chainId);
-      cb(chainId);
-    },
-    [cb]
-  );
+export const useOnChainChange = (name: WalletName | undefined, cb: Fn) => {
   useEffect(() => {
-    //@ts-ignore
-    window?.ethereum?.on('chainChanged', handleCb);
-    return () => {
-      //@ts-ignore
-      window?.ethereum?.removeListener('chainChanged', handleCb);
-    };
-  }, [handleCb]);
+    if (!name) { return; }
+    return injectedProviders[name]?.onChainChange?.(cb) || noop;
+  }, [cb, name]);
 };

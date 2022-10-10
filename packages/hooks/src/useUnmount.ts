@@ -6,7 +6,7 @@ export const useUnmount = (fn: () => void) => {
   const fnRef = useLatest(fn);
   useEffect(
     () => () => {
-      fnRef.current();
+      fnRef.current?.();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []

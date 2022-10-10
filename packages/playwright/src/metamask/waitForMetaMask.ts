@@ -4,12 +4,12 @@ type Option = {
   hasText?: string | RegExp | undefined;
 };
 
-export const waitForMetaMask = async (metamaskPage: Page, selctor: string, option?: Option) => {
+export const waitForMetaMask = async (metamaskPage: Page, selector: string, option?: Option) => {
   let isVisible = false;
   while (!isVisible) {
-    await metamaskPage.reload(); //FIXME:reload until load seems  didnot take no effects
+    await metamaskPage.reload({ waitUntil: 'load' }); //FIXME:reload until load seems  didnot take no effects
     await metamaskPage.waitForTimeout(1500);
-    isVisible = await metamaskPage.locator(selctor, option).isVisible();
+    isVisible = await metamaskPage.locator(selector, option).isVisible();
   }
-  return metamaskPage.locator(selctor, option);
+  return metamaskPage.locator(selector, option);
 };
