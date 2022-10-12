@@ -75,8 +75,11 @@ export const injectedProviders: InjectedProvider = {
       return undefined;
     },
     onChainChange: (cb: (chainId: number) => void) => {
-      console.log('coinbase onChainChange. but do nothing');
-      return noop;
+      const provider = injectedProviders['coinbase'].getProvider();
+      provider.on('chainChanged', cb);
+      return () => {
+        provider.removeListener('chainChanged', cb);
+      };
     },
   },
 };

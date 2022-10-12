@@ -36,7 +36,8 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
   );
   const [name, setName] = useState<WalletName>();
 
-  const onChainChanged = useCallback(() => {
+  const onChainChanged = useCallback((chainId: number) => {
+    dbg('chain changed. new chainId=', chainId);
     const provider = getWalletProvider(name);
     setProvider(provider);
   }, [name]);
@@ -91,6 +92,9 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
     [addNetwork, provider]
   );
   const switchProvider = useCallback((name: WalletName) => {
+    if (!name) {
+      throw new Error('please supply chainId');
+    }
     const injectedProvider = injectedProviders[name].getProvider();
     if (!injectedProvider) {
       jump2NativeAppOrDlPage(name);
