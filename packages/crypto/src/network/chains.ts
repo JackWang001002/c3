@@ -22,12 +22,7 @@ export const NAME2ID_MAP: Name2IdMapType = rawChainData.reduce(
   {} as Name2IdMapType
 );
 
-// export type ID2FullChainTypeX<T extends number> = Find<
-//   'chainId',
-//   T,
-//   //@ts-ignore
-//   RawChainListType
-// >;
+
 
 export type ID2FullChainType = {
   [chainId in RawChainUnionType['chainId']]: Find<
