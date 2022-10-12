@@ -53,7 +53,7 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
 
   const contracts = useMemo(async () => {
     if (!provider) {
-      return {};
+      return {} as IndexedType;
     }
     const chainId = (await provider.getNetwork()).chainId;
     return (wallet.contracts || []).reduce(
@@ -120,8 +120,7 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
     connectAccount,
     getContracts: async () => contracts,
     getContract: async (name: string) => {
-      //@ts-ignore
-      return contracts[name];
+      return (await contracts)[name];
     },
 
     getBalance: async () => {
