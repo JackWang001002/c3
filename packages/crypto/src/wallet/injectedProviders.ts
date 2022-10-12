@@ -94,7 +94,11 @@ export const getInjectedWalletProvider = (name?: WalletName) => {
 };
 
 export const getWalletProvider = (walletName?: WalletName) => {
-  return new ethers.providers.Web3Provider(getInjectedWalletProvider(walletName));
+  const provider = getInjectedWalletProvider(walletName);
+  if (!provider) {
+    return undefined;
+  }
+  return new ethers.providers.Web3Provider(provider);
 };
 
 //@ts-ignore

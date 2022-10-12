@@ -31,7 +31,7 @@ export type WalletType = {
 };
 
 export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): WalletType => {
-  const [provider, setProvider] = useState<ethers.providers.Web3Provider>(
+  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(
     getWalletProvider(wallet.name)
   );
   const [name, setName] = useState<WalletName>();
@@ -45,6 +45,9 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
 
   const account = useAccount_(provider);
   useEffect(() => {
+    if (!provider) {
+      return;
+    }
     setName(getWalletName(provider));
   }, [provider]);
 
@@ -90,7 +93,6 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
   const switchProvider = useCallback((name: WalletName) => {
     const injectedProvider = injectedProviders[name].getProvider();
     if (!injectedProvider) {
-      //TODO: 测试
       jump2NativeAppOrDlPage(name);
       return;
     }

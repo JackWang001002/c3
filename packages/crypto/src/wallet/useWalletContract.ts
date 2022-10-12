@@ -27,7 +27,7 @@ export const useWalletContract = (
         throw new Error('wallet not connected');
       }
       // const chainId = await wallet.getChainId();
-      const _contractPair = await wallet.getContract(cfg.name);
+      const contractPair = await wallet.getContract(cfg.name);
       // const isWrongChainId =
       //   _contractPair[0].address !== cfg.address[chainId];
       // dbg('isWrongChainId', isWrongChainId, _contractPair);
@@ -40,9 +40,9 @@ export const useWalletContract = (
       // try {
       //FIXME: wallet is old one. to fix it
       //@ts-ignore
-      beforeAction && (await beforeAction(_contractPair, ...args));
+      beforeAction && (await beforeAction(contractPair, ...args));
       //@ts-ignore
-      return await action(_contractPair, ...args);
+      return await action(contractPair, ...args);
       // } catch (e) {
       //   console.error(e);
       //   throw new Error();
