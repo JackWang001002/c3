@@ -34,5 +34,5 @@ export const useRetry = () => {
       work(...args);
     };
   }, []);
-  return [retryOn, handle];
+  return [retryOn, handle] as const;
 };
