@@ -1,15 +1,25 @@
 import { Fn } from '@c3/types';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useSwitch } from './useSwitch';
 
-export const useCallbackInEffect = (cb: Fn) => {
-  const [canRun, run, off] = useSwitch(false);
-  useEffect(() => {
-    if (canRun) {
-      off();
-      cb();
-    }
-  }, [canRun, cb, off]);
+export const useNextTick = () => {
+  const [runnable, on, off] = useSwitch(true);
+  const ref = useRef<Fn>();
 
-  return run;
+  useEffect(() => {
+    if (runnable) {
+      off();
+      ref.current?.();
+    }
+  }, [runnable, off]);
+
+  const nextTick = useCallback(
+    (cb: Fn) => {
+      on();
+      ref.current = cb;
+    },
+    [on]
+  );
+
+  return nextTick;
 };
