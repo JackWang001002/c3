@@ -1,9 +1,7 @@
 import { useCallback } from 'react';
+import { useWallet } from '../context/hooks';
 import { WalletContract } from '../context/types';
 import { createContract } from '../contract';
-import { ID2CHAIN_MAP } from '../network';
-import { dbg } from '../utils';
-import { useContract, useWallet } from '../context/hooks';
 import { ContractPair } from '../contract/createContract';
 
 // export const getRecommendChainId = (cfg: WalletContract) => {
@@ -14,40 +12,26 @@ import { ContractPair } from '../contract/createContract';
 // };
 
 export const useWalletContract = (
-  cfg: WalletContract,
+  contractInfo: WalletContract,
   action: (contracts: ContractPair, ...args: any[]) => Promise<any>,
-  beforeAction?: (contracts: ContractPair, ...args: any[]) => Promise<any>
 ) => {
   const wallet = useWallet();
-  // const contracts = useContract(cfg.name);
 
-  return useCallback(
+  const work = useCallback(
     async (...args: any[]) => {
-      if (!wallet.connected) {
-        throw new Error('wallet not connected');
+      if (!wallet.provider) {
+        wallet.ssp.sspOn();
+        return;
       }
-      // const chainId = await wallet.getChainId();
-      const contractPair = await wallet.getContract(cfg.name);
-      // const isWrongChainId =
-      //   _contractPair[0].address !== cfg.address[chainId];
-      // dbg('isWrongChainId', isWrongChainId, _contractPair);
-      // if (isWrongChainId) {
-      //   const targetChainId = getRecommendChainId(cfg);
-      //   //@ts-ignore
-      //   await wallet.switchNetwork(ID2CHAIN_MAP[targetChainId]);
-      //   _contractPair = createContract(cfg.address[targetChainId], cfg.abi, wallet.provider!) || [];
-      // }
-      // try {
-      //FIXME: wallet is old one. to fix it
-      //@ts-ignore
-      beforeAction && (await beforeAction(contractPair, ...args));
-      //@ts-ignore
+
+      const chainId = await wallet.getChainId();
+      // eslint-disable-next-line max-len
+      const contractPair = createContract(contractInfo.address[chainId], contractInfo.abi, wallet.provider!) || [];
+
       return await action(contractPair, ...args);
-      // } catch (e) {
-      //   console.error(e);
-      //   throw new Error();
-      // }
+
     },
-    [action, beforeAction, cfg, wallet]
+    [action, contractInfo.abi, contractInfo.address, wallet]
   );
+  return work;
 };

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-export const useResizeObserver = (cb: (e: ResizeObserverEntry) => void) => {
+export const useResizeObserver = (cb: (entry: ResizeObserverEntry) => void) => {
 
   const observer = useRef<ResizeObserver>();
   useEffect(() => {

@@ -1,21 +1,28 @@
-import { IndexedType } from '@c3/types';
-import { noop, toHexString } from '@c3/utils';
+import { useSwitch } from '@c3/hooks';
+import { Fn } from '@c3/types';
+import { toHexString } from '@c3/utils';
 import { BigNumber, ethers } from 'ethers';
-import { env } from '@c3/utils';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { WalletCfgInfo } from '../context';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Chain } from '../network/types';
 import { toHexChain } from '../network/utils';
 import { dbg } from '../utils';
-import { ContractPair, createContract } from './../contract/createContract';
-import { getWalletProvider, injectedProviders, WalletName } from './injectedProviders';
+import {
+  getWalletProvider,
+  hasInjectedProvider,
+  injectedProviders,
+  WalletName,
+} from './injectedProviders';
 import { useAccount_ } from './useAccount_';
-import { getWalletName, jump2NativeAppOrDlPage } from './utils';
 import { useOnChainChange } from './useOnChainChange';
+import { getWalletName, jump2NativeAppOrDlPage } from './utils';
 
+type Work = {
+  method: Fn;
+  args: any[];
+};
 //TODO:TS2742
 export type WalletType = {
-  readonly provider: ethers.providers.JsonRpcProvider | undefined;
+  readonly provider: ethers.providers.Web3Provider | undefined;
   readonly name: WalletName | undefined;
   readonly addNetwork: (chain: Chain) => Promise<any>;
   readonly switchNetwork: (chain: Chain) => Promise<null>;
@@ -25,22 +32,31 @@ export type WalletType = {
   readonly getNetwork: () => Promise<ethers.providers.Network>;
   readonly getChainId: () => Promise<number>;
   readonly connected: boolean;
-  readonly getContract: (name: string) => Promise<ContractPair>;
-  readonly getContracts: () => Promise<IndexedType>;
   readonly switchProvider: (walletName: WalletName) => void;
+  ssp: {
+    shouldSwitchProvider: boolean;
+    sspOn: () => void;
+    sspOff: () => void;
+  };
 };
 
-export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): WalletType => {
-  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(
-    getWalletProvider(wallet.name)
-  );
+export const useMyWallet = (): WalletType => {
+  const [shouldSwitchProvider, sspOn, sspOff] = useSwitch(false);
+  // const pendingWorkRef = useRef<Work[]>();
+  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>();
   const [name, setName] = useState<WalletName>();
 
-  const onChainChanged = useCallback((chainId: number) => {
-    dbg('chain changed. new chainId=', chainId);
-    const provider = getWalletProvider(name);
-    setProvider(provider);
-  }, [name]);
+  const onChainChanged = useCallback(
+    (chainId: number) => {
+      dbg('chain changed. new chainId=', chainId);
+      if (!name) {
+        return;
+      }
+      const provider = getWalletProvider(name);
+      setProvider(provider);
+    },
+    [name]
+  );
 
   useOnChainChange(name, onChainChanged);
 
@@ -52,23 +68,12 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
     setName(getWalletName(provider));
   }, [provider]);
 
-  const contracts = useMemo(async () => {
-    if (!provider) {
-      return {} as IndexedType;
-    }
-    const chainId = (await provider.getNetwork()).chainId;
-    return (wallet.contracts || []).reduce(
-      (acc, cur) => ({
-        ...acc,
-        [cur.name]: createContract(cur.address[chainId], cur.abi, provider),
-      }),
-      {}
-    );
-  }, [provider, wallet.contracts]);
-
   const addNetwork = useCallback(
     async (chain: Chain) => {
       dbg('[addNetwork] chain=', chain);
+      if (!provider) {
+        throw new Error('provider is not ready');
+      }
       return provider?.send('wallet_addEthereumChain', [toHexChain(chain)]);
     },
     [provider]
@@ -78,6 +83,9 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
     async (chain: Chain) => {
       try {
         dbg('[switchNetwork] chain=', chain);
+        if (!provider) {
+          throw new Error('provider is null');
+        }
         await provider?.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
@@ -91,41 +99,54 @@ export const useMyWallet = (wallet: WalletCfgInfo = {} as WalletCfgInfo): Wallet
     },
     [addNetwork, provider]
   );
-  const switchProvider = useCallback((name: WalletName) => {
-    if (!name) {
-      throw new Error('please supply chainId');
-    }
-    const injectedProvider = injectedProviders[name].getProvider();
-    if (!injectedProvider) {
-      jump2NativeAppOrDlPage(name);
-      return;
-    }
-    const provider = new ethers.providers.Web3Provider(injectedProvider);
-    setProvider(provider);
-  }, []);
+  const switchProvider = useCallback(
+    (newName: WalletName) => {
+      if (!newName) {
+        throw new Error('please supply chainId');
+      }
+      if (newName === name) {
+        return;
+      }
+      const injectedProvider = injectedProviders[newName].getProvider();
+      if (!injectedProvider) {
+        jump2NativeAppOrDlPage(newName);
+        return;
+      }
+      const provider = new ethers.providers.Web3Provider(injectedProvider);
+      setProvider(provider);
+      return provider;
+    },
+    [name]
+  );
 
   const connectAccount = useCallback(async () => {
+    if (!hasInjectedProvider) {
+      // jump2NativeAppOrDlPage();
+      return;
+    }
     if (!provider) {
-      jump2NativeAppOrDlPage();
+      sspOn();
+      // pendingWorkRef.current?.push({ method: connectAccount, args: [] });
       return;
     }
     const r = await provider?.send('eth_requestAccounts', []);
     return r[0];
-  }, [provider]);
+  }, [provider, sspOn]);
 
   return {
     provider,
     name,
+    ssp: {
+      shouldSwitchProvider,
+      sspOn,
+      sspOff,
+    },
     account,
     connected: !!account,
     addNetwork,
     switchNetwork,
     switchProvider,
     connectAccount,
-    getContracts: async () => contracts,
-    getContract: async (name: string) => {
-      return (await contracts)[name];
-    },
 
     getBalance: async () => {
       if (!account || !provider) {

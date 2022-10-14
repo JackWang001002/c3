@@ -84,19 +84,22 @@ export const injectedProviders: InjectedProvider = {
   },
 };
 
-export const getInjectedWalletProvider = (name?: WalletName) => {
+export const getInjectedWalletProvider = (name: WalletName) => {
   if (name && injectedProviders[name]) {
     return injectedProviders[name].getProvider();
   }
-  const provider =
-    injectedProviders.metamask.getProvider() || injectedProviders.coinbase.getProvider();
-  if (provider) {
-    return provider;
-  }
+  // const provider =
+  //   injectedProviders.metamask.getProvider() || injectedProviders.coinbase.getProvider();
+  // if (provider) {
+  //   return provider;
+  // }
   return undefined;
 };
 
-export const getWalletProvider = (walletName?: WalletName) => {
+export const getWalletProvider = (walletName: WalletName) => {
+  if (!walletName) {
+    throw new Error('please provide wallet name');
+  }
   const provider = getInjectedWalletProvider(walletName);
   if (!provider) {
     return undefined;
@@ -105,4 +108,8 @@ export const getWalletProvider = (walletName?: WalletName) => {
 };
 
 //@ts-ignore
-window.__injectedProviders = injectedProviders;
+globalThis.__injectedProviders = injectedProviders;
+
+export const hasInjectedProvider = () => {
+  return window.ethereum;
+};

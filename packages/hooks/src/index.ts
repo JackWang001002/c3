@@ -31,5 +31,5 @@ export * from './useTouchBottom';
 export * from './useUnmount';
 export * from './useBus';
 export * from './useIsVisible';
-export * from './useCallbackInEffect';
+export * from './useNextTick';
 export * from './useRetry';
