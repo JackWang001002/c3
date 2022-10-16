@@ -1,7 +1,6 @@
 // import detectEthereumProvider from '@metamask/detect-provider';
 
-import { Fn, IndexedType } from '@c3/types';
-import { noop } from '@c3/utils';
+import { Fn } from '@c3/types';
 import { ethers } from 'ethers';
 
 declare let window: any;
