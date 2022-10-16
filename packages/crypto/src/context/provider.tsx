@@ -1,18 +1,16 @@
-import React, { useMemo } from 'react';
-import { createContract } from '../contract/index';
+import React from 'react';
 import { dbg } from '../utils';
-import { useMyWallet } from '../wallet';
+import { useMyWallet, WalletName } from '../wallet';
 import { Web3Context } from './context';
-import { useSwitch } from '@c3/hooks';
-import { Contract, WalletCfgInfo } from './types';
 
 type Props = {
-  // value: { wallet?: WalletCfgInfo; restContracts?: Contract[] };
+  value: WalletName | undefined;
   children: React.ReactNode;
 };
 
 export const Web3Provider = (props: Props) => {
-  const wallet = useMyWallet();
+  const { value, ...restProps } = props;
+  const wallet = useMyWallet(value);
   dbg('web3provider refreshed');
 
   //@ts-ignore
@@ -23,7 +21,7 @@ export const Web3Provider = (props: Props) => {
       value={{
         wallet,
       }}
-      {...props}
+      {...restProps}
     />
   );
 };

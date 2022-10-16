@@ -16,7 +16,7 @@ export const useDebug = (props: IProps, component: React.FunctionComponent<any>)
   }, [componentName]);
 
   useEffect(() => {
-    dbg('@useDebug/rerender:', componentName);
+    dbg('@useDebug/didUpdated:', componentName);
     if (prevProps.current) {
       const allKeys = Object.keys({ ...prevProps.current, ...props });
       const changedProps: IProps = {};

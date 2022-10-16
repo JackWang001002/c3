@@ -16,10 +16,6 @@ import { useAccount_ } from './useAccount_';
 import { useOnChainChange } from './useOnChainChange';
 import { getWalletName, jump2NativeAppOrDlPage } from './utils';
 
-type Work = {
-  method: Fn;
-  args: any[];
-};
 //TODO:TS2742
 export type WalletType = {
   readonly provider: ethers.providers.Web3Provider | undefined;
@@ -33,18 +29,13 @@ export type WalletType = {
   readonly getChainId: () => Promise<number>;
   readonly connected: boolean;
   readonly switchProvider: (walletName: WalletName) => void;
-  ssp: {
-    shouldSwitchProvider: boolean;
-    sspOn: () => void;
-    sspOff: () => void;
-  };
 };
 
-export const useMyWallet = (): WalletType => {
-  const [shouldSwitchProvider, sspOn, sspOff] = useSwitch(false);
-  // const pendingWorkRef = useRef<Work[]>();
-  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>();
-  const [name, setName] = useState<WalletName>();
+export const useMyWallet = (initialName: WalletName | undefined): WalletType => {
+  const [name, setName] = useState(initialName);
+  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(
+    getWalletProvider(initialName)
+  );
 
   const onChainChanged = useCallback(
     (chainId: number) => {
@@ -125,22 +116,16 @@ export const useMyWallet = (): WalletType => {
       return;
     }
     if (!provider) {
-      sspOn();
-      // pendingWorkRef.current?.push({ method: connectAccount, args: [] });
+      throw new Error('provider is not ready');
       return;
     }
     const r = await provider?.send('eth_requestAccounts', []);
     return r[0];
-  }, [provider, sspOn]);
+  }, [provider]);
 
   return {
     provider,
     name,
-    ssp: {
-      shouldSwitchProvider,
-      sspOn,
-      sspOff,
-    },
     account,
     connected: !!account,
     addNetwork,

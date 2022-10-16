@@ -96,9 +96,9 @@ export const getInjectedWalletProvider = (name: WalletName) => {
   return undefined;
 };
 
-export const getWalletProvider = (walletName: WalletName) => {
+export const getWalletProvider = (walletName: WalletName | undefined) => {
   if (!walletName) {
-    throw new Error('please provide wallet name');
+    return undefined;
   }
   const provider = getInjectedWalletProvider(walletName);
   if (!provider) {

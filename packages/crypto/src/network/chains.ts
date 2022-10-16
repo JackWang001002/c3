@@ -1,13 +1,24 @@
-import { Chain, ChainFullInfo } from './types';
-import { rawChainData } from './rawChainData';
+import { rawChainList } from './rawChainData';
 import type { Find } from '@c3/types';
 
-type RawChainListType = typeof rawChainData;
-type RawChainUnionType = RawChainListType[number];
+type RawChainListType = typeof rawChainList;
+type RawChainType = RawChainListType[number];
 
+export type RawChain2Chain<RChain extends RawChainType> = {
+  readonly chainId: RChain['chainId'];
+  readonly rpcUrls: RChain['rpc'];
+  readonly chainName: RChain['name'];
+  readonly nativeCurrency: RChain['nativeCurrency'];
+  readonly iconUrls?: string[];
+  readonly blockExplorerUrls?: string[];
+}
+
+//=====================================================================================================
+// Name2IdMapType
+//=====================================================================================================
 export type Name2IdMapType = {
   //@ts-ignore
-  [shortName in RawChainUnionType['shortName']]: Find<
+  [shortName in RawChainType['shortName']]: Find<
     'shortName',
     shortName,
     //@ts-ignore
@@ -15,39 +26,28 @@ export type Name2IdMapType = {
   >['chainId'];
 };
 
-// @ts-ignore
-export const NAME2ID_MAP: Name2IdMapType = rawChainData.reduce(
-  // @ts-ignore
+export const NAME2ID_MAP = rawChainList.reduce(
   (acc, e) => ({ ...acc, [e.shortName]: e.chainId }),
-  {} as Name2IdMapType
-);
+  {}
+) as Name2IdMapType;
 
 
 
-export type ID2FullChainType = {
-  [chainId in RawChainUnionType['chainId']]: Find<
+
+//=====================================================================================================
+// Id2ChainType
+//=====================================================================================================
+export type Id2ChainType = {
+  [chainId in RawChainType['chainId']]: RawChain2Chain<Find<
     'chainId',
     chainId,
     //@ts-ignore
     RawChainListType
-  >;
+  >>;
 };
 
-export type FullChain2Chain<T extends ChainFullInfo> = {
-  chainId: T['chainId'];
-  rpcUrls: T['rpc'];
-  chainName: T['name'];
-  nativeCurrency: T['nativeCurrency'];
-  iconUrls: [];
-  blockExplorerUrls: string[];
-};
 
-export type Id2ChainType = {
-  //@ts-ignore
-  [chainId in RawChainUnionType['chainId']]: FullChain2Chain<ID2FullChainType[chainId]>;
-};
-
-export const ID2CHAIN_MAP: Id2ChainType = rawChainData.reduce((acc, e) => {
+export const ID2CHAIN_MAP = rawChainList.reduce((acc, e) => {
   return {
     ...acc,
     [e.chainId]: {
@@ -57,10 +57,40 @@ export const ID2CHAIN_MAP: Id2ChainType = rawChainData.reduce((acc, e) => {
       nativeCurrency: e.nativeCurrency,
       iconUrls: [],
       //@ts-ignore
-      blockExplorerUrls: e.explorers && e.explorers.map(e => e.url),
+      blockExplorerUrls: e.explorers?.map((e) => e.url) || [],
     },
   };
-}, {} as Id2ChainType);
+}, {}) as Id2ChainType;
+
+
+//=====================================================================================================
+// Name2ChainType
+//=====================================================================================================
+export type Name2ChainType = {
+  [name in RawChainType['shortName']]: RawChain2Chain<Find<
+    'shortName',
+    name,
+    //@ts-ignore
+    RawChainListType
+  >>;
+}
+
+export const Name2CHAIN_MAP = rawChainList.reduce((acc, e) => {
+  return {
+    ...acc,
+    [e.shortName]: {
+      chainId: e.chainId,
+      rpcUrls: e.rpc,
+      chainName: e.name,
+      nativeCurrency: e.nativeCurrency,
+      iconUrls: [],
+      //@ts-ignore
+      blockExplorerUrls: e.explorers?.map((e) => e.url) || [],
+    },
+  };
+}, {}) as Name2ChainType;
+
+
 
 //@ts-ignore
 globalThis.__chain_map = ID2CHAIN_MAP;
