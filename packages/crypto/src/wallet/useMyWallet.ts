@@ -105,6 +105,8 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       }
       const provider = new ethers.providers.Web3Provider(injectedProvider);
       setProvider(provider);
+      localStorage.setItem('walletName', newName || '');
+
       return provider;
     },
     [name]
