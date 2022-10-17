@@ -13,7 +13,7 @@ import {
   WalletName,
 } from './injectedProviders';
 import { useAccount_ } from './useAccount_';
-import { useOnChainChange } from './useOnChainChange';
+import { useOnChainChanged } from './onChange';
 import { getWalletName, jump2NativeAppOrDlPage } from './utils';
 
 //TODO:TS2742
@@ -43,13 +43,12 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       if (!name) {
         return;
       }
-      const provider = getWalletProvider(name);
-      setProvider(provider);
+      setProvider(getWalletProvider(name));
     },
     [name]
   );
 
-  useOnChainChange(name, onChainChanged);
+  useOnChainChanged(provider, onChainChanged);
 
   const account = useAccount_(provider);
   useEffect(() => {
@@ -114,12 +113,11 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   const connectAccount = useCallback(async () => {
     if (!hasInjectedProvider) {
-      // jump2NativeAppOrDlPage();
+      jump2NativeAppOrDlPage();
       return;
     }
     if (!provider) {
       throw new Error('provider is not ready');
-      return;
     }
     const r = await provider?.send('eth_requestAccounts', []);
     return r[0];

@@ -1,13 +1,11 @@
-import { getWalletName } from './utils';
 import { ethers } from 'ethers';
 import { useCallback, useEffect, useState } from 'react';
-import { injectedProviders } from './injectedProviders';
-import { noop } from '@c3/utils';
+import { useOnAccountChanged } from './onChange';
 
 export const useAccount_ = (provider: ethers.providers.Web3Provider | undefined) => {
   const [account, setAccount] = useState<string | undefined>('');
   const handleAccountChanged = useCallback((accounts: string[]) => {
-    console.log('account changed.new Accounts=', accounts);
+    console.log('account changed or provider changed.new Accounts=', accounts);
     setAccount(accounts && accounts[0]);
   }, []);
 
@@ -15,14 +13,7 @@ export const useAccount_ = (provider: ethers.providers.Web3Provider | undefined)
     provider?.send('eth_accounts', []).then(handleAccountChanged);
   }, [provider, handleAccountChanged]);
 
-  useEffect(() => {
-    if (!provider?.provider) {
-      console.log('provider.provider is undefined', provider);
-      return;
-    }
-    const name = getWalletName(provider);
-    return injectedProviders[name]?.onAccountChange?.(handleAccountChanged) || noop;
-  });
+  useOnAccountChanged(provider, handleAccountChanged);
 
   return account;
 };

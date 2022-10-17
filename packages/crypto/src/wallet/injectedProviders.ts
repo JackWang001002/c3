@@ -15,8 +15,6 @@ export type InjectedProvider = {
     getDeeplink: (url: string) => string;
     pcDownloadUrl: string;
     getProvider: () => any; //TODO:
-    onAccountChange?: (cb: (account: string[]) => void) => Fn;
-    onChainChange: (cb: (chainId: number) => void) => Fn;
   };
 };
 
@@ -41,20 +39,7 @@ export const injectedProviders: InjectedProvider = {
       }
       return provider;
     },
-    onAccountChange: (cb: (account: string[]) => void) => {
-      const provider = injectedProviders['metamask'].getProvider();
-      provider.on('accountsChanged', cb);
-      return () => {
-        provider.removeListener('accountsChanged', cb);
-      };
-    },
-    onChainChange: (cb: (chainId: number) => void) => {
-      const provider = injectedProviders['metamask'].getProvider();
-      provider.on('chainChanged', cb);
-      return () => {
-        provider.removeListener('chainChanged', cb);
-      };
-    },
+
   },
   coinbase: {
     getDeeplink: (url: string) => `https://go.cb-w.com/dapp?cb_url=${encodeURIComponent(url)}`,
@@ -73,13 +58,7 @@ export const injectedProviders: InjectedProvider = {
       }
       return undefined;
     },
-    onChainChange: (cb: (chainId: number) => void) => {
-      const provider = injectedProviders['coinbase'].getProvider();
-      provider.on('chainChanged', cb);
-      return () => {
-        provider.removeListener('chainChanged', cb);
-      };
-    },
+
   },
 };
 
@@ -87,11 +66,7 @@ export const getInjectedWalletProvider = (name: WalletName) => {
   if (name && injectedProviders[name]) {
     return injectedProviders[name].getProvider();
   }
-  // const provider =
-  //   injectedProviders.metamask.getProvider() || injectedProviders.coinbase.getProvider();
-  // if (provider) {
-  //   return provider;
-  // }
+
   return undefined;
 };
 
