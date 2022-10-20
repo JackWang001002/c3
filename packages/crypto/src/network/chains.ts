@@ -57,7 +57,7 @@ export const ID2CHAIN_MAP = rawChainList.reduce((acc, e) => {
       nativeCurrency: e.nativeCurrency,
       iconUrls: [],
       //@ts-ignore
-      blockExplorerUrls: e.explorers?.map((e) => e.url) || [],
+      blockExplorerUrls: e.explorers?.map((e) => e.url) ,
     },
   };
 }, {}) as Id2ChainType;
