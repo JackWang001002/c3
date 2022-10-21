@@ -11,7 +11,7 @@ export type RawChain2Chain<RChain extends RawChainType> = {
   readonly nativeCurrency: RChain['nativeCurrency'];
   readonly iconUrls?: string[];
   readonly blockExplorerUrls?: string[];
-}
+};
 
 //=====================================================================================================
 // Name2IdMapType
@@ -31,21 +31,19 @@ export const NAME2ID_MAP = rawChainList.reduce(
   {}
 ) as Name2IdMapType;
 
-
-
-
 //=====================================================================================================
 // Id2ChainType
 //=====================================================================================================
 export type Id2ChainType = {
-  [chainId in RawChainType['chainId']]: RawChain2Chain<Find<
-    'chainId',
-    chainId,
-    //@ts-ignore
-    RawChainListType
-  >>;
+  [chainId in RawChainType['chainId']]: RawChain2Chain<
+    Find<
+      'chainId',
+      chainId,
+      //@ts-ignore
+      RawChainListType
+    >
+  >;
 };
-
 
 export const ID2CHAIN_MAP = rawChainList.reduce((acc, e) => {
   return {
@@ -57,23 +55,24 @@ export const ID2CHAIN_MAP = rawChainList.reduce((acc, e) => {
       nativeCurrency: e.nativeCurrency,
       iconUrls: [],
       //@ts-ignore
-      blockExplorerUrls: e.explorers?.map((e) => e.url) ,
+      blockExplorerUrls: e.explorers?.map(e => e.url),
     },
   };
 }, {}) as Id2ChainType;
-
 
 //=====================================================================================================
 // Name2ChainType
 //=====================================================================================================
 export type Name2ChainType = {
-  [name in RawChainType['shortName']]: RawChain2Chain<Find<
-    'shortName',
-    name,
-    //@ts-ignore
-    RawChainListType
-  >>;
-}
+  [name in RawChainType['shortName']]: RawChain2Chain<
+    Find<
+      'shortName',
+      name,
+      //@ts-ignore
+      RawChainListType
+    >
+  >;
+};
 
 export const Name2CHAIN_MAP = rawChainList.reduce((acc, e) => {
   return {
@@ -85,13 +84,10 @@ export const Name2CHAIN_MAP = rawChainList.reduce((acc, e) => {
       nativeCurrency: e.nativeCurrency,
       iconUrls: [],
       //@ts-ignore
-      blockExplorerUrls: e.explorers?.map((e) => e.url) || [],
+      blockExplorerUrls: e.explorers?.map(e => e.url),
     },
   };
 }, {}) as Name2ChainType;
 
-
-
 //@ts-ignore
 globalThis.__chain_map = ID2CHAIN_MAP;
-
