@@ -39,7 +39,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   const onChainChanged = useCallback(
     (chainId: number) => {
-      dbg('chain changed. new chainId=', chainId);
+      console.log('chain changed. new chainId=', chainId);
       if (!name) {
         return;
       }
@@ -76,7 +76,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
         if (!provider) {
           throw new Error('provider is null');
         }
-        await provider?.send('wallet_switchEthereumChain', [
+        return await provider?.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
