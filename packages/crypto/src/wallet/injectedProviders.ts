@@ -27,17 +27,21 @@ export const injectedProviders: InjectedProvider = {
       if (typeof window.ethereum === 'undefined') {
         return undefined;
       }
-
-      let provider = window.ethereum;
-      // edge case if MM and CBW are both installed
-      if (window.ethereum?.providers?.length) {
-        window.ethereum.providers.forEach((p: any) => {
-          if (p.isMetaMask) {
-            provider = p;
-          }
-        });
+      const providers = window.ethereum.providers || [];
+      const isMultiProvider = !!providers.length;
+      if (!isMultiProvider && window.ethereum.isMetaMask) {
+        return window.ethereum;
       }
-      return provider;
+
+      // edge case if MM and CBW are both installed
+      if (isMultiProvider) {
+        for (const e of providers) {
+          if (e.isMetaMask) {
+            return e;
+          }
+        }
+      }
+      return undefined;
     },
 
   },

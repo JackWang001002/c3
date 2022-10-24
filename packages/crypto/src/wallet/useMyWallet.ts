@@ -92,7 +92,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   const switchProvider = useCallback(
     (newName: WalletName) => {
       if (!newName) {
-        throw new Error('please supply chainId');
+        throw new Error('please supply wallnet name');
       }
       if (newName === name) {
         return;
@@ -100,7 +100,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       const injectedProvider = injectedProviders[newName].getProvider();
       if (!injectedProvider) {
         jump2NativeAppOrDlPage(newName);
-        return;
+        throw new Error(`${newName} is not installed`);
       }
       const provider = new ethers.providers.Web3Provider(injectedProvider);
       setProvider(provider);

@@ -1,6 +1,6 @@
 {
   "name": "@c3/hooks",
-  "version": "1.1.80",
+  "version": "1.1.81",
   "description": "c3/hooks",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -38,9 +38,9 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/dbg": "workspace:^1.0.28",
+    "@c3/dbg": "workspace:^1.0.29",
     "@c3/dom": "workspace:^",
-    "@c3/types": "workspace:^1.0.5",
+    "@c3/types": "workspace:^1.0.6",
     "@c3/utils": "workspace:^",
     "dayjs": "^1.10.7",
     "immer": "^9.0.12",
