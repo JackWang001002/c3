@@ -28,5 +28,5 @@ export const isPlainObject = (x: unknown): x is object =>
   (Object.getPrototypeOf(x) === null || Object.getPrototypeOf(x) === Object.prototype);
 
 export const x = () => {
-  console.log('hello world422');
+  console.log('hello world4222');
 };
