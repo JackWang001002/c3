@@ -26,3 +26,7 @@ export const isInteger = (x: unknown) => isNumber(x) && parseInt(`${x}`, 10) ===
 export const isPlainObject = (x: unknown): x is object =>
   isObject(x) &&
   (Object.getPrototypeOf(x) === null || Object.getPrototypeOf(x) === Object.prototype);
+
+export const x = () => {
+  console.log('hello world');
+};

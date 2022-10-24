@@ -20,8 +20,8 @@
   "directories": {
     "lib": "dist",
     "test": "__tests__",
-    "main": "dist/utils.umd.js",
-    "module": "dist/utils.es.js",
+    "main": "dist/is.umd.js",
+    "module": "dist/is.es.js",
     "types": "dist/index.d.ts"
   },
   "files": [
@@ -29,8 +29,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/utils.umd.js",
-    "module": "dist/utils.es.js",
+    "main": "dist/is.umd.js",
+    "module": "dist/is.es.js",
     "types": "dist/index.d.ts"
   },
   "repository": {

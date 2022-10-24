@@ -1,5 +1,21 @@
 {
   "version": "independent",
   "npmClient": "pnpm",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "$schema": "core/lerna/schemas/lerna-schema.json",
+  "command": {
+    "publish": {
+      "tempTag": true
+    },
+    "version": {
+      "conventionalCommits": true,
+      "exact": true,
+      "message": "chore(release): %s"
+    }
+  },
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/*.md"
+  ]
 }
