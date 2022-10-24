@@ -14,9 +14,6 @@ export const env = {
   get desktop() {
     return !this.mobile && !this.tablet;
   },
-  get xx() {
-    return true;
-  },
 };
 
 //do something
