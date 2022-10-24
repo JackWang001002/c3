@@ -1,17 +1,20 @@
 export type Currency = {
-  name: string;
-  symbol: string;
-  decimals: number;
+  readonly name: string;
+  readonly symbol: string;
+  readonly decimals: number;
 };
 
 export type Chain = {
-  readonly rpcUrls: string[];
+  readonly rpcUrls: readonly string[];
   readonly chainId: number;
   readonly chainName: string;
   readonly nativeCurrency: Currency;
-  readonly iconUrls?: string[];
-  readonly blockExplorerUrls?: string[];
+  readonly iconUrls?: readonly string[];
+  readonly blockExplorerUrls?: readonly string[];
 };
+export type Exporer = {
+  name: string; url: string; standard: string
+}
 
 export type ChainFullInfo = {
   name: string;
@@ -28,5 +31,5 @@ export type ChainFullInfo = {
   ens: {
     registry: string;
   };
-  explorers: { name: string; url: string; standard: string }[];
+  explorers?: Exporer[];
 };

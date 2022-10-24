@@ -1,11 +1,14 @@
 #!/usr/bin/env cnode
-import { getChangedPkgs, run } from '@scriptbot/cli';
+import { PkgMgr, run, getLastestTag } from '@scriptbot/cli';
 import { $ } from 'zx';
+import semver from 'semver';
 
 const release = async (pkg: string) => {
   await $`pnpm --filter ${pkg} exec pnpm version patch`;
   await $`pnpm --filter ${pkg} publish --no-git-checks`;
 };
+const pkgMgr = await new PkgMgr().init();
+const changedPkgs = await pkgMgr.getChangedPkgs();
 run({
   async version() {
     await $`pnpm changeset version`;
@@ -17,28 +20,29 @@ run({
   },
 
   async release() {
-    await this.build();
-    await this.beforePub();
+    console.log('changed Pkgs', changedPkgs);
+    await this.build({});
+    await this.beforePub({});
 
-    const pkgs = await getChangedPkgs();
-    for (const dep of pkgs) {
+    for (const dep of changedPkgs) {
       release(dep);
     }
-    await this.afterPub();
-    await $`g amend`;
+    await this.afterPub({});
+    const tag = (await getLastestTag())!;
+    await $`git tag  ${semver.inc(tag, 'patch')}`;
+    await $`git commit -a -m "release"`;
+    await $`git push`;
+    console.log('changed Pkgs', changedPkgs);
   },
   async build() {
-    const pkgs = await getChangedPkgs();
-    for (const pkg of pkgs) {
+    for (const pkg of changedPkgs) {
       await $`pnpm --filter ${pkg} test`;
       await $`pnpm --filter ${pkg} build`;
       await $`pnpm --filter ${pkg} type`;
     }
   },
   async beforePub() {
-    const pkgs = await getChangedPkgs();
-
-    for (const pkg of pkgs) {
+    for (const pkg of changedPkgs) {
       const files = ['main', 'module', 'types'];
       for (const file of files) {
         const { stdout: name } =
@@ -49,12 +53,14 @@ run({
     }
   },
   async afterPub(options) {
-    const pkgs = await getChangedPkgs();
-    for (const pkg of pkgs) {
+    for (const pkg of changedPkgs) {
       const files = ['main', 'module', 'types'];
       for (const file of files) {
         await $`pnpm --filter ${pkg} exec npm pkg set ${file}=src/index.ts`;
       }
     }
+  },
+  async test() {
+    console.log('x');
   },
 });

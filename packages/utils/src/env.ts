@@ -11,6 +11,9 @@ export const env = {
   get windows() {
     return !this.windowsphone && /windows/i.test(ua);
   },
+  get desktop() {
+    return !this.mobile && !this.tablet;
+  },
 };
 
 //do something

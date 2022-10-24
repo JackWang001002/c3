@@ -11,7 +11,6 @@ export const useAsyncState = <T>(
   const updateData = useCallback(
     async (...args: any[]) => {
       const data = await getData(...args);
-      console.log('useAsyncState,newData', data);
       setData(data);
       return data;
     },

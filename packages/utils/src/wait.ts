@@ -4,8 +4,11 @@ export function wait(timeout: number) {
   });
 }
 
-export const waitFor = async (fn: () => boolean) => {
+export const waitFor = async (fn: () => boolean, reject?: () => boolean) => {
   while (!fn()) {
+    if (reject && reject()) {
+      break;
+    }
     await wait(100);
   }
 };

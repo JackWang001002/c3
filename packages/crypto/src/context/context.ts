@@ -1,14 +1,18 @@
-import { IndexedType } from '@c3/types';
+import { Fn, IndexedType } from '@c3/types';
 import React from 'react';
-import { useWallet_ } from '../wallet/useWallet_';
-import { ContractPair } from './../contract/createContract';
+import { useMyWallet } from '../wallet/useMyWallet';
 
 export type Web3ContextDataType = {
-  wallet: ReturnType<typeof useWallet_>;
-  contracts: IndexedType<ContractPair>;
+  wallet: ReturnType<typeof useMyWallet>;
+  // switchProvider: {
+  //   shouldSwitchProvider: boolean,
+  //   shouldSwitchProviderOn: Fn,
+  //   shouldSwitchProviderOff: Fn,
+  //   pendingWorks: ({ method: Fn, args: any[] })[],
+  // }
 };
 
 export const Web3Context = React.createContext({
   wallet: {},
-  contracts: {},
-} as Web3ContextDataType);
+
+} as unknown as Web3ContextDataType);

@@ -10,8 +10,8 @@
   },
   "publishConfig": {
     "access": "public",
-    "types": "dist/index.d.ts",
-    "main": "dist/index.d.ts"
+    "types": "dist/index.ts",
+    "main": "dist/index.ts"
   },
   "keywords": [],
   "author": "",

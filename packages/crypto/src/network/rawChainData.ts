@@ -1,7 +1,7 @@
 //Get Raw data from https://chainid.network/chains.json
 //TODO: how to deal iwth `INFURA_API_KEY`
 
-export const rawChainData = [
+export const rawChainList = [
   {
     name: 'Ethereum Mainnet',
     chain: 'ETH',

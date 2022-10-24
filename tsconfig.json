@@ -31,6 +31,6 @@
     "./jest.config.ts",
     "./jestSetupTests.ts",
     "./wallaby.js",
-    "./packages/test/src/playwright/metamask/extension"
+    "packages/playwright/src/metamask/extension"
   ]
 }
