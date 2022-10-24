@@ -63,6 +63,7 @@
     "jest-environment-jsdom": "^29.0.1",
     "jest-extended": "^2.0.0",
     "js-beautify": "^1.14.0",
+    "lerna": "^5.1.1",
     "lint-staged": ">=10",
     "lodash": "^4.17.21",
     "pkgs-graph": "^7.0.2",
