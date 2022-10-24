@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/che3vinci/c3/compare/@c3/is@1.0.4...@c3/is@1.0.5) (2022-10-24)
+
+### Features
+
+- fx3 ([61a1cd1](https://github.com/che3vinci/c3/commit/61a1cd17d790e1e559ac366bbbfae0e219c06b61))
+
 ## [1.0.4](https://github.com/che3vinci/c3/compare/@c3/is@1.0.3...@c3/is@1.0.4) (2022-10-24)
 
 ### Features
