@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/che3vinci/c3/compare/@c3/is@1.0.6...@c3/is@1.0.7) (2022-10-24)
+
+### Features
+
+- fx232 ([6878ade](https://github.com/che3vinci/c3/commit/6878adec68b75681e8214a9679bf34deb0faee01))
+
 ## [1.0.6](https://github.com/che3vinci/c3/compare/@c3/is@1.0.5...@c3/is@1.0.6) (2022-10-24)
 
 **Note:** Version bump only for package @c3/is
