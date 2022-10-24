@@ -56,10 +56,10 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@c3/dbg": "workspace:^1.0.34",
-    "@c3/hooks": "workspace:^1.1.86",
-    "@c3/types": "workspace:^1.0.11",
-    "@c3/utils": "workspace:^1.1.88",
+    "@c3/dbg": "workspace:^",
+    "@c3/hooks": "workspace:^",
+    "@c3/types": "workspace:^",
+    "@c3/utils": "workspace:^",
     "msw": "^0.47.4",
     "qs": "^6.11.0",
     "vitest": "^0.22.1"

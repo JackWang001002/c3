@@ -6,3 +6,4 @@ import { initMakeApi } from './makeApi';
 import { xfetch } from './fetch';
 
 export const makeApi = initMakeApi({ rawHttp: xfetch });
+
