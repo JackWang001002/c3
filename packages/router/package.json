@@ -1,6 +1,6 @@
 {
   "name": "@c3/router",
-  "version": "1.1.59",
+  "version": "1.1.62",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -38,10 +38,10 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/dom": "workspace:^",
-    "@c3/utils": "workspace:^",
+    "@c3/dom": "workspace:^1.1.38",
+    "@c3/utils": "workspace:^1.1.85",
     "history": "^5.3.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2"

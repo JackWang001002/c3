@@ -94,9 +94,6 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       if (!newName) {
         throw new Error('please supply wallnet name');
       }
-      if (newName === name) {
-        return;
-      }
       const injectedProvider = injectedProviders[newName].getProvider();
       if (!injectedProvider) {
         jump2NativeAppOrDlPage(newName);
@@ -108,7 +105,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
       return provider;
     },
-    [name]
+    []
   );
 
   const connectAccount = useCallback(async () => {

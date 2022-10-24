@@ -8,7 +8,7 @@ const release = async (pkg: string) => {
   await $`pnpm --filter ${pkg} publish --no-git-checks`;
 };
 const pkgMgr = await new PkgMgr().init();
-const changedPkgs = await pkgMgr.getChangedPkgs();
+const changedPkgs =  pkgMgr.pkgs;
 run({
   async version() {
     await $`pnpm changeset version`;
