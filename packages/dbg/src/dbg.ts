@@ -1,4 +1,3 @@
-
 export const isEnableDbg = globalThis.localStorage?.getItem('dbg');
 
 export const dbg = (...args: unknown[]) => {
@@ -13,3 +12,5 @@ export const cdbg = (keyword: string, style: string) => {
     dbg(`%c${keyword}`, style, ...args);
   };
 };
+
+export const x = () => console.log('x');
