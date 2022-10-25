@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/che3vinci/c3/compare/@c3/is@1.1.0...@c3/is@1.1.1) (2022-10-25)
+
+### Features
+
+- fx2322 ([1141e8a](https://github.com/che3vinci/c3/commit/1141e8a22f0c8af450f1dde2d610dae385f5af49))
+
 # [1.1.0](https://github.com/che3vinci/c3/compare/@c3/is@1.0.7...@c3/is@1.1.0) (2022-10-24)
 
 ### Features
