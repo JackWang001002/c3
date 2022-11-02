@@ -1,4 +1,4 @@
-import { last } from '../array';
+import { last } from 'lodash';
 import { GetValue, PlainObject } from '@c3/types';
 
 export const get = <T extends PlainObject>(obj: T, path: string) => {
