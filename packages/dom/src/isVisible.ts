@@ -9,6 +9,9 @@ export const isVisible = (ele: HTMLElement): boolean => {
   return isInViewPort(ele);
 };
 
+//=====================================================================================================
+// isInViewPort
+//=====================================================================================================
 export const isInViewPort = (ele: HTMLElement): boolean => {
   if (!ele) {
     return false;
