@@ -15,3 +15,4 @@ export * from './ready';
 export * from './scrollTo';
 // export * from './style';
 export * from './isOverflow';
+export * from './isInViewport';

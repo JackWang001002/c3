@@ -1,6 +1,6 @@
 import { useSwitch } from '@c3/hooks';
 import { Fn } from '@c3/types';
-import { toHexString } from '@c3/utils';
+import { toHexString, wait } from '@c3/utils';
 import { BigNumber, ethers } from 'ethers';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Chain } from '../network/types';
@@ -76,37 +76,35 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
         if (!provider) {
           throw new Error('provider is null');
         }
-        return await provider?.send('wallet_switchEthereumChain', [
+        await provider?.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
         console.log('switchNetwork:', e);
         if (e.code === 4902 || e.code === -32603) {
-          return addNetwork(chain);
+          await addNetwork(chain);
         }
         throw e;
       }
+      // await wait(0);
     },
     [addNetwork, provider]
   );
-  const switchProvider = useCallback(
-    (newName: WalletName) => {
-      if (!newName) {
-        throw new Error('please supply wallnet name');
-      }
-      const injectedProvider = injectedProviders[newName].getProvider();
-      if (!injectedProvider) {
-        jump2NativeAppOrDlPage(newName);
-        throw new Error(`${newName} is not installed`);
-      }
-      const provider = new ethers.providers.Web3Provider(injectedProvider);
-      setProvider(provider);
-      localStorage.setItem('walletName', newName || '');
+  const switchProvider = useCallback((newName: WalletName) => {
+    if (!newName) {
+      throw new Error('please supply wallnet name');
+    }
+    const injectedProvider = injectedProviders[newName].getProvider();
+    if (!injectedProvider) {
+      jump2NativeAppOrDlPage(newName);
+      throw new Error(`${newName} is not installed`);
+    }
+    const provider = new ethers.providers.Web3Provider(injectedProvider);
+    setProvider(provider);
+    localStorage.setItem('walletName', newName || '');
 
-      return provider;
-    },
-    []
-  );
+    return provider;
+  }, []);
 
   const connectAccount = useCallback(async () => {
     if (!hasInjectedProvider) {
