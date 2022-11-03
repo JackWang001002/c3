@@ -1,16 +1,3 @@
-import commonjs from '@rollup/plugin-commonjs';
-import { defineConfig } from 'vite';
+import { getViteConfig } from '../../scripts/vite.config';
 
-export default defineConfig({
-  build: {
-    lib: {
-      entry: './src/index.ts',
-      name: 'test',
-      formats: ['iife', 'es', 'umd'],
-    },
-    rollupOptions: {
-      external: ['tslib', /@c3\/*/, 'lodash', /node:*/, 'ethers', 'react'],
-      plugins: [commonjs()],
-    },
-  },
-});
+export default getViteConfig(['tslib', /@c3\/*/, 'lodash', /node:*/, 'ethers', 'react']);
