@@ -26,7 +26,7 @@
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
-    "build": "vite build   ",
+    "build": "vite build && pnpm type ",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration ",

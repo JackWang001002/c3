@@ -21,7 +21,7 @@ export type WalletType = {
   readonly provider: ethers.providers.Web3Provider | undefined;
   readonly name: WalletName | undefined;
   readonly addNetwork: (chain: Chain) => Promise<any>;
-  readonly switchNetwork: (chain: Chain) => Promise<null>;
+  readonly switchNetwork: (chain: Chain) => Promise<void>;
   readonly connectAccount: () => Promise<string>;
   readonly account: string | undefined;
   readonly getBalance: () => Promise<BigNumber>;
