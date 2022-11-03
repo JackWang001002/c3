@@ -1,6 +1,6 @@
-import { useSwitch } from '@c3/hooks';
+import { useLatest, useSwitch } from '@c3/hooks';
 import { Fn } from '@c3/types';
-import { toHexString, wait } from '@c3/utils';
+import { toHexString, wait, waitFor } from '@c3/utils';
 import { BigNumber, ethers } from 'ethers';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Chain } from '../network/types';
@@ -36,6 +36,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(
     getWalletProvider(initialName)
   );
+  const ref = useLatest(provider);
 
   const onChainChanged = useCallback(
     (chainId: number) => {
@@ -71,11 +72,15 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   const switchNetwork = useCallback(
     async (chain: Chain) => {
+      if (!provider) {
+        throw new Error('provider is null');
+      }
+      const chainId = await (await provider.getNetwork()).chainId;
+      if (chainId === chain.chainId) {
+        return;
+      }
       try {
         dbg('[switchNetwork] chain=', chain);
-        if (!provider) {
-          throw new Error('provider is null');
-        }
         await provider?.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
@@ -83,12 +88,13 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
         console.log('switchNetwork:', e);
         if (e.code === 4902 || e.code === -32603) {
           await addNetwork(chain);
+        } else {
+          throw e;
         }
-        throw e;
       }
-      // await wait(0);
+      await waitFor(() => ref.current !== provider);
     },
-    [addNetwork, provider]
+    [addNetwork, provider, ref]
   );
   const switchProvider = useCallback((newName: WalletName) => {
     if (!newName) {
