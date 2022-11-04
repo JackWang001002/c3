@@ -10,7 +10,7 @@
     "@c3/utils": "workspace:^1.1.88",
     "@playwright/experimental-ct-react": "^1.27.1",
     "@playwright/test": "^1.27.1",
-    "@scriptbot/cli": "^1.0.150",
+    "@pnpm/filter-workspace-packages": "^6.0.4",
     "@testing-library/react": "^13.4.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
@@ -36,6 +36,7 @@
     "@pnpm/sort-packages": "^3.0.9",
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
+    "@scriptbot/cli": "^1.0.153",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -83,7 +84,7 @@
     "reset": "pnpm clean && pnpm install",
     "storybook": "start-storybook -p 6007",
     "test": "jest",
-    "test-ct": "playwright test -c playwright-ct.config.ts"
+    "test:pw:ct": "playwright test -c playwright-ct.config.ts"
   },
   "lint-staged": {
     "*.{ts,tsx}": [],

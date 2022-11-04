@@ -2,7 +2,7 @@ import { useForceUpdate } from '../../src/index';
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 
-const App = () => {
+const App1 = () => {
   const cntRef = useRef(0);
   const forceUpdate = useForceUpdate();
   useEffect(() => {
@@ -18,4 +18,4 @@ const App = () => {
     </button>
   );
 };
-export default App;
+export default App1;

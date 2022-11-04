@@ -1,4 +1,4 @@
-import { getFnName } from './fn';
+import { getFnName } from '../src/fn';
 describe('getFnName', () => {
   it('declare a function ', () => {
     function foo() {

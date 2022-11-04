@@ -13,6 +13,6 @@ export * from './query';
 export * from './raf';
 export * from './ready';
 export * from './scrollTo';
-// export * from './style';
+export * from './cstyle';
 export * from './isOverflow';
 export * from './isInViewport';

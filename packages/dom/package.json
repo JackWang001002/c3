@@ -26,7 +26,7 @@
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
-    "test": "jest ",
+    "test:jest": "jest",
     "build": "vite build && pnpm type ",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
@@ -40,22 +40,5 @@
     "@c3/dbg": "workspace:^1.0.35",
     "@c3/utils": "workspace:^1.2.0"
   },
-  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
-  "jest": {
-    "transformIgnorePatterns": [],
-    "testRegex": "(\\.(test|spec))\\.(jsx?|tsx?|mjs)$"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ],
-      "@babel/preset-typescript"
-    ]
-  }
+  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
 }

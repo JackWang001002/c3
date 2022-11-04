@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 import React, { useState } from 'react';
-import App from './App';
+import App from './useNextTickCase';
 test('mount ', async ({ page, mount }) => {
   const component = await mount(<App />);
   await expect(component.locator('#state')).toHaveText('not-run');

@@ -20,8 +20,6 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-
-
 describe('test cases', () => {
   // it('get should work ', async () => {
 
@@ -45,8 +43,7 @@ describe('test cases', () => {
   //     data: { list: [], info: { list: [] }, name: '' },
   //   });
   // });
-  it('post should work ', async () => {
-
+  it.skip('post should work ', async () => {
     const fetchFoo = makeApi({
       method: 'post',
       url: 'http://localhost/api/pick',

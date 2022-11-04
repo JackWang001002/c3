@@ -63,22 +63,5 @@
     "msw": "^0.47.4",
     "qs": "^6.11.0",
     "vitest": "^0.22.1"
-  },
-  "jest": {
-    "transformIgnorePatterns": [],
-    "testRegex": "(\\.(test|spec))\\.(jsx?|tsx?|mjs)$"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ],
-      "@babel/preset-typescript"
-    ]
   }
 }

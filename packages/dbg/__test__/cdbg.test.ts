@@ -1,4 +1,4 @@
-import { cdbg } from './dbg';
+import { cdbg } from '../src/dbg';
 
 describe('test cases', () => {
   it('should work ', () => {

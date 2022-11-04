@@ -6,9 +6,10 @@ const config = {
   verbose: true,
 
   transform: {
-    '^.+\\.(ts|tsx|jsx)$': 'babel-jest',
+    '(\\.test)\\.(jsx?|tsx?|mjs)$': 'babel-jest',
   },
-  testRegex: '(\\.(test))\\.(jsx?|tsx?|mjs)$',
+  testRegex: '(\\.test)\\.(jsx?|tsx?|mjs)$',
+  transformIgnorePatterns: [],
   moduleNameMapper: {
     // '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
     // '<rootDir>/__mocks__/fileMock.js',
@@ -23,7 +24,6 @@ const config = {
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   rootDir: __dirname,
-  transformIgnorePatterns: [],
 };
 
 module.exports = config;
