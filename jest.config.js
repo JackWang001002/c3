@@ -5,24 +5,17 @@
 const config = {
   verbose: true,
 
-  transform: {
-    '(\\.test)\\.(jsx?|tsx?|mjs)$': 'babel-jest',
-  },
+  transform: { '\\.[jt]sx?$': 'babel-jest' },
   testRegex: '(\\.test)\\.(jsx?|tsx?|mjs)$',
   transformIgnorePatterns: [],
-  moduleNameMapper: {
-    // '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-    // '<rootDir>/__mocks__/fileMock.js',
-    // '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
-    // setupFilesAfterEnv: ['jest-extended'],
-  },
-  // setupFilesAfterEnv: ['<rootDir>/jestSetupTests.js'],
-  // testEnvironment: 'jsdom',
+
+  testEnvironment: 'node',
+  onlyChanged: true,
 
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'lcov', 'text'],
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'mjs'],
   rootDir: __dirname,
 };
 

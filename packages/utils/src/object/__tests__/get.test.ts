@@ -1,4 +1,4 @@
-import { set } from './../get';
+import { set } from '../get';
 describe('test cases', () => {
   it('should work ', () => {
     const o = { a: { b: 2 } };

@@ -67,22 +67,6 @@
     "lodash": "^4.17.21",
     "tslib": "^2.4.0",
     "vite": "^2.9.15"
-  },
-  "jest": {
-    "transformIgnorePatterns": [],
-    "testRegex": "(\\.(test|spec))\\.(jsx?|tsx?|mjs)$"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ],
-      "@babel/preset-typescript"
-    ]
   }
+
 }

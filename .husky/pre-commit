@@ -3,3 +3,4 @@
 
 npx lint-staged
 pnpm test:pw:ct
+pnpm test
