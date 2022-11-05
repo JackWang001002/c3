@@ -14,3 +14,4 @@ tsconfig.tsbuildinfo
 packages/**/log.txt
 **/**/.pnpm-debug.log
 playwright_/.cache/
+playwright-report/
