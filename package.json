@@ -80,7 +80,7 @@
     "prepare": "husky install",
     "ci:version": "zx scripts/publish.mjs version ",
     "ci:publish": "zx scripts/publish.mjs publish",
-    "clean": "rm -rf dist && rm -rf node_modules ",
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf playwright_/.cache ",
     "reset": "pnpm clean && pnpm install",
     "storybook": "start-storybook -p 6007",
     "test": "jest",

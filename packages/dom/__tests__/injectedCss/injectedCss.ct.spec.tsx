@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 import React from 'react';
-import Case from './InjectedCase';
+import Case from './Case';
 test('mount ', async ({ page, mount }) => {
   const component = await mount(<Case />);
   await expect(component).toContainText('hello');

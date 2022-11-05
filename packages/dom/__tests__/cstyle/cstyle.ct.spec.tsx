@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 import React from 'react';
-import Case from './StyleCase';
+import Case from './Case';
 test('style.get ', async ({ page, mount }) => {
   await mount(<Case />);
   const bgColor = await page.evaluate(() => {
