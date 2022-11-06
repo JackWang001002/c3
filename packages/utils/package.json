@@ -1,6 +1,6 @@
 {
   "name": "@c3/utils",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -68,5 +68,4 @@
     "tslib": "^2.4.0",
     "vite": "^2.9.15"
   }
-
 }
