@@ -38,7 +38,7 @@ type MakeApiOption<
   'defaultData'
 >;
 
-export const _makeApi = <
+export function _makeApi<
   _RawReqParameter extends RawReqParameter,
   _ReqParameter extends ReqParameter,
   _RawResBody extends RawResBody,
@@ -46,7 +46,7 @@ export const _makeApi = <
 >(
   option: MakeApiOption<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
   http: HTTP
-): IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody> => {
+): IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody> {
   const api = option as IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>;
 
   api.__ctx;
@@ -96,12 +96,13 @@ export const _makeApi = <
   };
 
   return api;
-};
+}
 
 export type InitMakeApiOption = {
   rawHttp: HTTP;
 };
-export const initMakeApi = (option: InitMakeApiOption) => {
+
+export function initMakeApi(option: InitMakeApiOption) {
   const http: HTTP = makeProxyHttp(option.rawHttp);
   return <
     _RawReqParameter extends RawReqParameter,
@@ -116,4 +117,4 @@ export const initMakeApi = (option: InitMakeApiOption) => {
       //@ts-ignore :FIXME
       http
     );
-};
+}

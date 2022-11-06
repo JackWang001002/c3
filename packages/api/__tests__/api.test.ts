@@ -7,12 +7,13 @@ import axios from 'axios';
 import { initMakeApi } from '../src/index';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-globalThis.localStorage?.setItem('mock', '1');
-
 const makeApi = initMakeApi({ rawHttp: axios });
 
 const server = setupServer(
   rest.post('http://localhost/api/pick', (req, res, ctx) => {
+    return res(ctx.json({ message: 'ok', code: 200, data: { hello: 'world' } }));
+  }),
+  rest.get('http://localhost/api/users', (req, res, ctx) => {
     return res(ctx.json({ message: 'ok', code: 200, data: { hello: 'world' } }));
   })
 );
@@ -21,38 +22,48 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 describe('test cases', () => {
-  // it('get should work ', async () => {
+  it('defaultData is generated according to mockData.', async () => {
+    //=============object will be force in ==================
 
-  //   const fetchFoo = makeApi({
-  //     method: 'get',
-  //     url: '/foo',
-  //     convert: (raw: any) => raw,
-  //     preCondition: () => true,
-  //     mockData: {
-  //       data: {
-  //         list: [],
-  //         info: {
-  //           list: [{ names: [] }, { names: [1, 3] }, { names: [] }],
-  //         },
-  //         name: 'jinbo',
-  //       },
-  //     },
-  //   });
-  //   const res = await fetchFoo.fetch({ id: 1 });
-  //   expect(fetchFoo.defaultData).toEqual({
-  //     data: { list: [], info: { list: [] }, name: '' },
-  //   });
-  // });
-  it.skip('post should work ', async () => {
+    const fetchFoo = makeApi({
+      method: 'get',
+      url: 'http://localhost/api/users',
+      mockData: {
+        data: {
+          from: [{ city: 'bej' }, { city: 'cdu' }],
+          family: { father: { name: 'wang' } },
+          name: undefined,
+        },
+      },
+    });
+    expect(fetchFoo.defaultData).toEqual({
+      data: { from: [], family: { father: { name: '' } }, name: '' },
+    });
+  });
+
+  it('post method should work ', async () => {
     const fetchFoo = makeApi({
       method: 'post',
       url: 'http://localhost/api/pick',
-      convert: (raw: any) => raw,
-      preCondition: () => true,
       mockData: {},
     });
 
     const res = await fetchFoo.fetch({ timeId: 100, userId: 100 });
-    expect(res.data.code).toEqual(200);
+    expect(res.data).toEqual({ code: 200, data: { hello: 'world' }, message: 'ok' });
+  });
+
+  it('use mock data ', async () => {
+    globalThis.localStorage.setItem('mock', '1');
+    const fetchFoo = makeApi({
+      method: 'post',
+      url: 'http://localhost/api/pick',
+      mockData: {
+        message: 'error',
+        data: 2,
+      },
+    });
+
+    const res = await fetchFoo.fetch({ timeId: 100, userId: 100 });
+    expect(res).toEqual({ data: 2, message: 'error' });
   });
 });

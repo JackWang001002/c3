@@ -3,12 +3,13 @@ import { methods } from './methods';
 import { patch } from './patch';
 import { Method } from './type';
 import { ndbg } from './utils';
-const __MOCK__ = !!globalThis.localStorage?.getItem?.('mock');
 
 export type HTTP = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key in Method]: (...args: any[]) => Promise<any>;
 };
+const isMockEnv = () => globalThis.localStorage?.getItem?.('mock');
+
 export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
   const proxyHttp = {} as HTTP;
   methods.forEach(method => {
@@ -17,7 +18,8 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
         const url = thisArg.url;
         ndbg(`[${method}]${url}`, ...args);
         let res;
-        if (__MOCK__) {
+
+        if (isMockEnv()) {
           ndbg(`useMockData/${url}`, thisArg);
           res = thisArg.mockData;
         } else {

@@ -11,6 +11,8 @@ const config = {
 
   testEnvironment: 'node',
   onlyChanged: true,
+  resetMocks: false,
+  setupFiles: ['jest-localstorage-mock'],
 
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'lcov', 'text'],

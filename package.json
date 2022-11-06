@@ -66,6 +66,7 @@
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^29.2.1",
     "jest-extended": "^2.0.0",
+    "jest-localstorage-mock": "^2.4.22",
     "js-beautify": "^1.14.7",
     "lint-staged": "^13.0.3",
     "lodash": "^4.17.21",
