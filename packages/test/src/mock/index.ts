@@ -36,6 +36,7 @@ export const mock = {
     });
   },
   getList:(count = 10, wMin = 1, wMax = 5, size = 'normal') => {
+
     return React.createElement('ul', null, mock.getRandElements({ count, wMin, wMax, size }));
 
   }
