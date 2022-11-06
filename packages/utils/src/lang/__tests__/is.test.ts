@@ -1,4 +1,4 @@
-import { isDecimal, isInteger } from './is';
+import { isDecimal, isInteger } from '../is';
 describe('is', () => {
   it('isInteger ', () => {
     expect(isInteger(5)).toBe(true);

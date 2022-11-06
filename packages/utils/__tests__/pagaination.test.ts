@@ -1,4 +1,4 @@
-import { getTotalPage } from './pagination';
+import { getTotalPage } from '../src/pagination';
 
 describe('pagination', () => {
   it('getTotalPage ', () => {

@@ -1,4 +1,4 @@
-import { EmptyStringZero } from './EmptyStringZero';
+import { EmptyStringZero } from '../EmptyStringZero';
 
 describe('test cases', () => {
   it('should work ', () => {

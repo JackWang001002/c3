@@ -1,5 +1,5 @@
 import { PlainObject } from '../../lang';
-import { CfgObj, mergeBaseAndGet } from './../mergeBaseAndGet';
+import { CfgObj, mergeBaseAndGet } from '../mergeBaseAndGet';
 describe('test cases', () => {
   it('should work ', () => {
     const o: CfgObj<PlainObject, 'weak' | 'focus' | 'hover'> = {

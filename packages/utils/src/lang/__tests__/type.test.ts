@@ -1,5 +1,5 @@
-import { Path } from '../type';
-import { Expect, IndexedType, IsEqual, IsSubType } from './../../lang';
+import { Expect, IsEqual, IndexedType, IsSubType, Path } from '@c3/types';
+
 describe('test cases', () => {
   it.skip('object type ', () => {
     type x = [
