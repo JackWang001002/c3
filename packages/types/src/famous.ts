@@ -2,6 +2,15 @@ export type ID = string | number;
 export type Direction = 'left' | 'right' | 'top' | 'bottom';
 export type HVDirection = 'horizontal' | 'vertical';
 export type Selector = string;
+export type Placement =
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'left-top'
+  | 'left-bottom'
+  | 'right-top'
+  | 'right-bottom';
 export type URL = string;
 export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
 

@@ -1,5 +1,5 @@
 import { Equal, Expect } from '@type-challenges/utils';
-import { Find } from './find';
+import { Find } from '../src/find';
 
 describe('test cases', () => {
   it('should work ', () => {
