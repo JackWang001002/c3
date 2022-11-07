@@ -21,3 +21,4 @@ export * from './string/index';
 export * from './time/index';
 export * from './url';
 export * from './wait';
+export * from './guid';
