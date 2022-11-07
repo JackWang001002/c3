@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/test.umd.js",
-    "module": "dist/test.es.js",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
     "types": "dist/index.d.ts"
   },
   "repository": {

@@ -17,13 +17,14 @@ export const mock = {
   getRandomColor: () => {
     return `hsla(${rand(0, 360, false)},${rand(50, 100)}%,${rand(40, 80)}%,90%)`;
   },
-  getRandBox: ({ width = 'auto', height = 'auto', size = 'normal' } = {}) => {
+  getRandBox: ({ width = 'auto', height = 'auto', size = 'normal', ...css } = {}) => {
     return {
       width,
       height,
       background: mock.getRandomColor(),
       fontSize: size === 'normal' ? 16 : rand(14, 60),
       p: 4,
+      ...css,
     };
   },
   getRandElements: ({ count = 3, wMin = 1, wMax = 5, size = 'normal' } = {}) => {
@@ -35,9 +36,7 @@ export const mock = {
       );
     });
   },
-  getList:(count = 10, wMin = 1, wMax = 5, size = 'normal') => {
-
+  getList: (count = 10, wMin = 1, wMax = 5, size = 'normal') => {
     return React.createElement('ul', null, mock.getRandElements({ count, wMin, wMax, size }));
-
-  }
+  },
 };

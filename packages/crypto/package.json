@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/crypto.umd.js",
-    "module": "dist/crypto.es.js",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
     "types": "dist/index.d.ts"
   },
   "repository": {

@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/hooks.umd.js",
-    "module": "dist/hooks.es.js",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
     "types": "dist/index.d.ts"
   },
   "repository": {

@@ -18,8 +18,8 @@
   "publishConfig": {
     "access": "public",
     "types": "dist/index.d.ts",
-    "main": "dist/api.umd.js",
-    "module": "dist/api.es.js"
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js"
   },
   "repository": {
     "type": "git",
