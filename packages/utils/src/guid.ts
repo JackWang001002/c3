@@ -1,8 +1,8 @@
 let id = 0;
 /**
  *
- * @returns {number} a global unique id
+ * @returns {string} a global unique id
  */
 export const guid = () => {
-  return ++id;
+  return `guid-${++id}`;
 };
