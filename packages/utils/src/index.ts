@@ -2,7 +2,7 @@ export * from './algo/index';
 export * from './array/index';
 export * from './assert';
 export * from './box';
-export * from './canIUse';
+export * from '../../dom/src/canIUse';
 export * from './canvas';
 export * from './color/index';
 export * from './copyToClipboard';
