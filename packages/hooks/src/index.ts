@@ -2,7 +2,6 @@ export * from './useAsyncEffect';
 export * from './useAsyncState';
 export * from './useAutoSize';
 export * from './useBoundingClientRect';
-export * from './useCookie';
 export * from './useCountDown';
 export * from './useData';
 export * from './useDebug';

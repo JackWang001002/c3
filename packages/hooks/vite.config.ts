@@ -3,7 +3,6 @@ import { getViteConfig } from '../../scripts/vite.config';
 
 export default getViteConfig([
   'react',
-  'js-cookie',
   'tslib',
   'mitt',
   'dayjs',

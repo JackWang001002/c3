@@ -44,30 +44,16 @@
     "@c3/utils": "workspace:^1.2.0",
     "dayjs": "^1.11.6",
     "immer": "^9.0.16",
-    "js-cookie": "^3.0.1",
     "mitt": "^3.0.0",
     "use-immer": "^0.6.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2",
     "@types/js-cookie": "^3.0.2"
   },
-  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
-  "jest": {
-    "transformIgnorePatterns": [],
-    "testRegex": "(\\.(test|spec))\\.(jsx?|tsx?|mjs)$"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ],
-      "@babel/preset-typescript"
-    ]
-  }
+  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
 }
