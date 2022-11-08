@@ -1,7 +1,4 @@
 import { IBox } from '@c3/types';
-import { useCallback, useLayoutEffect, useState } from 'react';
-import { useForceUpdate } from './useForceUpdate';
-import { useMount } from './useMount';
 import { useResizeObserver } from './useResizeObserver';
 
 export const useBoundingClientRect = (cb: (box: IBox<number>) => void) => {
