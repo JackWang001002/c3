@@ -1,6 +1,6 @@
 {
   "name": "@c3/rhform",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "awesesome",
   "type": "commonjs",
   "scripts": {},
@@ -27,8 +27,6 @@
     "jest-environment-jsdom": "^29.2.1",
     "lodash": "^4.17.21"
   },
-
-
   "dependencies": {
     "react-hook-form": "^7.38.0"
   },
