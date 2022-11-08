@@ -27,30 +27,8 @@
     "jest-environment-jsdom": "^29.2.1",
     "lodash": "^4.17.21"
   },
-  "jest": {
-    "transformIgnorePatterns": [],
-    "testEnvironment": "jsdom"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          },
-          "debug": true
-        }
-      ],
-      "@babel/preset-typescript",
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ]
-    ]
-  },
+
+
   "dependencies": {
     "react-hook-form": "^7.38.0"
   },
