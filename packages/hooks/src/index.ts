@@ -3,7 +3,6 @@ export * from './useAsyncState';
 export * from './useAutoSize';
 export * from './useBoundingClientRect';
 export * from './useCountDown';
-export * from './useData';
 export * from './useDebug';
 export * from './useDrag';
 export * from './useEventListener';

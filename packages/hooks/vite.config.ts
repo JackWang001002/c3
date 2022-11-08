@@ -3,7 +3,6 @@ import { getViteConfig } from '../../scripts/vite.config';
 
 export default getViteConfig([
   'react',
-  'tslib',
   'mitt',
   'dayjs',
   'react-dom',
@@ -12,6 +11,4 @@ export default getViteConfig([
   '@c3/dom',
   '@c3/css',
   '@c3/utils',
-  'immer',
-  'use-immer',
 ]);
