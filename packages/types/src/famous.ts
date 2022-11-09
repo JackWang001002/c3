@@ -14,7 +14,8 @@ export type Placement =
   | 'bottom-right'
   | 'left'
   | 'left-top'
-  | 'left-bottom';
+  | 'left-bottom'
+  | 'center';
 export type URL = string;
 export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
 
