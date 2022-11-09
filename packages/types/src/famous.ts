@@ -4,18 +4,35 @@ export type HVDirection = 'horizontal' | 'vertical';
 export type Selector = string;
 export type Placement =
   | 'top'
-  | 'top-left'
-  | 'top-right'
+  | 'topLeft'
+  | 'topRight'
   | 'right'
-  | 'right-top'
-  | 'right-bottom'
+  | 'rightTop'
+  | 'rightBottom'
   | 'bottom'
-  | 'bottom-left'
-  | 'bottom-right'
+  | 'bottomLeft'
+  | 'bottomRight'
   | 'left'
-  | 'left-top'
-  | 'left-bottom'
+  | 'leftTop'
+  | 'leftBottom'
   | 'center';
+
+export const placements: Placement[] = [
+  'top',
+  'topLeft',
+  'topRight',
+  'right',
+  'rightTop',
+  'rightBottom',
+  'bottom',
+  'bottomLeft',
+  'bottomRight',
+  'left',
+  'leftTop',
+  'leftBottom',
+  'center',
+];
+
 export type URL = string;
 export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
 
