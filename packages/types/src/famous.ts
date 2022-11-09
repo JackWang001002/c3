@@ -4,13 +4,17 @@ export type HVDirection = 'horizontal' | 'vertical';
 export type Selector = string;
 export type Placement =
   | 'top'
-  | 'bottom'
-  | 'left'
+  | 'top-left'
+  | 'top-right'
   | 'right'
-  | 'left-top'
-  | 'left-bottom'
   | 'right-top'
-  | 'right-bottom';
+  | 'right-bottom'
+  | 'bottom'
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'left'
+  | 'left-top'
+  | 'left-bottom';
 export type URL = string;
 export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
 
