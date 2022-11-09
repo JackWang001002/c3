@@ -17,21 +17,6 @@ export type Placement =
   | 'leftBottom'
   | 'center';
 
-export const placements: Placement[] = [
-  'top',
-  'topLeft',
-  'topRight',
-  'right',
-  'rightTop',
-  'rightBottom',
-  'bottom',
-  'bottomLeft',
-  'bottomRight',
-  'left',
-  'leftTop',
-  'leftBottom',
-  'center',
-];
 
 export type URL = string;
 export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
