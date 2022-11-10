@@ -8,14 +8,13 @@ export const useTouchBottom = (
 ) => {
   useEffect(() => {
     if (!el) {
+      console.log('please support el');
       return;
     }
     return addEventListener(el, 'scroll', async e => {
       if (isTouchBottom(el)) {
         dbg('@useTouchBottom:isTouchBottom==true');
         await cb(true, e);
-      } else {
-        await cb(false, e);
       }
     });
   }, [cb, el]);
