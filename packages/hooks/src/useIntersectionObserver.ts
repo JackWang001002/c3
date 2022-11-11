@@ -1,14 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export const useIntersectionObserver = () => {
+export const useIntersectionObserver = <T extends HTMLElement>() => {
   const observerRef = useRef<IntersectionObserver>();
 
   const watch = useCallback(
-    (
-      el: HTMLElement,
-      callback: IntersectionObserverCallback,
-      option?: IntersectionObserverInit
-    ) => {
+    (el: T, callback: IntersectionObserverCallback, option?: IntersectionObserverInit) => {
       if (observerRef.current) {
         return;
       }
