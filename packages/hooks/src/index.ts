@@ -1,7 +1,6 @@
 export * from './useAsyncEffect';
 export * from './useAsyncState';
 export * from './useAutoSize';
-export * from './useBoundingClientRect';
 export * from './useCountDown';
 export * from './useDebug';
 export * from './useDrag';
@@ -27,7 +26,6 @@ export * from './useSwitch';
 export * from './useToggle';
 export * from './useTouchBottom';
 export * from './useUnmount';
-export * from './useBus';
 export * from './useIsVisible';
 export * from './useNextTick';
 export * from './useRetry';

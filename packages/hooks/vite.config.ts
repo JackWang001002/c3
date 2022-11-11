@@ -3,7 +3,6 @@ import { getViteConfig } from '../../scripts/vite.config';
 
 export default getViteConfig([
   'react',
-  'mitt',
   'dayjs',
   'react-dom',
   '@ant-design/icons',
