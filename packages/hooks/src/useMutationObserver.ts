@@ -1,22 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-export const useMutationObserver = (cb: MutationCallback, options: MutationObserverInit) => {
-  const [obs, setObs] = useState<MutationObserver>();
-  useEffect(() => {
-    const o = new MutationObserver(cb);
-    setObs(o);
-  }, [cb, options]);
+export const useMutationObserver = () => {
+  const ref = useRef<MutationObserver>();
 
-  const observe = useCallback(
-    (target, options) => {
-      if (!obs) {
-        throw new Error('MutationObserver is not initialized');
-      }
-      obs.observe(target, options);
-      return () => obs.disconnect();
-    },
-    [obs]
-  );
+  const watch = useCallback((target, cb: MutationCallback, options) => {
+    if (ref.current) {
+      return;
+    }
+    ref.current = new MutationObserver(cb);
+    ref.current.observe(target, options);
+    return () => ref.current?.disconnect();
+  }, []);
 
-  return observe;
+  return watch;
 };

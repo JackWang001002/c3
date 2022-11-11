@@ -82,7 +82,7 @@ export const getSize = (node: HTMLElement) => {
     height: res.height,
   };
 };
-
+//TODO: useObserver to watch the element is in viewport wholely
 export const isTouchBottom = (el: HTMLElement): boolean => {
   dbg(
     // eslint-disable-next-line max-len

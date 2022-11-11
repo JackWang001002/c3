@@ -1,20 +1,19 @@
 import { useCallback, useEffect, useRef } from 'react';
-export const useResizeObserver = (cb: (entry: ResizeObserverEntry) => void) => {
-
-  const observer = useRef<ResizeObserver>();
-  useEffect(() => {
-    observer.current = new ResizeObserver(entries => {
-      cb(entries[0]);
-    });
-  }, [cb]);
+export const useResizeObserver = () => {
+  const observerRef = useRef<ResizeObserver>();
 
   const watch = useCallback(
-    (el: Element, options: ResizeObserverOptions = { box: 'border-box' }) => {
-      if (!observer.current) {
-        throw new Error('ResizeObserver is not initialized');
+    (
+      el: Element,
+      cb: ResizeObserverCallback,
+      options: ResizeObserverOptions = { box: 'border-box' }
+    ) => {
+      if (observerRef.current) {
+        return;
       }
-      observer.current.observe(el, options);
-      return () => observer.current && observer.current.unobserve(el);
+      observerRef.current = new ResizeObserver(cb);
+      observerRef.current.observe(el, options);
+      return () => observerRef.current?.unobserve(el);
     },
     []
   );

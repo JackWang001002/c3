@@ -1,24 +1,23 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-export const useIntersectionObserver = (
-  callback: IntersectionObserverCallback,
-  option?: IntersectionObserverInit
-) => {
-  const [obs, setObs] = useState<IntersectionObserver>();
-  useEffect(() => {
-    const observer = new IntersectionObserver(callback, option);
-    setObs(observer);
-  }, [callback, option]);
+export const useIntersectionObserver = () => {
+  const observerRef = useRef<IntersectionObserver>();
 
-  const observe = useCallback(
-    (el: HTMLElement) => {
-      if (!obs) {
-        throw new Error('IntersectionObserver is not initialized');
+  const watch = useCallback(
+    (
+      el: HTMLElement,
+      callback: IntersectionObserverCallback,
+      option?: IntersectionObserverInit
+    ) => {
+      if (observerRef.current) {
+        return;
       }
-      obs.observe(el);
-      return () => obs.disconnect();
+      const observer = new IntersectionObserver(callback, option);
+      observerRef.current = observer;
+      observerRef.current.observe(el);
+      return () => observerRef.current?.disconnect();
     },
-    [obs]
+    []
   );
-  return observe;
+  return watch;
 };
