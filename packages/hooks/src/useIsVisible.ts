@@ -1,19 +1,27 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useIntersectionObserver } from './useIntersectionObserver';
 
-export const useIsVisible = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const watch = useIntersectionObserver(e => {
-    const entry = e[0];
-    if (entry.isIntersecting) {
-      //@ts-ignore
-      const style = getComputedStyle(entry.target);
-      const isHidden = style.visibility === 'hidden' || style.opacity === '0';
-      setIsVisible(!isHidden);
-    } else {
-      setIsVisible(false);
-    }
-  });
+/**
+ * @return {boolean} Whether the element is visible in the root.
+ */
 
-  return [isVisible, watch] as const;
+export const useIsVisible = <T extends HTMLElement>() => {
+  const [isVisible, setIsVisible] = useState(false);
+  const watch = useIntersectionObserver<T>();
+  const watchWrapper = useCallback(
+    //TODO: make IntersectionObserverCallback to promised
+    (el: T, callback: IntersectionObserverCallback, option?: IntersectionObserverInit) => {
+      watch(
+        el,
+        async (entries, observer) => {
+          setIsVisible(entries[0].intersectionRatio > 0);
+          await callback(entries, observer);
+        },
+        option
+      );
+    },
+    [watch]
+  );
+
+  return [isVisible, watchWrapper] as const;
 };

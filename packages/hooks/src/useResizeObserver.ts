@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef } from 'react';
-export const useResizeObserver = () => {
+
+export const useResizeObserver = <T extends HTMLElement>() => {
   const observerRef = useRef<ResizeObserver>();
 
   const watch = useCallback(
     (
-      el: Element,
+      el: T,
       cb: ResizeObserverCallback,
       options: ResizeObserverOptions = { box: 'border-box' }
     ) => {
