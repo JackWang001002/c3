@@ -66,4 +66,7 @@ describe('test cases', () => {
     const res = await fetchFoo.fetch({ timeId: 100, userId: 100 });
     expect(res).toEqual({ data: 2, message: 'error' });
   });
+
+  it('convert should work ', async () => {});
+  it('genReqParameter should work ', async () => {});
 });

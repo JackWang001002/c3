@@ -14,7 +14,7 @@ export const useApi = <
   api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
   option: UseApiOption<_RawReqParameter> = { fetchOnMounted: false }
 ) => {
-  const [data, setData] = useState(api.defaultData);
+  const [data, updateData] = useState(api.defaultData);
   const [loading, setLoading] = useState(false);
   const fetch = useCallback(
     async (rrp?: _RawReqParameter, ...args: any[]) => {
@@ -22,10 +22,10 @@ export const useApi = <
         setLoading(true);
         const res = await api.fetch(rrp, ...args);
         if (!res) {
-          setData(api.defaultData);
+          updateData(api.defaultData);
           return api.defaultData;
         }
-        setData(res);
+        updateData(res);
         return res;
       } finally {
         setLoading(false);
@@ -39,5 +39,5 @@ export const useApi = <
     }
   }, [fetch, option.defaultReqParameter, option.fetchOnMounted]);
 
-  return [data, fetch, setData, loading] as const;
+  return [data, fetch, updateData, loading] as const;
 };

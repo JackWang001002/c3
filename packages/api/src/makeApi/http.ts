@@ -9,6 +9,7 @@ export type HTTP = {
   [key in Method]: (...args: any[]) => Promise<any>;
 };
 const isMockEnv = () => globalThis.localStorage?.getItem?.('mock');
+console.log('is mock env', isMockEnv());
 
 export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
   const proxyHttp = {} as HTTP;

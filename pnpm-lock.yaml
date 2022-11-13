@@ -35,6 +35,7 @@ importers:
       '@storybook/react': ^6.5.13
       '@storybook/testing-library': ^0.0.13
       '@testing-library/react': ^13.4.0
+      '@testing-library/react-hooks': ^7.0.2
       '@types/jest': ^27.5.2
       '@types/lodash': ^4.14.186
       '@types/node': ^17.0.45
@@ -77,6 +78,7 @@ importers:
       '@playwright/test': 1.27.1
       '@pnpm/filter-workspace-packages': 6.0.4_dx2jyseq3uh4fwxkw7rplt6ryu
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+      '@testing-library/react-hooks': 7.0.2_e2ahcdagsdonc2lnwoylqhejci
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       lerna: 6.0.1
@@ -403,7 +405,6 @@ importers:
       '@types/numeral': ^2.0.2
       '@types/qs': ^6.9.7
       babel-jest: ^29.2.1
-      copy-to-clipboard: ^3.3.2
       dayjs: ^1.11.6
       jest: ^27.5.1
       jest-environment-jsdom: ^29.2.1
@@ -414,7 +415,6 @@ importers:
       vite: ^2.9.15
     dependencies:
       '@c3/types': link:../types
-      copy-to-clipboard: 3.3.2
       dayjs: 1.11.6
       numeral: 2.0.6
       qs: 6.11.0
@@ -6662,6 +6662,29 @@ packages:
       react-error-boundary: 3.1.4_react@18.2.0
     dev: true
 
+  /@testing-library/react-hooks/7.0.2_e2ahcdagsdonc2lnwoylqhejci:
+    resolution: {integrity: sha512-dYxpz8u9m4q1TuzfcUApqi8iFfR6R0FaMbr2hjZJy1uC8z+bO/K4v8Gs9eogGKYQop7QsrBTFkv/BCF7MzD2Cg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+      react-test-renderer: '>=16.9.0'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-test-renderer:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.19.4
+      '@types/react': 18.0.21
+      '@types/react-dom': 18.0.6
+      '@types/react-test-renderer': 18.0.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-error-boundary: 3.1.4_react@18.2.0
+      react-test-renderer: 18.2.0_react@18.2.0
+    dev: false
+
   /@testing-library/react-hooks/7.0.2_react@18.2.0:
     resolution: {integrity: sha512-dYxpz8u9m4q1TuzfcUApqi8iFfR6R0FaMbr2hjZJy1uC8z+bO/K4v8Gs9eogGKYQop7QsrBTFkv/BCF7MzD2Cg==}
     engines: {node: '>=12'}
@@ -7033,7 +7056,6 @@ packages:
     resolution: {integrity: sha512-C7/5FBJ3g3sqUahguGi03O79b8afNeSD6T8/GU50oQrJCU0bVCCGQHaGKUbg2Ce8VQEEqTw8/HiS6lXHHdgkdQ==}
     dependencies:
       '@types/react': 18.0.21
-    dev: true
 
   /@types/react/18.0.21:
     resolution: {integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==}
@@ -9693,12 +9715,6 @@ packages:
     resolution: {integrity: sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /copy-to-clipboard/3.3.2:
-    resolution: {integrity: sha512-Vme1Z6RUDzrb6xAI7EZlVZ5uvOk2F//GaxKUxajDqm9LhOVM1inxNAD2vy+UZDYsd0uyA9s7b3/FVZPSxqrCfg==}
-    dependencies:
-      toggle-selection: 1.0.6
-    dev: false
 
   /core-js-compat/3.26.0:
     resolution: {integrity: sha512-piOX9Go+Z4f9ZiBFLnZ5VrOpBl0h7IGCkiFUN11QTe6LjAvOT3ifL/5TdoizMh99hcGy5SoLyWbapIY/PIb/3A==}
@@ -17175,7 +17191,6 @@ packages:
     dependencies:
       '@babel/runtime': 7.19.4
       react: 18.2.0
-    dev: true
 
   /react-hook-form/7.38.0_react@18.2.0:
     resolution: {integrity: sha512-gxWW1kMeru9xR1GoR+Iw4hA+JBOM3SHfr4DWCUKY0xc7Vv1MLsF109oHtBeWl9shcyPFx67KHru44DheN0XY5A==}
@@ -18993,10 +19008,6 @@ packages:
       regex-not: 1.0.2
       safe-regex: 1.1.0
     dev: true
-
-  /toggle-selection/1.0.6:
-    resolution: {integrity: sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==}
-    dev: false
 
   /toidentifier/1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}

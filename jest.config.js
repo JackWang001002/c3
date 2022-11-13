@@ -6,7 +6,7 @@ const config = {
   verbose: true,
 
   transform: { '\\.[jt]sx?$': 'babel-jest' },
-  testRegex: '(\\.test)\\.(jsx?|tsx?|mjs)$',
+  testRegex: '\\.test\\.(jsx?|tsx?|mjs)$',
   transformIgnorePatterns: [],
 
   testEnvironment: 'node',
