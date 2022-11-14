@@ -12,9 +12,11 @@ export type PaginationData<T> = {
   total: number;
   list: T[];
 };
-export type Option = {
+export type Option<T extends RawReqParameter> = {
   fetchOnMounted: boolean;
-  id: string; //name of Id
+  pageSize: number;
+  id?: string; //name of Id
+  defaultReqParameter: T;
 };
 
 export const usePagination = <
@@ -22,27 +24,30 @@ export const usePagination = <
   _RawReqParameter extends RawReqParameter,
   _ReqParameter extends ReqParameter,
   _RawResBody extends RawResBody,
-  _ResBody extends PaginationBody<T>
+  _ResBody extends PaginationData<T>
 >(
   api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
-  // startPage = 1,
-  pageSize = 10,
-  option: Option = { fetchOnMounted: true, id: 'id' }
+  option: Option<_RawReqParameter>
 ) => {
-  // const [pageNo, setPageNo] = useState(startPage);
-  // const [loading, on, off] = useSwitch(false);
-  const [bodyOfEachPage, fetch, , loading] = useApi(api, { fetchOnMounted: option.fetchOnMounted });
+  const [bodyOfEachPage, fetch, , loading] = useApi(api, {
+    fetchOnMounted: option.fetchOnMounted,
+    defaultReqParameter: option.defaultReqParameter,
+  });
   const [fetchedData, setFetchedData] = useState<PaginationData<T>>({
     total: 0,
     list: [],
   });
 
   useEffect(() => {
+    console.log('====setFetchedData');
+    if (!Array.isArray(bodyOfEachPage.list)) {
+      return;
+    }
     setFetchedData(data => ({
-      total: bodyOfEachPage.data.total,
-      list: [...data.list, ...bodyOfEachPage.data.list],
+      total: bodyOfEachPage.total,
+      list: [...data.list, ...bodyOfEachPage.list],
     }));
-  }, [bodyOfEachPage.data.total, bodyOfEachPage.data.list]);
+  }, [bodyOfEachPage.total, bodyOfEachPage.list]);
 
   const fetchPage = useCallback(
     async (para: _RawReqParameter) => {
@@ -65,11 +70,11 @@ export const usePagination = <
   }, []);
 
   return {
-    data: fetchedData,
+    data: fetchedData.list,
+    total: fetchedData.total,
     fetchPage,
     updateData: updateFetchedData,
     loading,
-    maxPageNo: getTotalPage(bodyOfEachPage.data.total || 0, pageSize || 1),
-    total: bodyOfEachPage.data.total,
+    maxPageNo: getTotalPage(bodyOfEachPage.total || 0, option.pageSize || 1),
   };
 };

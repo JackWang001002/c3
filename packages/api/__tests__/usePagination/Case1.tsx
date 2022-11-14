@@ -4,8 +4,13 @@ import _ from 'lodash';
 const api = makeApi({
   method: 'get',
   url: 'http://localhost/api/users',
-  convert: d => d,
   genReqParameter: () => ({}), //TODO:
+  convert: d => {
+    return {
+      list: d.data.list,
+      totoal: d.data.total,
+    };
+  },
   mockData: {
     data: {
       list: _.times(5, i => ({ id: i, name: `name-${i}` })),
@@ -17,15 +22,15 @@ const api = makeApi({
 });
 globalThis.localStorage.setItem('mock', '1');
 
-export const Case1: React.FC = props => {
-  const { data, fetchPage } = usePagination(api);
+const Case1: React.FC = props => {
+  const { data, fetchPage } = usePagination(api, { fetchOnMounted: true, pageSize: 4 });
   return (
     <div>
-      <div data-test-id="total">{data.total}</div>
-      <div data-test-id="length">{data.list.length}</div>
+      <div data-test-id="length">{data.length}</div>
       <button onClick={fetchPage} data-test-id="click-next-page">
         fetchNextPage
       </button>
     </div>
   );
 };
+export default Case1;

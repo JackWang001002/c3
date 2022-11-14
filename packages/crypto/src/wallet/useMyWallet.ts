@@ -21,7 +21,7 @@ export type WalletType = {
   readonly provider: ethers.providers.Web3Provider | undefined;
   readonly name: WalletName | undefined;
   readonly addNetwork: (chain: Chain) => Promise<any>;
-  readonly switchNetwork: (chain: Chain) => Promise<void>;
+  readonly switchNetwork: (chain: Chain) => Promise<ethers.providers.Web3Provider>;
   readonly connectAccount: () => Promise<string>;
   readonly account: string | undefined;
   readonly getBalance: () => Promise<BigNumber>;
@@ -36,7 +36,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(
     getWalletProvider(initialName)
   );
-  const ref = useLatest(provider);
+  const providerRef = useLatest(provider);
 
   const onChainChanged = useCallback(
     (chainId: number) => {
@@ -77,11 +77,11 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       }
       const chainId = await (await provider.getNetwork()).chainId;
       if (chainId === chain.chainId) {
-        return;
+        return provider;
       }
       try {
         dbg('[switchNetwork] chain=', chain);
-        await provider?.send('wallet_switchEthereumChain', [
+        await provider.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
@@ -92,9 +92,10 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
           throw e;
         }
       }
-      await waitFor(() => ref.current !== provider);
+      await waitFor(() => providerRef.current !== provider);
+      return providerRef.current!;
     },
-    [addNetwork, provider, ref]
+    [addNetwork, provider, providerRef]
   );
   const switchProvider = useCallback((newName: WalletName) => {
     if (!newName) {

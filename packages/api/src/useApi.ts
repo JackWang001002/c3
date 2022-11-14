@@ -37,7 +37,9 @@ export const useApi = <
     if (option.fetchOnMounted) {
       fetch(option.defaultReqParameter);
     }
-  }, [fetch, option.defaultReqParameter, option.fetchOnMounted]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return [data, fetch, updateData, loading] as const;
 };
