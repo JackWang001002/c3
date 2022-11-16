@@ -6,10 +6,7 @@ const api = makeApi({
   url: 'http://localhost/api/users',
   genReqParameter: () => ({}), //TODO:
   convert: d => {
-    return {
-      list: d.data.list,
-      totoal: d.data.total,
-    };
+    return d.data;
   },
   mockData: {
     data: {

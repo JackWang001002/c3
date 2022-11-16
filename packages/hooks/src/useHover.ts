@@ -14,12 +14,12 @@ export const useHover = (option?: IOption) => {
 
   const onMouseEnter = useCallback(() => {
     setHovered(true);
-    onHover && onHover();
+    onHover?.();
   }, [setHovered, onHover]);
 
   const onMouseLeave = useCallback(() => {
     setHovered(false);
-    onLeave && onLeave();
+    onLeave?.();
   }, [onLeave, setHovered]);
 
   return {

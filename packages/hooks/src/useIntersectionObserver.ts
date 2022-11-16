@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useIntersectionObserver = <T extends HTMLElement>() => {
   const observerRef = useRef<IntersectionObserver>();
+  //@ts-ignore
   window.__observerRef = observerRef;
 
   const watch = useCallback(
