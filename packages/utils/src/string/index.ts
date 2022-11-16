@@ -5,3 +5,4 @@ export * from './path';
 export * from './reg';
 export * from './reverse';
 export * from './toString';
+export * from './character';
