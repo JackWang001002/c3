@@ -71,6 +71,7 @@
     "js-beautify": "^1.14.7",
     "lint-staged": "^13.0.3",
     "lodash": "^4.17.21",
+    "organize-imports-cli": "^0.10.0",
     "pkgs-graph": "^7.0.2",
     "prettier": "2.6.1",
     "semver": "^7.3.8",
@@ -92,8 +93,13 @@
     "test:pw:ct": "playwright test -c playwright-ct.config.ts"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [],
-    "*.{js,jsx}": []
+    "*.{ts,tsx}": [
+      "organize-imports-cli",
+      "prettier --write",
+      "eslint --cache --fix"
+    ],
+    "*.{js,jsx}": [],
+    "*.{css,md}": "prettier --write"
   },
   "version": "0.0.2"
 }

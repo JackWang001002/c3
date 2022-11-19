@@ -1,4 +1,4 @@
-import { ID, IDable } from '@c3/utils';
+import { ID, IDable } from '@c3/types';
 import { useCallback, useState } from 'react';
 
 //allSelected
