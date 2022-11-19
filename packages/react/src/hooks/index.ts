@@ -12,7 +12,7 @@ export * from './useFullscreen';
 export * from './useHashChange';
 export * from './useHover';
 export * from './useInfiniteScroll';
-export * from './useInjectNode';
+export * from '../renderEle';
 export * from './useIntersectionObserver';
 export * from './useLatest';
 export * from './useLeftTime';

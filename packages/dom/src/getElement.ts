@@ -5,7 +5,7 @@ import { Selector } from '@c3/types';
 export const getElement = <T extends HTMLElement = HTMLElement>(el: Selector | T): T => {
   if (isString(el)) {
     const _el = query<T>(el);
-    assert(!!_el, `${el} doesnt exist `);
+    assert(!!_el, `${el} does not exist `);
     return _el;
   }
   return el;
