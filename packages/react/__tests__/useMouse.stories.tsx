@@ -1,5 +1,5 @@
-import useMouse from '../src/useMouse';
 import React from 'react';
+import { useMouse } from '../src';
 
 const UseMouseComponent: React.FC = () => {
   const geo = useMouse();

@@ -9,17 +9,15 @@ export interface ICursorState {
   pageY: number;
 }
 
-const useMouse = () => {
+export const useMouse = () => {
   const [state, setState] = useState<ICursorState>({} as ICursorState);
 
   useEffect(() => {
     return addEventListener(document, 'mousemove', e => {
-      const { screenX, screenY, clientX, clientY, pageX, pageY } =
-        e as MouseEvent;
+      const { screenX, screenY, clientX, clientY, pageX, pageY } = e as MouseEvent;
       setState({ screenX, screenY, clientX, clientY, pageX, pageY });
     });
   }, []);
 
   return state;
 };
-export default useMouse;

@@ -1,12 +1,12 @@
 import { cdbg } from '@c3/dbg';
 import { useEffect, useRef } from 'react';
-import { useComponentName } from './useComponentName';
+import { getComponentName } from '..';
 
 export type IProps = Record<string, unknown>;
 const dbg = cdbg('@useDebug', 'color:red;');
 
 export const useDebug = (props: IProps, component: React.FunctionComponent<any>) => {
-  const componentName = useComponentName(component);
+  const componentName = getComponentName(component);
   const prevProps = useRef<IProps>({});
   useEffect(() => {
     dbg('@useDebug/mounted:', componentName);
