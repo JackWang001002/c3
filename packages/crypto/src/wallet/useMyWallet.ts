@@ -1,4 +1,4 @@
-import { useLatest, useSwitch } from '@c3/hooks';
+import { useLatest, useSwitch } from '@c3/react';
 import { Fn } from '@c3/types';
 import { toHexString, wait, waitFor } from '@c3/utils';
 import { BigNumber, ethers } from 'ethers';

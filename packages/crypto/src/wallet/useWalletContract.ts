@@ -1,4 +1,4 @@
-import { useLatest } from '@c3/hooks';
+import { useLatest } from '@c3/react';
 import { waitFor } from '@c3/utils';
 import { ethers } from 'ethers';
 import { useCallback } from 'react';

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useApi } from './useApi';
-import { useSwitch } from '@c3/hooks';
+import { useSwitch } from '@c3/react';
 import { IAPI, RawReqParameter, RawResBody, ReqParameter } from './makeApi/api';
 import { getTotalPage } from '@c3/utils';
 import { ndbg } from './makeApi/utils';

@@ -39,7 +39,7 @@
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
     "@c3/dbg": "workspace:^1.0.35",
-    "@c3/hooks": "workspace:^1.1.87",
+    "@c3/react": "workspace:^",
     "@c3/types": "workspace:^1.0.12",
     "@c3/utils": "workspace:^1.2.0",
     "@metamask/detect-provider": "^1.2.0",

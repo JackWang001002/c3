@@ -13,4 +13,4 @@ All notable changes to this project will be documented in this file. See [Conven
 - 7d261e6: api opt
 - Updated dependencies [7d261e6]
   - @c3/utils@1.1.4
-  - @c3/hooks@1.1.7
+  - @c3/react@1.1.7

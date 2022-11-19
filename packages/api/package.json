@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@c3/dbg": "workspace:^",
-    "@c3/hooks": "workspace:^",
+    "@c3/react": "workspace:^",
     "@c3/types": "workspace:^",
     "@c3/utils": "workspace:^",
     "msw": "^0.47.4",

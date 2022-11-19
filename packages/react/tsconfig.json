@@ -3,5 +3,5 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src/hooks/index.ts"]
+  "include": ["src/index.ts"]
 }

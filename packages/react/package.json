@@ -1,7 +1,7 @@
 {
   "name": "@c3/react",
   "version": "1.0.1",
-  "description": "c3/hooks",
+  "description": "c3/react",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
   "license": "MIT",
@@ -50,8 +50,7 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "^7.0.2",
-    "@types/js-cookie": "^3.0.2"
+    "@testing-library/react-hooks": "^7.0.2"
   },
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
 }

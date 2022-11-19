@@ -5,7 +5,7 @@ export default getViteConfig([
   'lodash',
   'tslib',
   '@c3/utils',
-  '@c3/hooks',
+  '@c3/react',
   'ethers',
   '@metamask/detect-provider',
 ]);
