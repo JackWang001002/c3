@@ -9,6 +9,7 @@ export * from './useEventListener';
 export * from './useExclusive';
 export * from './useFetch';
 export * from './useForceUpdate';
+export * from './useGId';
 export * from './useHashChange';
 export * from './useHover';
 export * from './useInfiniteScroll';
