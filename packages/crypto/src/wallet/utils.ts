@@ -1,6 +1,6 @@
+import { env } from '@c3/utils';
 import { ethers } from 'ethers';
 import { injectedProviders, WalletName } from './injectedProviders';
-import { env } from '@c3/utils';
 
 export const getWalletName = (provider: ethers.providers.Web3Provider) => {
   const rawProvider = provider?.provider;
@@ -18,7 +18,11 @@ export const getWalletName = (provider: ethers.providers.Web3Provider) => {
 
 export const jump2NativeAppOrDlPage = (name: WalletName = 'metamask') => {
   if (env.mobile) {
-    window.open(injectedProviders[name].getDeeplink(window.location.href), '_blank');
+    const target = injectedProviders[name].getDeeplink(
+      window.location.href.replace(/^https?:\/\//, '')
+    );
+    console.log('jump2to', target);
+    window.open(target, '_blank');
   } else if (!env.mobile && !env.tablet) {
     window.open(injectedProviders[name].pcDownloadUrl, '_blank');
   }
