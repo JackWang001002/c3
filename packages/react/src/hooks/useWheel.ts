@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { Fn } from '@c3/types';
 import { useEventListener } from './useEventListener';
 
-export const useWheel = () => {
-  const [deltaY, setDeltaY] = useState(0);
+export const useWheel = (onUp: Fn, onDown: Fn) => {
   //@ts-ignore
-  useEventListener(window, 'wheel', (e: WheelEvent) => {
-    setDeltaY(e.deltaY);
+  useEventListener(window, 'wheel', async (e: WheelEvent) => {
+    if (e.deltaY > 0) {
+      await onDown(e);
+    }
+    if (e.deltaY < 0) {
+      await onUp(e);
+    }
   });
-
-  return { deltaY, direction: deltaY < 0 ? 'up' : deltaY === 0 ? 'stop' : 'down' } as const;
 };
