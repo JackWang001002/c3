@@ -1,5 +1,5 @@
-import { assert, isEqual, isNullish } from '@c3/utils';
 import { ID, IDable } from '@c3/types';
+import { assert, isEqual, isNullish } from '@c3/utils';
 import { useCallback } from 'react';
 
 type SwitchOnFn = (id: ID) => void;
@@ -10,7 +10,7 @@ export const useExclusive = <T extends IDable>(
   key: keyof T,
   update: (data: T[], prev: T[]) => void
 ): SwitchOnFn => {
-  assert(!isNullish(data), 'invalid args');
+  assert(!isNullish(data), 'data is empty');
   return useCallback(
     (id: ID) => {
       assert(!isNullish(id), `invalide id ${id}`);
