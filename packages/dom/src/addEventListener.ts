@@ -1,15 +1,15 @@
 export function addEventListener(
   target: HTMLElement | Document | Window,
   eventType: string,
-  cb: EventListener,
+  listener: EventListenerOrEventListenerObject,
   option?: boolean | AddEventListenerOptions
 ) {
   if (target.addEventListener) {
-    target.addEventListener(eventType, cb, option);
+    target.addEventListener(eventType, listener, option);
   }
   return () => {
     if (target.removeEventListener) {
-      target.removeEventListener(eventType, cb);
+      target.removeEventListener(eventType, listener);
     }
   };
 }

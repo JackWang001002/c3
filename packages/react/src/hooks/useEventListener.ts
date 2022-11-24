@@ -1,10 +1,10 @@
 import { addEventListener } from '@c3/dom';
-import { MutableRefObject, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export const useEventListener = (
   target: HTMLElement | Window | Document,
   eventName: string,
-  cb: EventListener,
+  cb: EventListenerOrEventListenerObject,
   option?: boolean | AddEventListenerOptions
 ) => {
   useEffect(() => {

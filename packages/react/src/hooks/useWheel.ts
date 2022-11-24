@@ -3,7 +3,8 @@ import { useEventListener } from './useEventListener';
 
 export const useWheel = () => {
   const [deltaY, setDeltaY] = useState(0);
-  useEventListener(window, 'wheel', (e: React.WheelEvent) => {
+  //@ts-ignore
+  useEventListener(window, 'wheel', (e: WheelEvent) => {
     setDeltaY(e.deltaY);
   });
 
