@@ -8,5 +8,5 @@ export const useWheel = () => {
     setDeltaY(e.deltaY);
   });
 
-  return { deltaY, down: deltaY > 0, up: deltaY < 0 } as const;
+  return { deltaY, direction: deltaY < 0 ? 'up' : deltaY === 0 ? 'stop' : 'down' } as const;
 };
