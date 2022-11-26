@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "types": "src/index.ts",

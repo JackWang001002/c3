@@ -4,12 +4,8 @@ export function addEventListener(
   listener: EventListenerOrEventListenerObject,
   option?: boolean | AddEventListenerOptions
 ) {
-  if (target.addEventListener) {
-    target.addEventListener(eventType, listener, option);
-  }
+  target.addEventListener(eventType, listener, option);
   return () => {
-    if (target.removeEventListener) {
-      target.removeEventListener(eventType, listener);
-    }
+    target.removeEventListener(eventType, listener);
   };
 }

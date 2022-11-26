@@ -6,7 +6,7 @@ export type Debug<T> = { [K in keyof T]: T[K] };
 export type IndexedType<T = any> = { [key: string]: T };
 
 // in fact, it is not PlainObject
-export type PlainObject<T = any> = { [key: string]: T };
+export type PlainObject<V = any> = { [key: string]: V };
 
 export type NestedPlainObject<T extends object> = {
   [key in keyof object]: T[key] extends object ? NestedPlainObject<T[key]> : T[key];
@@ -49,5 +49,3 @@ type Includes<T extends readonly any[], U> = T extends [infer F, ...infer rest]
     ? true
     : Includes<rest, U>
   : false;
-
-

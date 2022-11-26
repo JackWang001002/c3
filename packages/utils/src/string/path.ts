@@ -1,4 +1,4 @@
-import { REGEX } from './reg';
+import { REGEX } from './regex';
 export const REG_IS_HTTP_FILE = /^https?:/;
 
 export const getFileName = (path: string) => {

@@ -1,5 +1,6 @@
 import { ID, IDable } from '@c3/types';
-import { assert, isEqual, isNullish } from '@c3/utils';
+import { assert, isNullish } from '@c3/utils';
+import _ from 'lodash';
 import { useCallback } from 'react';
 
 type SwitchOnFn = (id: ID) => void;
@@ -20,7 +21,7 @@ export const useExclusive = <T extends IDable>(
         }
         return { ...e, [key]: false };
       });
-      if (!isEqual(newData, data)) {
+      if (!_.isEqual(newData, data)) {
         update(newData, data);
       }
     },
