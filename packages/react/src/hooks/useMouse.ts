@@ -1,23 +1,8 @@
 import { addEventListener } from '@c3/dom';
-import { useEffect, useState } from 'react';
-export interface ICursorState {
-  screenX: number;
-  screenY: number;
-  clientX: number;
-  clientY: number;
-  pageX: number;
-  pageY: number;
-}
+import { useEffect } from 'react';
 
-export const useMouse = () => {
-  const [state, setState] = useState<ICursorState>({} as ICursorState);
-
+export const useMouse = (listener: EventListenerOrEventListenerObject) => {
   useEffect(() => {
-    return addEventListener(document, 'mousemove', e => {
-      const { screenX, screenY, clientX, clientY, pageX, pageY } = e as MouseEvent;
-      setState({ screenX, screenY, clientX, clientY, pageX, pageY });
-    });
-  }, []);
-
-  return state;
+    return addEventListener(document, 'mousemove', listener);
+  }, [listener]);
 };
