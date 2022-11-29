@@ -11,7 +11,7 @@ export const useExclusive = <T extends IDable>(
   key: keyof T,
   update: (data: T[], prev: T[]) => void
 ): SwitchOnFn => {
-  assert(!isNullish(data), 'data is empty');
+  assert(!isNullish(data), 'data is Nullish');
   return useCallback(
     (id: ID) => {
       assert(!isNullish(id), `invalide id ${id}`);
