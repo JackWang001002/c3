@@ -1,8 +1,7 @@
-import { useLatest, useSwitch } from '@c3/react';
-import { Fn } from '@c3/types';
-import { toHexString, wait, waitFor } from '@c3/utils';
+import { useLatest } from '@c3/react';
+import { toHexString, waitFor } from '@c3/utils';
 import { BigNumber, ethers } from 'ethers';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Chain } from '../network/types';
 import { toHexChain } from '../network/utils';
 import { dbg } from '../utils';
@@ -12,8 +11,8 @@ import {
   injectedProviders,
   WalletName,
 } from './injectedProviders';
-import { useAccount_ } from './useAccount_';
 import { useOnChainChanged } from './onChange';
+import { useAccount_ } from './useAccount_';
 import { getWalletName, jump2NativeAppOrDlPage } from './utils';
 
 //TODO:TS2742

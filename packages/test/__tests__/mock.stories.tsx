@@ -1,4 +1,3 @@
-import React from 'react';
 import { mock } from '../src';
 export default {
   component: <div></div>,
@@ -9,4 +8,8 @@ export const Basic = () => {
 };
 export const Big = () => {
   return <div>{mock.getRandElements({ size: 'big' })}</div>;
+};
+
+export const MockImg = () => {
+  return <div>{mock.getPic()}</div>;
 };

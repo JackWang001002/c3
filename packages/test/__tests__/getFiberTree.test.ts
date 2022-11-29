@@ -1,5 +1,5 @@
-import { getFiberTree, findFiberNode } from './../src/react/getFiberTree';
 import { format as prettyFormat } from 'pretty-format';
+import { findFiberNode, getFiberTree } from '../src/react/getFiberTree';
 const root = {
   type: 'root',
   pendingProps: {},

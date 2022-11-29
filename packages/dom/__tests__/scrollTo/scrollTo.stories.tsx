@@ -1,6 +1,6 @@
 import { Button } from '@unstyled-ui/atomic';
+import { abs } from '@unstyled-ui/css';
 import { Box } from '@unstyled-ui/layout';
-import { abs } from '@unsyled-ui/css';
 
 export default {
   component: <div></div>,

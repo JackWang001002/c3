@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { isOverflow } from '../src/isOverflow';
 export default {
   component: <div></div>,
@@ -6,14 +6,15 @@ export default {
 };
 export const Basic = () => {
   const [_isOverflow, setIsOverflow] = React.useState(false);
-  const ref = useRef<HTMLTextAreaElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  //@ts-ignore
   window.__ref = ref;
   useEffect(() => {
-    setIsOverflow(isOverflow(ref.current));
-  });
+    ref.current && setIsOverflow(isOverflow(ref.current));
+  }, []);
   return (
     <div>
-      <p style={{ width: 40, height: 100 ,border:'1px solid red'}} ref={ref}>
+      <p style={{ width: 40, height: 100, border: '1px solid red' }} ref={ref}>
         hello,world.
       </p>
       isOverflow:{`${_isOverflow}`}
@@ -22,11 +23,12 @@ export const Basic = () => {
 };
 export const BasicX = () => {
   const [_isOverflow, setIsOverflow] = React.useState(false);
-  const ref = useRef<HTMLTextAreaElement | null>(null);
+  const ref = useRef<HTMLParagraphElement>(null);
+  //@ts-ignore
   window.__ref = ref;
   useEffect(() => {
-    setIsOverflow(isOverflow(ref.current));
-  });
+    ref.current && setIsOverflow(isOverflow(ref.current));
+  }, []);
   return (
     <div>
       <p style={{ width: 400, height: 100, border: '1px solid red' }} ref={ref}>

@@ -1,13 +1,21 @@
-import { clamp, rand } from '@c3/utils';
-import { getRandomText, getRandomWord, getRandomWords } from './text';
-import { getRandomUser } from './user';
+import { rand } from '@c3/utils';
 import _ from 'lodash';
 import React from 'react';
+import { getRandomText, getRandomWord, getRandomWords } from './text';
+import { getRandomUser } from './user';
 let gid = 0;
 
+type ImgOptions = {
+  width?: number;
+  height?: number;
+  id?: number;
+};
 export const mock = {
   getRandomPic: (width = 160 * 6, height = 90 * 6) => {
     return `https://picsum.photos/id/${rand(10, 100)}/${width}/${height}.jpg`;
+  },
+  getPic({ id = 28, width = 160, height = 90 } = {}) {
+    return `https://picsum.photos/id/${id}/${width}/${height}.jpg`;
   },
   getRandomText,
   getRandomWord,
