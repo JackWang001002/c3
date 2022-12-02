@@ -17,6 +17,15 @@ export const mock = {
   getPic({ id = 28, width = 160, height = 90 } = {}) {
     return `https://picsum.photos/id/${id}/${width}/${height}.jpg`;
   },
+  getCatPic(width = 160, height = 90) {
+    return `https://picsum.photos/id/${219}/${width}/${height}.jpg`;
+  },
+  getDogPic(width = 160, height = 90) {
+    return `https://picsum.photos/id/${237}/${width}/${height}.jpg`;
+  },
+  getMountainPic(width = 160, height = 90) {
+    return `https://picsum.photos/id/${931}/${width}/${height}.jpg`;
+  },
   getRandomText,
   getRandomWord,
   getRandomWords,
