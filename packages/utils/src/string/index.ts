@@ -5,4 +5,5 @@ export * from './firstUpper';
 export * from './path';
 export * from './regex';
 export * from './reverse';
+export * from './splitMultilineText';
 export * from './toString';
