@@ -1,6 +1,6 @@
 {
   "name": "@c3/react",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "c3/react",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -38,10 +38,10 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/dbg": "workspace:^1.0.35",
-    "@c3/dom": "workspace:^1.1.42",
-    "@c3/types": "workspace:^1.0.12",
-    "@c3/utils": "workspace:^1.2.0",
+    "@c3/dbg": "workspace:^1.0.45",
+    "@c3/dom": "workspace:^1.1.68",
+    "@c3/types": "workspace:^1.0.20",
+    "@c3/utils": "workspace:^1.2.19",
     "dayjs": "^1.11.6",
     "mitt": "^3.0.0"
   },

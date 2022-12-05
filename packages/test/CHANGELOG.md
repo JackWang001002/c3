@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/che3vinci/c3/compare/@c3/test@1.1.87...@c3/test@1.2.0) (2022-12-05)
+
+### Bug Fixes
+
+- patch ([3939f31](https://github.com/che3vinci/c3/commit/3939f315935f83e771baea9974b28b5c16a3de0b))
+
+### Features
+
+- add isOverflow ([b98dc81](https://github.com/che3vinci/c3/commit/b98dc814ac23f92f4c04719331946c1ec3de6f8a))
+- c3 crypto ([4e9e4d6](https://github.com/che3vinci/c3/commit/4e9e4d62ceaf3175224e262c765a44d3a92abec7))
+- c3 crypto ([8ef3725](https://github.com/che3vinci/c3/commit/8ef37258432fedd274a65602911d3b4afff72352))
+- c3 crypto ([9a89e5e](https://github.com/che3vinci/c3/commit/9a89e5ed06e5d5fb11c35e7af391bc04a20dfd4a))
+- vite config ([29dd3d4](https://github.com/che3vinci/c3/commit/29dd3d4ba66cd462b6cb02e389b2b5d25bbad6c2))
+- zkflash gif ([9521f19](https://github.com/che3vinci/c3/commit/9521f1910994df4cf96943f448be336d13d1f1a0))
+
 ## [1.1.87](https://github.com/che3vinci/c3/compare/@c3/test@1.1.86...@c3/test@1.1.87) (2022-10-24)
 
 **Note:** Version bump only for package @c3/test

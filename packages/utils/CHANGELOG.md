@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.19](https://github.com/che3vinci/c3/compare/@c3/utils@1.2.18...@c3/utils@1.2.19) (2022-12-05)
+
+**Note:** Version bump only for package @c3/utils
+
 # [1.2.0](https://github.com/che3vinci/c3/compare/@c3/utils@1.1.88...@c3/utils@1.2.0) (2022-10-24)
 
 ### Features

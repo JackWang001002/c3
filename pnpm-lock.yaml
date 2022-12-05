@@ -369,11 +369,13 @@ importers:
     specifiers:
       '@babel/preset-env': ^7.19.4
       '@babel/preset-typescript': ^7.18.6
-      '@c3/utils': workspace:^1.2.0
+      '@c3/types': workspace:^1.0.20
+      '@c3/utils': workspace:^1.2.19
       rollup: ^2.79.1
     dependencies:
       '@babel/preset-env': 7.19.4_@babel+core@7.19.6
       '@babel/preset-typescript': 7.18.6_@babel+core@7.19.6
+      '@c3/types': link:../types
       '@c3/utils': link:../utils
       rollup: 2.79.1
 

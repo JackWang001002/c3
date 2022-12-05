@@ -11,5 +11,11 @@ export const Big = () => {
 };
 
 export const MockImg = () => {
-  return <div>{mock.getPic()}</div>;
+  return (
+    <div>
+      <img src={mock.getPic()} width="90px" />
+      <img src={mock.getCatPic()} width="90px" />
+      <img src={mock.getDogPic()} width="90px" />
+    </div>
+  );
 };

@@ -1,6 +1,6 @@
 {
   "name": "@c3/test",
-  "version": "1.1.92",
+  "version": "1.2.0",
   "description": "fuck",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -39,7 +39,8 @@
   "dependencies": {
     "@babel/preset-env": "^7.19.4",
     "@babel/preset-typescript": "^7.18.6",
-    "@c3/utils": "workspace:^1.2.0",
+    "@c3/types": "workspace:^1.0.20",
+    "@c3/utils": "workspace:^1.2.19",
     "rollup": "^2.79.1"
   },
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
