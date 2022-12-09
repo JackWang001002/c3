@@ -1,7 +1,6 @@
-import { test, expect } from '@playwright/experimental-ct-react';
-import React, { useState } from 'react';
+import { expect, test } from '@playwright/experimental-ct-react';
 import Case1 from './Case1';
-test('mount ', async ({ page, mount }) => {
+test('should compose data ', async ({ page, mount }) => {
   const component = await mount(<Case1 />);
   // await expect(component.locator('data-test-id=total')).toHaveText('100');
   await expect(component.locator('data-test-id=length')).toHaveText('5');

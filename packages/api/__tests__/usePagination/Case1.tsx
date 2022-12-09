@@ -1,16 +1,37 @@
+import _ from 'lodash';
+import { RawReqParameter } from 'packages/api/src/makeApi/api';
 import React from 'react';
 import { makeApi, usePagination } from '../../src';
-import _ from 'lodash';
-const api = makeApi({
+type User = {
+  id: number;
+  name: string;
+};
+type MyRawResBody = {
+  message: string;
+  data: {
+    users: User[];
+    total: number;
+  };
+  code: number;
+};
+type MyResBody = {
+  list: User[];
+  total: number;
+};
+
+const api = makeApi<RawReqParameter, RawReqParameter, MyRawResBody, MyResBody>({
   method: 'get',
   url: 'http://localhost/api/users',
   genReqParameter: () => ({}), //TODO:
   convert: d => {
-    return d.data;
+    return {
+      list: d.data.users,
+      total: d.data.total,
+    };
   },
   mockData: {
     data: {
-      list: _.times(5, i => ({ id: i, name: `name-${i}` })),
+      users: _.times(5, i => ({ id: i, name: `name-${i}` })),
       total: 100,
     },
     message: 'ok',
@@ -19,12 +40,19 @@ const api = makeApi({
 });
 globalThis.localStorage.setItem('mock', '1');
 
-const Case1: React.FC = props => {
-  const { data, fetchPage } = usePagination(api, { fetchOnMounted: true, pageSize: 4 });
+//=====================================================================================================
+// Case1 component
+//=====================================================================================================
+const Case1: React.FC = () => {
+  const { list, fetchPage } = usePagination(api, {
+    fetchOnMounted: true,
+    defaultReqParameter: { pageNo: 1, pageSize: 5 },
+    pageSize: 5,
+  });
   return (
     <div>
-      <div data-test-id="length">{data.length}</div>
-      <button onClick={fetchPage} data-test-id="click-next-page">
+      <div data-test-id="length">{list.length}</div>
+      <button onClick={() => fetchPage({})} data-test-id="click-next-page">
         fetchNextPage
       </button>
     </div>

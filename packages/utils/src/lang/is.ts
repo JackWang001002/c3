@@ -44,3 +44,5 @@ export const isEmpty = (data: unknown) => {
   }
   return isFalsy(data); //undefined/null is falsy
 };
+
+export const isNumLike = (a: string | number): boolean => !Number.isNaN(+a);

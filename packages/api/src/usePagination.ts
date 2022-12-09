@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useApi } from './useApi';
-import { useSwitch } from '@c3/react';
-import { IAPI, RawReqParameter, RawResBody, ReqParameter } from './makeApi/api';
 import { getTotalPage } from '@c3/utils';
-import { ndbg } from './makeApi/utils';
+import { useCallback, useEffect, useState } from 'react';
+import { IAPI, RawReqParameter, RawResBody, ReqParameter } from './makeApi/api';
+import { useApi } from './useApi';
 
 export type PaginationBody<T> = {
   data: PaginationData<T>;
@@ -51,16 +49,7 @@ export const usePagination = <
 
   const fetchPage = useCallback(
     async (para: _RawReqParameter) => {
-      // if (pageNo > 1 && pageNo > totalPage) {
-      // ndbg(`@network/pagination:${api.url}`, `pageNo:${pageNo}>totalPage:${totalPage}`);
-      // return;
-      // }
-      // on();
-      //@ts-ignore
       await fetch(para);
-
-      // off();
-      // setPageNo(pn => pn + 1);
     },
     [fetch]
   );
@@ -70,7 +59,7 @@ export const usePagination = <
   }, []);
 
   return {
-    data: fetchedData.list,
+    list: fetchedData.list,
     total: fetchedData.total,
     fetchPage,
     updateData: updateFetchedData,

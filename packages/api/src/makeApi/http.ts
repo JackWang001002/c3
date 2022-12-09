@@ -1,3 +1,4 @@
+import { isFunction } from '@c3/utils';
 import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from './api';
 import { methods } from './methods';
 import { patch } from './patch';
@@ -9,7 +10,6 @@ export type HTTP = {
   [key in Method]: (...args: any[]) => Promise<any>;
 };
 const isMockEnv = () => globalThis.localStorage?.getItem?.('mock');
-console.log('is mock env', isMockEnv());
 
 export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
   const proxyHttp = {} as HTTP;
@@ -22,7 +22,8 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
 
         if (isMockEnv()) {
           ndbg(`useMockData/${url}`, thisArg);
-          res = thisArg.mockData;
+          // //TODO:支持函数调用,函数的参数处理
+          res = isFunction(thisArg.mockData) ? thisArg.mockData.call(undefined) : thisArg.mockData;
         } else {
           res = await target.apply(rawHttp, args);
         }
