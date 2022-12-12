@@ -44,12 +44,12 @@ export const mock = {
       ...css,
     };
   },
-  getRandElements: ({ count = 3, wMin = 1, wMax = 5, size = 'normal' } = {}) => {
+  getRandElements: ({ count = 3, wMin = 1, wMax = 5, size = 'normal', text = undefined } = {}) => {
     return _.times(count, i => {
       return React.createElement(
         'div',
         { style: { ...mock.getRandBox({ size }) } },
-        `i-${i} ${mock.getRandomWords(rand(wMin, wMax))}`
+        `i-${i} ${text || mock.getRandomWords(rand(wMin, wMax))}`
       );
     });
   },

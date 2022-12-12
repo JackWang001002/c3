@@ -1,15 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 
-export const useMutationObserver = () => {
-  const ref = useRef<MutationObserver>();
+export const useMutationObserver = <T extends Node>() => {
+  const observerRef = useRef<MutationObserver>();
 
-  const watch = useCallback((target, cb: MutationCallback, options) => {
-    if (ref.current) {
+  const watch = useCallback((target: T, cb: MutationCallback, options?: MutationObserverInit) => {
+    if (observerRef.current) {
       return;
     }
-    ref.current = new MutationObserver(cb);
-    ref.current.observe(target, options);
-    return () => ref.current?.disconnect();
+    observerRef.current = new MutationObserver(cb);
+    observerRef.current.observe(target, options);
+    return () => observerRef.current?.disconnect();
   }, []);
 
   return watch;

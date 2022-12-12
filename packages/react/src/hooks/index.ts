@@ -14,6 +14,7 @@ export * from './useHashChange';
 export * from './useHover';
 export * from './useInfiniteScroll';
 export * from './useIntersectionObserver';
+export * from './useIsOverflow';
 export * from './useIsVisible';
 export * from './useLatest';
 export * from './useLeftTime';

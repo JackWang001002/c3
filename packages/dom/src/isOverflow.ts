@@ -1,7 +1,15 @@
 export const isOverflow = (
   el: HTMLElement,
-  direction: 'horizontal' | 'vertical' = 'horizontal'
+  direction: 'horizontal' | 'vertical' | 'both' = 'horizontal'
 ) => {
   const { clientWidth, scrollWidth, scrollHeight, clientHeight } = el;
-  return direction === 'horizontal' ? scrollWidth > clientWidth : scrollHeight > clientHeight;
+  switch (direction) {
+    case 'horizontal':
+      return scrollWidth > clientWidth;
+    case 'vertical':
+      return scrollHeight > clientHeight;
+    case 'both':
+    default:
+      return scrollWidth > clientWidth || scrollHeight > clientHeight;
+  }
 };
