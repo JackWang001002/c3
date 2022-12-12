@@ -13,7 +13,7 @@ export type PaginationData<T> = {
 export type Option<T extends RawReqParameter> = {
   fetchOnMounted: boolean;
   pageSize: number;
-  id?: string; //name of Id
+  id?: string; //id used to distinguish different data item
   defaultReqParameter: T;
 };
 
@@ -41,6 +41,7 @@ export const usePagination = <
     if (!Array.isArray(bodyOfEachPage.list)) {
       return;
     }
+    //TODO: check if the data is the same as the previous one
     setFetchedData(data => ({
       total: bodyOfEachPage.total,
       list: [...data.list, ...bodyOfEachPage.list],

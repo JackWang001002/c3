@@ -16,7 +16,6 @@ export const useIsOverflow = <T extends HTMLElement>() => {
       _watch(
         el,
         (e: MutationRecord[]) => {
-          console.log('changed', e);
           setIsOverflow(checkIsOverflow(el, direction));
         },
         { attributes: true, childList: true, subtree: true, characterData: true }

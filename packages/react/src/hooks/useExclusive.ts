@@ -5,13 +5,14 @@ import { useCallback } from 'react';
 
 type SwitchOnFn = (id: ID) => void;
 
-//keep only on element is on
+//keep only one element is on
 export const useExclusive = <T extends IDable>(
   data: T[],
   key: keyof T,
   update: (data: T[], prev: T[]) => void
 ): SwitchOnFn => {
   assert(!isNullish(data), 'data is Nullish');
+
   return useCallback(
     (id: ID) => {
       assert(!isNullish(id), `invalide id ${id}`);
