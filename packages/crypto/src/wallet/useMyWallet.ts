@@ -27,7 +27,7 @@ export type WalletType = {
   readonly getNetwork: () => Promise<ethers.providers.Network>;
   readonly getChainId: () => Promise<number>;
   readonly connected: boolean;
-  readonly switchProvider: (walletName: WalletName) => void;
+  readonly switchProvider: (walletName: WalletName) => ethers.providers.Web3Provider;
 };
 
 export const useMyWallet = (initialName: WalletName | undefined): WalletType => {
@@ -106,6 +106,8 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       throw new Error(`${newName} is not installed`);
     }
     const provider = new ethers.providers.Web3Provider(injectedProvider);
+
+    //TODO:useWallet中的wallet什么时候更新了？
     setProvider(provider);
     localStorage.setItem('walletName', newName || '');
 
