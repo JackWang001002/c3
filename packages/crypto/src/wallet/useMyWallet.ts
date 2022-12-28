@@ -122,7 +122,12 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     if (!provider) {
       throw new Error('provider is not ready');
     }
+    //@ts-ignore
+    window.ethereum?.emit('begin-connect-account');
     const r = await provider?.send('eth_requestAccounts', []);
+    //@ts-ignore
+    window.ethereum?.emit('after-connect-account', r[0]);
+
     return r[0];
   }, [provider]);
 
