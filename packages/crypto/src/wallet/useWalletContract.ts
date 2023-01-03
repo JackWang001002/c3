@@ -1,6 +1,4 @@
 import { useLatest } from '@c3/react';
-import { waitFor } from '@c3/utils';
-import { ethers } from 'ethers';
 import { useCallback } from 'react';
 import { useWallet } from '../context/hooks';
 import { WalletContract } from '../context/types';
@@ -10,7 +8,8 @@ import { ID2CHAIN_MAP } from '../network';
 import { getWalletProvider } from './injectedProviders';
 
 export const getRecommendChainId = (cfg: WalletContract) => {
-  if (location.host.match(/^(www|overeality|preview)/)) {
+  //@ts-ignore
+  if (window.__env.PROD) {
     return cfg['mainnetChainId'];
   }
   return cfg['testnetChainId'];
