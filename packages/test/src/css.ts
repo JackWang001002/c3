@@ -1,6 +1,6 @@
 import { Placement } from '@c3/types';
 
-export const showtip = (direction: Placement = 'bottom') => {
+export const showtip = (css = {}, direction: Placement = 'bottom') => {
   let place = {};
   const abXCenter = {
     left: '50%',
@@ -41,7 +41,9 @@ export const showtip = (direction: Placement = 'bottom') => {
       background: 'black',
       color: 'white',
       zIndex: 100,
+      fontSize: 14,
       ...place,
+      ...css,
     },
   };
 };
