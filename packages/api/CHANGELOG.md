@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/che3vinci/c3/compare/@c3/api@1.2.0...@c3/api@1.2.6) (2023-02-13)
+
+### Features
+
+- history ([56dbc5a](https://github.com/che3vinci/c3/commit/56dbc5aeefb5f95cb77be1981e7b8fcfc8bbbd6f))
+
 # [1.2.0](https://github.com/che3vinci/c3/compare/@c3/api@1.1.102...@c3/api@1.2.0) (2022-12-05)
 
 ### Features

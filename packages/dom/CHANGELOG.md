@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/che3vinci/c3/compare/@c3/dom@1.2.0...@c3/dom@1.2.5) (2023-02-13)
+
+### Features
+
+- zkflash gif ([491af5c](https://github.com/che3vinci/c3/commit/491af5c86e204eb64d62d5ff2b509e0b0e6f4484))
+
 # [1.2.0](https://github.com/che3vinci/c3/compare/@c3/dom@1.1.67...@c3/dom@1.2.0) (2022-12-05)
 
 ### Features

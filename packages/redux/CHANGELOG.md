@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/che3vinci/c3/compare/@c3/redux@1.2.0...@c3/redux@1.2.5) (2023-02-13)
+
+**Note:** Version bump only for package @c3/redux
+
 # [1.2.0](https://github.com/che3vinci/c3/compare/@c3/redux@1.1.80...@c3/redux@1.2.0) (2022-12-05)
 
 ### Features

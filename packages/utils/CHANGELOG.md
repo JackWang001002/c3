@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.0...@c3/utils@1.3.5) (2023-02-13)
+
+### Bug Fixes
+
+- history autoconnect ([5c619b0](https://github.com/che3vinci/c3/commit/5c619b0f89fa10bc9318b969c4c5a65589d15d3b))
+
+### Features
+
+- history ([56dbc5a](https://github.com/che3vinci/c3/commit/56dbc5aeefb5f95cb77be1981e7b8fcfc8bbbd6f))
+- zkflash gif ([491af5c](https://github.com/che3vinci/c3/commit/491af5c86e204eb64d62d5ff2b509e0b0e6f4484))
+- zkflash gif ([9e5400e](https://github.com/che3vinci/c3/commit/9e5400ecd4c98a587826d086184150cb65c78038))
+
 # [1.3.0](https://github.com/che3vinci/c3/compare/@c3/utils@1.2.18...@c3/utils@1.3.0) (2022-12-05)
 
 ### Features

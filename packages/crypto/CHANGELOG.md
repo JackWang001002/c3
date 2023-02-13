@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.9](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.0...@c3/crypto@1.2.9) (2023-02-13)
+
+### Bug Fixes
+
+- useConnectWallet ([ea319a3](https://github.com/che3vinci/c3/commit/ea319a3873e95d087526c958047fa73535af319d))
+
+### Features
+
+- event ([01f3668](https://github.com/che3vinci/c3/commit/01f3668fff625848ee475411cc38cf6697648fd3))
+
 # [1.2.0](https://github.com/che3vinci/c3/compare/@c3/crypto@1.1.109...@c3/crypto@1.2.0) (2022-12-05)
 
 ### Features
