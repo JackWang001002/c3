@@ -25,7 +25,7 @@
     "node_modules/@vue/runtime-dom",
     "./__mocks__",
     "**/*.stories.*",
-    "commitlint.config.js",
+    "commitlint.config.cjs",
     "**/node_modules/**",
     "**/dist/**",
     "./jest.config.ts",

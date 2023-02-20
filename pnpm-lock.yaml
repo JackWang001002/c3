@@ -33,7 +33,7 @@ importers:
       '@rollup/plugin-replace': ^5.0.2
       '@rollup/plugin-strip': ^3.0.2
       '@rollup/plugin-typescript': ^8.5.0
-      '@scriptbot/cli': ^1.0.153
+      '@scriptbot/cli': ^1.0.154
       '@stitches/react': ^1.2.8
       '@storybook/addon-actions': ^6.5.13
       '@storybook/addon-essentials': ^6.5.13
@@ -120,7 +120,7 @@ importers:
       '@rollup/plugin-replace': 5.0.2_rollup@2.79.1
       '@rollup/plugin-strip': 3.0.2_rollup@2.79.1
       '@rollup/plugin-typescript': 8.5.0_hafrwlgfjmvsm7253l3bfjzhnq
-      '@scriptbot/cli': 1.0.153
+      '@scriptbot/cli': 1.0.154
       '@stitches/react': 1.2.8_react@18.2.0
       '@storybook/addon-actions': 6.5.13_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-essentials': 6.5.13_d7hsgkjl4qvt5vdalcvsoca3gi
@@ -5441,8 +5441,8 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@scriptbot/cli/1.0.153:
-    resolution: {integrity: sha512-P3B0eJMkc356AIR1XBUZTApMiGy0IsnTWYSSzWGOYS00ZV/w4FY51Yo3sIZiPrAmaZL3Lgv44VZXGGDmDeVRMg==}
+  /@scriptbot/cli/1.0.154:
+    resolution: {integrity: sha512-m46Iw4MFNSp+vvz+QO6r+yAd30Zc7HfR9sR77o+1itGtBlIy8AiCK2/d6pqYbdFyKy8QHVl4Rme1aI5xvLUd5Q==}
     dependencies:
       '@pnpm/sort-packages': 3.0.9
       '@types/mustache': 4.2.1
