@@ -3,8 +3,8 @@ import {
   FormattedTime,
   getLeftTime,
   LEFT_ZERO_TIME,
-} from '@c3/utils';
-import { useEffect, useRef, useState } from 'react';
+} from "@c3/utils";
+import { useEffect, useRef, useState } from "react";
 
 export const useLeftTime = (target: DateType, interval = 1000) => {
   const [leftTime, setLeftTime] = useState<FormattedTime>(LEFT_ZERO_TIME);

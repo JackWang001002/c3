@@ -1,7 +1,7 @@
-import { ID, IDable } from '@c3/types';
-import { assert, isNullish } from '@c3/utils';
-import _ from 'lodash';
-import { useCallback } from 'react';
+import { ID, IDable } from "@c3/types";
+import { assert, isNullish } from "@c3/utils";
+import _ from "lodash";
+import { useCallback } from "react";
 
 type SwitchOnFn = (id: ID) => void;
 
@@ -11,7 +11,7 @@ export const useExclusive = <T extends IDable>(
   key: keyof T,
   update: (data: T[], prev: T[]) => void
 ): SwitchOnFn => {
-  assert(!isNullish(data), 'data is Nullish');
+  assert(!isNullish(data), "data is Nullish");
 
   return useCallback(
     (id: ID) => {

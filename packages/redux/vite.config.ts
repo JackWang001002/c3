@@ -1,3 +1,3 @@
-import { getViteConfig } from '../../scripts/vite.config';
+import { getViteConfig } from "../../scripts/vite.config";
 
-export default getViteConfig(['react', 'tslib', 'react-dom', '@ant-design/icons']);
+export default getViteConfig(["react", "tslib", "react-dom", "@ant-design/icons"]);

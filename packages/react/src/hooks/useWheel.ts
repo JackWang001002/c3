@@ -1,6 +1,6 @@
-import { Fn } from '@c3/types';
-import { useEvent } from './useEvent';
-import { useEventListener } from './useEventListener';
+import { Fn } from "@c3/types";
+import { useEvent } from "./useEvent";
+import { useEventListener } from "./useEventListener";
 
 export const useWheel = (onUp: Fn, onDown: Fn) => {
   const onWheel = useEvent(async (event: WheelEvent) => {
@@ -10,5 +10,5 @@ export const useWheel = (onUp: Fn, onDown: Fn) => {
       await onUp(event);
     }
   });
-  useEventListener(window, 'wheel', onWheel);
+  useEventListener(window, "wheel", onWheel);
 };

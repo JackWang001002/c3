@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const isClassComponent = (C: React.ComponentType): C is React.ComponentClass =>
   !!C.prototype?.render;
@@ -10,5 +10,5 @@ export const getComponentName = (comp: React.ComponentType) => {
   if (isClassComponent(comp)) {
     return comp.prototype.constructor.name;
   }
-  return comp.name || 'Component';
+  return comp.name || "Component";
 };

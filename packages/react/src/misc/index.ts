@@ -1,3 +1,3 @@
-export * from './fiber';
-export * from './getComponentName';
-export * from './render';
+export * from "./fiber";
+export * from "./getComponentName";
+export * from "./render";

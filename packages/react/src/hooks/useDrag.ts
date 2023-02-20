@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { useSwitch } from './useSwitch';
+import { useCallback } from "react";
+import { useSwitch } from "./useSwitch";
 export const useDrag = (drag: (e: React.MouseEvent) => void) => {
   const [dragging, on, off] = useSwitch();
   const onMouseDown = useCallback(() => {

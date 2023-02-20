@@ -1,24 +1,24 @@
 export type ID = string | number;
-export type Direction = 'left' | 'right' | 'top' | 'bottom';
-export type HVDirection = 'horizontal' | 'vertical';
+export type Direction = "left" | "right" | "top" | "bottom";
+export type HVDirection = "horizontal" | "vertical";
 export type Selector = string;
 export type Placement =
-  | 'top'
-  | 'topLeft'
-  | 'topRight'
-  | 'right'
-  | 'rightTop'
-  | 'rightBottom'
-  | 'bottom'
-  | 'bottomLeft'
-  | 'bottomRight'
-  | 'left'
-  | 'leftTop'
-  | 'leftBottom'
-  | 'center';
+  | "top"
+  | "topLeft"
+  | "topRight"
+  | "right"
+  | "rightTop"
+  | "rightBottom"
+  | "bottom"
+  | "bottomLeft"
+  | "bottomRight"
+  | "left"
+  | "leftTop"
+  | "leftBottom"
+  | "center";
 
 export type URL = string;
-export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
+export type Plateform = "mobile" | "pc" | "both" | "none";
 
 export type IDable = { id: ID };
 export type Keyable = { key: string | number };

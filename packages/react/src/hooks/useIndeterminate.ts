@@ -1,5 +1,5 @@
-import { ID, IDable } from '@c3/types';
-import { useCallback, useState } from 'react';
+import { ID, IDable } from "@c3/types";
+import { useCallback, useState } from "react";
 
 //allSelected
 export const useIndeterminate = <T extends IDable>(

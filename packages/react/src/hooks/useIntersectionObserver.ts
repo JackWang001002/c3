@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useIntersectionObserver = <T extends HTMLElement>() => {
   const observerRef = useRef<IntersectionObserver>();

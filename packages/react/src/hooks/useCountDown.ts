@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useSwitch } from '.';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useSwitch } from ".";
 
 export const useCountDown = (
   count: number, // in second

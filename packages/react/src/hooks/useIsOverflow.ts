@@ -1,6 +1,6 @@
-import { isOverflow as checkIsOverflow } from '@c3/dom';
-import { useCallback, useState } from 'react';
-import { useMutationObserver } from './useMutationObserver';
+import { isOverflow as checkIsOverflow } from "@c3/dom";
+import { useCallback, useState } from "react";
+import { useMutationObserver } from "./useMutationObserver";
 
 export const useIsOverflow = <T extends HTMLElement>() => {
   const [isOverflow, setIsOverflow] = useState(false);
@@ -8,7 +8,7 @@ export const useIsOverflow = <T extends HTMLElement>() => {
   const _watch = useMutationObserver();
 
   const watch = useCallback(
-    (el: T, direction: 'both' | 'vertical' | 'horizontal' = 'both') => {
+    (el: T, direction: "both" | "vertical" | "horizontal" = "both") => {
       //check initial state
       setIsOverflow(checkIsOverflow(el, direction));
 

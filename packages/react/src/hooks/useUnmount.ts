@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useLatest } from './useLatest';
+import { useEffect } from "react";
+import { useLatest } from "./useLatest";
 
 //TODO: write unit case to test closure problem(,NOT using `useLatest`)
 export const useUnmount = (fn: () => void) => {

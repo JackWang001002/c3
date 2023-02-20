@@ -1,6 +1,6 @@
-import dayjs from 'dayjs';
-import { DateType, FormattedTime, Second } from '.';
-import { parseMs } from './parseMs';
+import dayjs from "dayjs";
+import { DateType, FormattedTime, Second } from ".";
+import { parseMs } from "./parseMs";
 
 export const LEFT_ZERO_TIME: FormattedTime = {
   days: 0,

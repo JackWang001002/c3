@@ -1,6 +1,6 @@
-import { Fn } from '@c3/types';
-import { useCallback, useLayoutEffect, useRef } from 'react';
-import { useSwitch } from './useSwitch';
+import { Fn } from "@c3/types";
+import { useCallback, useLayoutEffect, useRef } from "react";
+import { useSwitch } from "./useSwitch";
 
 export const useNextTick = () => {
   const [runnable, on, off] = useSwitch(true);

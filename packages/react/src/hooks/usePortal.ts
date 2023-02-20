@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
 export const usePortal = (popWnd: React.ReactNode) => {
   const [portal, setPortal] = useState<React.ReactPortal>();

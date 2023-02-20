@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
-import { useIntersectionObserver } from './useIntersectionObserver';
+import { useCallback, useState } from "react";
+import { useIntersectionObserver } from "./useIntersectionObserver";
 
 /**
  * @return {boolean} Whether the element is visible in the root.

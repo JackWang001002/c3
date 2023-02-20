@@ -1,6 +1,6 @@
-import { getTarget, isTouchBottom } from '@c3/dom';
-import { useCallback, useRef } from 'react';
-import { useSwitch } from './useSwitch';
+import { getTarget, isTouchBottom } from "@c3/dom";
+import { useCallback, useRef } from "react";
+import { useSwitch } from "./useSwitch";
 
 export const useInfiniteScroll = <T>(
   data: T[],
@@ -27,8 +27,8 @@ export const useInfiniteScroll = <T>(
         const newData = await load(pageNoRef.current);
         pageNoRef.current++;
         off();
-        console.log('newData=', newData);
-        console.log('data=', data);
+        console.log("newData=", newData);
+        console.log("data=", data);
         updateList([...data, ...newData]);
       }
     },

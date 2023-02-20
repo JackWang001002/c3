@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef } from "react";
 
 export const useMutationObserver = <T extends Node>() => {
   const observerRef = useRef<MutationObserver>();

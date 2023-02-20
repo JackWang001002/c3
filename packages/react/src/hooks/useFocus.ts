@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { useSwitch } from './useSwitch';
+import { useCallback } from "react";
+import { useSwitch } from "./useSwitch";
 
 type Option = {
   onFocus: (e: React.FocusEvent<HTMLElement>) => void;

@@ -1,4 +1,4 @@
-import { Fn } from '@c3/types';
+import { Fn } from "@c3/types";
 /**
  *
  * @param root : FiberNode,eg.root._internalRoot
@@ -10,7 +10,7 @@ export const getFiberTree = (root: any) => {
     pendingProps: root.pendingProps,
     _children: [] as any[],
     tag: root.tag,
-    name: root?.type?.displayName || root.type?.name || root.type?.['$$typeof'] || root.type,
+    name: root?.type?.displayName || root.type?.name || root.type?.["$$typeof"] || root.type,
     origin: root,
   };
 

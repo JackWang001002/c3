@@ -1,7 +1,7 @@
-import { Fn } from '@c3/types';
-import { useCallback, useEffect, useRef } from 'react';
-import { useLatest } from './useLatest';
-import { useSwitch } from './useSwitch';
+import { Fn } from "@c3/types";
+import { useCallback, useEffect, useRef } from "react";
+import { useLatest } from "./useLatest";
+import { useSwitch } from "./useSwitch";
 
 /**
  * const useXXX =()=>{

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
 type Fn = () => void;
 export function useSwitch(initialValue = false): [boolean, Fn, Fn] {

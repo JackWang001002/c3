@@ -1,6 +1,6 @@
-import type { History, Transition } from 'history';
-import React, { useEffect, useRef } from 'react';
-import { UNSAFE_NavigationContext as NavigationContext } from 'react-router-dom';
+import type { History, Transition } from "history";
+import React, { useEffect, useRef } from "react";
+import { UNSAFE_NavigationContext as NavigationContext } from "react-router-dom";
 
 export function useBlocker(cb: (tx: Transition) => boolean) {
   const { navigator } = React.useContext(NavigationContext) as unknown as { navigator: History };
@@ -20,7 +20,7 @@ export function useBlocker(cb: (tx: Transition) => boolean) {
 
 
   useEffect(() => {
-    window.addEventListener('beforeunload', () => {
+    window.addEventListener("beforeunload", () => {
       unblockRef.current && unblockRef.current();
     });
   }, []);

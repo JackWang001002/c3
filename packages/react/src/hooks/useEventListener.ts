@@ -1,5 +1,5 @@
-import { addEventListener } from '@c3/dom';
-import { useEffect } from 'react';
+import { addEventListener } from "@c3/dom";
+import { useEffect } from "react";
 
 export const useEventListener = (
   target: HTMLElement | Window | Document,

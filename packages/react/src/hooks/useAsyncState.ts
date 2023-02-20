@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
 export type GetDataFn<T> = (...args: any[]) => Promise<T>;
 

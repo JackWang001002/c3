@@ -1,5 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
-import { useSwitch } from './useSwitch';
+import { useCallback, useRef, useState } from "react";
+import { useSwitch } from "./useSwitch";
 
 export type FetchFn<P> = (...args: any[]) => Promise<P>;
 
@@ -9,7 +9,7 @@ export const useFetch = <T>(
   option?: { msg?: string; debounce?: number; cache?: boolean }
 ) => {
   const [data, setData] = useState(initialValue);
-  const [msg, setMsg] = useState(option?.msg || 'ok');
+  const [msg, setMsg] = useState(option?.msg || "ok");
   const [loading, on, off] = useSwitch(false);
   const cancelRef = useRef(false);
   const wFetch = useCallback(
@@ -29,7 +29,7 @@ export const useFetch = <T>(
         off();
         return res;
       } catch (e) {
-        setMsg((e as Error).message || 'network error');
+        setMsg((e as Error).message || "network error");
         off();
         throw e;
       }

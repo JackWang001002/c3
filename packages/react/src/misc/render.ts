@@ -1,7 +1,7 @@
-import { getElement } from '@c3/dom';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createRoot } from 'react-dom/client';
+import { getElement } from "@c3/dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 /**
  * have no container element.
@@ -10,7 +10,7 @@ import { createRoot } from 'react-dom/client';
  */
 export const renderPortalToBody = (reactElement: React.ReactElement) => {
   const portal = ReactDOM.createPortal(reactElement, document.body);
-  const root = createRoot(document.createElement('div'));
+  const root = createRoot(document.createElement("div"));
   root.render(portal);
   return () => {
     root.unmount();
@@ -29,7 +29,7 @@ export const renderElement = (
   };
 };
 export const renderToBody = (reactElement: React.ReactElement) => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   document.body.appendChild(container);
   const root = createRoot(container);
   root.render(reactElement);

@@ -1,4 +1,4 @@
-export const isEnableDbg = globalThis.localStorage?.getItem('dbg');
+export const isEnableDbg = globalThis.localStorage?.getItem("dbg");
 
 export function dbg(...args: unknown[]) {
   if (isEnableDbg) {
