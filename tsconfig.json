@@ -5,7 +5,7 @@
     "target": "es6",
     "module": "esnext",
     "jsx": "react",
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "react", "react-dom"],
     "esModuleInterop": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,

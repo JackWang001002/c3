@@ -43,6 +43,7 @@
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
     "@scriptbot/cli": "^1.0.153",
+    "@stitches/react": "^1.2.8",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
