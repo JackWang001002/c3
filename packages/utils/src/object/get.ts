@@ -1,5 +1,5 @@
-import { GetValue, PlainObject } from '@c3/types';
-import { assert } from '../assert';
+import { PlainObject } from "@c3/types";
+import { assert } from "../assert";
 
 /**
  * get value from object by path
@@ -9,7 +9,7 @@ import { assert } from '../assert';
  */
 
 export const get = <T extends PlainObject>(obj: T, path: string) => {
-  const segs = path.split('.');
+  const segs = path.split(".");
   let res = obj;
   for (const seg of segs) {
     res = res[seg];
@@ -20,12 +20,8 @@ export const get = <T extends PlainObject>(obj: T, path: string) => {
 /*
  * set value to object by path
  * */
-export const set = <T extends PlainObject, K = GetValue<T>>(
-  obj: T,
-  path: string,
-  value: K
-): void => {
-  const segments = path.split('.');
+export const set = <T extends PlainObject, K>(obj: T, path: string, value: K): void => {
+  const segments = path.split(".");
 
   const nthSegments = segments.slice(0, -1);
   let innerObject = obj;
@@ -45,6 +41,6 @@ export const set = <T extends PlainObject, K = GetValue<T>>(
  * @returns
  */
 
-export const getKeyByValue = <T extends PlainObject, V = GetValue<T>>(object: T, value: V) => {
+export const getKeyByValue = <T extends PlainObject, V>(object: T, value: V) => {
   return Object.keys(object).find(key => object[key] === value);
 };

@@ -5,7 +5,7 @@
     "node": ">=16",
     "pnpm": ">=3"
   },
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@c3/dbg": "workspace:^1.0.44",
     "@c3/types": "workspace:^1.0.11",
@@ -40,7 +40,12 @@
     "@changesets/cli": "^2.25.0",
     "@jest/types": "^28.1.3",
     "@pnpm/sort-packages": "^3.0.9",
+    "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-strip": "^3.0.2",
     "@rollup/plugin-typescript": "^8.5.0",
     "@scriptbot/cli": "^1.0.153",
     "@stitches/react": "^1.2.8",
@@ -102,7 +107,6 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "organize-imports-cli",
       "prettier --write",
       "eslint --cache --fix"
     ],

@@ -22,7 +22,7 @@ export type Plateform = "mobile" | "pc" | "both" | "none";
 
 export type IDable = { id: ID };
 export type Keyable = { key: string | number };
-export type Fn = (...args: unknown[]) => unknown;
+export type Fn = (...args: any[]) => any;
 
 export type PercentString = `${string | number}%`;
 

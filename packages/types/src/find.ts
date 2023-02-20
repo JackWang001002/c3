@@ -11,7 +11,9 @@ export type Find<K extends keyof IndexedType, V, Tuple extends IndexedType[]> = 
   infer First,
   ...infer rest
 ]
-  ? Equal<First[K], V> extends true
+  ? //@ts-ignore
+    Equal<First[K], V> extends true
     ? First
-    : Find<K, V, rest>
+    : //@ts-ignore
+      Find<K, V, rest>
   : never;

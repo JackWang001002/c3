@@ -13,7 +13,7 @@
   "scripts": {
     "test": "jest",
     "watch": "npx vite build --watch",
-    "build": "npx vite build && pnpm type",
+    "build": "rollup -c && pnpm type",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
     "watchtype": "tsc --project . --watch",
@@ -27,8 +27,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/index.umd.js",
-    "module": "dist/index.es.js",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
     "types": "dist/index.d.ts"
   },
   "repository": {
@@ -64,5 +64,6 @@
     "lodash": "^4.17.21",
     "tslib": "^2.4.0",
     "vite": "^2.9.15"
-  }
+  },
+  "type": "module"
 }

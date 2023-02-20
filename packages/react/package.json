@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/index.umd.js",
-    "module": "dist/index.es.js",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
     "types": "dist/index.d.ts"
   },
   "repository": {
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration",
-    "build": "vite build && pnpm type ",
+    "build": "rollup -c && pnpm type",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
     "watchtype": "tsc --project . --watch",
@@ -52,5 +52,6 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2"
   },
-  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
+  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
+  "type": "module"
 }

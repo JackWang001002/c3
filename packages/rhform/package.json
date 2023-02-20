@@ -2,10 +2,14 @@
   "name": "@c3/rhform",
   "version": "1.1.0",
   "description": "awesesome",
-  "type": "commonjs",
-  "scripts": {},
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c && pnpm type"
+  },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "module": "dist/index.js",
+    "main": "dist/index.js"
   },
   "exports": {
     ".": {

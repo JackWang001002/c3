@@ -29,5 +29,6 @@
   "dependencies": {
     "@type-challenges/utils": "^0.1.1"
   },
-  "module": "src/index.ts"
+  "module": "src/index.ts",
+  "type": "module"
 }

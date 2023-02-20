@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/index.umd.js",
-    "module": "dist/index.es.js",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
     "types": "dist/index.d.ts"
   },
   "repository": {
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "watchtype": "tsc --project . --watch",
-    "build": "vite build  && pnpm type && cp -rf src/metamask/extension dist/extension",
+    "build": "rollup -c && pnpm type",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration"
@@ -46,5 +46,6 @@
     "@playwright/test": "^1.25.1",
     "playwright": "^1.25.1"
   },
-  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
+  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
+  "type": "module"
 }

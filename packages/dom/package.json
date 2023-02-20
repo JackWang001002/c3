@@ -17,8 +17,8 @@
   ],
   "publishConfig": {
     "access": "public",
-    "main": "dist/index.umd.js",
-    "module": "dist/index.es.js",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
     "types": "dist/index.d.ts"
   },
   "repository": {
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "test:jest": "jest",
-    "build": "vite build && pnpm type ",
+    "build": "rollup -c && pnpm type",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration",
@@ -41,5 +41,6 @@
     "@c3/dbg": "workspace:^1.1.0",
     "@c3/utils": "workspace:^1.3.6"
   },
-  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb"
+  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
+  "type": "module"
 }

@@ -18,15 +18,15 @@
   "publishConfig": {
     "access": "public",
     "types": "dist/index.d.ts",
-    "main": "dist/index.umd.js",
-    "module": "dist/index.es.js"
+    "main": "dist/index.js",
+    "module": "dist/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/che3vinci/c3.git"
   },
   "scripts": {
-    "build": "vite build && pnpm type ",
+    "build": "rollup -c && pnpm type",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration ",
@@ -63,5 +63,6 @@
     "msw": "^0.47.4",
     "qs": "^6.11.0",
     "vitest": "^0.22.1"
-  }
+  },
+  "type": "module"
 }
