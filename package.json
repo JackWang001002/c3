@@ -91,6 +91,7 @@
     "prepare": "husky install",
     "ci:version": "zx scripts/publish.mjs version ",
     "ci:publish": "zx scripts/publish.mjs publish",
+    "release": "lerna  version patch --conventional-commits -y && pnpm -r publish",
     "clean": "rm -rf dist && rm -rf node_modules",
     "clean:pw": "rm -rf playwright_/.cache ",
     "reset": "pnpm clean && pnpm install",

@@ -17,13 +17,12 @@ export type Placement =
   | 'leftBottom'
   | 'center';
 
-
 export type URL = string;
 export type Plateform = 'mobile' | 'pc' | 'both' | 'none';
 
 export type IDable = { id: ID };
 export type Keyable = { key: string | number };
-export type Fn<T = any> = (...args: any[]) => T;
+export type Fn = (...args: unknown[]) => unknown;
 
 export type PercentString = `${string | number}%`;
 
