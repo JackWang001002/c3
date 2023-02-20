@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { run } from "@c3/cli";
+import { run } from "@scriptbot/cli";
 import { $ } from "zx";
 
 run({
