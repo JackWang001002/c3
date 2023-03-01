@@ -1,6 +1,6 @@
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import { DateType, readableTimeFormat } from './type';
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import { DateType, readableTimeFormat } from "./type";
 
 dayjs.extend(utc);
 

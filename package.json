@@ -47,7 +47,7 @@
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-strip": "^3.0.2",
     "@rollup/plugin-typescript": "^8.5.0",
-    "@scriptbot/cli": "^1.0.154",
+    "@scriptbot/cli": "^1.0.155",
     "@stitches/react": "^1.2.8",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
