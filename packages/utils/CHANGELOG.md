@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.7](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.6...@c3/utils@1.3.7) (2023-03-01)
+
+### Bug Fixes
+
+- fix ([4fb7ad9](https://github.com/che3vinci/c3/commit/4fb7ad97fb60c417f543d7d5435827cc66c12c2d))
+- lodash commonjs ([9157422](https://github.com/che3vinci/c3/commit/9157422a4a783a0d97a546a61c841aac7f43d4f0))
+- lodash commonjs ([2a1a795](https://github.com/che3vinci/c3/commit/2a1a795bd4b83022369ac42d64fd07805eac6f79))
+- remove placement ([37aa795](https://github.com/che3vinci/c3/commit/37aa795c00da2d4db23a351b40fe3fd0048b15e7))
+
+### Features
+
+- dobule quote ([aff15da](https://github.com/che3vinci/c3/commit/aff15dae3f43ca86185abd8ec257aef68cf8d41b))
+- tsconfig ([aea1ccc](https://github.com/che3vinci/c3/commit/aea1ccc7d62652a10355425b024c4953ece0a95a))
+
 ## [1.3.6](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.5...@c3/utils@1.3.6) (2023-02-13)
 
 **Note:** Version bump only for package @c3/utils

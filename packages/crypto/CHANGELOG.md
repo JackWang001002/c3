@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.11](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.10...@c3/crypto@1.2.11) (2023-03-01)
+
+### Bug Fixes
+
+- fix ([4fb7ad9](https://github.com/che3vinci/c3/commit/4fb7ad97fb60c417f543d7d5435827cc66c12c2d))
+
+### Features
+
+- tsconfig ([aea1ccc](https://github.com/che3vinci/c3/commit/aea1ccc7d62652a10355425b024c4953ece0a95a))
+
 ## [1.2.10](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.9...@c3/crypto@1.2.10) (2023-02-13)
 
 **Note:** Version bump only for package @c3/crypto

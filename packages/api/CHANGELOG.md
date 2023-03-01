@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.8](https://github.com/che3vinci/c3/compare/@c3/api@1.2.7...@c3/api@1.2.8) (2023-03-01)
+
+### Bug Fixes
+
+- lodash commonjs ([9157422](https://github.com/che3vinci/c3/commit/9157422a4a783a0d97a546a61c841aac7f43d4f0))
+
+### Features
+
+- tsconfig ([aea1ccc](https://github.com/che3vinci/c3/commit/aea1ccc7d62652a10355425b024c4953ece0a95a))
+
 ## [1.2.7](https://github.com/che3vinci/c3/compare/@c3/api@1.2.6...@c3/api@1.2.7) (2023-02-13)
 
 **Note:** Version bump only for package @c3/api

@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.7](https://github.com/che3vinci/c3/compare/@c3/test@1.3.5...@c3/test@1.3.7) (2023-03-01)
+
+### Bug Fixes
+
+- fix ([4fb7ad9](https://github.com/che3vinci/c3/commit/4fb7ad97fb60c417f543d7d5435827cc66c12c2d))
+- remove placement ([820d4c0](https://github.com/che3vinci/c3/commit/820d4c05c5858ac4da4150721afb42b016d46323))
+
+### Features
+
+- dobule quote ([aff15da](https://github.com/che3vinci/c3/commit/aff15dae3f43ca86185abd8ec257aef68cf8d41b))
+- tsconfig ([aea1ccc](https://github.com/che3vinci/c3/commit/aea1ccc7d62652a10355425b024c4953ece0a95a))
+- tsconfig ([83442a0](https://github.com/che3vinci/c3/commit/83442a034df288475293802f6f82ed809f568897))
+
 ## [1.3.5](https://github.com/che3vinci/c3/compare/@c3/test@1.3.4...@c3/test@1.3.5) (2023-02-13)
 
 **Note:** Version bump only for package @c3/test

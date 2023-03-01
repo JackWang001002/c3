@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.7](https://github.com/che3vinci/c3/compare/@c3/dom@1.2.6...@c3/dom@1.2.7) (2023-03-01)
+
+### Features
+
+- dobule quote ([aff15da](https://github.com/che3vinci/c3/commit/aff15dae3f43ca86185abd8ec257aef68cf8d41b))
+- tsconfig ([aea1ccc](https://github.com/che3vinci/c3/commit/aea1ccc7d62652a10355425b024c4953ece0a95a))
+
 ## [1.2.6](https://github.com/che3vinci/c3/compare/@c3/dom@1.2.5...@c3/dom@1.2.6) (2023-02-13)
 
 **Note:** Version bump only for package @c3/dom
