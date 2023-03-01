@@ -5,6 +5,19 @@
     "node": ">=16",
     "pnpm": ">=3"
   },
+  "scripts": {
+    "build-storybook": "build-storybook",
+    "prepare": "husky install",
+    "ci:version": "zx scripts/publish.mjs version ",
+    "ci:publish": "zx scripts/publish.mjs publish",
+    "clean": "rm -rf dist && rm -rf node_modules",
+    "clean:pw": "rm -rf playwright_/.cache ",
+    "reset": "pnpm clean && pnpm install",
+    "storybook": "start-storybook -p 6007",
+    "release": "./scripts/cli.mjs release",
+    "test": "jest",
+    "test:pw:ct": "playwright test -c playwright-ct.config.ts"
+  },
   "type": "module",
   "dependencies": {
     "@c3/dbg": "workspace:^1.0.44",
@@ -91,19 +104,6 @@
     "typescript": "^4.8.4",
     "vite": "^2.9.15",
     "zx": "^7.1.1"
-  },
-  "scripts": {
-    "build-storybook": "build-storybook",
-    "prepare": "husky install",
-    "ci:version": "zx scripts/publish.mjs version ",
-    "ci:publish": "zx scripts/publish.mjs publish",
-    "clean": "rm -rf dist && rm -rf node_modules",
-    "clean:pw": "rm -rf playwright_/.cache ",
-    "reset": "pnpm clean && pnpm install",
-    "storybook": "start-storybook -p 6007",
-    "release": "./scripts/cli.mjs release",
-    "test": "jest",
-    "test:pw:ct": "playwright test -c playwright-ct.config.ts"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
