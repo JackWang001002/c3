@@ -6,16 +6,16 @@ import {
   isNumber,
   isObject,
   isString,
-} from '@c3/utils';
-import { PlainObject,IndexedType } from '@c3/types';
+} from "@c3/utils";
+import { PlainObject,IndexedType } from "@c3/types";
 
-import { cloneDeep, isPlainObject } from 'lodash';
+import _ from "lodash";
 
 const patchEmptyObject = (refObj: IndexedType) => {
-  assert(isObject(refObj), 'refObj is not object');
+  assert(isObject(refObj), "refObj is not object");
   const res: IndexedType = {};
   for (const [key, value] of entries(refObj)) {
-    if (isPlainObject(value)) {
+    if (_.isPlainObject(value)) {
       res[key] = patchEmptyObject(value);
     } else {
       res[key] = getPatch(undefined, value);
@@ -25,10 +25,10 @@ const patchEmptyObject = (refObj: IndexedType) => {
 };
 
 const getPatch = (target: null | undefined, ref: any) => {
-  assert(isNullish(target), 'target isnot nullish ');
+  assert(isNullish(target), "target isnot nullish ");
 
   if (isString(ref)) {
-    return '';
+    return "";
   }
   if (isNumber(ref)) {
     return Number.NaN; // NaN is better than 0
@@ -39,11 +39,11 @@ const getPatch = (target: null | undefined, ref: any) => {
   if (isObject(ref)) {
     return patchEmptyObject(ref);
   }
-  return '';
+  return "";
 };
 
 const innerPatch = (target: IndexedType, refObj: IndexedType) => {
-  if (isPlainObject(refObj) && isPlainObject(target)) {
+  if (_.isPlainObject(refObj) && _.isPlainObject(target)) {
     for (const [key, value] of entries(refObj)) {
       const targetValue = target[key];
       if (!isNullish(value) && isNullish(targetValue)) {
@@ -70,6 +70,6 @@ const innerPatch = (target: IndexedType, refObj: IndexedType) => {
 };
 
 export const patch = (origin: IndexedType, refObj: PlainObject): IndexedType => {
-  const ret = cloneDeep(origin);
+  const ret = _.cloneDeep(origin);
   return innerPatch(ret, refObj);
 };

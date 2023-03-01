@@ -1,3 +1,3 @@
-import { random } from 'lodash';
+import _ from "lodash";
 
-export const rand = random;
+export const rand = _.random;

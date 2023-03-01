@@ -1,4 +1,4 @@
-import { random } from 'lodash';
+import _ from "lodash";
 
 export type IRGBA = {
   red: number;
@@ -93,14 +93,14 @@ export class Color {
       color.a < 0 ||
       color.a > 1
     ) {
-      throw new Error('color is wrong');
+      throw new Error("color is wrong");
     }
     return new Color(color.h, color.s, color.l, color.a);
   }
 
   public static makeFromRGBA(...args: number[]): Color {
     if (args.length !== 3 && args.length !== 4) {
-      throw new Error('invalid arguments');
+      throw new Error("invalid arguments");
     }
 
     const rgba: IRGBA = {
@@ -119,7 +119,7 @@ export class Color {
       rgba.alpha < 0 ||
       rgba.alpha > 1
     ) {
-      throw new Error('color is wrong');
+      throw new Error("color is wrong");
     }
 
     // define h,s,l
@@ -175,11 +175,11 @@ export class Color {
   }
 
   public static randColor(sat = 0.5, l = 0.5): Color {
-    return new Color(random(0, 360), sat, l, 1);
+    return new Color(_.random(0, 360), sat, l, 1);
   }
 
   public static randLightColor(sat = 0.7, l = 0.8): Color {
-    return new Color(random(0, 360), sat, l, 0.9);
+    return new Color(_.random(0, 360), sat, l, 0.9);
   }
 
   public isWhite() {
@@ -188,7 +188,7 @@ export class Color {
 
   public lighten(step = 0): Color {
     if (step > 1 || step < 0) {
-      throw new Error('arguments error. step should be  in 0-1');
+      throw new Error("arguments error. step should be  in 0-1");
     }
     const color = this.clone();
     const lightness = this.lightness + step;
@@ -198,7 +198,7 @@ export class Color {
 
   public darken(step: number) {
     if (step > 1 || step < 0) {
-      throw new Error('arguments error. step should be  in 0-1');
+      throw new Error("arguments error. step should be  in 0-1");
     }
     const color = this.clone();
     const lightness = this.lightness - step;
@@ -208,7 +208,7 @@ export class Color {
 
   public setHue(hue: number) {
     if (!this.checkHue()) {
-      throw new Error('invalid arguments');
+      throw new Error("invalid arguments");
     }
     this.hue = hue;
     return this;
@@ -216,7 +216,7 @@ export class Color {
 
   public setSaturation(s: number): Color {
     if (!this.checkSaturation()) {
-      throw new Error('invalid arguments');
+      throw new Error("invalid arguments");
     }
     this.saturation = s;
     return this;
@@ -224,7 +224,7 @@ export class Color {
 
   public setLightness(l: number): Color {
     if (!this.checkLightness()) {
-      throw new Error('invalid arguments');
+      throw new Error("invalid arguments");
     }
     this.lightness = l;
     return this;
@@ -232,7 +232,7 @@ export class Color {
 
   public setAlpha(alpha: number): Color {
     if (!this.checkAlpha()) {
-      throw new Error('invalid arguments');
+      throw new Error("invalid arguments");
     }
     this.alpha = alpha;
     return this;
@@ -240,7 +240,7 @@ export class Color {
 
   public saturate(step: number) {
     if (step > 1 || step < 0) {
-      throw new Error('arguments error. step should be  in 0-1');
+      throw new Error("arguments error. step should be  in 0-1");
     }
     const color = this.clone();
     const saturation = this.saturation + step;
@@ -250,7 +250,7 @@ export class Color {
 
   public desaturate(step: number): Color {
     if (step > 1 || step < 0) {
-      throw new Error('arguments error. step should be  in 0-1');
+      throw new Error("arguments error. step should be  in 0-1");
     }
     const color = this.clone();
     const saturation = this.saturation - step;
@@ -261,7 +261,7 @@ export class Color {
   // 变淡（透明度)
   public fade(step: number) {
     if (step > 1 || step < 0) {
-      throw new Error('arguments error. step should be  in 0-1');
+      throw new Error("arguments error. step should be  in 0-1");
     }
     const color = this.clone();
     const alpha = this.alpha - step;
@@ -272,7 +272,7 @@ export class Color {
   // 变不透明
   public opaque(step: number) {
     if (step > 1 || step < 0) {
-      throw new Error('arguments error. step should be  in 0-1');
+      throw new Error("arguments error. step should be  in 0-1");
     }
     const color = this.clone();
     const alpha = this.alpha + step;
