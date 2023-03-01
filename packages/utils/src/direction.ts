@@ -1,50 +1,50 @@
-import type { Direction, Placement } from '@c3/types';
+import type { Direction, Placement } from "@c3/types";
 
 export const getAntiDirection = (direction: Direction): Direction => {
   switch (direction) {
-    case 'bottom':
-      return 'top';
-    case 'top':
-      return 'bottom';
-    case 'left':
-      return 'right';
-    case 'right':
-      return 'left';
+    case "bottom":
+      return "top";
+    case "top":
+      return "bottom";
+    case "left":
+      return "right";
+    case "right":
+      return "left";
     default:
-      throw new Error('not existed');
+      throw new Error("not existed");
   }
 };
 
 export const placements: Placement[] = [
-  'top',
-  'topLeft',
-  'topRight',
-  'right',
-  'rightTop',
-  'rightBottom',
-  'bottom',
-  'bottomLeft',
-  'bottomRight',
-  'left',
-  'leftTop',
-  'leftBottom',
-  'center',
+  "top",
+  "top-start",
+  "top-end",
+  "right",
+  "right-start",
+  "right-end",
+  "bottom",
+  "bottom-start",
+  "bottom-end",
+  "left",
+  "left-start",
+  "left-end",
+  "center",
 ];
 export const anti: Record<Placement, Placement> = {
-  center: 'center',
-  bottom: 'top',
-  top: 'bottom',
-  left: 'right',
+  center: "center",
+  bottom: "top",
+  top: "bottom",
+  left: "right",
 
-  right: 'left',
-  bottomLeft: 'topRight',
-  bottomRight: 'topLeft',
-  topLeft: 'bottomRight',
+  right: "left",
+  "bottom-start": "top-end",
+  "bottom-end": "top-start",
+  "top-start": "bottom-end",
 
-  topRight: 'bottomLeft',
-  leftTop: 'rightBottom',
-  leftBottom: 'rightTop',
+  "top-end": "bottom-start",
+  "left-start": "right-end",
+  "left-end": "right-start",
 
-  rightTop: 'leftBottom',
-  rightBottom: 'leftTop',
+  "right-start": "left-end",
+  "right-end": "left-start",
 };
