@@ -1,4 +1,4 @@
-import { difference } from 'lodash';
+import _ from "lodash";
 
 /**
  *
@@ -12,5 +12,5 @@ export const equal = <T>(a: T[], b: T[], strict = false) => {
     }
     return a.every((e, i) => e === b[i]);
   }
-  return difference(a, b).length === 0;
+  return _.difference(a, b).length === 0;
 };
