@@ -1,19 +1,19 @@
-import { useLatest } from "@c3/react";
-import { toHexString, waitFor } from "@c3/utils";
-import { BigNumber, ethers } from "ethers";
-import { useCallback, useEffect, useState } from "react";
-import { Chain } from "../network/types";
-import { toHexChain } from "../network/utils";
-import { dbg } from "../utils";
+import { useLatest } from '@c3/react';
+import { toHexString, waitFor } from '@c3/utils';
+import { BigNumber, ethers } from 'ethers';
+import { useCallback, useEffect, useState } from 'react';
+import { Chain } from '../network/types';
+import { toHexChain } from '../network/utils';
+import { dbg } from '../utils';
 import {
   getWalletProvider,
   hasInjectedProvider,
   injectedProviders,
   WalletName,
-} from "./injectedProviders";
-import { useOnChainChanged } from "./onChange";
-import { useAccount_ } from "./useAccount_";
-import { getWalletName, jump2NativeAppOrDlPage } from "./utils";
+} from './injectedProviders';
+import { useOnChainChanged } from './onChange';
+import { useAccount_ } from './useAccount_';
+import { getWalletName, jump2NativeAppOrDlPage } from './utils';
 
 //TODO:TS2742
 export type WalletType = {
@@ -39,7 +39,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   const onChainChanged = useCallback(
     (chainId: number) => {
-      console.log("chain changed. new chainId=", chainId);
+      console.log('chain changed. new chainId=', chainId);
       if (!name) {
         return;
       }
@@ -55,16 +55,19 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     if (!provider) {
       return;
     }
-    setName(getWalletName(provider));
+    const walletName = getWalletName(provider);
+    setName(walletName);
+    localStorage.setItem('walletName', walletName || '');
+
   }, [provider]);
 
   const addNetwork = useCallback(
     async (chain: Chain) => {
-      dbg("[addNetwork] chain=", chain);
+      dbg('[addNetwork] chain=', chain);
       if (!provider) {
-        throw new Error("provider is not ready");
+        throw new Error('provider is not ready');
       }
-      return provider?.send("wallet_addEthereumChain", [toHexChain(chain)]);
+      return provider?.send('wallet_addEthereumChain', [toHexChain(chain)]);
     },
     [provider]
   );
@@ -72,19 +75,19 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   const switchNetwork = useCallback(
     async (chain: Chain) => {
       if (!provider) {
-        throw new Error("provider is null");
+        throw new Error('provider is null');
       }
       const chainId = await (await provider.getNetwork()).chainId;
       if (chainId === chain.chainId) {
         return provider;
       }
       try {
-        dbg("[switchNetwork] chain=", chain);
-        await provider.send("wallet_switchEthereumChain", [
+        dbg('[switchNetwork] chain=', chain);
+        await provider.send('wallet_switchEthereumChain', [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
-        console.log("switchNetwork:", e);
+        console.log('switchNetwork:', e);
         if (e.code === 4902 || e.code === -32603) {
           await addNetwork(chain);
         } else {
@@ -98,7 +101,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   );
   const switchProvider = useCallback((newName: WalletName) => {
     if (!newName) {
-      throw new Error("please supply wallnet name");
+      throw new Error('please supply wallnet name');
     }
     const injectedProvider = injectedProviders[newName].getProvider();
     if (!injectedProvider) {
@@ -109,7 +112,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
     //TODO:useWallet中的wallet什么时候更新了？
     setProvider(provider);
-    localStorage.setItem("walletName", newName || "");
+    localStorage.setItem('walletName', newName || '');
 
     return provider;
   }, []);
@@ -120,18 +123,18 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       return;
     }
     if (!provider) {
-      throw new Error("provider is not ready");
+      throw new Error('provider is not ready');
     }
     //@ts-ignore
-    window.ethereum?.emit("connect-account-start");
+    window.ethereum?.emit('connect-account-start');
     let r = [];
     try {
-      r = await provider?.send("eth_requestAccounts", []);
+      r = await provider?.send('eth_requestAccounts', []);
       //@ts-ignore
-      window.ethereum?.emit("connect-account-success", r[0]);
+      window.ethereum?.emit('connect-account-success', r[0]);
     } catch (e) {
       //@ts-ignore
-      window.ethereum?.emit("connect-account-fail");
+      window.ethereum?.emit('connect-account-fail');
       throw e;
     }
 
@@ -156,13 +159,13 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     },
     getNetwork: async () => {
       if (!provider) {
-        throw new Error("wallet provider is undefined");
+        throw new Error('wallet provider is undefined');
       }
       return provider?.getNetwork();
     },
     getChainId: async () => {
       if (!provider) {
-        throw new Error("wallet provider is undefined");
+        throw new Error('wallet provider is undefined');
       }
       const network = await provider?.getNetwork();
       return network.chainId;

@@ -1,12 +1,12 @@
 // import detectEthereumProvider from '@metamask/detect-provider';
 
-import { Fn } from "@c3/types";
-import { ethers } from "ethers";
+import { Fn } from '@c3/types';
+import { ethers } from 'ethers';
 
 declare let window: any;
-export type WalletName = "metamask" | "coinbase";
-export const walletName_Metamask: WalletName = "metamask";
-export const walletName_Coinbase: WalletName = "coinbase";
+export type WalletName = 'metamask' | 'coinbase' ;
+export const walletName_Metamask: WalletName = 'metamask';
+export const walletName_Coinbase: WalletName = 'coinbase';
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -22,9 +22,9 @@ export const injectedProviders: InjectedProvider = {
   metamask: {
     // entry: window.ethereum,
     getDeeplink: url => `https://metamask.app.link/dapp/${url}`,
-    pcDownloadUrl: "https://metamask.io/download/",
+    pcDownloadUrl: 'https://metamask.io/download/',
     getProvider: () => {
-      if (typeof window.ethereum === "undefined") {
+      if (typeof window.ethereum === 'undefined') {
         return undefined;
       }
       const providers = window.ethereum.providers || [];
@@ -41,13 +41,14 @@ export const injectedProviders: InjectedProvider = {
           }
         }
       }
-      return window.ethereum;
+      // return window.ethereum;
+      return null;
     },
-
   },
   coinbase: {
-    getDeeplink: (url: string) => `https://go.cb-w.com/dapp?cb_url=${encodeURIComponent(url)}`,
-    pcDownloadUrl: "https://www.coinbase.com/wallet",
+    getDeeplink: (url: string) =>
+      `https://go.cb-w.com/dapp?cb_url=${encodeURIComponent(url)}`,
+    pcDownloadUrl: 'https://www.coinbase.com/wallet',
 
     getProvider: () => {
       if (window.ethereum?.isCoinbaseWallet) {
@@ -60,9 +61,9 @@ export const injectedProviders: InjectedProvider = {
           }
         }
       }
-      return window.ethereum;
+      // return window.coinbaseSolana || window.ethereum;
+      return undefined;
     },
-
   },
 };
 
