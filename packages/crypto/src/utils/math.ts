@@ -1,5 +1,5 @@
-import { s } from '@c3/utils';
-import { BigNumber, ethers } from 'ethers';
+import { s } from "@c3/utils";
+import { BigNumber, ethers } from "ethers";
 export const parseEther = ethers.utils.parseEther;
 export const formatEther = ethers.utils.formatEther;
 
@@ -19,10 +19,10 @@ export const makeEthFromDecimal = (decimal: number | string, units = 18): BigNum
     _decimal = _decimal.slice(0, units);
   }
 
-  const idx = _decimal.indexOf('.');
+  const idx = _decimal.indexOf(".");
   //1.23  * 1e4 = 12300
   // 123 * 1e4
   const left = idx >= 0 ? units - (_decimal.length - idx - 1) : units;
-  const res = `${_decimal.replace('.', '')}${Array(left).fill('0').join('')}`;
+  const res = `${_decimal.replace(".", "")}${Array(left).fill("0").join("")}`;
   return BigNumber.from(res);
 };
