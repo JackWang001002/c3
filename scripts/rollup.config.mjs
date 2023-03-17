@@ -36,7 +36,7 @@ const config = {
     commonjs(),
     json(),
     babel({ babelHelpers: "bundled", extensions, configFile: babelConfigFile }),
-    strip({ include: /src\/.*\.[mc]?[jt]sx?$/ }),
+    // strip({ include: /src\/.*\.[mc]?[jt]sx?$/ }),
   ],
   external: [
     "react",
