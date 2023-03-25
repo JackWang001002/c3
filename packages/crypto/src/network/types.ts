@@ -11,10 +11,13 @@ export type Chain = {
   readonly nativeCurrency: Currency;
   readonly iconUrls?: readonly string[];
   readonly blockExplorerUrls?: readonly string[];
+  readonly shortName: string;
 };
 export type Exporer = {
-  name: string; url: string; standard: string
-}
+  name: string;
+  url: string;
+  standard: string;
+};
 
 export type ChainFullInfo = {
   name: string;

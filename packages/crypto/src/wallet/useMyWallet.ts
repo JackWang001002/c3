@@ -110,11 +110,11 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
           throw e;
         }
       }
-      setProvider(getWalletProvider(name));
+      // setProvider(getWalletProvider(name));
       await waitFor(() => providerRef.current !== provider);
       return providerRef.current!;
     },
-    [addNetwork, name, provider, providerRef]
+    [addNetwork, provider, providerRef]
   );
 
 
