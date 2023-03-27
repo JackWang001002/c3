@@ -10836,4 +10836,52 @@ export const rawChainList = [
       },
     ],
   },
+  //add by jinbo.maybe some error there
+  {
+    name: "Gnosis Testnet",
+    chain: "",
+    rpc: ["https://rpc.chiadochain.net"],
+    faucets: ["https://gnosisfaucet.com/"],
+    nativeCurrency: {
+      name: "Chiado xDAI",
+      symbol: "xDAI",
+      decimals: 18,
+    },
+    infoURL: "docs.gnosischain.com",
+    shortName: "gnosis_testnet",
+    chainId: 10200,
+    networkId: 10200,
+    status: "",
+    explorers: [
+      {
+        name: "",
+        url: "https://blockscout.chiadochain.net/",
+        standard: "",
+      },
+    ],
+  },
+  //add by jinbo.maybe some error there
+  {
+    name: "Metis Goerli Testnet",
+    chain: "",
+    rpc: ["https://goerli.gateway.metisdevops.link"],
+    faucets: ["https://goerli.faucet.metisdevops.link/"],
+    nativeCurrency: {
+      name: "Goerli Metis",
+      symbol: "METIS",
+      decimals: 18,
+    },
+    infoURL: "www.metis.io",
+    shortName: "metis_testnet",
+    chainId: 599,
+    networkId: 599,
+    status: "",
+    explorers: [
+      {
+        name: "",
+        url: "https://goerli.explorer.metisdevops.link/",
+        standard: "",
+      },
+    ],
+  },
 ] as const;
