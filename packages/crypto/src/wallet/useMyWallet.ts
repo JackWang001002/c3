@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
+import _ from "lodash";
 import {
   getWalletProvider,
   hasInjectedProvider,
@@ -66,7 +67,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       if (!provider) {
         throw new Error("provider is not ready");
       }
-      return provider?.send("wallet_addEthereumChain", [toHexChain(chain)]);
+      return provider?.send("wallet_addEthereumChain", [_.omit(toHexChain(chain), "shortName")]);
     },
     [provider]
   );
@@ -116,7 +117,6 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     },
     [addNetwork, provider, providerRef]
   );
-
 
   const connectAccount = useCallback(async () => {
     if (!hasInjectedProvider) {
