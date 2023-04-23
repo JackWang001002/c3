@@ -10884,4 +10884,28 @@ export const rawChainList = [
       },
     ],
   },
+  //add by jinbo.maybe some error there
+  {
+    name: "Combo Testnet",
+    chain: "Combo Testnet",
+    rpc: ["https://test-rpc.combonetwork.io"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "tcBNB",
+      symbol: "tcBNB",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "combo_testnet",
+    chainId: 91715,
+    networkId: 91715,
+    status: "",
+    explorers: [
+      {
+        name: "Combo Testnet Explorer",
+        url: "https://combotrace-testnet.nodereal.io/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const;

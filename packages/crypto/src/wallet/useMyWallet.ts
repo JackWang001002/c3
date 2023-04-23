@@ -6,6 +6,7 @@ import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
 import _ from "lodash";
+import { message } from "antd";
 import {
   getWalletProvider,
   hasInjectedProvider,
@@ -105,6 +106,16 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
         ]);
       } catch (e: any) {
         console.log("switchNetwork:", e);
+        //TODO: delete me after metamask fix this bug
+        if (
+          e.code === -32603 &&
+          e.message.includes("networkConfigurationId undefined does not match")
+        ) {
+          message.error(
+            "MetaMask Error: Please delete the previous network, refresh the page and connect again."
+          );
+          throw e;
+        }
         if (e.code === 4902 || e.code === -32603) {
           await addNetwork(chain);
         } else {
