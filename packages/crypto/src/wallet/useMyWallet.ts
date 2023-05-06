@@ -52,6 +52,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   useOnChainChanged(provider, onChainChanged);
   const account = useAccount_(provider);
+  const accountRef = useLatest(account);
 
   useEffect(() => {
     if (!provider) {
@@ -94,6 +95,10 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     async (chain: Chain) => {
       if (!provider) {
         throw new Error("provider is null");
+      }
+      if (!account) {
+        await connectAccount();
+        // await waitFor(() => !!accountRef.current);
       }
       const chainId = await (await provider.getNetwork()).chainId;
       if (chainId === chain.chainId) {
