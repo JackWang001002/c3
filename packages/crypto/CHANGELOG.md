@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.26](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.11...@c3/crypto@1.2.26) (2023-05-09)
+
+### Bug Fixes
+
+- add combo testnet ([1da12d6](https://github.com/che3vinci/c3/commit/1da12d63e8437c632fceb8775d29a448c873b421))
+- add contract ([33ff838](https://github.com/che3vinci/c3/commit/33ff838931eb4a156c7bfd4f3ca29488322d9eed))
+- add metis and Gnosis testnet ([d0e0821](https://github.com/che3vinci/c3/commit/d0e08212b3f8d35be6132eca80188787b313bb7e))
+- addchain omit shortname ([21e9f6c](https://github.com/che3vinci/c3/commit/21e9f6ca455a58f6d809678e2bdf9d7c13a2bbf5))
+- connect account ([ce62db2](https://github.com/che3vinci/c3/commit/ce62db2e3757d91d2cf74ab39987ec6ca135f290))
+- crypto update ([e916b8a](https://github.com/che3vinci/c3/commit/e916b8a87f341fb39a5e390065db25ac5d6e8faf))
+- ellipse ([feda9db](https://github.com/che3vinci/c3/commit/feda9dbe7a5ed10232cac8aa66bd55d6a02d342e))
+- exports ([e113e56](https://github.com/che3vinci/c3/commit/e113e56172b939439d4e073ae7e103bb1fa155d2))
+- mobile ([aeb2e37](https://github.com/che3vinci/c3/commit/aeb2e372bc9f85ae8c3ceb924c9c369cb776e2b0))
+
 ## [1.2.11](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.10...@c3/crypto@1.2.11) (2023-03-01)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.8](https://github.com/che3vinci/c3/compare/@c3/test@1.3.7...@c3/test@1.3.8) (2023-05-09)
+
+### Bug Fixes
+
+- exports ([e113e56](https://github.com/che3vinci/c3/commit/e113e56172b939439d4e073ae7e103bb1fa155d2))
+
 ## [1.3.7](https://github.com/che3vinci/c3/compare/@c3/test@1.3.5...@c3/test@1.3.7) (2023-03-01)
 
 ### Bug Fixes

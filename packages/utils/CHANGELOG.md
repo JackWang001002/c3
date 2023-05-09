@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.9](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.7...@c3/utils@1.3.9) (2023-05-09)
+
+### Bug Fixes
+
+- ellipse ([feda9db](https://github.com/che3vinci/c3/commit/feda9dbe7a5ed10232cac8aa66bd55d6a02d342e))
+- exports ([e113e56](https://github.com/che3vinci/c3/commit/e113e56172b939439d4e073ae7e103bb1fa155d2))
+- mobile ([aeb2e37](https://github.com/che3vinci/c3/commit/aeb2e372bc9f85ae8c3ceb924c9c369cb776e2b0))
+
 ## [1.3.7](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.6...@c3/utils@1.3.7) (2023-03-01)
 
 ### Bug Fixes

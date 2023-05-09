@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/che3vinci/c3/compare/@c3/rhform@1.1.1...@c3/rhform@1.1.2) (2023-05-09)
+
+### Bug Fixes
+
+- exports ([e113e56](https://github.com/che3vinci/c3/commit/e113e56172b939439d4e073ae7e103bb1fa155d2))
+
 ## [1.1.1](https://github.com/che3vinci/c3/compare/@c3/rhform@1.1.0...@c3/rhform@1.1.1) (2023-03-01)
 
 ### Features
