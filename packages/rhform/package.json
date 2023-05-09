@@ -22,9 +22,7 @@
   "dependencies": {
     "react-hook-form": "^7.38.0"
   },
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
