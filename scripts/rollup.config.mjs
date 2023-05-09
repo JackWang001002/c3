@@ -6,7 +6,6 @@ import replace from "@rollup/plugin-replace";
 import strip from "@rollup/plugin-strip";
 import path from "path";
 import { fileURLToPath } from "url";
-console.log("babel==", babel);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 //add .ts extension
