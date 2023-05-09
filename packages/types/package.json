@@ -8,11 +8,6 @@
     "build": "rm -rf dist/ && cp -rf src dist ",
     "watchtype": "tsc --project . --watch"
   },
-  "publishConfig": {
-    "access": "public",
-    "types": "dist/index.ts",
-    "main": "dist/index.ts"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -30,5 +25,14 @@
     "@type-challenges/utils": "^0.1.1"
   },
   "module": "src/index.ts",
-  "type": "module"
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

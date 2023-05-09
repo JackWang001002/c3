@@ -15,12 +15,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/che3vinci/c3.git"
@@ -44,5 +38,14 @@
     "rollup": "^2.79.1"
   },
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
-  "type": "module"
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

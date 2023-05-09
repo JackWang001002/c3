@@ -6,18 +6,6 @@
   "scripts": {
     "build": "rollup -c && pnpm type"
   },
-  "publishConfig": {
-    "access": "public",
-    "module": "dist/index.js",
-    "main": "dist/index.js"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
   "keywords": [],
   "author": "che3vinci@gmail.com",
   "license": "MIT",
@@ -36,5 +24,14 @@
   },
   "main": "src/index.ts",
   "module": "src/index.ts",
-  "types": "src/index.ts"
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

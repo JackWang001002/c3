@@ -1,6 +1,6 @@
 {
   "name": "@c3/crypto",
-  "version": "1.2.24",
+  "version": "1.2.25",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
   "author": "jinbo.wang <che3vinci@gmail.com>",
@@ -15,12 +15,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/che3vinci/c3.git"
@@ -47,5 +41,14 @@
     "antd": "^5.4.2",
     "ethers": "^5.7.2"
   },
-  "type": "module"
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
