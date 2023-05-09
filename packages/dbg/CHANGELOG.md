@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/che3vinci/c3/compare/@c3/dbg@1.1.2...@c3/dbg@1.1.3) (2023-05-09)
+
+### Bug Fixes
+
+- exports ([20f6d95](https://github.com/che3vinci/c3/commit/20f6d95b2abde328befe989e49dc2889a2a8c2bf))
+
 ## [1.1.2](https://github.com/che3vinci/c3/compare/@c3/dbg@1.1.1...@c3/dbg@1.1.2) (2023-05-09)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.9](https://github.com/che3vinci/c3/compare/@c3/redux@1.2.8...@c3/redux@1.2.9) (2023-05-09)
+
+### Bug Fixes
+
+- exports ([20f6d95](https://github.com/che3vinci/c3/commit/20f6d95b2abde328befe989e49dc2889a2a8c2bf))
+
 ## [1.2.8](https://github.com/che3vinci/c3/compare/@c3/redux@1.2.7...@c3/redux@1.2.8) (2023-05-09)
 
 ### Bug Fixes
