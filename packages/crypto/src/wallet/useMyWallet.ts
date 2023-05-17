@@ -90,6 +90,29 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
     return provider;
   }, []);
+  const connectAccount = useCallback(async () => {
+    if (!hasInjectedProvider) {
+      jump2NativeAppOrDlPage();
+      return;
+    }
+    if (!provider) {
+      throw new Error("provider is not ready");
+    }
+    //@ts-ignore
+    window.ethereum?.emit("connect-account-start");
+    let r = [];
+    try {
+      r = await provider?.send("eth_requestAccounts", []);
+      //@ts-ignore
+      window.ethereum?.emit("connect-account-success", r[0]);
+    } catch (e) {
+      //@ts-ignore
+      window.ethereum?.emit("connect-account-fail");
+      throw e;
+    }
+
+    return r[0];
+  }, [provider]);
 
   const switchNetwork = useCallback(
     async (chain: Chain) => {
@@ -131,32 +154,8 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       await waitFor(() => providerRef.current !== provider);
       return providerRef.current!;
     },
-    [addNetwork, provider, providerRef]
+    [account, addNetwork, connectAccount, provider, providerRef]
   );
-
-  const connectAccount = useCallback(async () => {
-    if (!hasInjectedProvider) {
-      jump2NativeAppOrDlPage();
-      return;
-    }
-    if (!provider) {
-      throw new Error("provider is not ready");
-    }
-    //@ts-ignore
-    window.ethereum?.emit("connect-account-start");
-    let r = [];
-    try {
-      r = await provider?.send("eth_requestAccounts", []);
-      //@ts-ignore
-      window.ethereum?.emit("connect-account-success", r[0]);
-    } catch (e) {
-      //@ts-ignore
-      window.ethereum?.emit("connect-account-fail");
-      throw e;
-    }
-
-    return r[0];
-  }, [provider]);
 
   return {
     provider,

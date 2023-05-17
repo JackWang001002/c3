@@ -30,3 +30,4 @@ export * from "./useToggle";
 export * from "./useTouchBottom";
 export * from "./useUnmount";
 export * from "./useWheel";
+export * from "./useMutationObserver";
