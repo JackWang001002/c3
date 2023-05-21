@@ -64,6 +64,7 @@ const config = {
     "numeral",
     "antd",
     "tslib",
+    "antd",
     "dayjs/plugin/utc",
   ],
 };
