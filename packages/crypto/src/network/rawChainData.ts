@@ -10910,8 +10910,8 @@ export const rawChainList = [
   },
   //add by jinbo. maybe some error there
   {
-    name: "Linea",
-    chain: "Linea",
+    name: "Linea Testnet",
+    chain: "Linea Testnet",
     rpc: ["https://rpc.goerli.linea.build"],
     faucets: [""],
     nativeCurrency: {
