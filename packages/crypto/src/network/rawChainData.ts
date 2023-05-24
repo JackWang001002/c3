@@ -10908,4 +10908,28 @@ export const rawChainList = [
       },
     ],
   },
+  //add by jinbo. maybe some error there
+  {
+    name: "Linea",
+    chain: "Linea",
+    rpc: ["https://rpc.goerli.linea.build"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "linea_testnet",
+    chainId: 59140,
+    networkId: 59140,
+    status: "",
+    explorers: [
+      {
+        name: "Linea Testnet Explorer",
+        url: "https://explorer.goerli.linea.build/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const;
