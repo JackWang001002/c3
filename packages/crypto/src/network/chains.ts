@@ -1,8 +1,8 @@
 import { rawChainList } from "./rawChainData";
 import type { Find } from "@c3/types";
 
-type RawChainListType = typeof rawChainList;
-type RawChainType = RawChainListType[number];
+export type RawChainListType = typeof rawChainList;
+export type RawChainType = RawChainListType[number];
 
 export type RawChain2Chain<RChain extends RawChainType> = {
   readonly chainId: RChain["chainId"];
