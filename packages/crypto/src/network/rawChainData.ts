@@ -10932,4 +10932,28 @@ export const rawChainList = [
       },
     ],
   },
+  //add by jinbo. maybe some error there //主网mainnet
+  {
+    name: "zkSync Era",
+    chain: "zkSync Era",
+    rpc: ["https://mainnet.era.zksync.io"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "zksync_era_mainnet",
+    chainId: 324,
+    networkId: 324,
+    status: "",
+    explorers: [
+      {
+        name: "zkSync Era Explorer",
+        url: "https://explorer.zksync.io  ",
+        standard: "none",
+      },
+    ],
+  },
 ] as const;
