@@ -10951,7 +10951,7 @@ export const rawChainList = [
     explorers: [
       {
         name: "zkSync Era Explorer",
-        url: "https://explorer.zksync.io  ",
+        url: "https://explorer.zksync.io",
         standard: "none",
       },
     ],
