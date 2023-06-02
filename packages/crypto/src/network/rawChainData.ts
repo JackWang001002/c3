@@ -2344,6 +2344,7 @@ export const rawChainList = [
     name: "Polygon Mainnet",
     chain: "Polygon",
     rpc: [
+      "https://polygon.llamarpc.com",
       "https://polygon-rpc.com/",
       "https://rpc-mainnet.matic.network",
       "https://matic-mainnet.chainstacklabs.com",

@@ -18,11 +18,9 @@ export type RawChain2Chain<RChain extends RawChainType> = {
 // Name2IdMapType
 //=====================================================================================================
 export type Name2IdMapType = {
-  //@ts-ignore
   [shortName in RawChainType["shortName"]]: Find<
     "shortName",
     shortName,
-    //@ts-ignore
     RawChainListType
   >["chainId"];
 };
@@ -36,14 +34,7 @@ export const NAME2ID_MAP = rawChainList.reduce(
 // Id2ChainType
 //=====================================================================================================
 export type Id2ChainType = {
-  [chainId in RawChainType["chainId"]]: RawChain2Chain<
-    Find<
-      "chainId",
-      chainId,
-      //@ts-ignore
-      RawChainListType
-    >
-  >;
+  [chainId in RawChainType["chainId"]]: RawChain2Chain<Find<"chainId", chainId, RawChainListType>>;
 };
 
 export const ID2CHAIN_MAP = rawChainList.reduce((acc, e) => {
@@ -66,14 +57,7 @@ export const ID2CHAIN_MAP = rawChainList.reduce((acc, e) => {
 // Name2ChainType
 //=====================================================================================================
 export type Name2ChainType = {
-  [name in RawChainType["shortName"]]: RawChain2Chain<
-    Find<
-      "shortName",
-      name,
-      //@ts-ignore
-      RawChainListType
-    >
-  >;
+  [name in RawChainType["shortName"]]: RawChain2Chain<Find<"shortName", name, RawChainListType>>;
 };
 
 export const Name2CHAIN_MAP = rawChainList.reduce((acc, e) => {
