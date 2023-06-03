@@ -14,25 +14,35 @@ export type Chain = {
   readonly shortName: string;
 };
 export type Exporer = {
-  name: string;
-  url: string;
-  standard: string;
+  readonly name: string;
+  readonly url: string;
+  readonly standard: string;
+  readonly icon?: string;
 };
-
 export type ChainFullInfo = {
-  name: string;
-  chain: string;
-  icon: string;
-  rpc: string[];
-  faucets: [];
-  nativeCurrency: Currency;
-  infoURL: string;
-  shortName: string;
-  chainId: number;
-  networkId: number;
-  slip44: number;
-  ens: {
-    registry: string;
+  readonly name: string;
+  readonly chain: string;
+  readonly title?: string;
+  readonly icon?: string;
+  readonly rpc: readonly string[];
+  readonly faucets: readonly string[];
+  readonly nativeCurrency: Currency;
+  readonly infoURL: string;
+  readonly shortName: string;
+  readonly chainId: number;
+  readonly networkId: number;
+  readonly slip44?: number;
+  readonly parent?: {
+    readonly chain: string;
+    readonly type: string;
+    readonly bridges?: readonly {
+      readonly url: string;
+    }[];
   };
-  explorers?: Exporer[];
+  readonly ens?: {
+    readonly registry: string;
+  };
+  readonly explorers?: readonly Exporer[];
+  readonly status?: "deprecated" | "incubating" | "";
+  readonly redFlags?: readonly string[];
 };

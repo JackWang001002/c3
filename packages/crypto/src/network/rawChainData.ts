@@ -1,6 +1,8 @@
 //Get Raw data from https://chainid.network/chains.json
 //TODO: how to deal iwth `INFURA_API_KEY`
 
+import { ChainFullInfo } from "./types";
+
 export const rawChainList = [
   {
     name: "Ethereum Mainnet",
@@ -10957,4 +10959,4 @@ export const rawChainList = [
       },
     ],
   },
-] as const;
+] as const satisfies readonly ChainFullInfo[];

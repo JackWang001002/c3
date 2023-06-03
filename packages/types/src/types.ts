@@ -4,7 +4,6 @@ export type Expect<T extends true> = T;
 export type Debug<T> = { [K in keyof T]: T[K] };
 
 export type IndexedType<T = any> = { [key: string]: T };
-
 // in fact, it is not PlainObject
 export type PlainObject<V = any> = { [key: string]: V };
 
@@ -22,13 +21,13 @@ export type TupleToUnion<T extends any[]> = T[number];
 
 export type Join<A, B> = A extends string | number
   ? B extends string | number
-    ? `${A}${'' extends B ? '' : '.'}${B}`
+    ? `${A}${"" extends B ? "" : "."}${B}`
     : never
   : never;
 
 // type DotPrefix<T extends string> = T extends '' ? '' : `.${T}`;
-export type ArrayIndex = '__ARRAY_INDEX__';
-export const arrayIndex = '__ARRAY_INDEX__';
+export type ArrayIndex = "__ARRAY_INDEX__";
+export const arrayIndex = "__ARRAY_INDEX__";
 
 export type RemoveLastX<T, X extends string | number> = T extends `${infer P1}${X}` ? `${P1}` : T;
 
@@ -40,9 +39,9 @@ type InnerPath<T> = T extends Array<any>
   ? {
       [K in Exclude<keyof T, symbol>]: `${K}.${InnerPath<T[K]>}`;
     }[Exclude<keyof T, symbol>]
-  : '';
+  : "";
 
-export type Path<T> = RemoveLastX<InnerPath<T>, '.'>;
+export type Path<T> = RemoveLastX<InnerPath<T>, ".">;
 
 type Includes<T extends readonly any[], U> = T extends [infer F, ...infer rest]
   ? IsEqual<F, U> extends true

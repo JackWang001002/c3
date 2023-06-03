@@ -48,11 +48,10 @@ export const ID2CHAIN_MAP = rawChainList.reduce((acc, e) => {
       shortName: e.shortName,
       iconUrls: [],
       //@ts-ignore
-      blockExplorerUrls: e.explorers?.map(e => e.url),
+      blockExplorerUrls: e.explorers?.map(e1 => e1.url) || [],
     },
   };
 }, {}) as Id2ChainType;
-
 //=====================================================================================================
 // Name2ChainType
 //=====================================================================================================
