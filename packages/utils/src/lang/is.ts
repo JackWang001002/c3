@@ -1,13 +1,13 @@
-import { Fn } from '@c3/types';
+import { Fn } from "@c3/types";
 
 //=====================================================================================================
 // primitive types
 //=====================================================================================================
-export const isString = (x: unknown): x is string => typeof x === 'string';
-export const isNumber = (x: unknown): x is number => typeof x === 'number';
-export const isSymbol = (x: unknown): x is symbol => typeof x === 'symbol';
-export const isBoolean = (x: unknown): x is boolean => typeof x === 'boolean';
-export const isBigint = (x: unknown): x is bigint => typeof x === 'bigint';
+export const isString = (x: unknown): x is string => typeof x === "string";
+export const isNumber = (x: unknown): x is number => typeof x === "number";
+export const isSymbol = (x: unknown): x is symbol => typeof x === "symbol";
+export const isBoolean = (x: unknown): x is boolean => typeof x === "boolean";
+export const isBigint = (x: unknown): x is bigint => typeof x === "bigint";
 export const isNull = (x: unknown): x is null => x === null;
 export const isUndefined = (x: unknown): x is undefined => x === undefined;
 export const isNullish = (x: unknown): x is undefined | null => x === undefined || x === null;
@@ -20,11 +20,11 @@ export const isInteger = (x: unknown) => isNumber(x) && parseInt(`${x}`, 10) ===
 //=====================================================================================================
 // object types
 //=====================================================================================================
-export const isFunction = (x: unknown): x is Fn => typeof x === 'function';
+export const isFunction = (x: unknown): x is Fn => typeof x === "function";
 export const isArray = (x: unknown): x is Array<unknown> => Array.isArray(x);
 export const isObject = (x: unknown): x is object => {
   const type = typeof x;
-  return (type === 'object' || type === 'function') && x !== null;
+  return (type === "object" || type === "function") && x !== null;
 };
 export const isPlainObject = (x: unknown): x is object =>
   isObject(x) &&
@@ -46,3 +46,17 @@ export const isEmpty = (data: unknown) => {
 };
 
 export const isNumLike = (a: string | number): boolean => !Number.isNaN(+a);
+
+export const typeOf = (x: unknown) => {
+  if (isNull(x)) return "null";
+  if (isUndefined(x)) return "undefined";
+  if (isString(x)) return "string";
+  if (isNumber(x)) return "number";
+  if (isBoolean(x)) return "boolean";
+  if (isSymbol(x)) return "symbol";
+  if (isBigint(x)) return "bigint";
+  if (isArray(x)) return "array";
+  if (isFunction(x)) return "function";
+  if (isPlainObject(x)) return "object";
+  return "unknown";
+};

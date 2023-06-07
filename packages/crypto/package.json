@@ -1,6 +1,6 @@
 {
   "name": "@c3/crypto",
-  "version": "1.2.37",
+  "version": "1.2.38",
   "description": "",
   "keywords": [],
   "author": "jinbo.wang <che3vinci@gmail.com>",
@@ -22,7 +22,7 @@
     "build": "rollup -c && pnpm type",
     "clean": "rm -rf dist && rm -rf node_modules ",
     "reset": "pnpm clean && pnpm install",
-    "type": "tsc --project . --paths null --emitDeclarationOnly --declaration",
+    "type": "npx tsc --project . --paths null --emitDeclarationOnly --declaration",
     "watchtype": "tsc --project . --watch"
   },
   "bugs": {

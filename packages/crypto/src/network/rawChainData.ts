@@ -7778,7 +7778,7 @@ export const rawChainList = [
     explorers: [
       {
         name: "Arbitrum Nova Chain Explorer",
-        url: "https://nova-explorer.arbitrum.io",
+        url: "https://nova.arbiscan.io",
         icon: "blockscout",
         standard: "EIP3091",
       },
