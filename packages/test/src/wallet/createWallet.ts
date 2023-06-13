@@ -1,13 +1,6 @@
-// import { ethers } from 'ethers';
+import { ethers } from "ethers";
 
-// export const createWallet = (
-//   privateKey: string,
-//   provider: string | ethers.providers.JsonRpcProvider
-// ) => {
-//   const wallet = new ethers.Wallet(privateKey);
-//   const _provider =
-//     typeof provider === 'string' ? new ethers.providers.JsonRpcProvider(provider) : provider;
-//   return wallet.connect(_provider);
-// };
-
-export {};
+export const createWallet = (privateKey: string, rpc: string) => {
+  const wallet = new ethers.Wallet(privateKey);
+  return wallet.connect(new ethers.providers.JsonRpcProvider(rpc));
+};

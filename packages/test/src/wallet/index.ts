@@ -1,2 +1,2 @@
-export * from './createWallet';
-export * from './consts';
+export * from "./createWallet";
+export * from "./consts";
