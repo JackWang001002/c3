@@ -1,7 +1,7 @@
-import { getTotalPage } from '@c3/utils';
-import { useCallback, useEffect, useState } from 'react';
-import { IAPI, RawReqParameter, RawResBody, ReqParameter } from './makeApi/api';
-import { useApi } from './useApi';
+import { getTotalPage } from "@c3/utils";
+import { useCallback, useEffect, useState } from "react";
+import { IAPI, RawReqParameter, RawResBody, ReqParameter } from "./makeApi/api";
+import { useApi } from "./useApi";
 
 export type PaginationBody<T> = {
   data: PaginationData<T>;
@@ -27,7 +27,7 @@ export const usePagination = <
   api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
   option: Option<_RawReqParameter>
 ) => {
-  const [bodyOfEachPage, fetch, , loading] = useApi(api, {
+  const [bodyOfEachPage, fetch, , status] = useApi(api, {
     fetchOnMounted: option.fetchOnMounted,
     defaultReqParameter: option.defaultReqParameter,
   });
@@ -37,7 +37,6 @@ export const usePagination = <
   });
 
   useEffect(() => {
-    console.log('====setFetchedData');
     if (!Array.isArray(bodyOfEachPage.list)) {
       return;
     }
@@ -64,7 +63,7 @@ export const usePagination = <
     total: fetchedData.total,
     fetchPage,
     updateData: updateFetchedData,
-    loading,
+    loading: status,
     maxPageNo: getTotalPage(bodyOfEachPage.total || 0, option.pageSize || 1),
   };
 };

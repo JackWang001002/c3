@@ -1,10 +1,10 @@
-import { assert, isNullish } from '@c3/utils';
-import { IndexedType, PartialBy } from '@c3/types';
-import { stringify } from 'qs';
-import { HTTP, makeProxyHttp } from './http';
-import { patch } from './patch';
-import { Method } from './type';
-import { ndbg } from './utils';
+import { assert, isNullish } from "@c3/utils";
+import { IndexedType, PartialBy } from "@c3/types";
+import { stringify } from "qs";
+import { HTTP, makeProxyHttp } from "./http";
+import { patch } from "./patch";
+import { Method } from "./type";
+import { ndbg } from "./utils";
 
 export type RawReqParameter = IndexedType<unknown> | undefined;
 export type ReqParameter = IndexedType<unknown> | undefined;
@@ -19,7 +19,7 @@ export interface IAPI<
 > {
   method: Method;
   url: string;
-  fetch: (raw?: _RawReqParameter, ...args: any[]) => Promise<_ResBody>;
+  fetch: (raw: _RawReqParameter, ...args: any[]) => Promise<_ResBody>;
   defaultData: _ResBody;
   convert?: (response: _RawResBody) => _ResBody;
   genReqParameter?: (raw?: _RawReqParameter) => Exclude<_ReqParameter, undefined>;
@@ -34,8 +34,8 @@ type MakeApiOption<
   _RawResBody extends RawResBody,
   _ResBody extends ResBody
 > = PartialBy<
-  Omit<IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>, 'fetch' | '__ctx'>,
-  'defaultData'
+  Omit<IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>, "fetch" | "__ctx">,
+  "defaultData"
 >;
 
 export function _makeApi<
@@ -55,7 +55,7 @@ export function _makeApi<
     api.defaultData = api.convert ? api.convert(patched) : (patched as unknown as _ResBody);
   }
 
-  api.fetch = async (raw?: _RawReqParameter, ...args: any[]) => {
+  api.fetch = async (raw: _RawReqParameter, ...args: any[]) => {
     api.__ctx = { rawReqParameter: raw };
     let rp = (raw || {}) as Exclude<_ReqParameter, undefined>;
     if (api.genReqParameter) {
@@ -66,15 +66,15 @@ export function _makeApi<
     }
 
     let url = option.url;
-    assert(!url.includes('?'), 'url should not include query string');
+    assert(!url.includes("?"), "url should not include query string");
 
-    ndbg('queryData:', rp);
+    ndbg("queryData:", rp);
 
     const IDREG = /\/:(\w+)/;
     if (IDREG.test(url)) {
       url = url.replace(IDREG, (m, p: string) => {
         const id = rp[p];
-        assert(!!id, 'please provide the :id parameter');
+        assert(!!id, "please provide the :id parameter");
         delete rp[p];
         return `/${id}`;
       });
@@ -82,7 +82,7 @@ export function _makeApi<
 
     let rawResBody: _RawResBody;
     const _fetch = http[api.method].bind(api);
-    if (['get', 'head', 'delete', 'option'].includes(api.method)) {
+    if (["get", "head", "delete", "option"].includes(api.method)) {
       rawResBody = await _fetch(`${url}?${stringify(rp)}`, ...args);
     } else {
       rawResBody = await _fetch(url, rp, ...args);
@@ -90,7 +90,7 @@ export function _makeApi<
     try {
       return api.convert ? api.convert.call(api, rawResBody) : (rawResBody as unknown as _ResBody); //FIXME
     } catch (e) {
-      ndbg('convertError: api=', api, e);
+      ndbg("convertError: api=", api, e);
       return api.defaultData;
     }
   };
