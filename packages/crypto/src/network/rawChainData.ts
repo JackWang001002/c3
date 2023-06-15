@@ -10959,4 +10959,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "opBNB Testnet",
+    chain: "opBNB Testnet",
+    rpc: ["https://op-bnb-testnet-l2.nodereal.io"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "opbnb_testnet",
+    chainId: 5611,
+    networkId: 5611,
+    status: "",
+    explorers: [
+      {
+        name: "opBNB Testnet Explorer",
+        url: "https://opbnbscan.com/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];

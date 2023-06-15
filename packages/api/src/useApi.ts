@@ -1,5 +1,5 @@
 import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from "./makeApi/api";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export type UseApiOption<T extends RawReqParameter> = {
   fetchOnMounted: boolean;
@@ -17,7 +17,7 @@ export const useApi = <
   const [data, updateData] = useState(api.defaultData);
   const [status, setStatus] = useState<"intitial" | "loading" | "success" | "failure">("intitial");
   const fetch = useCallback(
-    async (rrp?: _RawReqParameter, ...args: any[]) => {
+    async (rrp: _RawReqParameter, ...args: any[]) => {
       try {
         setStatus("loading");
         const res = await api.fetch(rrp, ...args);
@@ -37,7 +37,7 @@ export const useApi = <
   );
   useEffect(() => {
     if (option.fetchOnMounted) {
-      fetch(option.defaultReqParameter);
+      fetch(option.defaultReqParameter || ({} as _RawReqParameter));
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

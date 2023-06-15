@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useIntersectionObserver } from "./useIntersectionObserver";
 
 /**
@@ -7,21 +7,21 @@ import { useIntersectionObserver } from "./useIntersectionObserver";
 
 export const useIsVisible = <T extends HTMLElement>() => {
   const [isVisible, setIsVisible] = useState(false);
-  const watch = useIntersectionObserver<T>();
-  const watchWrapper = useCallback(
-    //TODO: make IntersectionObserverCallback to promised
-    (el: T, callback: IntersectionObserverCallback, option?: IntersectionObserverInit) => {
-      watch(
+  const _watch = useIntersectionObserver<T>();
+
+  const watch = useCallback(
+    (el: T, option?: IntersectionObserverInit) => {
+      _watch(
         el,
         async (entries, observer) => {
-          setIsVisible(entries[0].intersectionRatio > 0);
-          await callback(entries, observer);
+          const isVisble = entries[0].intersectionRatio > 0;
+          setIsVisible(isVisble);
         },
         option
       );
     },
-    [watch]
+    [_watch]
   );
 
-  return [isVisible, watchWrapper] as const;
+  return [isVisible, watch] as const;
 };

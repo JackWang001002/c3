@@ -63,7 +63,7 @@ export const usePagination = <
     total: fetchedData.total,
     fetchPage,
     updateData: updateFetchedData,
-    loading: status,
+    status: status,
     maxPageNo: getTotalPage(bodyOfEachPage.total || 0, option.pageSize || 1),
   };
 };

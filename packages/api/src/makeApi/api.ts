@@ -22,7 +22,7 @@ export interface IAPI<
   fetch: (raw: _RawReqParameter, ...args: any[]) => Promise<_ResBody>;
   defaultData: _ResBody;
   convert?: (response: _RawResBody) => _ResBody;
-  genReqParameter?: (raw?: _RawReqParameter) => Exclude<_ReqParameter, undefined>;
+  genReqParameter?: (raw: _RawReqParameter) => Exclude<_ReqParameter, undefined>;
   mockData: _RawResBody;
   __ctx: { rawReqParameter: _RawReqParameter | undefined };
   preCondition?: (...args: any[]) => boolean;
