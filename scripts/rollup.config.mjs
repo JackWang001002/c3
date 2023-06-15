@@ -55,6 +55,7 @@ const config = {
     /@yuejs\//,
     /@babel\//,
     /@rollup\//,
+    /@c3\//,
     "react-dom",
     "react-router-dom",
     "dayjs",
@@ -65,6 +66,7 @@ const config = {
     "antd",
     "tslib",
     "antd",
+    "ethers",
     "dayjs/plugin/utc",
   ],
 };
