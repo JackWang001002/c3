@@ -6,5 +6,4 @@
 
 ```
 import crypto from '@c3/crypto';
-
 ```
