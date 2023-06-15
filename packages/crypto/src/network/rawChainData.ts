@@ -10982,4 +10982,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Core Dao Mainnet",
+    chain: "Core Dao Mainnet",
+    rpc: ["https://rpc.coredao.org"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "CORE",
+      symbol: "CORE",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "",
+    chainId: 1116,
+    networkId: 1116,
+    status: "",
+    explorers: [
+      {
+        name: "Core Dao Mainnet Explorer",
+        url: "https://scan.coredao.org",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
