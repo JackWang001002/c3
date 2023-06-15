@@ -10993,7 +10993,7 @@ export const rawChainList = [
       decimals: 18,
     },
     infoURL: "",
-    shortName: "",
+    shortName: "coredao",
     chainId: 1116,
     networkId: 1116,
     status: "",
