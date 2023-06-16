@@ -10962,11 +10962,11 @@ export const rawChainList = [
   {
     name: "opBNB Testnet",
     chain: "opBNB Testnet",
-    rpc: ["https://op-bnb-testnet-l2.nodereal.io"],
+    rpc: ["https://opbnb-testnet-rpc.bnbchain.org"],
     faucets: [""],
     nativeCurrency: {
-      name: "ETH",
-      symbol: "ETH",
+      name: "tBNB",
+      symbol: "tBNB",
       decimals: 18,
     },
     infoURL: "",
