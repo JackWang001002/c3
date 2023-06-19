@@ -10983,8 +10983,8 @@ export const rawChainList = [
     ],
   },
   {
-    name: "Core Dao Mainnet",
-    chain: "Core Dao Mainnet",
+    name: "Core DAO Mainnet",
+    chain: "Core DAO Mainnet",
     rpc: ["https://rpc.coredao.org"],
     faucets: [""],
     nativeCurrency: {
@@ -10999,7 +10999,7 @@ export const rawChainList = [
     status: "",
     explorers: [
       {
-        name: "Core Dao Mainnet Explorer",
+        name: "Core DAO Mainnet Explorer",
         url: "https://scan.coredao.org",
         standard: "none",
       },
