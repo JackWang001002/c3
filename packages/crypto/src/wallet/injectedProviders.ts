@@ -2,11 +2,17 @@
 
 import { Fn } from "@c3/types";
 import { ethers } from "ethers";
+import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
+const APP_NAME = "My Awesome App";
+const APP_LOGO_URL = "https://example.com/logo.png";
+const DEFAULT_ETH_JSONRPC_URL = "xxxx";
+const DEFAULT_CHAIN_ID = 0;
 
 declare let window: any;
-export type WalletName = "metamask" | "coinbase";
+export type WalletName = "metamask" | "coinbase" | "okx";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
+export const walletName_OKX: WalletName = "okx";
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -48,15 +54,23 @@ export const injectedProviders: InjectedProvider = {
     getDeeplink: (url: string) => `https://go.cb-w.com/dapp?cb_url=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://www.coinbase.com/wallet",
     getProvider: () => {
-      if (window.ethereum?.isCoinbaseWallet) {
-        return window.ethereum;
+      if (window.coinbaseWalletExtension) {
+        const coinbaseWallet = new CoinbaseWalletSDK({
+          appName: APP_NAME,
+          appLogoUrl: APP_LOGO_URL,
+          darkMode: false,
+        });
+        return coinbaseWallet.makeWeb3Provider(DEFAULT_ETH_JSONRPC_URL, DEFAULT_CHAIN_ID);
       }
-      if (window.ethereum?.providers?.length) {
-        for (const e of window.ethereum.providers) {
-          if (e.isCoinbaseWallet) {
-            return e;
-          }
-        }
+      return undefined;
+    },
+  },
+  okx: {
+    getDeeplink: (url: string) => "", //TODO:
+    pcDownloadUrl: "https://www.coinbase.com/wallet", //TODO:
+    getProvider: () => {
+      if (window.okxwallet) {
+        return window.okxwallet;
       }
       return undefined;
     },

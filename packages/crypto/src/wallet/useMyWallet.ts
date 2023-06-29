@@ -103,7 +103,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     try {
       r = await provider?.send("eth_requestAccounts", []);
       //@ts-ignore
-      window.ethereum?.emit("connect-account-success", r[0]);
+      window.ethereum?.emit("connect-account-success", r?.[0]);
     } catch (e) {
       //@ts-ignore
       window.ethereum?.emit("connect-account-fail");

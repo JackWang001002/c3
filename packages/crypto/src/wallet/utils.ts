@@ -10,9 +10,14 @@ export const getWalletName = (provider: ethers.providers.Web3Provider) => {
   if (rawProvider.isMetaMask) {
     return "metamask";
   }
+  //@ts-ignore
+  if (rawProvider.isCoinbaseWallet) {
+    return "coinbase";
+  }
   if (rawProvider === injectedProviders["coinbase"].getProvider()) {
     return "coinbase";
   }
+
   throw new Error("unknown wallet");
 };
 

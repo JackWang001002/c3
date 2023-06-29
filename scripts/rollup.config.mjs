@@ -52,6 +52,7 @@ const config = {
     "npmlog",
     "resolve",
     "qs",
+    "@coinbase/wallet-sdk",
     /@yuejs\//,
     /@babel\//,
     /@rollup\//,
