@@ -17,16 +17,17 @@
 5 silly isAnythingCommitted
 6 verbose isAnythingCommitted 1
 7 silly getCurrentBranch
-8 verbose currentBranch feat/exports
+8 verbose currentBranch main
 9 silly remoteBranchExists
 10 silly isBehindUpstream
 11 error Error: Command failed with exit code 1: git remote update
-11 error fatal: unable to access 'https://github.com/che3vinci/c3/': Operation timed out after 300047 milliseconds with 0 out of 0 bytes received
+11 error remote: Repository not found.
+11 error fatal: repository 'https://github.com/che3vinci/c3/' not found
 11 error error: Could not fetch origin
 11 error Fetching origin
 11 error     at makeError (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/execa@5.1.1/node_modules/execa/lib/error.js:60:11)
 11 error     at module.exports.sync (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/execa@5.1.1/node_modules/execa/index.js:194:17)
 11 error     at Object.execSync (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+child-process@6.0.1/node_modules/@lerna/child-process/index.js:39:16)
-11 error     at updateRemote (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.8.4/node_modules/@lerna/version/lib/is-behind-upstream.js:34:16)
-11 error     at isBehindUpstream (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.8.4/node_modules/@lerna/version/lib/is-behind-upstream.js:16:3)
-11 error     at VersionCommand.initialize (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.8.4/node_modules/@lerna/version/index.js:156:9)
+11 error     at updateRemote (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/lib/is-behind-upstream.js:34:16)
+11 error     at isBehindUpstream (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/lib/is-behind-upstream.js:16:3)
+11 error     at VersionCommand.initialize (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/index.js:156:9)
