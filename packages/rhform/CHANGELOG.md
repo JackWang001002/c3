@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/che3vinci/c3/compare/@c3/rhform@1.1.3...@c3/rhform@1.1.4) (2023-06-29)
+
+**Note:** Version bump only for package @c3/rhform
+
 ## [1.1.3](https://github.com/che3vinci/c3/compare/@c3/rhform@1.1.2...@c3/rhform@1.1.3) (2023-05-09)
 
 ### Bug Fixes
