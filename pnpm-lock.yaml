@@ -309,16 +309,16 @@ importers:
   packages/crypto:
     dependencies:
       "@c3/dbg":
-        specifier: workspace:^1.1.3
+        specifier: workspace:^1.1.5
         version: link:../dbg
       "@c3/react":
-        specifier: workspace:^1.1.13
+        specifier: workspace:^1.1.15
         version: link:../react
       "@c3/types":
         specifier: workspace:^
         version: link:../types
       "@c3/utils":
-        specifier: workspace:^1.3.11
+        specifier: workspace:^1.3.13
         version: link:../utils
       "@coinbase/wallet-sdk":
         specifier: ^3.7.1
@@ -354,10 +354,10 @@ importers:
   packages/dom:
     dependencies:
       "@c3/dbg":
-        specifier: workspace:^1.1.3
+        specifier: workspace:^1.1.5
         version: link:../dbg
       "@c3/utils":
-        specifier: workspace:^1.3.11
+        specifier: workspace:^1.3.13
         version: link:../utils
 
   packages/playwright:
@@ -369,7 +369,7 @@ importers:
         specifier: ^7.18.6
         version: 7.18.6(@babel/core@7.22.1)
       "@c3/utils":
-        specifier: workspace:^1.3.11
+        specifier: workspace:^1.3.13
         version: link:../utils
       "@playwright/test":
         specifier: ^1.25.1
@@ -384,16 +384,16 @@ importers:
   packages/react:
     dependencies:
       "@c3/dbg":
-        specifier: workspace:^1.1.3
+        specifier: workspace:^1.1.5
         version: link:../dbg
       "@c3/dom":
-        specifier: workspace:^1.2.10
+        specifier: workspace:^1.2.12
         version: link:../dom
       "@c3/types":
-        specifier: workspace:^1.1.7
+        specifier: workspace:^1.1.9
         version: link:../types
       "@c3/utils":
-        specifier: workspace:^1.3.11
+        specifier: workspace:^1.3.13
         version: link:../utils
       dayjs:
         specifier: ^1.11.6
@@ -415,10 +415,10 @@ importers:
   packages/redux:
     dependencies:
       "@c3/dom":
-        specifier: workspace:^1.2.10
+        specifier: workspace:^1.2.12
         version: link:../dom
       "@c3/utils":
-        specifier: workspace:^1.3.11
+        specifier: workspace:^1.3.13
         version: link:../utils
       react-redux:
         specifier: ^7.2.9
@@ -465,10 +465,10 @@ importers:
   packages/router:
     dependencies:
       "@c3/dom":
-        specifier: workspace:^1.2.10
+        specifier: workspace:^1.2.12
         version: link:../dom
       "@c3/utils":
-        specifier: workspace:^1.3.11
+        specifier: workspace:^1.3.13
         version: link:../utils
       history:
         specifier: ^5.3.0
@@ -490,10 +490,10 @@ importers:
         specifier: ^7.18.6
         version: 7.18.6(@babel/core@7.22.1)
       "@c3/types":
-        specifier: workspace:^1.1.7
+        specifier: workspace:^1.1.9
         version: link:../types
       "@c3/utils":
-        specifier: workspace:^1.3.11
+        specifier: workspace:^1.3.13
         version: link:../utils
       rollup:
         specifier: ^2.79.1
@@ -533,7 +533,7 @@ importers:
   packages/utils:
     dependencies:
       "@c3/types":
-        specifier: workspace:^1.1.7
+        specifier: workspace:^1.1.9
         version: link:../types
       dayjs:
         specifier: ^1.11.6

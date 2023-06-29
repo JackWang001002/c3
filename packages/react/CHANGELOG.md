@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.15](https://github.com/che3vinci/c3/compare/@c3/react@1.1.13...@c3/react@1.1.15) (2023-06-29)
+
+**Note:** Version bump only for package @c3/react
+
 ## [1.1.14](https://github.com/che3vinci/c3/compare/@c3/react@1.1.13...@c3/react@1.1.14) (2023-06-29)
 
 **Note:** Version bump only for package @c3/react

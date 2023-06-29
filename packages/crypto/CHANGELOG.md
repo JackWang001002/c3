@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.47](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.45...@c3/crypto@1.2.47) (2023-06-29)
+
+### Features
+
+- coinbase ([9467d73](https://github.com/che3vinci/c3/commit/9467d73e70c8d9dc0c3e24e87cf025719e61d051))
+
 ## [1.2.46](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.45...@c3/crypto@1.2.46) (2023-06-29)
 
 ### Features
