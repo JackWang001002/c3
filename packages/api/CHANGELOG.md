@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.14](https://github.com/che3vinci/c3/compare/@c3/api@1.2.10...@c3/api@1.2.14) (2023-06-29)
+
+### Features
+
+- c3/api ([653c89a](https://github.com/che3vinci/c3/commit/653c89a6d74fcddf2e80c555813d7dfc80f8b5fb))
+- opbnb ([44dae6a](https://github.com/che3vinci/c3/commit/44dae6a59add039b26141b2261fbcfec5036a723))
+
 ## [1.2.10](https://github.com/che3vinci/c3/compare/@c3/api@1.2.9...@c3/api@1.2.10) (2023-05-09)
 
 ### Bug Fixes

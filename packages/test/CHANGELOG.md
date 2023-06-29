@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.11](https://github.com/che3vinci/c3/compare/@c3/test@1.3.9...@c3/test@1.3.11) (2023-06-29)
+
+### Features
+
+- c3/api ([653c89a](https://github.com/che3vinci/c3/commit/653c89a6d74fcddf2e80c555813d7dfc80f8b5fb))
+- wallet ([1e9a9c5](https://github.com/che3vinci/c3/commit/1e9a9c517fa6e480985218f98af36fdbeedc11a6))
+
 ## [1.3.9](https://github.com/che3vinci/c3/compare/@c3/test@1.3.8...@c3/test@1.3.9) (2023-05-09)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.13](https://github.com/che3vinci/c3/compare/@c3/react@1.1.10...@c3/react@1.1.13) (2023-06-29)
+
+### Features
+
+- opbnb ([44dae6a](https://github.com/che3vinci/c3/commit/44dae6a59add039b26141b2261fbcfec5036a723))
+
 ## [1.1.10](https://github.com/che3vinci/c3/compare/@c3/react@1.1.9...@c3/react@1.1.10) (2023-05-09)
 
 ### Bug Fixes

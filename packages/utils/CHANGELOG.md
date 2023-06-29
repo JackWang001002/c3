@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.11](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.10...@c3/utils@1.3.11) (2023-06-29)
+
+### Bug Fixes
+
+- updat c3/crypto for arbitr nova scan address ([e82f3df](https://github.com/che3vinci/c3/commit/e82f3df5c569a6c3edfd3cb3fad1c24e7ab996ff))
+
+### Features
+
+- opbnb ([44dae6a](https://github.com/che3vinci/c3/commit/44dae6a59add039b26141b2261fbcfec5036a723))
+- trustwallet ([22b0d33](https://github.com/che3vinci/c3/commit/22b0d3355784ae7aae7c9486b7621624fd0a7441))
+
 ## [1.3.10](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.9...@c3/utils@1.3.10) (2023-05-09)
 
 ### Bug Fixes

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.7](https://github.com/che3vinci/c3/compare/@c3/types@1.1.3...@c3/types@1.1.7) (2023-06-29)
+
+### Bug Fixes
+
+- polygon rpc change ([252902d](https://github.com/che3vinci/c3/commit/252902d73896903b1bec97c325e472dd1dedf711))
+- type and find ([b83c26b](https://github.com/che3vinci/c3/commit/b83c26bb91fa9493138653f9ef47fe98eeccd738))
+
 ## [1.1.3](https://github.com/che3vinci/c3/compare/@c3/types@1.1.2...@c3/types@1.1.3) (2023-05-09)
 
 ### Bug Fixes
