@@ -1,12 +1,11 @@
 // import detectEthereumProvider from '@metamask/detect-provider';
 
-import { Fn } from "@c3/types";
 import { ethers } from "ethers";
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 const APP_NAME = "My Awesome App";
 const APP_LOGO_URL = "https://example.com/logo.png";
 const DEFAULT_ETH_JSONRPC_URL = "xxxx";
-const DEFAULT_CHAIN_ID = 0;
+const DEFAULT_CHAIN_ID = 1;
 
 declare let window: any;
 export type WalletName = "metamask" | "coinbase" | "okx" | "trustwallet";
