@@ -1,5 +1,5 @@
-import { ethers } from 'ethers';
-import { WalletName } from '../wallet';
+import { ethers } from "ethers";
+import { WalletName } from "../wallet";
 export type ContractAddress = string;
 
 export type WalletContract = {

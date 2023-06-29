@@ -2,24 +2,24 @@ import { env } from "@c3/utils";
 import { ethers } from "ethers";
 import { injectedProviders, WalletName } from "./injectedProviders";
 
-export const getWalletName = (provider: ethers.providers.Web3Provider) => {
-  const rawProvider = provider?.provider;
-  if (!rawProvider) {
-    throw new Error("provider not ready");
-  }
-  if (rawProvider.isMetaMask) {
-    return "metamask";
-  }
-  //@ts-ignore
-  if (rawProvider.isCoinbaseWallet) {
-    return "coinbase";
-  }
-  if (rawProvider === injectedProviders["coinbase"].getProvider()) {
-    return "coinbase";
-  }
+// export const getWalletName = (provider: ethers.providers.Web3Provider) => {
+//   const rawProvider = provider?.provider;
+//   if (!rawProvider) {
+//     throw new Error("provider is not ready");
+//   }
+//   if (rawProvider.isMetaMask) {
+//     return "metamask";
+//   }
+//   //@ts-ignore
+//   if (rawProvider.isCoinbaseWallet) {
+//     return "coinbase";
+//   }
+//   if (rawProvider === injectedProviders["coinbase"].getProvider()) {
+//     return "coinbase";
+//   }
 
-  throw new Error("unknown wallet");
-};
+//   // throw new Error("unknown wallet");
+// };
 
 export const jump2NativeAppOrDlPage = (name: WalletName = "metamask") => {
   if (env.mobile) {

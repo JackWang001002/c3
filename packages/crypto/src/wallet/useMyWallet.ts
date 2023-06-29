@@ -1,20 +1,20 @@
 import { useLatest } from "@c3/react";
 import { toHexString, waitFor } from "@c3/utils";
 import { BigNumber, ethers } from "ethers";
-import { useCallback, useEffect, useState } from "react";
+import _ from "lodash";
+import { useCallback, useState } from "react";
 import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
-import _ from "lodash";
 import {
+  WalletName,
   getWalletProvider,
   hasInjectedProvider,
   injectedProviders,
-  WalletName,
 } from "./injectedProviders";
 import { useOnChainChanged } from "./onChange";
 import { useAccount_ } from "./useAccount_";
-import { getWalletName, jump2NativeAppOrDlPage } from "./utils";
+import { jump2NativeAppOrDlPage } from "./utils";
 
 //TODO:TS2742
 export type WalletType = {
@@ -52,15 +52,6 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   useOnChainChanged(provider, onChainChanged);
   const account = useAccount_(provider);
 
-  useEffect(() => {
-    if (!provider) {
-      return;
-    }
-    const walletName = getWalletName(provider);
-    setName(walletName);
-    localStorage.setItem("walletName", walletName || "");
-  }, [provider]);
-
   const addNetwork = useCallback(
     async (chain: Chain) => {
       dbg("[addNetwork] chain=", chain);
@@ -73,7 +64,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   );
   const switchProvider = useCallback((newName: WalletName) => {
     if (!newName) {
-      throw new Error("please supply wallnet name");
+      throw new Error("please supply wallet name");
     }
     const injectedProvider = injectedProviders[newName].getProvider();
     if (!injectedProvider) {
@@ -82,8 +73,9 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     }
     const provider = new ethers.providers.Web3Provider(injectedProvider);
 
-    //TODO:useWallet中的wallet什么时候更新了？
+    //更新数据
     setProvider(provider);
+    setName(newName);
     localStorage.setItem("walletName", newName || "");
 
     return provider;
