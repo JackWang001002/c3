@@ -3,12 +3,17 @@
   "printWidth": 100,
   "proseWrap": "never",
   "arrowParens": "avoid",
-
   "overrides": [
     {
       "files": ".prettierrc",
       "options": {
-        "parser": "json"
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": "*.tsx",
+      "options": {
+        "printWidth": 80
       }
     }
   ]

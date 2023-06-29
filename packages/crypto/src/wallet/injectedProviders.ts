@@ -9,10 +9,11 @@ const DEFAULT_ETH_JSONRPC_URL = "xxxx";
 const DEFAULT_CHAIN_ID = 0;
 
 declare let window: any;
-export type WalletName = "metamask" | "coinbase" | "okx";
+export type WalletName = "metamask" | "coinbase" | "okx" | "trustwallet";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
+export const walletName_TrustWallet: WalletName = "trustwallet";
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -66,11 +67,21 @@ export const injectedProviders: InjectedProvider = {
     },
   },
   okx: {
-    getDeeplink: (url: string) => "", //TODO:
-    pcDownloadUrl: "https://www.coinbase.com/wallet", //TODO:
+    getDeeplink: (url: string) => `okx://wallet/dapp/details?dappUrl=${url}`,
+    pcDownloadUrl: "https://www.okx.com/web3",
     getProvider: () => {
       if (window.okxwallet) {
         return window.okxwallet;
+      }
+      return undefined;
+    },
+  },
+  trustwallet: {
+    getDeeplink: (url: string) => `https://link.trustwallet.com/open_url?coin_id=60&url=${url}`,
+    pcDownloadUrl: "https://trustwallet.com/",
+    getProvider: () => {
+      if (window.trustwallet) {
+        return window.trustwallet;
       }
       return undefined;
     },

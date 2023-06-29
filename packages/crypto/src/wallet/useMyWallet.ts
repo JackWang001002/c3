@@ -51,7 +51,6 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   useOnChainChanged(provider, onChainChanged);
   const account = useAccount_(provider);
-  const accountRef = useLatest(account);
 
   useEffect(() => {
     if (!provider) {
