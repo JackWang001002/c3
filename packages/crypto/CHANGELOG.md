@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.50](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.49...@c3/crypto@1.2.50) (2023-06-30)
+
+**Note:** Version bump only for package @c3/crypto
+
 ## [1.2.49](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.48...@c3/crypto@1.2.49) (2023-06-30)
 
 **Note:** Version bump only for package @c3/crypto
