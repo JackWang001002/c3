@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.13](https://github.com/che3vinci/c3/compare/@c3/dom@1.2.12...@c3/dom@1.2.13) (2023-06-30)
+
+**Note:** Version bump only for package @c3/dom
+
 ## [1.2.12](https://github.com/che3vinci/c3/compare/@c3/dom@1.2.10...@c3/dom@1.2.12) (2023-06-29)
 
 **Note:** Version bump only for package @c3/dom
