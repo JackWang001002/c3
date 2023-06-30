@@ -1,4 +1,4 @@
-import { FormattedTime } from './type';
+import { FormattedTime } from "./type";
 
 export const parseMs = (milliseconds: number): FormattedTime => {
   return {
