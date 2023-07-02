@@ -2,9 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useIntersectionObserver = <T extends HTMLElement>() => {
   const observerRef = useRef<IntersectionObserver>();
-  //@ts-ignore
-  window.__observerRef = observerRef;
-
   const watch = useCallback(
     (el: T, callback: IntersectionObserverCallback, option?: IntersectionObserverInit) => {
       if (observerRef.current) {
@@ -17,5 +14,14 @@ export const useIntersectionObserver = <T extends HTMLElement>() => {
     },
     [observerRef]
   );
+  return watch;
+};
+
+export const useIntersectionObserver2 = <T extends HTMLElement>() => {
+  const watch = useCallback((el: T, callback: IntersectionObserverCallback, option?: IntersectionObserverInit) => {
+    const observer = new IntersectionObserver(callback, option);
+    observer.observe(el);
+    return () => observer?.unobserve(el);
+  }, []);
   return watch;
 };

@@ -11,11 +11,10 @@ export const useIsVisible = <T extends HTMLElement>() => {
 
   const watch = useCallback(
     (el: T, option?: IntersectionObserverInit) => {
-      _watch(
+      return _watch(
         el,
-        async (entries, observer) => {
-          const isVisble = entries[0].intersectionRatio > 0;
-          setIsVisible(isVisble);
+        async entries => {
+          setIsVisible(entries[0].intersectionRatio > 0);
         },
         option
       );
