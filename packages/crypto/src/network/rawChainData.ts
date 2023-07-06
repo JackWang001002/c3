@@ -62,10 +62,7 @@ export const rawChainList = [
       "https://ropsten.infura.io/v3/${INFURA_API_KEY}",
       "wss://ropsten.infura.io/ws/v3/${INFURA_API_KEY}",
     ],
-    faucets: [
-      "http://fauceth.komputing.org?chain=3&address=${ADDRESS}",
-      "https://faucet.ropsten.be?${ADDRESS}",
-    ],
+    faucets: ["http://fauceth.komputing.org?chain=3&address=${ADDRESS}", "https://faucet.ropsten.be?${ADDRESS}"],
     nativeCurrency: {
       name: "Ropsten Ether",
       symbol: "ETH",
@@ -95,10 +92,7 @@ export const rawChainList = [
       "https://rinkeby.infura.io/v3/${INFURA_API_KEY}",
       "wss://rinkeby.infura.io/ws/v3/${INFURA_API_KEY}",
     ],
-    faucets: [
-      "http://fauceth.komputing.org?chain=4&address=${ADDRESS}",
-      "https://faucet.rinkeby.io",
-    ],
+    faucets: ["http://fauceth.komputing.org?chain=4&address=${ADDRESS}", "https://faucet.rinkeby.io"],
     nativeCurrency: {
       name: "Rinkeby Ether",
       symbol: "ETH",
@@ -332,10 +326,7 @@ export const rawChainList = [
     name: "Flare Testnet Coston",
     chain: "FLR",
     rpc: ["https://coston-api.flare.network/ext/bc/C/rpc"],
-    faucets: [
-      "https://faucet.towolabs.com",
-      "https://fauceth.komputing.org?chain=16&address=${ADDRESS}",
-    ],
+    faucets: ["https://faucet.towolabs.com", "https://fauceth.komputing.org?chain=16&address=${ADDRESS}"],
     nativeCurrency: {
       name: "Coston Spark",
       symbol: "CFLR",
@@ -944,11 +935,7 @@ export const rawChainList = [
   {
     name: "XinFin XDC Network",
     chain: "XDC",
-    rpc: [
-      "https://erpc.xinfin.network",
-      "https://rpc.xinfin.network",
-      "https://rpc1.xinfin.network",
-    ],
+    rpc: ["https://erpc.xinfin.network", "https://rpc.xinfin.network", "https://rpc1.xinfin.network"],
     faucets: [],
     nativeCurrency: {
       name: "XinFin",
@@ -1330,10 +1317,7 @@ export const rawChainList = [
   {
     name: "OKXChain Mainnet",
     chain: "okxchain",
-    rpc: [
-      "https://exchainrpc.okex.org",
-      "https://okc-mainnet.gateway.pokt.network/v1/lb/6275309bea1b320039c893ff",
-    ],
+    rpc: ["https://exchainrpc.okex.org", "https://okc-mainnet.gateway.pokt.network/v1/lb/6275309bea1b320039c893ff"],
     faucets: ["https://free-online-app.com/faucet-for-eth-evm-chains/?"],
     nativeCurrency: {
       name: "OKXChain Global Utility Token",
@@ -1514,11 +1498,7 @@ export const rawChainList = [
   {
     name: "POA Network Sokol",
     chain: "POA",
-    rpc: [
-      "https://sokol.poa.network",
-      "wss://sokol.poa.network/wss",
-      "ws://sokol.poa.network:8546",
-    ],
+    rpc: ["https://sokol.poa.network", "wss://sokol.poa.network/wss", "ws://sokol.poa.network:8546"],
     faucets: ["https://faucet.poa.network"],
     nativeCurrency: {
       name: "POA Sokol Ether",
@@ -1718,11 +1698,7 @@ export const rawChainList = [
     name: "Nova Network",
     chain: "NNW",
     icon: "novanetwork",
-    rpc: [
-      "https://connect.novanetwork.io",
-      "https://0x57.redjackstudio.com",
-      "https://rpc.novanetwork.io:9070",
-    ],
+    rpc: ["https://connect.novanetwork.io", "https://0x57.redjackstudio.com", "https://rpc.novanetwork.io:9070"],
     faucets: [],
     nativeCurrency: {
       name: "Supernova",
@@ -2775,10 +2751,7 @@ export const rawChainList = [
     name: "Energy Web Chain",
     chain: "Energy Web Chain",
     rpc: ["https://rpc.energyweb.org", "wss://rpc.energyweb.org/ws"],
-    faucets: [
-      "https://faucet.carbonswap.exchange",
-      "https://free-online-app.com/faucet-for-eth-evm-chains/",
-    ],
+    faucets: ["https://faucet.carbonswap.exchange", "https://free-online-app.com/faucet-for-eth-evm-chains/"],
     nativeCurrency: {
       name: "Energy Web Token",
       symbol: "EWT",
@@ -4461,10 +4434,7 @@ export const rawChainList = [
   {
     name: "MathChain",
     chain: "MATH",
-    rpc: [
-      "https://mathchain-asia.maiziqianbao.net/rpc",
-      "https://mathchain-us.maiziqianbao.net/rpc",
-    ],
+    rpc: ["https://mathchain-asia.maiziqianbao.net/rpc", "https://mathchain-us.maiziqianbao.net/rpc"],
     faucets: [],
     nativeCurrency: {
       name: "MathChain",
@@ -5205,10 +5175,7 @@ export const rawChainList = [
     name: "Milkomeda C1 Mainnet",
     chain: "milkAda",
     icon: "milkomeda",
-    rpc: [
-      "https://rpc-mainnet-cardano-evm.c1.milkomeda.com",
-      "wss://rpc-mainnet-cardano-evm.c1.milkomeda.com",
-    ],
+    rpc: ["https://rpc-mainnet-cardano-evm.c1.milkomeda.com", "wss://rpc-mainnet-cardano-evm.c1.milkomeda.com"],
     faucets: [],
     nativeCurrency: {
       name: "milkAda",
@@ -5529,12 +5496,7 @@ export const rawChainList = [
   {
     name: "Kava EVM",
     chain: "KAVA",
-    rpc: [
-      "https://evm.kava.io",
-      "https://evm2.kava.io",
-      "wss://wevm.kava.io",
-      "wss://wevm2.kava.io",
-    ],
+    rpc: ["https://evm.kava.io", "https://evm2.kava.io", "wss://wevm.kava.io", "wss://wevm2.kava.io"],
     faucets: [],
     nativeCurrency: {
       name: "Kava",
@@ -6801,11 +6763,7 @@ export const rawChainList = [
     name: "Mammoth Mainnet",
     title: "Mammoth Chain",
     chain: "MMT",
-    rpc: [
-      "https://dataseed.mmtscan.io",
-      "https://dataseed1.mmtscan.io",
-      "https://dataseed2.mmtscan.io",
-    ],
+    rpc: ["https://dataseed.mmtscan.io", "https://dataseed1.mmtscan.io", "https://dataseed2.mmtscan.io"],
     faucets: ["https://faucet.mmtscan.io/"],
     nativeCurrency: {
       name: "Mammoth Token",
@@ -7065,11 +7023,7 @@ export const rawChainList = [
   {
     name: "Blockchain Genesis Mainnet",
     chain: "GEN",
-    rpc: [
-      "https://eu.mainnet.xixoio.com",
-      "https://us.mainnet.xixoio.com",
-      "https://asia.mainnet.xixoio.com",
-    ],
+    rpc: ["https://eu.mainnet.xixoio.com", "https://us.mainnet.xixoio.com", "https://asia.mainnet.xixoio.com"],
     faucets: [],
     nativeCurrency: {
       name: "GEN",
@@ -7934,10 +7888,7 @@ export const rawChainList = [
       decimals: 18,
     },
     rpc: ["https://alfajores-forno.celo-testnet.org", "wss://alfajores-forno.celo-testnet.org/ws"],
-    faucets: [
-      "https://celo.org/developers/faucet",
-      "https://cauldron.pretoriaresearchlab.io/alfajores-faucet",
-    ],
+    faucets: ["https://celo.org/developers/faucet", "https://cauldron.pretoriaresearchlab.io/alfajores-faucet"],
     infoURL: "https://docs.celo.org/",
   },
   {
@@ -8390,10 +8341,7 @@ export const rawChainList = [
     name: "Polyjuice Testnet",
     chain: "CKB",
     icon: "polyjuice",
-    rpc: [
-      "https://godwoken-testnet-web3-rpc.ckbapp.dev",
-      "ws://godwoken-testnet-web3-rpc.ckbapp.dev/ws",
-    ],
+    rpc: ["https://godwoken-testnet-web3-rpc.ckbapp.dev", "ws://godwoken-testnet-web3-rpc.ckbapp.dev/ws"],
     faucets: ["https://faucet.nervos.org/"],
     nativeCurrency: {
       name: "CKB",
@@ -9188,10 +9136,7 @@ export const rawChainList = [
     name: "Milkomeda C1 Testnet",
     chain: "milkTAda",
     icon: "milkomeda",
-    rpc: [
-      "https://rpc-devnet-cardano-evm.c1.milkomeda.com",
-      "wss://rpc-devnet-cardano-evm.c1.milkomeda.com",
-    ],
+    rpc: ["https://rpc-devnet-cardano-evm.c1.milkomeda.com", "wss://rpc-devnet-cardano-evm.c1.milkomeda.com"],
     faucets: [],
     nativeCurrency: {
       name: "milkTAda",
@@ -9883,10 +9828,7 @@ export const rawChainList = [
     title: "Kintsugi merge testnet",
     chain: "ETH",
     rpc: ["https://rpc.kintsugi.themerge.dev"],
-    faucets: [
-      "http://fauceth.komputing.org?chain=1337702&address=${ADDRESS}",
-      "https://faucet.kintsugi.themerge.dev",
-    ],
+    faucets: ["http://fauceth.komputing.org?chain=1337702&address=${ADDRESS}", "https://faucet.kintsugi.themerge.dev"],
     nativeCurrency: {
       name: "kintsugi Ethere",
       symbol: "kiETH",
@@ -9908,11 +9850,7 @@ export const rawChainList = [
     name: "Kiln",
     chain: "ETH",
     rpc: ["https://rpc.kiln.themerge.dev"],
-    faucets: [
-      "https://faucet.kiln.themerge.dev",
-      "https://kiln-faucet.pk910.de",
-      "https://kilnfaucet.com",
-    ],
+    faucets: ["https://faucet.kiln.themerge.dev", "https://kiln-faucet.pk910.de", "https://kilnfaucet.com"],
     nativeCurrency: {
       name: "Testnet ETH",
       symbol: "ETH",
@@ -10930,7 +10868,7 @@ export const rawChainList = [
     explorers: [
       {
         name: "Linea Testnet Explorer",
-        url: "https://explorer.goerli.linea.build/",
+        url: "https://goerli.lineascan.build/",
         standard: "none",
       },
     ],
