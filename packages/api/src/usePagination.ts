@@ -31,7 +31,7 @@ export const usePagination = <
     fetchOnMounted: option.fetchOnMounted,
     defaultReqParameter: option.defaultReqParameter,
   });
-  const [fetchedData, setFetchedData] = useState<PaginationData<T>>({
+  const [allData, setAllData] = useState<PaginationData<T>>({
     total: 0,
     list: [],
   });
@@ -41,7 +41,7 @@ export const usePagination = <
       return;
     }
     //TODO: check if the data is the same as the previous one
-    setFetchedData(data => ({
+    setAllData(data => ({
       total: bodyOfEachPage.total,
       list: [...data.list, ...bodyOfEachPage.list],
     }));
@@ -55,12 +55,12 @@ export const usePagination = <
   );
 
   const updateFetchedData = useCallback((list: T[]) => {
-    setFetchedData(data => ({ total: data.total, list }));
+    setAllData(data => ({ total: data.total, list }));
   }, []);
 
   return {
-    list: fetchedData.list,
-    total: fetchedData.total,
+    list: allData.list,
+    total: allData.total,
     fetchPage,
     updateData: updateFetchedData,
     status: status,

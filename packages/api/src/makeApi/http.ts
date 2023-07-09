@@ -1,15 +1,15 @@
-import { isFunction } from '@c3/utils';
-import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from './api';
-import { methods } from './methods';
-import { patch } from './patch';
-import { Method } from './type';
-import { ndbg } from './utils';
+import { isFunction } from "@c3/utils";
+import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from "./api";
+import { methods } from "./methods";
+import { patch } from "./patch";
+import { Method } from "./type";
+import { ndbg } from "./utils";
 
 export type HTTP = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key in Method]: (...args: any[]) => Promise<any>;
 };
-const isMockEnv = () => globalThis.localStorage?.getItem?.('mock');
+const isMockEnv = () => globalThis.localStorage?.getItem?.("mock");
 
 export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
   const proxyHttp = {} as HTTP;
