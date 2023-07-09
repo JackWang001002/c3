@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.53](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.51...@c3/crypto@1.2.53) (2023-07-09)
+
+### Features
+
+- c3/api export API interface ([e40ea40](https://github.com/che3vinci/c3/commit/e40ea40996527509d17d24a9d8fcf4ed4bf8e5b0))
+
 ## [1.2.51](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.50...@c3/crypto@1.2.51) (2023-07-02)
 
 **Note:** Version bump only for package @c3/crypto
