@@ -10966,4 +10966,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "taiko testnet",
+    chain: "taiko testnet",
+    rpc: ["https://rpc.test.taiko.xyz"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "taiko_testnet",
+    chainId: 167005,
+    networkId: 167005,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://explorer.test.taiko.xyz",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
