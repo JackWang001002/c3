@@ -10943,4 +10943,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Linea mainnet",
+    chain: "Linea mainnet",
+    rpc: ["https://linea-mainnet.infura.io/v3"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "linea_mainnet",
+    chainId: 59144,
+    networkId: 59144,
+    status: "",
+    explorers: [
+      {
+        name: "Linea Mainnet Explorer",
+        url: "https://explorer.linea.build",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];

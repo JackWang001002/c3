@@ -16,18 +16,25 @@ export type Option<T extends RawReqParameter> = {
   id?: string; //id used to distinguish different data item
   defaultReqParameter: T;
 };
+export type PageInfo = {
+  pageSiz: number;
+  pageSize: number;
+};
 
+//===========================================================
+//WARN: use paginate不能保证数据的唯一性，需要在外部保证。也不能保证分页是连续的
+//===========================================================
 export const usePagination = <
   T,
-  _RawReqParameter extends RawReqParameter,
-  _ReqParameter extends ReqParameter,
-  _RawResBody extends RawResBody,
-  _ResBody extends PaginationData<T>
+  _RawReqParameter extends PageInfo = PageInfo,
+  _ReqParameter extends ReqParameter = ReqParameter,
+  _RawResBody extends RawResBody = RawResBody,
+  _ResBody extends PaginationData<T> = PaginationData<T>
 >(
   api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
-  option: Option<_RawReqParameter>
+  option: Option<_RawReqParameter> //TODO:去掉
 ) => {
-  const [bodyOfEachPage, fetch, , status] = useApi(api, {
+  const [pageData, fetch, , status] = useApi(api, {
     fetchOnMounted: option.fetchOnMounted,
     defaultReqParameter: option.defaultReqParameter,
   });
@@ -37,22 +44,21 @@ export const usePagination = <
   });
 
   useEffect(() => {
-    if (!Array.isArray(bodyOfEachPage.list)) {
+    if (!Array.isArray(pageData.list)) {
       return;
     }
-    //TODO: check if the data is the same as the previous one
     setAllData(data => ({
-      total: bodyOfEachPage.total,
-      list: [...data.list, ...bodyOfEachPage.list],
+      total: pageData.total,
+      list: [...data.list, ...pageData.list],
     }));
-  }, [bodyOfEachPage.total, bodyOfEachPage.list]);
+  }, [pageData.total, pageData.list]);
 
-  const fetchPage = useCallback(
-    async (para: _RawReqParameter) => {
-      await fetch(para);
-    },
-    [fetch]
-  );
+  // const fetchPage = useCallback(
+  //   async (para: _RawReqParameter) => {
+  //     await fetch(para);
+  //   },
+  //   [fetch]
+  // );
 
   const updateFetchedData = useCallback((list: T[]) => {
     setAllData(data => ({ total: data.total, list }));
@@ -61,9 +67,9 @@ export const usePagination = <
   return {
     list: allData.list,
     total: allData.total,
-    fetchPage,
+    fetchPage: fetch,
     updateData: updateFetchedData,
     status: status,
-    maxPageNo: getTotalPage(bodyOfEachPage.total || 0, option.pageSize || 1),
+    maxPageNo: getTotalPage(pageData.total || 0, option.pageSize || 1),
   };
 };
