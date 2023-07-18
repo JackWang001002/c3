@@ -10989,4 +10989,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Mantle Mainnet",
+    chain: "Mantle Mainnet",
+    rpc: ["https://rpc.mantle.xyz"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "MNT",
+      symbol: "MNT",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "mantle_mainnet",
+    chainId: 5000,
+    networkId: 5000,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://explorer.mantle.xyz",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
