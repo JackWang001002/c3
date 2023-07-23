@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useIntersectionObserver } from "./useIntersectionObserver";
 
 /**
@@ -10,9 +10,9 @@ export const useIsVisible = <T extends HTMLElement>() => {
   const _watch = useIntersectionObserver<T>();
 
   const watch = useCallback(
-    (el: T, option?: IntersectionObserverInit) => {
+    (ref: React.RefObject<T>, option?: IntersectionObserverInit) => {
       return _watch(
-        el,
+        ref,
         async entries => {
           setIsVisible(entries[0].intersectionRatio > 0);
         },

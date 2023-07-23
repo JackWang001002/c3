@@ -17,8 +17,8 @@ export type Option<T extends RawReqParameter> = {
   defaultReqParameter: T;
 };
 export type PageInfo = {
-  pageSiz: number;
   pageSize: number;
+  pageNo: number;
 };
 
 //===========================================================
@@ -52,13 +52,6 @@ export const usePagination = <
       list: [...data.list, ...pageData.list],
     }));
   }, [pageData.total, pageData.list]);
-
-  // const fetchPage = useCallback(
-  //   async (para: _RawReqParameter) => {
-  //     await fetch(para);
-  //   },
-  //   [fetch]
-  // );
 
   const updateFetchedData = useCallback((list: T[]) => {
     setAllData(data => ({ total: data.total, list }));

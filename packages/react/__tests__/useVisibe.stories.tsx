@@ -26,6 +26,7 @@ export const Default = () => {
       >
         watch hidden
       </button>
+      p s
       <button
         onClick={() => {
           watch(document.getElementById("opacity0"));

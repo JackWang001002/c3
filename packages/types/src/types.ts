@@ -48,3 +48,5 @@ type Includes<T extends readonly any[], U> = T extends [infer F, ...infer rest]
     ? true
     : Includes<rest, U>
   : false;
+
+export type EmptyObject = Record<string, never>;

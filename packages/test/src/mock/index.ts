@@ -1,10 +1,10 @@
-import { rand } from '@c3/utils';
-import _ from 'lodash';
-import React from 'react';
-import { getRandomText, getRandomWord, getRandomWords } from './text';
-import { getRandomUser } from './user';
-let gid = 0;
+import { rand } from "@c3/utils";
+import _ from "lodash";
+import React from "react";
+import { getRandomText, getRandomWord, getRandomWords } from "./text";
+export * from "./user";
 
+let gid = 0;
 type ImgOptions = {
   width?: number;
   height?: number;
@@ -34,26 +34,26 @@ export const mock = {
   getRandomColor: () => {
     return `hsla(${rand(0, 360, false)},${rand(50, 100)}%,${rand(40, 80)}%,90%)`;
   },
-  getRandBox: ({ width = 'auto', height = 'auto', size = 'normal', ...css } = {}) => {
+  getRandBox: ({ width = "auto", height = "auto", size = "normal", ...css } = {}) => {
     return {
       width,
       height,
       background: mock.getRandomColor(),
-      fontSize: size === 'normal' ? 16 : rand(14, 60),
+      fontSize: size === "normal" ? 16 : rand(14, 60),
       p: 4,
       ...css,
     };
   },
-  getRandElements: ({ count = 3, wMin = 1, wMax = 5, size = 'normal', text = undefined } = {}) => {
+  getRandElements: ({ count = 3, wMin = 1, wMax = 5, size = "normal", text = undefined } = {}) => {
     return _.times(count, i => {
       return React.createElement(
-        'div',
+        "div",
         { style: { ...mock.getRandBox({ size }) } },
         `i-${i} ${text || mock.getRandomWords(rand(wMin, wMax))}`
       );
     });
   },
-  getList: (count = 10, wMin = 1, wMax = 5, size = 'normal') => {
-    return React.createElement('ul', null, mock.getRandElements({ count, wMin, wMax, size }));
+  getList: (count = 10, wMin = 1, wMax = 5, size = "normal") => {
+    return React.createElement("ul", null, mock.getRandElements({ count, wMin, wMax, size }));
   },
 };
