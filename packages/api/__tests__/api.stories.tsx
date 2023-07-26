@@ -1,15 +1,15 @@
-import React from 'react';
-import { useApi, initMakeApi } from '../src/index';
-import axios from 'axios';
+import React from "react";
+import { useApi, initMakeApi } from "../src/index";
+import axios from "axios";
 export default {
   component: () => <div>xxx</div>,
-  title: 'makeApi',
+  title: "makeApi",
 };
 const makeApi = initMakeApi({ rawHttp: axios });
 
 const api = makeApi({
-  method: 'get',
-  url: 'http://localhost:3333/info',
+  method: "get",
+  url: "http://localhost:3333/info",
   defaultData: {},
   mockData: {},
 });
@@ -26,8 +26,8 @@ export const Default = () => {
 };
 
 const fetchFoo = makeApi({
-  method: 'post',
-  url: 'http://localhost:3333/api/pick-free-time',
+  method: "post",
+  url: "http://localhost:3333/api/pick-free-time",
   convert: raw => raw,
   preCondition: () => true,
   mockData: {},

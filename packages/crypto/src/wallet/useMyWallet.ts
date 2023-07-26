@@ -6,6 +6,9 @@ import { useCallback, useState } from "react";
 import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
+import { ParticleConnect } from "@particle-network/connect";
+import { ParticleProvider } from "@particle-network/provider";
+import { ParticleNetwork } from "@particle-network/auth";
 import {
   WalletName,
   getWalletProvider,

@@ -11,11 +11,16 @@ export const useApi = <
   _RawResBody extends RawResBody,
   _ResBody extends ResBody
 >(
-  api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
-  option: UseApiOption<_RawReqParameter> = { fetchOnMounted: false }
+  api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>
 ) => {
   const [data, updateData] = useState(api.defaultData);
-  const [status, setStatus] = useState<"intitial" | "loading" | "success" | "failure">("intitial");
+  //===========================================================
+  // initial:一次都没有fetch过数据
+  // loading:正在进行一次fetch数据
+  // success:当次fetch数据成功
+  // failure:当次fetch数据失败
+  //===========================================================
+  const [status, setStatus] = useState<"initial" | "loading" | "success" | "failure">("initial");
   const fetch = useCallback(
     async (rrp: _RawReqParameter, ...args: any[]) => {
       try {
@@ -35,13 +40,6 @@ export const useApi = <
     },
     [api]
   );
-  useEffect(() => {
-    if (option.fetchOnMounted) {
-      fetch(option.defaultReqParameter || ({} as _RawReqParameter));
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return [data, fetch, updateData, status] as const;
 };

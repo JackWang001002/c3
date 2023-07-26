@@ -14,7 +14,7 @@ export const useIsVisible = <T extends HTMLElement>() => {
       return _watch(
         ref,
         async entries => {
-          setIsVisible(entries[0].intersectionRatio > 0);
+          setIsVisible(entries[0].isIntersecting);
         },
         option
       );

@@ -10,12 +10,11 @@ export type PaginationData<T> = {
   total: number;
   list: T[];
 };
-export type Option<T extends RawReqParameter> = {
-  fetchOnMounted: boolean;
-  pageSize: number;
-  id?: string; //id used to distinguish different data item
-  defaultReqParameter: T;
-};
+// export type Option<T extends RawReqParameter> = {
+//   fetchOnMounted: boolean;
+//   pageSize: number;
+//   id?: string; //id used to distinguish different data item
+// };
 export type PageInfo = {
   pageSize: number;
   pageNo: number;
@@ -26,43 +25,47 @@ export type PageInfo = {
 //===========================================================
 export const usePagination = <
   T,
-  _RawReqParameter extends PageInfo = PageInfo,
-  _ReqParameter extends ReqParameter = ReqParameter,
-  _RawResBody extends RawResBody = RawResBody,
-  _ResBody extends PaginationData<T> = PaginationData<T>
+  _RawReqParameter extends PageInfo,
+  _ReqParameter extends ReqParameter,
+  _RawResBody extends RawResBody,
+  _ResBody extends PaginationData<T>
 >(
   api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
-  option: Option<_RawReqParameter> //TODO:去掉
+  pageSize: number
 ) => {
-  const [pageData, fetch, , status] = useApi(api, {
-    fetchOnMounted: option.fetchOnMounted,
-    defaultReqParameter: option.defaultReqParameter,
-  });
+  const [pageNo, setPageNo] = useState(1);
+
+  const [pageData, fetch, , status] = useApi(api);
   const [allData, setAllData] = useState<PaginationData<T>>({
     total: 0,
     list: [],
   });
 
-  useEffect(() => {
-    if (!Array.isArray(pageData.list)) {
-      return;
-    }
-    setAllData(data => ({
-      total: pageData.total,
-      list: [...data.list, ...pageData.list],
-    }));
-  }, [pageData.total, pageData.list]);
-
   const updateFetchedData = useCallback((list: T[]) => {
     setAllData(data => ({ total: data.total, list }));
   }, []);
 
+  const fetchNextPage = useCallback(
+    async (rrp: Omit<_RawReqParameter, "pageSize" | "pageNo">) => {
+      //@ts-ignore
+      const pageData = await fetch({ ...rrp, pageNo, pageSize });
+      setAllData(data => ({
+        total: pageData.total,
+        list: [...data.list, ...pageData.list],
+      }));
+      setPageNo(x => x + 1);
+    },
+    [fetch, pageNo, pageSize]
+  );
+
   return {
     list: allData.list,
     total: allData.total,
-    fetchPage: fetch,
+    fetchNextPage,
     updateData: updateFetchedData,
-    status: status,
-    maxPageNo: getTotalPage(pageData.total || 0, option.pageSize || 1),
+    status,
+    maxPageNo: getTotalPage(pageData.total || 0, pageSize || 1),
+    pageNo,
+    pageSize,
   };
 };

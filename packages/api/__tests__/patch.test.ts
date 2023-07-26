@@ -1,19 +1,19 @@
-import { patch } from '../src/makeApi/patch';
+import { patch } from "../src/makeApi/patch";
 
-describe('test cases', () => {
-  it('should work ', () => {
+describe("test cases", () => {
+  it("should work ", () => {
     const rawResBody = { d: null };
     const mockData = { d: [] };
     expect(patch(rawResBody, mockData)).toEqual({ d: [] });
   });
-  it('should work ', () => {
+  it("should work ", () => {
     const rawResBody = { a: { b: null, c: null, d: null } };
-    const mockData = { a: { b: 4, c: 'hello', d: [{}, {}] } };
+    const mockData = { a: { b: 4, c: "hello", d: [{}, {}] } };
     expect(JSON.stringify(patch(rawResBody, mockData))).toEqual(
-      JSON.stringify({ a: { b: Number.NaN, c: '', d: [] } })
+      JSON.stringify({ a: { b: Number.NaN, c: "", d: [] } })
     );
   });
-  it('should work ', () => {
+  it("should work ", () => {
     const rawResBody = { a: { b: { c: null } }, d: null };
     const mockData = { a: { b: { c: [{ a: 2 }] } }, d: { a: 2 } };
     expect(patch(rawResBody, mockData)).toEqual({
@@ -21,15 +21,15 @@ describe('test cases', () => {
       d: { a: Number.NaN },
     });
   });
-  it('all elements of array ', () => {
+  it("all elements of array ", () => {
     const rawResBody = {
       list: [
         {
-          name: 'x',
+          name: "x",
           children: null,
         },
         {
-          name: 'x1',
+          name: "x1",
           children: null,
         },
       ],
@@ -37,7 +37,7 @@ describe('test cases', () => {
     const mockData = {
       list: [
         {
-          name: 'x',
+          name: "x",
           children: [{}, {}],
         },
       ],
@@ -45,11 +45,11 @@ describe('test cases', () => {
     expect(patch(rawResBody, mockData)).toEqual({
       list: [
         {
-          name: 'x',
+          name: "x",
           children: [],
         },
         {
-          name: 'x1',
+          name: "x1",
           children: [],
         },
       ],

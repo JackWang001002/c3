@@ -2,13 +2,17 @@
 
 import { ethers } from "ethers";
 import { CoinbaseWalletSDK } from "@coinbase/wallet-sdk";
+import { ParticleConnect } from "@particle-network/connect";
+import { ParticleProvider } from "@particle-network/provider";
+import { ParticleNetwork } from "@particle-network/auth";
+
 const APP_NAME = "My Awesome App";
 const APP_LOGO_URL = "https://example.com/logo.png";
 const DEFAULT_ETH_JSONRPC_URL = "xxxx";
 const DEFAULT_CHAIN_ID = 1;
 
 declare let window: any;
-export type WalletName = "metamask" | "coinbase" | "okx" | "trustwallet";
+export type WalletName = "metamask" | "coinbase" | "okx" | "trustwallet" | "particle";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
@@ -83,6 +87,30 @@ export const injectedProviders: InjectedProvider = {
         return window.trustwallet;
       }
       return undefined;
+    },
+  },
+  particle: {
+    getDeeplink: (url: string) => "",
+    pcDownloadUrl: "",
+    getProvider: () => {
+      const particle = new ParticleNetwork({
+        projectId: "a6991b19-e1d9-4da0-a8ff-1928d4651cc6",
+        clientKey: "cLxYtnw4BIiwoV7zkjNOXMHVFD04QgC2k6Opm1VM",
+        appId: "269e4911-b398-4699-a2a2-fe2fd78a335c",
+        // chains: [
+        //   {
+        //     id: 1,
+        //     name: "Ethereum",
+        //   },
+        //   {
+        //     id: 97,
+        //     name: "bsc testnet",
+        //   },
+        // ],
+      });
+      window.__particalNetwork = particle;
+
+      return new ParticleProvider(particle.auth);
     },
   },
 };

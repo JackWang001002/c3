@@ -57,11 +57,13 @@ const config = {
     /@babel\//,
     /@rollup\//,
     /@c3\//,
+    /@particle-network\//,
     "react-dom",
     "react-router-dom",
     "dayjs",
     "axios",
     "qs",
+
     "lodash",
     "numeral",
     "antd",
