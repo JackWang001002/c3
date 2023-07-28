@@ -2,6 +2,7 @@ import { rand } from "@c3/utils";
 import _ from "lodash";
 import React from "react";
 import { getRandomText, getRandomWord, getRandomWords } from "./text";
+import { getRandomUser } from "./user";
 export * from "./user";
 
 let gid = 0;
@@ -30,7 +31,7 @@ export const mock = {
   getRandomWord,
   getRandomWords,
   getId: () => `uniq-id-${gid++}`,
-  getRandomUser,
+  getRandomUser: getRandomUser,
   getRandomColor: () => {
     return `hsla(${rand(0, 360, false)},${rand(50, 100)}%,${rand(40, 80)}%,90%)`;
   },

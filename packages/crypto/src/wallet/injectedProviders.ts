@@ -17,6 +17,7 @@ export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
 export const walletName_TrustWallet: WalletName = "trustwallet";
+export const walletName_Particle: WalletName = "particle";
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -51,6 +52,7 @@ export const injectedProviders: InjectedProvider = {
           }
         }
       }
+      return null;
       return null;
     },
   },
@@ -93,24 +95,28 @@ export const injectedProviders: InjectedProvider = {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
     getProvider: () => {
-      const particle = new ParticleNetwork({
+      const particle = new ParticleConnect({
         projectId: "a6991b19-e1d9-4da0-a8ff-1928d4651cc6",
         clientKey: "cLxYtnw4BIiwoV7zkjNOXMHVFD04QgC2k6Opm1VM",
         appId: "269e4911-b398-4699-a2a2-fe2fd78a335c",
-        // chains: [
-        //   {
-        //     id: 1,
-        //     name: "Ethereum",
-        //   },
-        //   {
-        //     id: 97,
-        //     name: "bsc testnet",
-        //   },
-        // ],
+        chains: [
+          {
+            id: 1,
+            name: "Ethereum",
+          },
+          {
+            id: 97,
+            name: "bsc testnet",
+          },
+          {
+            id: 56,
+            name: "bsc mainnet",
+          },
+        ],
       });
       window.__particalNetwork = particle;
 
-      return new ParticleProvider(particle.auth);
+      return new ParticleProvider(particle.particle.auth);
     },
   },
 };
