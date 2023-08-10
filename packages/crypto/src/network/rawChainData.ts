@@ -11097,4 +11097,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Base Mainnet",
+    chain: "Base Mainnet",
+    rpc: ["https://mainnet.base.org"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "base_mainnet",
+    chainId: 8453,
+    networkId: 8453,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://basescan.org",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
