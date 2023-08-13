@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.23](https://github.com/che3vinci/c3/compare/@c3/react@1.1.18...@c3/react@1.1.23) (2023-08-13)
+
+### Bug Fixes
+
+- f ([e235e3b](https://github.com/che3vinci/c3/commit/e235e3b89e3a5f91a92b57f211f2cd524dddea63))
+- particle ([f6f610c](https://github.com/che3vinci/c3/commit/f6f610c290f52344f25929b8f84183263178d15d))
+
 ## [1.1.18](https://github.com/che3vinci/c3/compare/@c3/react@1.1.17...@c3/react@1.1.18) (2023-07-02)
 
 **Note:** Version bump only for package @c3/react

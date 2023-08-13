@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.16](https://github.com/che3vinci/c3/compare/@c3/test@1.3.15...@c3/test@1.3.16) (2023-08-13)
+
+### Bug Fixes
+
+- f ([e235e3b](https://github.com/che3vinci/c3/commit/e235e3b89e3a5f91a92b57f211f2cd524dddea63))
+- reset ([e9af7b0](https://github.com/che3vinci/c3/commit/e9af7b014c0d4b29219bdae242baf451b0e7915e))
+
 ## [1.3.15](https://github.com/che3vinci/c3/compare/@c3/test@1.3.14...@c3/test@1.3.15) (2023-06-30)
 
 **Note:** Version bump only for package @c3/test

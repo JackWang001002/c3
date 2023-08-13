@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.15](https://github.com/che3vinci/c3/compare/@c3/router@1.2.14...@c3/router@1.2.15) (2023-08-13)
+
+**Note:** Version bump only for package @c3/router
+
 ## [1.2.14](https://github.com/che3vinci/c3/compare/@c3/router@1.2.13...@c3/router@1.2.14) (2023-06-30)
 
 **Note:** Version bump only for package @c3/router

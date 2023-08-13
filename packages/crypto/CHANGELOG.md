@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.62](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.53...@c3/crypto@1.2.62) (2023-08-13)
+
+### Bug Fixes
+
+- f ([e235e3b](https://github.com/che3vinci/c3/commit/e235e3b89e3a5f91a92b57f211f2cd524dddea63))
+- formatTime ([a0220fd](https://github.com/che3vinci/c3/commit/a0220fd6e6e2fe10ec346f4c626709b3fc560f40))
+- particle ([f6f610c](https://github.com/che3vinci/c3/commit/f6f610c290f52344f25929b8f84183263178d15d))
+- reset ([e9af7b0](https://github.com/che3vinci/c3/commit/e9af7b014c0d4b29219bdae242baf451b0e7915e))
+
+### Features
+
+- add taiko ([2a242ef](https://github.com/che3vinci/c3/commit/2a242ef13d200bab99af5ef154cf5b79421073ba))
+- addMantle ([f4a245b](https://github.com/che3vinci/c3/commit/f4a245b41b89976796fd7f6b670e18a855e60700))
+- base mainnet ([057d3ba](https://github.com/che3vinci/c3/commit/057d3babbe1521702d15004eb13fe19091f95ba3))
+- rpc and linea mainnet ([b00aa20](https://github.com/che3vinci/c3/commit/b00aa20d952314bb25e081c8dfbdd52df7812261))
+- scroll ([0cc75e4](https://github.com/che3vinci/c3/commit/0cc75e4714469f1c129e926c1ce7dab9de92c50a))
+
 ## [1.2.53](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.51...@c3/crypto@1.2.53) (2023-07-09)
 
 ### Features

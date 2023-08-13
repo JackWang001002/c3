@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.28](https://github.com/che3vinci/c3/compare/@c3/api@1.2.22...@c3/api@1.2.28) (2023-08-13)
+
+### Bug Fixes
+
+- f ([e235e3b](https://github.com/che3vinci/c3/commit/e235e3b89e3a5f91a92b57f211f2cd524dddea63))
+- particle ([f6f610c](https://github.com/che3vinci/c3/commit/f6f610c290f52344f25929b8f84183263178d15d))
+
+### Features
+
+- rpc and linea mainnet ([b00aa20](https://github.com/che3vinci/c3/commit/b00aa20d952314bb25e081c8dfbdd52df7812261))
+
 ## [1.2.22](https://github.com/che3vinci/c3/compare/@c3/api@1.2.19...@c3/api@1.2.22) (2023-07-09)
 
 ### Features

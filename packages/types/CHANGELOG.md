@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.10](https://github.com/che3vinci/c3/compare/@c3/types@1.1.9...@c3/types@1.1.10) (2023-08-13)
+
+### Bug Fixes
+
+- f ([e235e3b](https://github.com/che3vinci/c3/commit/e235e3b89e3a5f91a92b57f211f2cd524dddea63))
+
+### Features
+
+- base mainnet ([057d3ba](https://github.com/che3vinci/c3/commit/057d3babbe1521702d15004eb13fe19091f95ba3))
+- scroll ([0cc75e4](https://github.com/che3vinci/c3/commit/0cc75e4714469f1c129e926c1ce7dab9de92c50a))
+
 ## [1.1.9](https://github.com/che3vinci/c3/compare/@c3/types@1.1.7...@c3/types@1.1.9) (2023-06-29)
 
 **Note:** Version bump only for package @c3/types
