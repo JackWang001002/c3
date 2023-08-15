@@ -11120,4 +11120,50 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Klaytn",
+    chain: "Klaytn",
+    rpc: ["https://public-node-api.klaytnapi.com/v1/cypress"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "KLAY",
+      symbol: "KLAY",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "klaytn_mainnet",
+    chainId: 8217,
+    networkId: 8217,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://scope.klaytn.com",
+        standard: "none",
+      },
+    ],
+  },
+  {
+    name: "Manta",
+    chain: "Manta testnet",
+    rpc: ["https://manta-testnet.calderachain.xyz/http"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "MANTA",
+      symbol: "MANTA",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "manta_testnet",
+    chainId: 3441005,
+    networkId: 3441005,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://manta-testnet.calderaexplorer.xyz",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
