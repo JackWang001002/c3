@@ -23,9 +23,7 @@ import { injectedProviders, WalletName } from "./injectedProviders";
 
 export const jump2NativeAppOrDlPage = (name: WalletName = "metamask") => {
   if (env.mobile) {
-    const target = injectedProviders[name].getDeeplink(
-      window.location.href.replace(/^https?:\/\//, "")
-    );
+    const target = injectedProviders[name].getDeeplink(window.location.href);
     console.log("jump2to", target);
     window.open(target, "_blank");
   } else if (!env.mobile && !env.tablet) {
