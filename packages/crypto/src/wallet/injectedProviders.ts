@@ -32,7 +32,7 @@ export type InjectedProvider = {
 export const injectedProviders: InjectedProvider = {
   metamask: {
     // entry: window.ethereum,
-    getDeeplink: url => `https://metamask.app.link/dapp/${url}`,
+    getDeeplink: url => `https://metamask.app.link/dapp/${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://metamask.io/download/",
     getProvider: () => {
       if (typeof window.ethereum === "undefined") {
@@ -72,7 +72,7 @@ export const injectedProviders: InjectedProvider = {
     },
   },
   okx: {
-    getDeeplink: (url: string) => `okx://wallet/dapp/details?dappUrl=${url}`,
+    getDeeplink: (url: string) => `okx://wallet/dapp/details?dappUrl=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://www.okx.com/web3",
     getProvider: () => {
       if (window.okxwallet) {
@@ -82,9 +82,14 @@ export const injectedProviders: InjectedProvider = {
     },
   },
   trustwallet: {
-    getDeeplink: (url: string) => `https://link.trustwallet.com/open_url?coin_id=60&url=${url}`,
+    getDeeplink: (url: string) =>
+      `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://trustwallet.com/",
     getProvider: () => {
+      //处理移动端window.trustwallet不是proxy，不提供功能的问题
+      if (window.ethereum.isTrust) {
+        return window.ethereum;
+      }
       if (window.trustwallet) {
         return window.trustwallet;
       }
