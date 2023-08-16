@@ -38,9 +38,9 @@ export const injectedProviders: InjectedProvider = {
       if (typeof window.ethereum === "undefined") {
         return undefined;
       }
-      const providers = window.ethereum.providers || [];
+      const providers = window.ethereum?.providers || [];
       const isMultiProvider = !!providers.length;
-      if (!isMultiProvider && window.ethereum.isMetaMask) {
+      if (!isMultiProvider && window.ethereum?.isMetaMask) {
         return window.ethereum;
       }
 
@@ -87,7 +87,7 @@ export const injectedProviders: InjectedProvider = {
     pcDownloadUrl: "https://trustwallet.com/",
     getProvider: () => {
       //处理移动端window.trustwallet不是proxy，不提供功能的问题
-      if (window.ethereum.isTrust) {
+      if (window.ethereum?.isTrust) {
         return window.ethereum;
       }
       if (window.trustwallet) {
