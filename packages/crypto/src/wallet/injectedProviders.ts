@@ -32,7 +32,7 @@ export type InjectedProvider = {
 export const injectedProviders: InjectedProvider = {
   metamask: {
     // entry: window.ethereum,
-    getDeeplink: url => `https://metamask.app.link/dapp/${encodeURIComponent(url)}`,
+    getDeeplink: url => `https://metamask.app.link/dapp/${url}`, //不需要encodeURIComponent
     pcDownloadUrl: "https://metamask.io/download/",
     getProvider: () => {
       if (typeof window.ethereum === "undefined") {

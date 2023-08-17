@@ -11166,4 +11166,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "opBNB",
+    chain: "opBNB",
+    rpc: ["https://opbnb-mainnet-rpc.bnbchain.org"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "BNB",
+      symbol: "BNB",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "",
+    chainId: 204,
+    networkId: 204,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://mainnet.opbnbscan.com",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
