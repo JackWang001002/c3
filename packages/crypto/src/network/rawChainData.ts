@@ -11177,7 +11177,7 @@ export const rawChainList = [
       decimals: 18,
     },
     infoURL: "",
-    shortName: "",
+    shortName: "opbnb_mainnet",
     chainId: 204,
     networkId: 204,
     status: "",

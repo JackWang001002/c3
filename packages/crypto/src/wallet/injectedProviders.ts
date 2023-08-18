@@ -12,12 +12,13 @@ const DEFAULT_ETH_JSONRPC_URL = "xxxx";
 const DEFAULT_CHAIN_ID = 1;
 
 declare let window: any;
-export type WalletName = "metamask" | "coinbase" | "okx" | "trustwallet" | "particle";
+export type WalletName = "metamask" | "coinbase" | "okx" | "trustwallet" | "particle" | "bitkeep";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
 export const walletName_TrustWallet: WalletName = "trustwallet";
 export const walletName_Particle: WalletName = "particle";
+export const walletName_BitKeep: WalletName = "bitkeep";
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -122,6 +123,13 @@ export const injectedProviders: InjectedProvider = {
       window.__particalNetwork = particle;
 
       return new ParticleProvider(particle.particle.auth);
+    },
+  },
+  bitkeep: {
+    getDeeplink: (url: string) => `https://bkcode.vip?action=dapp&url={${encodeURIComponent(url)}}`,
+    pcDownloadUrl: "https://web3.bitget.com/en/wallet-download",
+    getProvider: () => {
+      return window.bitkeep && window.bitkeep.ethereum;
     },
   },
 };
