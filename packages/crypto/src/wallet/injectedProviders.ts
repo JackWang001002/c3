@@ -40,20 +40,26 @@ export const injectedProviders: InjectedProvider = {
         return undefined;
       }
       const providers = window.ethereum?.providers || [];
-      const isMultiProvider = !!providers.length;
+      const providerMap = window.ethereum?.providerMap;
+      const isMultiProvider = !!providers.length || !!providerMap;
       if (!isMultiProvider && window.ethereum?.isMetaMask) {
         return window.ethereum;
       }
 
       // edge case if MM and CBW are both installed
       if (isMultiProvider) {
+        if (providerMap) {
+          const provider = providerMap.get("MetaMask");
+          if (provider) {
+            return provider;
+          }
+        }
         for (const e of providers) {
           if (e.isMetaMask) {
             return e;
           }
         }
       }
-      return null;
       return null;
     },
   },
@@ -126,7 +132,7 @@ export const injectedProviders: InjectedProvider = {
     },
   },
   bitkeep: {
-    getDeeplink: (url: string) => `https://bkcode.vip?action=dapp&url={${encodeURIComponent(url)}}`,
+    getDeeplink: (url: string) => `https://bkcode.vip?action=dapp&url=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://web3.bitget.com/en/wallet-download",
     getProvider: () => {
       return window.bitkeep && window.bitkeep.ethereum;
