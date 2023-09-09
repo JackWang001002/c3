@@ -1,4 +1,4 @@
-import { formatNumber } from "../numeral";
+import { formatNumber } from "../formatNumber";
 
 it("formatNumber ", () => {
   expect(+formatNumber("100.2ab", "0.0")).toBe(100.2);
