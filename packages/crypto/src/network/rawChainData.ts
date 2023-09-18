@@ -11053,6 +11053,29 @@ export const rawChainList = [
     ],
   },
   {
+    name: "taiko a5 testnet",
+    chain: "taiko a5 testnet",
+    rpc: ["https://rpc.jolnir.taiko.xyz"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "taiko_a5_testnet",
+    chainId: 167007,
+    networkId: 167007,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://explorer.jolnir.taiko.xyz",
+        standard: "none",
+      },
+    ],
+  },
+  {
     name: "Mantle Mainnet",
     chain: "Mantle Mainnet",
     rpc: ["https://rpc.mantle.xyz"],
@@ -11186,6 +11209,29 @@ export const rawChainList = [
       {
         name: "explorer",
         url: "https://mainnet.opbnbscan.com",
+        standard: "none",
+      },
+    ],
+  },
+  {
+    name: "Manta Mainnet",
+    chain: "Manta Mainnet",
+    rpc: ["https://manta-pacific.calderachain.xyz/http"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "manta_mainnet",
+    chainId: 169,
+    networkId: 169,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://manta-pacific.calderaexplorer.xyz/",
         standard: "none",
       },
     ],

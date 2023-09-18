@@ -1,3 +1,7 @@
+import { rawChainList } from "./rawChainData";
+
+export type RawChainListType = typeof rawChainList;
+export type RawChainType = RawChainListType[number];
 export type Currency = {
   readonly name: string;
   readonly symbol: string;
@@ -6,12 +10,12 @@ export type Currency = {
 
 export type Chain = {
   readonly rpcUrls: readonly string[];
-  readonly chainId: number;
+  readonly chainId: RawChainType["chainId"];
   readonly chainName: string;
   readonly nativeCurrency: Currency;
   readonly iconUrls?: readonly string[];
   readonly blockExplorerUrls?: readonly string[];
-  readonly shortName: string;
+  readonly shortName: RawChainType["shortName"];
 };
 export type Exporer = {
   readonly name: string;
