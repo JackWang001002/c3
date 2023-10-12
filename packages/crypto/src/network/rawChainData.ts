@@ -6668,7 +6668,7 @@ export const rawChainList = [
   {
     name: "Klaytn Mainnet Cypress",
     chain: "KLAY",
-    rpc: ["https://public-node-api.klaytnapi.com/v1/cypress"],
+    rpc: ["https://1rpc.io/klay", "https://public-node-api.klaytnapi.com/v1/cypress"],
     faucets: [],
     nativeCurrency: {
       name: "KLAY",
@@ -11144,29 +11144,7 @@ export const rawChainList = [
       },
     ],
   },
-  {
-    name: "Klaytn",
-    chain: "Klaytn",
-    rpc: ["https://public-node-api.klaytnapi.com/v1/cypress"],
-    faucets: [""],
-    nativeCurrency: {
-      name: "KLAY",
-      symbol: "KLAY",
-      decimals: 18,
-    },
-    infoURL: "",
-    shortName: "klaytn_mainnet",
-    chainId: 8217,
-    networkId: 8217,
-    status: "",
-    explorers: [
-      {
-        name: "explorer",
-        url: "https://scope.klaytn.com",
-        standard: "none",
-      },
-    ],
-  },
+
   {
     name: "Manta",
     chain: "Manta testnet",
@@ -11232,30 +11210,6 @@ export const rawChainList = [
       {
         name: "explorer",
         url: "https://manta-pacific.calderaexplorer.xyz/",
-        standard: "none",
-      },
-    ],
-  },
-
-  {
-    name: "Klaytn Mainnet Cypress",
-    chain: "Klaytn Mainnet Cypress",
-    rpc: ["https://1rpc.io/klay"],
-    faucets: [""],
-    nativeCurrency: {
-      name: "ETH",
-      symbol: "ETH",
-      decimals: 18,
-    },
-    infoURL: "",
-    shortName: "klaytn_mainnet",
-    chainId: 8217,
-    networkId: 8217,
-    status: "",
-    explorers: [
-      {
-        name: "explorer",
-        url: "https://scope.klaytn.com",
         standard: "none",
       },
     ],
