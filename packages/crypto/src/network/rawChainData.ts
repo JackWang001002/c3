@@ -11009,7 +11009,7 @@ export const rawChainList = [
   {
     name: "Linea mainnet",
     chain: "Linea mainnet",
-    rpc: ["https://linea-mainnet.infura.io/v3"],
+    rpc: ["https://linea.blockpi.network/v1/rpc/public"],
     faucets: [""],
     nativeCurrency: {
       name: "ETH",
@@ -11024,7 +11024,7 @@ export const rawChainList = [
     explorers: [
       {
         name: "Linea Mainnet Explorer",
-        url: "https://explorer.linea.build",
+        url: "https://lineascan.build",
         standard: "none",
       },
     ],
@@ -11232,6 +11232,30 @@ export const rawChainList = [
       {
         name: "explorer",
         url: "https://manta-pacific.calderaexplorer.xyz/",
+        standard: "none",
+      },
+    ],
+  },
+
+  {
+    name: "Klaytn Mainnet Cypress",
+    chain: "Klaytn Mainnet Cypress",
+    rpc: ["https://1rpc.io/klay"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "klaytn_mainnet",
+    chainId: 8217,
+    networkId: 8217,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://scope.klaytn.com",
         standard: "none",
       },
     ],

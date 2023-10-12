@@ -1,5 +1,5 @@
 import { getTotalPage } from "@c3/utils";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IAPI, RawReqParameter, RawResBody, ReqParameter } from "./makeApi/api";
 import { useApi } from "./useApi";
 
@@ -34,6 +34,7 @@ export const usePagination = <
   pageSize: number
 ) => {
   const [pageNo, setPageNo] = useState(1);
+  const isFetchingRef = useRef(false);
 
   const [pageData, fetch, , status] = useApi(api);
   const [allData, setAllData] = useState<PaginationData<T>>({
@@ -47,6 +48,10 @@ export const usePagination = <
 
   const fetchNextPage = useCallback(
     async (rrp: Omit<_RawReqParameter, "pageSize" | "pageNo">) => {
+      if (isFetchingRef.current) {
+        return;
+      }
+      isFetchingRef.current = true;
       //@ts-ignore
       const pageData = await fetch({ ...rrp, pageNo, pageSize });
       setAllData(data => ({
@@ -54,6 +59,7 @@ export const usePagination = <
         list: [...data.list, ...pageData.list],
       }));
       setPageNo(x => x + 1);
+      isFetchingRef.current = false;
     },
     [fetch, pageNo, pageSize]
   );

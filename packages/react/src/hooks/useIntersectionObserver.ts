@@ -12,7 +12,7 @@ export const useIntersectionObserver = <T extends HTMLElement>() => {
       }
       const observer = new IntersectionObserver(callback, option);
       observer.observe(ref.current);
-      return () => observer.unobserve(ref.current!);
+      return () => ref.current && observer.unobserve(ref.current);
     },
     []
   );
