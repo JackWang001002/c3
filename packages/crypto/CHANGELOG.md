@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.79](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.62...@c3/crypto@1.2.79) (2023-10-29)
+
+### Bug Fixes
+
+- 1.0.76 ([ac58f6e](https://github.com/che3vinci/c3/commit/ac58f6ed987e4250b4facaeec89c7fba5581fd6e))
+- add menta ([e0b6f22](https://github.com/che3vinci/c3/commit/e0b6f222dddfcd9adca4f1fb628d022e17c4a091))
+- add opbnb mainnet ([c0029e3](https://github.com/che3vinci/c3/commit/c0029e3bb3f46b5c90bb7e8cbd6bf041dd536491))
+- chaneg matic ([2e966f1](https://github.com/che3vinci/c3/commit/2e966f145d40b918972c733c55640e0013b91e8f))
+- etherum ([e1b0c90](https://github.com/che3vinci/c3/commit/e1b0c9056b5b1dec5bc4ba4e069609c202282c72))
+- href ([9c6b307](https://github.com/che3vinci/c3/commit/9c6b307612af1964aecd9b18368962690ea025c5))
+- taiko a5 ([7f750ed](https://github.com/che3vinci/c3/commit/7f750ed11652c3d378e1a99aff7b51308409b326))
+- trustwallet ([072aa69](https://github.com/che3vinci/c3/commit/072aa693d882b042d0db19b970b4d7b78af476dc))
+
+### Features
+
+- add network ([db8f716](https://github.com/che3vinci/c3/commit/db8f716e25ee691af42615aa42c3f37148e28754))
+- add network ([eafbeea](https://github.com/che3vinci/c3/commit/eafbeea2c702a6002b5d727d56971308b1543701))
+- bitkeep ([571966e](https://github.com/che3vinci/c3/commit/571966eef62a393c37d72890c183527f873c57a7))
+- bitkeep fix ([165d47a](https://github.com/che3vinci/c3/commit/165d47a075dd929b898fb709d7b656bffa0f548c))
+
 ## [1.2.62](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.53...@c3/crypto@1.2.62) (2023-08-13)
 
 ### Bug Fixes

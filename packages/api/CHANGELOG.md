@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.31](https://github.com/che3vinci/c3/compare/@c3/api@1.2.28...@c3/api@1.2.31) (2023-10-29)
+
+### Features
+
+- add network ([eafbeea](https://github.com/che3vinci/c3/commit/eafbeea2c702a6002b5d727d56971308b1543701))
+
 ## [1.2.28](https://github.com/che3vinci/c3/compare/@c3/api@1.2.22...@c3/api@1.2.28) (2023-08-13)
 
 ### Bug Fixes

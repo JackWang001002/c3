@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.25](https://github.com/che3vinci/c3/compare/@c3/react@1.1.23...@c3/react@1.1.25) (2023-10-29)
+
+### Features
+
+- add network ([eafbeea](https://github.com/che3vinci/c3/commit/eafbeea2c702a6002b5d727d56971308b1543701))
+
 ## [1.1.23](https://github.com/che3vinci/c3/compare/@c3/react@1.1.18...@c3/react@1.1.23) (2023-08-13)
 
 ### Bug Fixes

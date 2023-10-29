@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.19](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.17...@c3/utils@1.3.19) (2023-10-29)
+
+### Bug Fixes
+
+- numeral ([fa166f6](https://github.com/che3vinci/c3/commit/fa166f6ff590c739a9dc4e61728f1532af2a3367))
+
 ## [1.3.17](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.15...@c3/utils@1.3.17) (2023-08-13)
 
 ### Bug Fixes
