@@ -33,10 +33,10 @@ export const usePagination = <
   api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
   pageSize: number
 ) => {
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
   const isFetchingRef = useRef(false);
 
-  const [pageData, fetch, , status] = useApi(api);
+  const [pageData, fetch, , status, setStatus] = useApi(api);
   const [allData, setAllData] = useState<PaginationData<T>>({
     total: 0,
     list: [],
@@ -53,7 +53,7 @@ export const usePagination = <
       }
       isFetchingRef.current = true;
       //@ts-ignore
-      const pageData = await fetch({ ...rrp, pageNo, pageSize });
+      const pageData = await fetch({ ...rrp, pageNo: pageNo + 1, pageSize });
       setAllData(data => ({
         total: pageData.total,
         list: [...data.list, ...pageData.list],
@@ -70,6 +70,15 @@ export const usePagination = <
     fetchNextPage,
     updateData: updateFetchedData,
     status,
+    reset: () => {
+      setPageNo(0);
+      isFetchingRef.current = false;
+      setAllData({
+        total: 0,
+        list: [],
+      });
+      setStatus("initial");
+    },
     maxPageNo: getTotalPage(pageData.total || 0, pageSize || 1),
     pageNo,
     pageSize,

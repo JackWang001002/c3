@@ -41,5 +41,5 @@ export const useApi = <
     [api]
   );
 
-  return [data, fetch, updateData, status] as const;
+  return [data, fetch, updateData, status, setStatus] as const;
 };

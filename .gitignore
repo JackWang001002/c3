@@ -15,4 +15,5 @@ packages/**/log.txt
 **/**/.pnpm-debug.log
 playwright_/.cache/
 playwright-report/
->
+pnpm-publish-summary.json
+pnpm-debug.log

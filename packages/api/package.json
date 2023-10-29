@@ -1,6 +1,6 @@
 {
   "name": "@c3/api",
-  "version": "1.2.29",
+  "version": "1.2.30",
   "description": "",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -43,18 +43,19 @@
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^29.2.1",
     "lodash": "^4.17.21",
+    "msw": "^0.47.4",
     "rollup-plugin-typescript2": "^0.31.2",
     "tslib": "^2.4.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "node-fetch": "^3.3.2",
+    "vitest": "^0.22.1"
   },
   "dependencies": {
     "@c3/dbg": "workspace:^",
     "@c3/react": "workspace:^",
     "@c3/types": "workspace:^",
     "@c3/utils": "workspace:^",
-    "msw": "^0.47.4",
-    "qs": "^6.11.0",
-    "vitest": "^0.22.1"
+    "qs": "^6.11.0"
   },
   "type": "module",
   "exports": {

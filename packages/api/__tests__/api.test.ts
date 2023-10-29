@@ -1,13 +1,8 @@
-// /**
-//  * @jest-environment jsdom
-//  * @jest-environment-options {"url": "https://jestjs.io/"}
-//  */
-
-import axios from "axios";
-import { initMakeApi } from "../src/index";
+// import axios from "axios";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-const makeApi = initMakeApi({ rawHttp: axios });
+import { makeApi } from "../src/index";
+console.log(process.env);
 
 const server = setupServer(
   rest.post("http://localhost/api/pick", (req, res, ctx) => {
@@ -42,13 +37,13 @@ describe("test cases", () => {
   });
 
   it("post method should work ", async () => {
-    const fetchFoo = makeApi({
+    const fetchApi = makeApi({
       method: "post",
       url: "http://localhost/api/pick",
       mockData: {},
     });
 
-    const res = await fetchFoo.fetch({ timeId: 100, userId: 100 });
+    const res = await fetchApi.fetch({ timeId: 100, userId: 100 });
     expect(res.data).toEqual({ code: 200, data: { hello: "world" }, message: "ok" });
   });
 
