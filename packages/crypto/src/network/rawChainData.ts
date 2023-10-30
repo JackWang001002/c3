@@ -7737,6 +7737,7 @@ export const rawChainList = [
     rpc: [
       "https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}",
       "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+      "https://arbitrum.llamarpc.com",
       "https://arb1.arbitrum.io/rpc",
     ],
     faucets: [],
