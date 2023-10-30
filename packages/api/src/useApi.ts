@@ -1,10 +1,6 @@
 import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from "./makeApi/api";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export type UseApiOption<T extends RawReqParameter> = {
-  fetchOnMounted: boolean;
-  defaultReqParameter?: T;
-};
 export const useApi = <
   _RawReqParameter extends RawReqParameter,
   _ReqParameter extends ReqParameter,

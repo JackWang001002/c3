@@ -1,3 +1,3 @@
 import { cdbg } from "@c3/dbg";
 
-export const ndbg = cdbg("@c3/api→", "color:blue;background:white");
+export const dbg = cdbg("@c3/api→", "color:blue;background:white");

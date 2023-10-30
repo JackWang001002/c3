@@ -3,7 +3,7 @@ import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from "./api"
 import { methods } from "./methods";
 import { patch } from "./patch";
 import { Method } from "./type";
-import { ndbg } from "./utils";
+import { dbg } from "./utils";
 
 export type HTTP = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,11 +17,11 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
     proxyHttp[method] = new Proxy(rawHttp[method], {
       async apply(target, thisArg: IAPI<RawReqParameter, ReqParameter, RawResBody, ResBody>, args) {
         const url = thisArg.url;
-        ndbg(`[${method}]${url}`, ...args);
+        dbg(`[${method}]${url}`, ...args);
         let res;
 
         if (isMockEnv()) {
-          ndbg(`useMockData/${url}`, thisArg);
+          dbg(`useMockData/${url}`, thisArg);
           // //TODO:支持函数调用,函数的参数处理
           res = isFunction(thisArg.mockData) ? thisArg.mockData.call(undefined) : thisArg.mockData;
         } else {
@@ -29,8 +29,8 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
         }
 
         const ret = patch(res, thisArg.mockData);
-        ndbg(`beforePatch =>${url}:`, res);
-        ndbg(`afterPatch =>${url}`, ret);
+        dbg(`beforePatch =>${url}:`, res);
+        dbg(`afterPatch =>${url}`, ret);
         return ret;
       },
     });

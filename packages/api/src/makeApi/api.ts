@@ -4,7 +4,7 @@ import { stringify } from "qs";
 import { HTTP, makeProxyHttp } from "./http";
 import { patch } from "./patch";
 import { Method } from "./type";
-import { ndbg } from "./utils";
+import { dbg } from "./utils";
 
 export type RawReqParameter = IndexedType<unknown> | undefined;
 export type ReqParameter = IndexedType<unknown> | undefined;
@@ -21,8 +21,8 @@ export interface IAPI<
   url: string;
   fetch: (raw: _RawReqParameter, ...args: any[]) => Promise<_ResBody>;
   defaultData: _ResBody;
-  convert?: (response: _RawResBody) => _ResBody;
-  genReqParameter?: (raw: _RawReqParameter) => Exclude<_ReqParameter, undefined>;
+  formatRes?: (response: _RawResBody) => _ResBody;
+  formatReq?: (raw: _RawReqParameter) => Exclude<_ReqParameter, undefined>;
   mockData: _RawResBody;
   __ctx: { rawReqParameter: _RawReqParameter | undefined };
   preCondition?: (...args: any[]) => boolean;
@@ -52,14 +52,14 @@ export function _makeApi<
   api.__ctx;
   if (isNullish(api.defaultData)) {
     const patched = patch({}, api.mockData) as _RawResBody;
-    api.defaultData = api.convert ? api.convert(patched) : (patched as unknown as _ResBody);
+    api.defaultData = api.formatRes ? api.formatRes(patched) : (patched as unknown as _ResBody);
   }
 
   api.fetch = async (raw: _RawReqParameter, ...args: any[]) => {
     api.__ctx = { rawReqParameter: raw };
     let rp = (raw || {}) as Exclude<_ReqParameter, undefined>;
-    if (api.genReqParameter) {
-      rp = api.genReqParameter.call(api, raw);
+    if (api.formatReq) {
+      rp = api.formatReq.call(api, raw);
     }
     if (api.preCondition && !api.preCondition.call(api)) {
       return api.defaultData;
@@ -68,7 +68,7 @@ export function _makeApi<
     let url = option.url;
     assert(!url.includes("?"), "url should not include query string");
 
-    ndbg("queryData:", rp);
+    dbg("queryData:", rp);
 
     const IDREG = /\/:(\w+)/;
     if (IDREG.test(url)) {
@@ -88,9 +88,11 @@ export function _makeApi<
       rawResBody = await _fetch(url, rp, ...args);
     }
     try {
-      return api.convert ? api.convert.call(api, rawResBody) : (rawResBody as unknown as _ResBody); //FIXME
+      return api.formatRes
+        ? api.formatRes.call(api, rawResBody)
+        : (rawResBody as unknown as _ResBody); //FIXME
     } catch (e) {
-      ndbg("convertError: api=", api, e);
+      dbg("convertError: api=", api, e);
       return api.defaultData;
     }
   };
@@ -100,6 +102,7 @@ export function _makeApi<
 
 export type InitMakeApiOption = {
   rawHttp: HTTP;
+  baseUrl?: string;
 };
 
 export function initMakeApi(option: InitMakeApiOption) {
