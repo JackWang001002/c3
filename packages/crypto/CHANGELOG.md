@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.83](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.80...@c3/crypto@1.2.83) (2023-11-02)
+
+### Features
+
+- cyber ([2465390](https://github.com/che3vinci/c3/commit/2465390004d01b9ad023c6fb5443e5d560911026))
+
 ## [1.2.80](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.79...@c3/crypto@1.2.80) (2023-10-30)
 
 **Note:** Version bump only for package @c3/crypto

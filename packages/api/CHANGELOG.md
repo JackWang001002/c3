@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.33](https://github.com/che3vinci/c3/compare/@c3/api@1.2.32...@c3/api@1.2.33) (2023-11-02)
+
+### Features
+
+- cyber ([2465390](https://github.com/che3vinci/c3/commit/2465390004d01b9ad023c6fb5443e5d560911026))
+
 ## [1.2.32](https://github.com/che3vinci/c3/compare/@c3/api@1.2.31...@c3/api@1.2.32) (2023-10-30)
 
 **Note:** Version bump only for package @c3/api
