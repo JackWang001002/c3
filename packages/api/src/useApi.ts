@@ -18,10 +18,10 @@ export const useApi = <
   //===========================================================
   const [status, setStatus] = useState<"initial" | "loading" | "success" | "failure">("initial");
   const fetch = useCallback(
-    async (rrp: _RawReqParameter, ...args: any[]) => {
+    async (rrp: _RawReqParameter) => {
       try {
         setStatus("loading");
-        const res = await api.fetch(rrp, ...args);
+        const res = await api.fetch(rrp);
         if (!res) {
           updateData(api.defaultData);
           return api.defaultData;

@@ -40,6 +40,9 @@
     "@rollup/plugin-typescript": "^8.5.0",
     "ethers": "^5.7.2"
   },
+  "peerDependencies": {
+    "@cyberlab/cyber-app-sdk": "^2.0.0"
+  },
   "type": "module",
   "exports": {
     ".": {

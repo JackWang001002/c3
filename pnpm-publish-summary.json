@@ -1,8 +1,3 @@
 {
-	"publishedPackages": [
-		{
-			"name": "@c3/crypto",
-			"version": "1.2.80"
-		}
-	]
+	"publishedPackages": []
 }

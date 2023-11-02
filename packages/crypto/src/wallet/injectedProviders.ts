@@ -5,20 +5,37 @@ import { CoinbaseWalletSDK } from "@coinbase/wallet-sdk";
 import { ParticleConnect } from "@particle-network/connect";
 import { ParticleProvider } from "@particle-network/provider";
 import { ParticleNetwork } from "@particle-network/auth";
-
+import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
+const app = new CyberApp({
+  appId: "xxx-11",
+  name: "My app",
+  icon: "https://icon.com",
+});
+const cyberProvider = new CyberProvider({
+  app: app,
+  chainId: 137, // matic
+});
 const APP_NAME = "My Awesome App";
 const APP_LOGO_URL = "https://example.com/logo.png";
 const DEFAULT_ETH_JSONRPC_URL = "xxxx";
 const DEFAULT_CHAIN_ID = 1;
 
 declare let window: any;
-export type WalletName = "metamask" | "coinbase" | "okx" | "trustwallet" | "particle" | "bitkeep";
+export type WalletName =
+  | "metamask"
+  | "coinbase"
+  | "okx"
+  | "trustwallet"
+  | "particle"
+  | "bitkeep"
+  | "cyber";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
 export const walletName_TrustWallet: WalletName = "trustwallet";
 export const walletName_Particle: WalletName = "particle";
 export const walletName_BitKeep: WalletName = "bitkeep";
+export const walletName_Cyber: WalletName = "cyber";
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -136,6 +153,13 @@ export const injectedProviders: InjectedProvider = {
     pcDownloadUrl: "https://web3.bitget.com/en/wallet-download",
     getProvider: () => {
       return window.bitkeep && window.bitkeep.ethereum;
+    },
+  },
+  cyber: {
+    getDeeplink: (url: string) => "",
+    pcDownloadUrl: "",
+    getProvider: () => {
+      return cyberProvider;
     },
   },
 };
