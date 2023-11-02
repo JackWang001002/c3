@@ -21,7 +21,7 @@
   "type": "module",
   "dependencies": {
     "@c3/dbg": "workspace:^1.0.44",
-    "@c3/types": "workspace:^1.0.11",
+    "@c3/types": "workspace:^",
     "@c3/utils": "workspace:^1.1.88",
     "@playwright/experimental-ct-react": "^1.27.1",
     "@playwright/test": "^1.27.1",

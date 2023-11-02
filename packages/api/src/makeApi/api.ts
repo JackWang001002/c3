@@ -6,43 +6,43 @@ import { patch } from "./patch";
 import { Method } from "./type";
 import { dbg } from "./utils";
 
-export type RawReqParameter = IndexedType<unknown> | undefined;
-export type ReqParameter = IndexedType<unknown> | undefined;
-export type RawResBody = IndexedType<unknown>;
-export type ResBody = IndexedType<unknown>;
+export type RawReq = IndexedType<unknown> | undefined;
+export type Req = IndexedType<unknown> | undefined;
+export type RawRes = IndexedType<unknown>;
+export type Res = IndexedType<unknown>;
 
 export interface IAPI<
-  _RawReqParameter extends RawReqParameter,
-  _ReqParameter extends ReqParameter,
-  _RawResBody extends RawResBody,
-  _ResBody extends ResBody
+  _RawReq extends RawReq,
+  _Req extends Req,
+  _RawRes extends RawRes,
+  _Res extends Res
 > {
   method: Method;
   url: string;
-  fetch: (raw: _RawReqParameter, ...args: any[]) => Promise<_ResBody>;
-  defaultData: _ResBody;
-  formatRes?: (response: _RawResBody) => _ResBody;
-  formatReq?: (raw: _RawReqParameter) => Exclude<_ReqParameter, undefined>;
-  mockData: _RawResBody;
-  __ctx: { rawReqParameter: _RawReqParameter | undefined };
+  fetch: (raw: _RawReq, ...args: any[]) => Promise<_Res>;
+  defaultData: _Res;
+  formatRes?: (response: _RawRes) => _Res;
+  formatReq?: (raw: _RawReq) => Exclude<_Req, undefined>;
+  mockData: _RawRes;
+  __ctx: { rawReqParameter: _RawReq | undefined };
   preCondition?: (...args: any[]) => boolean;
 }
 
 type MakeApiOption<
-  _RawReqParameter extends RawReqParameter,
-  _ReqParameter extends ReqParameter,
-  _RawResBody extends RawResBody,
-  _ResBody extends ResBody
+  _RawReqParameter extends RawReq,
+  _ReqParameter extends Req,
+  _RawResBody extends RawRes,
+  _ResBody extends Res
 > = PartialBy<
   Omit<IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>, "fetch" | "__ctx">,
   "defaultData"
 >;
 
 export function _makeApi<
-  _RawReqParameter extends RawReqParameter,
-  _ReqParameter extends ReqParameter,
-  _RawResBody extends RawResBody,
-  _ResBody extends ResBody
+  _RawReqParameter extends RawReq,
+  _ReqParameter extends Req,
+  _RawResBody extends RawRes,
+  _ResBody extends Res
 >(
   option: MakeApiOption<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>,
   http: HTTP
@@ -108,10 +108,10 @@ export type InitMakeApiOption = {
 export function initMakeApi(option: InitMakeApiOption) {
   const http: HTTP = makeProxyHttp(option.rawHttp);
   return <
-    _RawReqParameter extends RawReqParameter,
-    _ReqParameter extends ReqParameter,
-    _RawResBody extends RawResBody,
-    _ResBody extends ResBody
+    _RawReqParameter extends RawReq,
+    _ReqParameter extends Req,
+    _RawResBody extends RawRes,
+    _ResBody extends Res
   >(
     option: MakeApiOption<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>
   ) =>

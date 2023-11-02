@@ -55,6 +55,8 @@
     "@c3/react": "workspace:^",
     "@c3/types": "workspace:^",
     "@c3/utils": "workspace:^",
+    "@types/lodash.debounce": "^4.0.8",
+    "lodash.debounce": "^4.0.8",
     "qs": "^6.11.0"
   },
   "type": "module",

@@ -1,13 +1,22 @@
-import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from "./makeApi/api";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { IAPI, RawReq, RawRes, Req, Res } from "./makeApi/api";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { default as debounceFn } from "lodash.debounce";
 
+type Option = {
+  debounce?: {
+    wait: number;
+    leading?: boolean;
+    trailing?: boolean;
+  };
+};
 export const useApi = <
-  _RawReqParameter extends RawReqParameter,
-  _ReqParameter extends ReqParameter,
-  _RawResBody extends RawResBody,
-  _ResBody extends ResBody
+  _RawReq extends RawReq,
+  _Req extends Req,
+  _RawRes extends RawRes,
+  _Res extends Res
 >(
-  api: IAPI<_RawReqParameter, _ReqParameter, _RawResBody, _ResBody>
+  api: IAPI<_RawReq, _Req, _RawRes, _Res>,
+  option?: Option | undefined
 ) => {
   const [data, updateData] = useState(api.defaultData);
   //===========================================================
@@ -17,18 +26,14 @@ export const useApi = <
   // failure:当次fetch数据失败
   //===========================================================
   const [status, setStatus] = useState<"initial" | "loading" | "success" | "failure">("initial");
-  const fetch = useCallback(
-    async (rrp: _RawReqParameter) => {
+  const _fetch = useCallback(
+    async (rrp: _RawReq) => {
       try {
         setStatus("loading");
-        const res = await api.fetch(rrp);
-        if (!res) {
-          updateData(api.defaultData);
-          return api.defaultData;
-        }
-        updateData(res);
+        const data = (await api.fetch(rrp)) || api.defaultData;
+        updateData(data);
         setStatus("success");
-        return res;
+        return data;
       } catch (e) {
         setStatus("failure");
         throw e;
@@ -36,6 +41,15 @@ export const useApi = <
     },
     [api]
   );
+  const fetch = useMemo(() => {
+    if (option?.debounce) {
+      return debounceFn(_fetch, option.debounce.wait, {
+        leading: option.debounce.leading ?? false,
+        trailing: option.debounce.trailing ?? true,
+      });
+    }
+    return _fetch;
+  }, [_fetch, option?.debounce]);
 
-  return [data, fetch, updateData, status, setStatus] as const;
+  return { data, fetch, updateData, status, setStatus };
 };

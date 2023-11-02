@@ -1,5 +1,5 @@
 import { isFunction } from "@c3/utils";
-import { IAPI, RawReqParameter, RawResBody, ReqParameter, ResBody } from "./api";
+import { IAPI, RawReq, RawRes, Req, Res } from "./api";
 import { methods } from "./methods";
 import { patch } from "./patch";
 import { Method } from "./type";
@@ -15,7 +15,7 @@ export const makeProxyHttp = (rawHttp: HTTP): HTTP => {
   const proxyHttp = {} as HTTP;
   methods.forEach(method => {
     proxyHttp[method] = new Proxy(rawHttp[method], {
-      async apply(target, thisArg: IAPI<RawReqParameter, ReqParameter, RawResBody, ResBody>, args) {
+      async apply(target, thisArg: IAPI<RawReq, Req, RawRes, Res>, args) {
         const url = thisArg.url;
         dbg(`[${method}]${url}`, ...args);
         let res;

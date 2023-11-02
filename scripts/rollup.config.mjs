@@ -60,6 +60,7 @@ const config = {
     /@particle-network\//,
     "react-dom",
     "react-router-dom",
+    "@cyberlab/cyber-app-sdk",
     "dayjs",
     "axios",
     "qs",
