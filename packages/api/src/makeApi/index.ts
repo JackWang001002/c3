@@ -1,11 +1,11 @@
 import { makeApi } from "./makeApi";
-import { BaseRawReq, BaseRawRes, BaseReq, BaseRes, InputMakeApiOption } from "./type";
+import { BaseRawReq, BaseRawRes, BaseReq, BaseRes, UserOption as UserOption } from "./type";
 
 export type GlobalOption = {
   baseUrl?: string;
   interceptors?: {
-    onSend?: (req: RequestInit) => void;
-    onReceive?: <T extends BaseRawRes>(res: T) => void;
+    onBeforeSend?: (req: RequestInit) => RequestInit;
+    onAfterReceive?: <T extends BaseRawRes>(res: T) => T;
   };
 };
 
@@ -16,6 +16,6 @@ export function initMakeApi(gOption: GlobalOption) {
     RawRes extends BaseRawRes,
     Res extends BaseRes
   >(
-    option: InputMakeApiOption<RawReq, Req, RawRes, Res>
+    option: UserOption<RawReq, Req, RawRes, Res>
   ) => makeApi<RawReq, Req, RawRes, Res>(option, gOption);
 }

@@ -10,7 +10,7 @@ export type BaseReq = IndexedType<unknown>;
 export type BaseRawRes = IndexedType<unknown>;
 export type BaseRes = IndexedType<unknown>;
 
-export type InputMakeApiOption<
+export type UserOption<
   RawReq extends BaseRawReq,
   Req extends BaseReq,
   RawRes extends BaseRawRes,
@@ -29,6 +29,6 @@ export interface IAPI<
   defaultData: Res;
   formatRes?: (response: RawRes) => Res;
   formatReq?: (rawReq: RawReq) => Req;
-  mockData: RawRes | ((this: InputMakeApiOption<RawReq, Req, RawRes, Res>, req: Req) => RawRes);
+  mockData: RawRes | ((this: UserOption<RawReq, Req, RawRes, Res>, req: Req) => RawRes);
   preCondition?: (...args: any[]) => boolean;
 }
