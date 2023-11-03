@@ -1,4 +1,3 @@
-
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
@@ -19,6 +18,9 @@ const config = {
   watchPathIgnorePatterns: ["/node_modules/", "/dist/", "/.git/"],
   moduleFileExtensions: ["ts", "tsx", "js", "json", "mjs"],
   rootDir: __dirname,
+  globals: {
+    fetch: global.fetch,
+  },
 };
 
 module.exports = config;

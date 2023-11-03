@@ -1,6 +1,6 @@
-import { IAPI, RawReq, RawRes, Req, Res } from "./makeApi/api";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { default as debounceFn } from "lodash.debounce";
+import { BaseRawReq, BaseRawRes, BaseReq, BaseRes, IAPI } from "./makeApi/type";
 
 type Option = {
   debounce?: {
@@ -8,48 +8,67 @@ type Option = {
     leading?: boolean;
     trailing?: boolean;
   };
+  //处理竞态的情况.一定会取消上一个（包括第一个）请求
+  race?: boolean;
 };
+export type FetchStatus = "initial" | "loading" | "success" | "failure";
 export const useApi = <
-  _RawReq extends RawReq,
-  _Req extends Req,
-  _RawRes extends RawRes,
-  _Res extends Res
+  _RawReq extends BaseRawReq,
+  _Req extends BaseReq,
+  _RawRes extends BaseRawRes,
+  _Res extends BaseRes
 >(
   api: IAPI<_RawReq, _Req, _RawRes, _Res>,
   option?: Option | undefined
 ) => {
+  const { debounce, race } = option || {};
   const [data, updateData] = useState(api.defaultData);
+  const abortRef = useRef<AbortController | null>(null);
   //===========================================================
   // initial:一次都没有fetch过数据
   // loading:正在进行一次fetch数据
   // success:当次fetch数据成功
   // failure:当次fetch数据失败
   //===========================================================
-  const [status, setStatus] = useState<"initial" | "loading" | "success" | "failure">("initial");
+  const [status, setStatus] = useState<FetchStatus>("initial");
+  const statusRef = useRef("initial");
+
   const _fetch = useCallback(
-    async (rrp: _RawReq) => {
+    async (rrp: _RawReq, option?: RequestInit) => {
       try {
+        if (race && statusRef.current === "loading") {
+          abortRef.current?.abort();
+        }
         setStatus("loading");
-        const data = (await api.fetch(rrp)) || api.defaultData;
+        statusRef.current = "loading";
+        abortRef.current = new AbortController();
+        const data =
+          (await api.fetch(rrp, {
+            signal: abortRef.current?.signal,
+            ...option,
+          })) || api.defaultData;
         updateData(data);
         setStatus("success");
+        statusRef.current = "success";
+
         return data;
       } catch (e) {
         setStatus("failure");
+        statusRef.current = "failure";
         throw e;
       }
     },
-    [api]
+    [api, race]
   );
   const fetch = useMemo(() => {
-    if (option?.debounce) {
-      return debounceFn(_fetch, option.debounce.wait, {
-        leading: option.debounce.leading ?? false,
-        trailing: option.debounce.trailing ?? true,
+    if (debounce) {
+      return debounceFn(_fetch, debounce.wait, {
+        leading: debounce.leading ?? false,
+        trailing: debounce.trailing ?? true,
       });
     }
     return _fetch;
-  }, [_fetch, option?.debounce]);
+  }, [_fetch, debounce]);
 
   return { data, fetch, updateData, status, setStatus };
 };

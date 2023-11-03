@@ -1,7 +1,7 @@
 import { getTotalPage } from "@c3/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { IAPI, RawReq, RawRes, Req } from "./makeApi/api";
 import { useApi } from "./useApi";
+import { BaseRawRes, BaseReq, IAPI } from "./makeApi/type";
 
 export type PaginationBody<T> = {
   data: PaginationData<T>;
@@ -26,8 +26,8 @@ export type PageInfo = {
 export const usePagination = <
   T,
   _RawReq extends PageInfo,
-  _Req extends Req,
-  _RawRes extends RawRes,
+  _Req extends BaseReq,
+  _RawRes extends BaseRawRes,
   _Res extends PaginationData<T>
 >(
   api: IAPI<_RawReq, _Req, _RawRes, _Res>,

@@ -1,7 +1,7 @@
-import _ from 'lodash';
-import { RawReqParameter } from 'packages/api/src/makeApi/api';
-import React from 'react';
-import { makeApi, usePagination } from '../../src';
+import _ from "lodash";
+import { RawReqParameter } from "packages/api/src/makeApi/makeApi";
+import React from "react";
+import { makeApi, usePagination } from "../../src";
 type User = {
   id: number;
   name: string;
@@ -20,8 +20,8 @@ type MyResBody = {
 };
 
 const api = makeApi<RawReqParameter, RawReqParameter, MyRawResBody, MyResBody>({
-  method: 'get',
-  url: 'http://localhost/api/users',
+  method: "get",
+  url: "http://localhost/api/users",
   genReqParameter: () => ({}), //TODO:
   convert: d => {
     return {
@@ -34,11 +34,11 @@ const api = makeApi<RawReqParameter, RawReqParameter, MyRawResBody, MyResBody>({
       users: _.times(5, i => ({ id: i, name: `name-${i}` })),
       total: 100,
     },
-    message: 'ok',
+    message: "ok",
     code: 200,
   },
 });
-globalThis.localStorage.setItem('mock', '1');
+globalThis.localStorage.setItem("mock", "1");
 
 //=====================================================================================================
 // Case1 component
