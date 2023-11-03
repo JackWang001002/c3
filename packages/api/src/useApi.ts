@@ -31,16 +31,16 @@ export const useApi = <
   // failure:当次fetch数据失败
   //===========================================================
   const [status, setStatus] = useState<FetchStatus>("initial");
-  const statusRef = useRef("initial");
+  const isLoadingRef = useRef(false);
 
   const _fetch = useCallback(
     async (rrp: _RawReq, option?: RequestInit) => {
       try {
-        if (race && statusRef.current === "loading") {
+        if (race && isLoadingRef.current) {
           abortRef.current?.abort();
         }
         setStatus("loading");
-        statusRef.current = "loading";
+        isLoadingRef.current = true;
         abortRef.current = new AbortController();
         const data =
           (await api.fetch(rrp, {
@@ -49,12 +49,14 @@ export const useApi = <
           })) || api.defaultData;
         updateData(data);
         setStatus("success");
-        statusRef.current = "success";
+        isLoadingRef.current = false;
 
         return data;
-      } catch (e) {
+      } catch (e: any) {
         setStatus("failure");
-        statusRef.current = "failure";
+        if (e.name !== "AbortError") {
+          isLoadingRef.current = false;
+        }
         throw e;
       }
     },

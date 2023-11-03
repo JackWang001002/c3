@@ -2,11 +2,7 @@
 	"publishedPackages": [
 		{
 			"name": "@c3/api",
-			"version": "1.2.36"
-		},
-		{
-			"name": "@c3/crypto",
-			"version": "1.2.83"
+			"version": "1.2.37"
 		}
 	]
 }

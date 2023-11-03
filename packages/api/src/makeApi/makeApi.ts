@@ -56,7 +56,7 @@ export function makeApi<
       }
 
       //onSend()
-      const newRequestOption = onBeforeSend?.(requestOption);
+      const newRequestOption = onBeforeSend?.(requestOption) || requestOption;
       const isMock = globalThis.localStorage?.getItem?.("mock");
       let rawRes: RawRes;
       if (isMock) {
