@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.37](https://github.com/che3vinci/c3/compare/@c3/api@1.2.36...@c3/api@1.2.37) (2023-11-03)
+
+### Features
+
+- api ([9c0382e](https://github.com/che3vinci/c3/commit/9c0382e91d78605dac07b1f32729cf7717f8382f))
+
 ## [1.2.36](https://github.com/che3vinci/c3/compare/@c3/api@1.2.35...@c3/api@1.2.36) (2023-11-02)
 
 **Note:** Version bump only for package @c3/api
