@@ -48,7 +48,7 @@ export function makeApi<
         });
       }
 
-      let body = "";
+      let body = undefined;
       if (GetLikeMethods.includes(option.method)) {
         newUrl = `${newUrl}?${stringify(reqP)}`;
       } else {
