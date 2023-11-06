@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import { isPrimitive, isString } from '../lang';
+import _ from "lodash";
+import { isPrimitive, isString } from "../lang";
 
 //immutable array
 export class Arr<T> extends Array {

@@ -1,9 +1,6 @@
-import { IDable } from '@c3/types';
+import { IDable } from "@c3/types";
 
-export const mergeNewItem = <T extends IDable>(
-  origin: T[],
-  newArr: T[]
-): T[] => {
+export const mergeNewItem = <T extends IDable>(origin: T[], newArr: T[]): T[] => {
   const retArr = [...origin];
   newArr.forEach(e => {
     if (!retArr.some(k => k.id === e.id)) {

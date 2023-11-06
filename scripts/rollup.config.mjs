@@ -72,6 +72,7 @@ const config = {
     "antd",
     "ethers",
     "dayjs/plugin/utc",
+    "@web3modal/ethers5",
   ],
 };
 

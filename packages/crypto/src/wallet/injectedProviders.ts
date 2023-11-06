@@ -6,6 +6,8 @@ import { ParticleConnect } from "@particle-network/connect";
 import { ParticleProvider } from "@particle-network/provider";
 import { ParticleNetwork } from "@particle-network/auth";
 import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
+import { createWeb3Modal, defaultConfig } from "@web3modal/ethers5/vue";
+
 const app = new CyberApp({
   appId: "xxx-11",
   name: "My app",
@@ -28,7 +30,8 @@ export type WalletName =
   | "trustwallet"
   | "particle"
   | "bitkeep"
-  | "cyber";
+  | "cyber"
+  | "walletConnect";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
@@ -36,6 +39,7 @@ export const walletName_TrustWallet: WalletName = "trustwallet";
 export const walletName_Particle: WalletName = "particle";
 export const walletName_BitKeep: WalletName = "bitkeep";
 export const walletName_Cyber: WalletName = "cyber";
+export const walletName_WalletConnect: WalletName = "walletConnect";
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -160,6 +164,36 @@ export const injectedProviders: InjectedProvider = {
     pcDownloadUrl: "",
     getProvider: () => {
       return cyberProvider;
+    },
+  },
+  walletConnect: {
+    getDeeplink: (url: string) => "",
+    pcDownloadUrl: "",
+    getProvider: () => {
+      const projectId = "f755239c5faf52da1746e5f240568e71";
+
+      // 2. Set chains
+      const mainnet = {
+        chainId: 1,
+        name: "Ethereum",
+        currency: "ETH",
+        explorerUrl: "https://etherscan.io",
+        rpcUrl: "https://cloudflare-eth.com",
+      };
+
+      // 3. Create modal
+      const metadata = {
+        name: "My Website",
+        description: "My Website description",
+        url: "https://mywebsite.com",
+        icons: ["https://avatars.mywebsite.com/"],
+      };
+      const modal = createWeb3Modal({
+        ethersConfig: defaultConfig({ metadata }),
+        chains: [mainnet],
+        projectId,
+      });
+      return modal.getWalletProvider()?.provider;
     },
   },
 };
