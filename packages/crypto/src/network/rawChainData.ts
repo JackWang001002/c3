@@ -11215,4 +11215,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Scroll Mainnet",
+    chain: "Scroll Mainnet",
+    rpc: ["https://rpc.scroll.io"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "scroll_mainnet",
+    chainId: 534352,
+    networkId: 534352,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://scrollscan.com",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
