@@ -6,7 +6,6 @@ import { ParticleConnect } from "@particle-network/connect";
 import { ParticleProvider } from "@particle-network/provider";
 import { ParticleNetwork } from "@particle-network/auth";
 import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
-import { createWeb3Modal, defaultConfig } from "@web3modal/ethers5/vue";
 
 const app = new CyberApp({
   appId: "xxx-11",
@@ -170,30 +169,7 @@ export const injectedProviders: InjectedProvider = {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
     getProvider: () => {
-      const projectId = "f755239c5faf52da1746e5f240568e71";
-
-      // 2. Set chains
-      const mainnet = {
-        chainId: 1,
-        name: "Ethereum",
-        currency: "ETH",
-        explorerUrl: "https://etherscan.io",
-        rpcUrl: "https://cloudflare-eth.com",
-      };
-
-      // 3. Create modal
-      const metadata = {
-        name: "My Website",
-        description: "My Website description",
-        url: "https://mywebsite.com",
-        icons: ["https://avatars.mywebsite.com/"],
-      };
-      const modal = createWeb3Modal({
-        ethersConfig: defaultConfig({ metadata }),
-        chains: [mainnet],
-        projectId,
-      });
-      return modal.getWalletProvider()?.provider;
+      return undefined;
     },
   },
 };
