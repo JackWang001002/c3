@@ -6,16 +6,9 @@ import { ParticleConnect } from "@particle-network/connect";
 import { ParticleProvider } from "@particle-network/provider";
 import { ParticleNetwork } from "@particle-network/auth";
 import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
+import { isCyberWallet } from "@cyberlab/cyber-app-sdk";
 
-const app = new CyberApp({
-  appId: "xxx-11",
-  name: "My app",
-  icon: "https://icon.com",
-});
-const cyberProvider = new CyberProvider({
-  app: app,
-  chainId: 137, // matic
-});
+
 const APP_NAME = "My Awesome App";
 const APP_LOGO_URL = "https://example.com/logo.png";
 const DEFAULT_ETH_JSONRPC_URL = "xxxx";
@@ -160,8 +153,21 @@ export const injectedProviders: InjectedProvider = {
   },
   cyber: {
     getDeeplink: (url: string) => "",
-    pcDownloadUrl: "",
+    pcDownloadUrl: "https://wallet-sandbox.cyber.co/apps",
     getProvider: () => {
+      debugger;
+      const inInCyberWallet = isCyberWallet();
+      if (!inInCyberWallet) {
+        return null;
+      }
+      const app = window.__cyberApp;
+      if (!app) {
+        return null;
+      }
+      const cyberProvider = new CyberProvider({
+        app,
+        chainId: 1,
+      });
       return cyberProvider;
     },
   },

@@ -1,6 +1,5 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+. "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged
-# pnpm test:pw:ct
-# pnpm test
+# npm test
+# npx --no-install lint-staged

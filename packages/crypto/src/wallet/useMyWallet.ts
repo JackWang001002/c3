@@ -32,10 +32,12 @@ export type WalletType = {
   readonly getChainId: () => Promise<number>;
   readonly connected: boolean;
   readonly switchProvider: (walletName: WalletName) => ethers.providers.Web3Provider;
+  readonly injectedProvider: any;
 };
 
 export const useMyWallet = (initialName: WalletName | undefined): WalletType => {
   const [name, setName] = useState(initialName);
+  const [injectedProvider, setInjectedProvider] = useState();
   const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(
     getWalletProvider(initialName)
   );
@@ -74,10 +76,14 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       jump2NativeAppOrDlPage(newName);
       throw new Error(`${newName} is not installed`);
     }
+    setInjectedProvider(injectedProvider);
     const provider = new ethers.providers.Web3Provider(injectedProvider);
-
-    //更新数据
-    setProvider(provider);
+    if (newName !== "cyber" ) {
+      // todo 单独做处理
+      setProvider(provider);
+    } else {
+      setProvider(provider);
+    }
     setName(newName);
     localStorage.setItem("walletName", newName || "");
 
@@ -142,6 +148,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   return {
     provider,
+    injectedProvider,
     name,
     account,
     connected: !!account,
