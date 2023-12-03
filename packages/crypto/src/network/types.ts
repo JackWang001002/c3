@@ -2,6 +2,8 @@ import { rawChainList } from "./rawChainData";
 
 export type RawChainListType = typeof rawChainList;
 export type RawChainType = RawChainListType[number];
+export type ChainShortNameType = RawChainType["shortName"];
+
 export type Currency = {
   readonly name: string;
   readonly symbol: string;

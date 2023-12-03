@@ -7,8 +7,11 @@ import { ParticleProvider } from "@particle-network/provider";
 import { ParticleNetwork } from "@particle-network/auth";
 import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
 import { isCyberWallet } from "@cyberlab/cyber-app-sdk";
+import { NAME2ID_MAP } from "../network";
 
+import type { ChainShortNameType } from "../network";
 
+let cyberProvider: CyberProvider;
 const APP_NAME = "My Awesome App";
 const APP_LOGO_URL = "https://example.com/logo.png";
 const DEFAULT_ETH_JSONRPC_URL = "xxxx";
@@ -153,20 +156,28 @@ export const injectedProviders: InjectedProvider = {
   },
   cyber: {
     getDeeplink: (url: string) => "",
-    pcDownloadUrl: "https://wallet-sandbox.cyber.co/apps",
+    pcDownloadUrl: "https://cyberwallet-sandbox-cyberconnect.vercel.app/",
     getProvider: () => {
       debugger;
+      if (cyberProvider) {
+        return cyberProvider;
+      }
       const inInCyberWallet = isCyberWallet();
       if (!inInCyberWallet) {
         return null;
       }
       const app = window.__cyberApp;
+      const cyberChainName: ChainShortNameType = window.__cyberChainId;
+      let DEFAULT_CHAIN_ID = NAME2ID_MAP[cyberChainName];
       if (!app) {
         return null;
       }
-      const cyberProvider = new CyberProvider({
+      if (!DEFAULT_CHAIN_ID) {
+        DEFAULT_CHAIN_ID = 1;
+      }
+      cyberProvider = new CyberProvider({
         app,
-        chainId: 1,
+        chainId: DEFAULT_CHAIN_ID,
       });
       return cyberProvider;
     },

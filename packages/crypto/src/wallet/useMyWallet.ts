@@ -78,7 +78,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     }
     setInjectedProvider(injectedProvider);
     const provider = new ethers.providers.Web3Provider(injectedProvider);
-    if (newName !== "cyber" ) {
+    if (newName !== "cyber") {
       // todo 单独做处理
       setProvider(provider);
     } else {
@@ -132,6 +132,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
+        debugger;
         console.log("switchNetwork:", e);
         if (e.code === 4902 || e.code === -32603) {
           await addNetwork(chain);
