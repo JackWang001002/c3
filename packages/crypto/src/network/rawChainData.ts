@@ -11238,4 +11238,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Combo Mainnet",
+    chain: "Combo Mainnet",
+    rpc: ["https://rpc.combonetwork.io"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "BNB",
+      symbol: "BNB",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "combo_mainnet",
+    chainId: 9980,
+    networkId: 9980,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: " https://combotrace.nodereal.io",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];

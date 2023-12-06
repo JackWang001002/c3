@@ -158,7 +158,6 @@ export const injectedProviders: InjectedProvider = {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "https://cyberwallet-sandbox-cyberconnect.vercel.app/",
     getProvider: () => {
-      debugger;
       if (cyberProvider) {
         return cyberProvider;
       }

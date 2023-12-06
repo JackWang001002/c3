@@ -132,7 +132,6 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
-        debugger;
         console.log("switchNetwork:", e);
         if (e.code === 4902 || e.code === -32603) {
           await addNetwork(chain);
