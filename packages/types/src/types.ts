@@ -50,3 +50,15 @@ type Includes<T extends readonly any[], U> = T extends [infer F, ...infer rest]
   : false;
 
 export type EmptyObject = Record<string, never>;
+
+/**
+ * @example
+ * type A = 'a' | 'b' | 'c' | AnyString
+ */
+export type AnyString = string & Record<never, never>;
+
+/**
+ * @example
+ * type A = 1 | 2 | 3 | AnyNumber
+ */
+export type AnyNumber = number & Record<never, never>;
