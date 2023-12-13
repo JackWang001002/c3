@@ -579,6 +579,9 @@ importers:
       '@c3/types':
         specifier: workspace:^1.1.10
         version: link:../types
+      bignumber.js:
+        specifier: ^9.1.2
+        version: 9.1.2
       dayjs:
         specifier: ^1.11.6
         version: 1.11.6
@@ -13743,6 +13746,10 @@ packages:
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
+    dev: false
+
+  /bignumber.js@9.1.2:
+    resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
     dev: false
 
   /bin-links@3.0.3:
