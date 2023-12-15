@@ -8,6 +8,7 @@ import { ParticleNetwork } from "@particle-network/auth";
 import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
 import { isCyberWallet } from "@cyberlab/cyber-app-sdk";
 import { NAME2ID_MAP } from "../network";
+import { getProvider as bnbGetProvider } from "@binance/w3w-ethereum-provider";
 
 import type { ChainShortNameType } from "../network";
 
@@ -26,6 +27,7 @@ export type WalletName =
   | "particle"
   | "bitkeep"
   | "cyber"
+  | "bnbWallet"
   | "walletConnect";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
@@ -35,6 +37,8 @@ export const walletName_Particle: WalletName = "particle";
 export const walletName_BitKeep: WalletName = "bitkeep";
 export const walletName_Cyber: WalletName = "cyber";
 export const walletName_WalletConnect: WalletName = "walletConnect";
+export const walletName_BNBWallet: WalletName = "bnbWallet";
+
 // export type MetaMaskProvider = IndexedType;
 // export type CoinbaseProvider = IndexedType;
 
@@ -188,6 +192,14 @@ export const injectedProviders: InjectedProvider = {
       return undefined;
     },
   },
+  bnbWallet: {
+    getDeeplink: (url: string) => "",
+    pcDownloadUrl: "",
+    getProvider: () => {
+      //fixme: chainId
+      return bnbGetProvider({ chainId: 56 });
+    },
+  },
 };
 
 export const getInjectedWalletProvider = (name: WalletName) => {
@@ -206,7 +218,6 @@ export const getWalletProvider = (walletName: WalletName | undefined) => {
   if (!provider) {
     return undefined;
   }
-  // fixme: 加any是为了让provider不再进行检查
   return new ethers.providers.Web3Provider(provider);
 };
 

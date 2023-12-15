@@ -58,6 +58,7 @@ const config = {
     /@rollup\//,
     /@c3\//,
     /@particle-network\//,
+    /@binance\//,
     "react-dom",
     "react-router-dom",
     "@cyberlab/cyber-app-sdk",
