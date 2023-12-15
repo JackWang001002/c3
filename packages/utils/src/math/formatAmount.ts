@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
 BigNumber.config({ ROUNDING_MODE: BigNumber.ROUND_FLOOR });
 
-export const formatNumber = (
+export const formatAmount = (
   value: string,
   decimal: number,
   roundingMode: BigNumber.RoundingMode
