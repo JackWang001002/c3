@@ -7,7 +7,7 @@ import { ParticleProvider } from "@particle-network/provider";
 import { ParticleNetwork } from "@particle-network/auth";
 import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
 import { isCyberWallet } from "@cyberlab/cyber-app-sdk";
-import { NAME2ID_MAP } from "../network";
+import { NAME2ID_MAP, Name2CHAIN_MAP } from "../network";
 import { getProvider as bnbGetProvider } from "@binance/w3w-ethereum-provider";
 
 import type { ChainShortNameType } from "../network";
@@ -196,8 +196,14 @@ export const injectedProviders: InjectedProvider = {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
     getProvider: () => {
-      //fixme: chainId
-      return bnbGetProvider({ chainId: 56 });
+      return bnbGetProvider({
+        chainId: 56,
+        rpc: {
+          56: Name2CHAIN_MAP["bnb"].rpcUrls[0],
+        },
+        infuraId: "",
+        lng: "en",
+      });
     },
   },
 };
