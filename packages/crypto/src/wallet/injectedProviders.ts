@@ -11,6 +11,7 @@ import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP, rawChainList } from "../netw
 import { getProvider as bnbGetProvider } from "@binance/w3w-ethereum-provider";
 import { getValidRpc } from "./getValidRpc";
 import type { ChainShortNameType } from "../network";
+import { toHexString } from "@c3/utils";
 
 let cyberProvider: CyberProvider;
 const APP_NAME = "My Awesome App";
@@ -199,7 +200,7 @@ export const injectedProviders: InjectedProvider = {
       return bnbGetProvider({
         chainId: 56,
         rpc: Object.values(ID2CHAIN_MAP).reduce((acc, cur) => {
-          acc[cur.chainId] = getValidRpc(cur);
+          acc[toHexString(cur.chainId)] = getValidRpc(cur);
           return acc;
         }, {} as any),
 
