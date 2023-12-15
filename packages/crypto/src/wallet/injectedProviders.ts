@@ -200,7 +200,7 @@ export const injectedProviders: InjectedProvider = {
       return bnbGetProvider({
         chainId: 56,
         rpc: Object.values(ID2CHAIN_MAP).reduce((acc, cur) => {
-          acc[toHexString(cur.chainId)] = getValidRpc(cur);
+          acc[cur.chainId] = getValidRpc(cur);
           return acc;
         }, {} as any),
 
