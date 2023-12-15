@@ -49,7 +49,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       if (!name) {
         return;
       }
-      setProvider(getWalletProvider(name));
+      setProvider(getWalletProvider(name, chainId));
     },
     [name]
   );

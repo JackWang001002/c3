@@ -47,7 +47,7 @@ export type InjectedProvider = {
   [name in WalletName]: {
     getDeeplink: (url: string) => string;
     pcDownloadUrl: string;
-    getProvider: () => any; //TODO:
+    getProvider: (chainId?: number) => any; //TODO:
   };
 };
 
@@ -196,9 +196,9 @@ export const injectedProviders: InjectedProvider = {
   bnbWallet: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    getProvider: () => {
+    getProvider: (chainId?: number) => {
       return bnbGetProvider({
-        chainId: 56,
+        chainId: chainId || 56,
         rpc: Object.values(ID2CHAIN_MAP).reduce((acc, cur) => {
           acc[cur.chainId] = getValidRpc(cur);
           return acc;
@@ -211,19 +211,19 @@ export const injectedProviders: InjectedProvider = {
   },
 };
 
-export const getInjectedWalletProvider = (name: WalletName) => {
+export const getInjectedWalletProvider = (name: WalletName, chainId?: number) => {
   if (name && injectedProviders[name]) {
-    return injectedProviders[name].getProvider();
+    return injectedProviders[name].getProvider(chainId);
   }
 
   return undefined;
 };
 
-export const getWalletProvider = (walletName: WalletName | undefined) => {
+export const getWalletProvider = (walletName: WalletName | undefined, chainId?: number) => {
   if (!walletName) {
     return undefined;
   }
-  const provider = getInjectedWalletProvider(walletName);
+  const provider = getInjectedWalletProvider(walletName, chainId);
   if (!provider) {
     return undefined;
   }
