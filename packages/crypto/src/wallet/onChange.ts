@@ -13,12 +13,15 @@ export const useOnChainChanged = (
     }
     //@ts-ignore
     provider.provider?.on("chainChanged", cb) || noop;
+    //@ts-ignore
+    provider.provider?.on("network", cb) || noop;
     return () => {
       //@ts-ignore
       const off = (provider?.provider?.off || provider?.provider?.removeListener || noop).bind(
         provider?.provider
       );
       off("chainChanged", cb);
+      off("network", cb);
     };
   }, [cb, provider, provider?.provider]);
 };

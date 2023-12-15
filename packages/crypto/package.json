@@ -1,6 +1,6 @@
 {
   "name": "@c3/crypto",
-  "version": "1.2.88",
+  "version": "1.2.89",
   "description": "",
   "keywords": [],
   "author": "jinbo.wang <che3vinci@gmail.com>",
@@ -35,7 +35,7 @@
     "@c3/types": "workspace:^",
     "@c3/utils": "workspace:^",
     "@coinbase/wallet-sdk": "^3.7.1",
-    "@cyberlab/cyber-app-sdk": "^2.3.2",
+    "@cyberlab/cyber-app-sdk": "^2.4.2",
     "@metamask/detect-provider": "^1.2.0",
     "@particle-network/connect": "1.0.0-alpha.0",
     "@rollup/plugin-typescript": "^8.5.0",
