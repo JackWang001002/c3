@@ -207,7 +207,7 @@ export const getWalletProvider = (walletName: WalletName | undefined) => {
     return undefined;
   }
   // fixme: 加any是为了让provider不再进行检查
-  return new ethers.providers.Web3Provider(provider, "any");
+  return new ethers.providers.Web3Provider(provider);
 };
 
 //@ts-ignore
