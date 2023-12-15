@@ -7,9 +7,9 @@ import { ParticleProvider } from "@particle-network/provider";
 import { ParticleNetwork } from "@particle-network/auth";
 import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
 import { isCyberWallet } from "@cyberlab/cyber-app-sdk";
-import { NAME2ID_MAP, Name2CHAIN_MAP } from "../network";
+import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP, rawChainList } from "../network";
 import { getProvider as bnbGetProvider } from "@binance/w3w-ethereum-provider";
-
+import { getValidRpc } from "./getValidRpc";
 import type { ChainShortNameType } from "../network";
 
 let cyberProvider: CyberProvider;
@@ -198,9 +198,11 @@ export const injectedProviders: InjectedProvider = {
     getProvider: () => {
       return bnbGetProvider({
         chainId: 56,
-        rpc: {
-          56: Name2CHAIN_MAP["bnb"].rpcUrls[0],
-        },
+        rpc: Object.values(ID2CHAIN_MAP).reduce((acc, cur) => {
+          acc[cur.chainId] = getValidRpc(cur);
+          return acc;
+        }, {} as any),
+
         infuraId: "",
         lng: "en",
       });
