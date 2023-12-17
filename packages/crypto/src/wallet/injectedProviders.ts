@@ -238,3 +238,4 @@ globalThis.__injectedProviders = injectedProviders;
 export const hasInjectedProvider = () => {
   return window.ethereum;
 };
+
