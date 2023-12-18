@@ -59,6 +59,7 @@ const config = {
     /@c3\//,
     /@particle-network\//,
     /@binance\//,
+    /@walletconnect\//,
     "react-dom",
     "react-router-dom",
     "@cyberlab/cyber-app-sdk",

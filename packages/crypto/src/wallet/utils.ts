@@ -30,3 +30,11 @@ export const jump2NativeAppOrDlPage = (name: WalletName = "metamask") => {
     window.open(injectedProviders[name].pcDownloadUrl, "_blank");
   }
 };
+
+export const resolveIfNeed = async <T>(value: Promise<T> | T) => {
+  if (value instanceof Promise) {
+    return await value;
+  }
+  return value;
+};
+

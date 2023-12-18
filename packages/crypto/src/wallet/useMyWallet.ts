@@ -2,22 +2,25 @@ import { useLatest } from "@c3/react";
 import { toHexString, waitFor } from "@c3/utils";
 import { BigNumber, ethers } from "ethers";
 import _ from "lodash";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
-import { ParticleConnect } from "@particle-network/connect";
-import { ParticleProvider } from "@particle-network/provider";
-import { ParticleNetwork } from "@particle-network/auth";
+
 import {
   WalletName,
+  getInjectedWalletProvider,
   getWalletProvider,
   hasInjectedProvider,
-  injectedProviders,
 } from "./injectedProviders";
 import { useOnChainChanged } from "./onChange";
 import { useAccount_ } from "./useAccount_";
 import { jump2NativeAppOrDlPage } from "./utils";
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
 
 //TODO:TS2742
 export type WalletType = {
@@ -31,32 +34,32 @@ export type WalletType = {
   readonly getNetwork: () => Promise<ethers.providers.Network>;
   readonly getChainId: () => Promise<number>;
   readonly connected: boolean;
-  readonly switchProvider: (walletName: WalletName) => ethers.providers.Web3Provider;
-  readonly injectedProvider: any;
+  readonly switchProvider: (walletName: WalletName) => Promise<ethers.providers.Web3Provider>;
 };
 
 export const useMyWallet = (initialName: WalletName | undefined): WalletType => {
   const [name, setName] = useState(initialName);
-  const [injectedProvider, setInjectedProvider] = useState();
-  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(
-    getWalletProvider(initialName)
-  );
+  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>();
+  useEffect(() => {
+    if (initialName) {
+      getWalletProvider(initialName).then(x => setProvider(x));
+    }
+  }, [initialName]);
   const providerRef = useLatest(provider);
 
   const onChainChanged = useCallback(
-    (chainId: number) => {
+    async (chainId: number) => {
       console.log("chain changed. new chainId=", chainId);
       if (!name) {
         return;
       }
-      setProvider(getWalletProvider(name, chainId));
+      setProvider(await getWalletProvider(name, chainId));
     },
     [name]
   );
 
   useOnChainChanged(provider, onChainChanged);
   const account = useAccount_(provider);
-
   const addNetwork = useCallback(
     async (chain: Chain) => {
       dbg("[addNetwork] chain=", chain);
@@ -67,28 +70,24 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     },
     [provider]
   );
-  const switchProvider = useCallback((newName: WalletName) => {
+
+  const switchProvider = useCallback(async (newName: WalletName) => {
     if (!newName) {
       throw new Error("please supply wallet name");
     }
-    const injectedProvider = injectedProviders[newName].getProvider();
+    const injectedProvider = await getInjectedWalletProvider(newName);
     if (!injectedProvider) {
       jump2NativeAppOrDlPage(newName);
       throw new Error(`${newName} is not installed`);
     }
-    setInjectedProvider(injectedProvider);
+    // setInjectedProvider(injectedProvider);
     const provider = new ethers.providers.Web3Provider(injectedProvider);
-    if (newName !== "cyber") {
-      // todo 单独做处理
-      setProvider(provider);
-    } else {
-      setProvider(provider);
-    }
+    setProvider(provider);
     setName(newName);
     localStorage.setItem("walletName", newName || "");
-
     return provider;
   }, []);
+
   const connectAccount = useCallback(async () => {
     if (!hasInjectedProvider) {
       jump2NativeAppOrDlPage();
@@ -97,19 +96,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     if (!provider) {
       throw new Error("provider is not ready");
     }
-    //@ts-ignore
-    window.ethereum?.emit("connect-account-start");
-    let r = [];
-    try {
-      r = await provider?.send("eth_requestAccounts", []);
-      //@ts-ignore
-      window.ethereum?.emit("connect-account-success", r?.[0]);
-    } catch (e) {
-      //@ts-ignore
-      window.ethereum?.emit("connect-account-fail");
-      throw e;
-    }
-
+    const r = await provider?.send("eth_requestAccounts", []);
     return r[0];
   }, [provider]);
 
@@ -139,7 +126,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
           throw e;
         }
       }
-      // setProvider(getWalletProvider(name));
+      // 等待ChainChanged事件完成
       await waitFor(() => providerRef.current !== provider);
       return providerRef.current!;
     },
@@ -148,7 +135,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   return {
     provider,
-    injectedProvider,
+    // injectedProvider,
     name,
     account,
     connected: !!account,
