@@ -12,7 +12,9 @@ export const RoundingMode = {
   ROUND_HALF_CEIL: 7,
   ROUND_HALF_FLOOR: 8,
   EUCLID: 9,
-};
+} as const;
+// type RoundingModeType = (typeof RoundingMode)[keyof typeof RoundingMode];
+
 export function formatAmount(value: string, decimal: number): void;
 export function formatAmount(
   value: string,
