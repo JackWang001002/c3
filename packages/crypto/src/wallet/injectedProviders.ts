@@ -34,14 +34,18 @@ export const walletName_BNBWallet: WalletName = "bnbWallet";
 const providerCache: { [name in WalletName]?: any } = {};
 
 export type InjectedProvider = {
-  [name in WalletName]: {
-    getDeeplink: (url: string) => string;
-    pcDownloadUrl: string;
-    getProvider: (chainId?: number) => Promise<any>;
-  };
+  getDeeplink: (url: string) => string;
+  pcDownloadUrl: string;
+  getProvider: (chainId?: number) => Promise<any>;
+  needConnect?: boolean;
+  connect?: () => Promise<any>;
 };
 
-export const injectedProviders: InjectedProvider = {
+export type InjectedProviderMap = {
+  [name in WalletName]: InjectedProvider;
+};
+
+export const injectedProviders: InjectedProviderMap = {
   metamask: {
     // entry: window.ethereum,
     getDeeplink: url => `https://metamask.app.link/dapp/${url}`, //不需要encodeURIComponent
@@ -180,6 +184,14 @@ export const injectedProviders: InjectedProvider = {
   walletConnect: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
+    needConnect: true,
+    connect: async function (this: InjectedProvider) {
+      const provider = await this?.getProvider();
+      if (!provider) {
+        return;
+      }
+      await provider.connect();
+    },
     getProvider: async () => {
       if (providerCache["walletConnect"]) {
         return providerCache["walletConnect"];

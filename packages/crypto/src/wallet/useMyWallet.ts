@@ -8,6 +8,7 @@ import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
 
 import {
+  InjectedProvider,
   WalletName,
   getInjectedWalletProvider,
   getWalletProvider,
@@ -40,6 +41,8 @@ export type WalletType = {
 export const useMyWallet = (initialName: WalletName | undefined): WalletType => {
   const [name, setName] = useState(initialName);
   const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>();
+  const account = useAccount_(provider);
+
   useEffect(() => {
     if (initialName) {
       getWalletProvider(initialName).then(x => setProvider(x));
@@ -57,9 +60,8 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     },
     [name]
   );
-
   useOnChainChanged(provider, onChainChanged);
-  const account = useAccount_(provider);
+
   const addNetwork = useCallback(
     async (chain: Chain) => {
       dbg("[addNetwork] chain=", chain);
@@ -132,6 +134,14 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     },
     [account, addNetwork, connectAccount, provider, providerRef]
   );
+
+  //connect to injected provider
+  const connect = useCallback(async () => {
+    const injectedProvider = provider?.provider as InjectedProvider;
+    if (injectedProvider.needConnected) {
+      await injectedProvider?.connect();
+    }
+  }, [provider?.provider]);
 
   return {
     provider,
