@@ -12,7 +12,6 @@ import {
   WalletName,
   getInjectedWalletProvider,
   getWalletProvider,
-  hasInjectedProvider,
 } from "./injectedProviders";
 import { useOnChainChanged } from "./onChange";
 import { useAccount_ } from "./useAccount_";
@@ -30,6 +29,7 @@ export type WalletType = {
   readonly addNetwork: (chain: Chain) => Promise<any>;
   readonly switchNetwork: (chain: Chain) => Promise<ethers.providers.Web3Provider>;
   readonly connectAccount: () => Promise<string>;
+  readonly connectChainIfNeeded: (walletName:WalletName) => Promise<void>;
   readonly account: string | undefined;
   readonly getBalance: () => Promise<BigNumber>;
   readonly getNetwork: () => Promise<ethers.providers.Network>;
@@ -72,29 +72,35 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     },
     [provider]
   );
-
-  const switchProvider = useCallback(async (newName: WalletName) => {
-    if (!newName) {
-      throw new Error("please supply wallet name");
+  //connect to network
+  const connectChainIfNeeded = useCallback(async (walletName: WalletName) => {
+    const injectedProvider = await getInjectedWalletProvider(walletName);
+    if (injectedProvider?.needConnectChain) {
+      await injectedProvider.connectChain?.();
     }
-    const injectedProvider = await getInjectedWalletProvider(newName);
-    if (!injectedProvider) {
-      jump2NativeAppOrDlPage(newName);
-      throw new Error(`${newName} is not installed`);
-    }
-    // setInjectedProvider(injectedProvider);
-    const provider = new ethers.providers.Web3Provider(injectedProvider);
-    setProvider(provider);
-    setName(newName);
-    localStorage.setItem("walletName", newName || "");
-    return provider;
   }, []);
 
+  const switchProvider = useCallback(
+    async (newName: WalletName) => {
+      if (!newName) {
+        throw new Error("please supply wallet name");
+      }
+      const injectedProvider = await getInjectedWalletProvider(newName);
+      if (!injectedProvider) {
+        jump2NativeAppOrDlPage(newName);
+        throw new Error(`${newName} is not installed`);
+      }
+      await connectChainIfNeeded(newName);
+      const provider = new ethers.providers.Web3Provider(injectedProvider);
+      setProvider(provider);
+      setName(newName);
+      localStorage.setItem("walletName", newName || "");
+      return provider;
+    },
+    [connectChainIfNeeded]
+  );
+
   const connectAccount = useCallback(async () => {
-    if (!hasInjectedProvider) {
-      jump2NativeAppOrDlPage();
-      return;
-    }
     if (!provider) {
       throw new Error("provider is not ready");
     }
@@ -135,14 +141,6 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     [account, addNetwork, connectAccount, provider, providerRef]
   );
 
-  //connect to injected provider
-  const connect = useCallback(async () => {
-    const injectedProvider = provider?.provider as InjectedProvider;
-    if (injectedProvider.needConnected) {
-      await injectedProvider?.connect();
-    }
-  }, [provider?.provider]);
-
   return {
     provider,
     // injectedProvider,
@@ -153,6 +151,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     switchNetwork,
     switchProvider,
     connectAccount,
+    connectChainIfNeeded,
 
     getBalance: async () => {
       if (!account || !provider) {

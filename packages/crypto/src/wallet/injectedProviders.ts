@@ -37,8 +37,8 @@ export type InjectedProvider = {
   getDeeplink: (url: string) => string;
   pcDownloadUrl: string;
   getProvider: (chainId?: number) => Promise<any>;
-  needConnect?: boolean;
-  connect?: () => Promise<any>;
+  needConnectChain?: boolean;
+  connectChain?: () => Promise<any>;
 };
 
 export type InjectedProviderMap = {
@@ -184,8 +184,8 @@ export const injectedProviders: InjectedProviderMap = {
   walletConnect: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    needConnect: true,
-    connect: async function (this: InjectedProvider) {
+    needConnectChain: true,
+    connectChain: async function (this: InjectedProvider) {
       const provider = await this?.getProvider();
       if (!provider) {
         return;
@@ -262,6 +262,4 @@ export const getWalletProvider = async (walletName: WalletName | undefined, chai
 //@ts-ignore
 globalThis.__injectedProviders = injectedProviders;
 
-export const hasInjectedProvider = () => {
-  return window.ethereum;
-};
+
