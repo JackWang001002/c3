@@ -8,10 +8,12 @@ import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
 
 import {
-  InjectedProvider,
+  InjectedProviderInfo,
   WalletName,
   getInjectedWalletProvider,
   getWalletProvider,
+  injectedProviders,
+  needConnectChain,
 } from "./injectedProviders";
 import { useOnChainChanged } from "./onChange";
 import { useAccount_ } from "./useAccount_";
@@ -29,7 +31,7 @@ export type WalletType = {
   readonly addNetwork: (chain: Chain) => Promise<any>;
   readonly switchNetwork: (chain: Chain) => Promise<ethers.providers.Web3Provider>;
   readonly connectAccount: () => Promise<string>;
-  readonly connectChainIfNeeded: (walletName:WalletName) => Promise<void>;
+  readonly connectChainIfNeeded: (walletName: WalletName) => Promise<void>;
   readonly account: string | undefined;
   readonly getBalance: () => Promise<BigNumber>;
   readonly getNetwork: () => Promise<ethers.providers.Network>;
@@ -74,9 +76,9 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   );
   //connect to network
   const connectChainIfNeeded = useCallback(async (walletName: WalletName) => {
-    const injectedProvider = await getInjectedWalletProvider(walletName);
-    if (injectedProvider?.needConnectChain) {
-      await injectedProvider.connectChain?.();
+    const injectedProviderInfo = await injectedProviders[walletName];
+    if (!injectedProviderInfo.needConnectChain) {
+      await injectedProviderInfo.connectChain?.();
     }
   }, []);
 

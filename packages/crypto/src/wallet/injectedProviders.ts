@@ -33,7 +33,7 @@ export const walletName_BNBWallet: WalletName = "bnbWallet";
 
 const providerCache: { [name in WalletName]?: any } = {};
 
-export type InjectedProvider = {
+export type InjectedProviderInfo = {
   getDeeplink: (url: string) => string;
   pcDownloadUrl: string;
   getProvider: (chainId?: number) => Promise<any>;
@@ -42,7 +42,7 @@ export type InjectedProvider = {
 };
 
 export type InjectedProviderMap = {
-  [name in WalletName]: InjectedProvider;
+  [name in WalletName]: InjectedProviderInfo;
 };
 
 export const injectedProviders: InjectedProviderMap = {
@@ -185,7 +185,7 @@ export const injectedProviders: InjectedProviderMap = {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
     needConnectChain: true,
-    connectChain: async function (this: InjectedProvider) {
+    connectChain: async function (this: InjectedProviderInfo) {
       const provider = await this?.getProvider();
       if (!provider) {
         return;
@@ -240,11 +240,12 @@ export const injectedProviders: InjectedProviderMap = {
   },
 };
 
+
+
 export const getInjectedWalletProvider = async (name: WalletName, chainId?: number) => {
   if (name && injectedProviders[name]) {
     return injectedProviders[name].getProvider(chainId);
   }
-
   return undefined;
 };
 
@@ -261,5 +262,3 @@ export const getWalletProvider = async (walletName: WalletName | undefined, chai
 
 //@ts-ignore
 globalThis.__injectedProviders = injectedProviders;
-
-
