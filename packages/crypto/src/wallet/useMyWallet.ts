@@ -75,7 +75,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   //connect to network
   const connectChainIfNeeded = useCallback(async (walletName: WalletName) => {
     const injectedProviderInfo = getInjectedProviderInfo(walletName);
-    if (!injectedProviderInfo.needConnectChain) {
+    if (injectedProviderInfo.needConnectChain) {
       await injectedProviderInfo.connectChain?.();
     }
   }, []);
