@@ -8,12 +8,10 @@ import { toHexChain } from "../network/utils";
 import { dbg } from "../utils";
 
 import {
-  InjectedProviderInfo,
   WalletName,
+  getInjectedProviderInfo,
   getInjectedWalletProvider,
   getWalletProvider,
-  injectedProviders,
-  needConnectChain,
 } from "./injectedProviders";
 import { useOnChainChanged } from "./onChange";
 import { useAccount_ } from "./useAccount_";
@@ -76,7 +74,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   );
   //connect to network
   const connectChainIfNeeded = useCallback(async (walletName: WalletName) => {
-    const injectedProviderInfo = await injectedProviders[walletName];
+    const injectedProviderInfo = getInjectedProviderInfo(walletName);
     if (!injectedProviderInfo.needConnectChain) {
       await injectedProviderInfo.connectChain?.();
     }

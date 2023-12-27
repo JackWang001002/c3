@@ -240,8 +240,9 @@ export const injectedProviders: InjectedProviderMap = {
   },
 };
 
-
-
+export const getInjectedProviderInfo = (name: WalletName) => {
+  return injectedProviders[name];
+};
 export const getInjectedWalletProvider = async (name: WalletName, chainId?: number) => {
   if (name && injectedProviders[name]) {
     return injectedProviders[name].getProvider(chainId);
