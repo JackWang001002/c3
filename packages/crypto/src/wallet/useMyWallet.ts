@@ -5,7 +5,7 @@ import _ from "lodash";
 import { useCallback, useState, useEffect } from "react";
 import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
-import { dbg } from "../utils";
+import {  log } from "../utils";
 
 import {
   WalletName,
@@ -45,14 +45,14 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   useEffect(() => {
     if (initialName) {
-      console.log("===>wallet name changed");
+      log("===>wallet name changed");
       getWeb3Provider(initialName).then(x => setWeb3Provider(x));
     }
   }, [initialName]);
   const providerRef = useLatest(web3provider);
 
   useOnChainChanged(web3provider, async (chainId: number) => {
-    console.log("===>chain changed. new chainId=", chainId);
+    log("===>chain changed. new chainId=", chainId);
     if (!name) {
       return;
     }
@@ -61,7 +61,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   const addNetwork = useCallback(
     async (chain: Chain) => {
-      console.log("[addNetwork] chain=", chain);
+      log("[addNetwork] chain=", chain);
       if (!web3provider) {
         throw new Error("provider is not ready");
       }
@@ -121,12 +121,12 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
         return web3provider;
       }
       try {
-        console.log("[switchNetwork] chain=", chain);
+        log("[switchNetwork] chain=", chain);
         await web3provider.send("wallet_switchEthereumChain", [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
-        console.log("switchNetwork:", e);
+        log("switchNetwork:", e);
         if (e.code === 4902 || e.code === -32603) {
           await addNetwork(chain);
         } else {

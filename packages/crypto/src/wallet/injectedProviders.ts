@@ -9,7 +9,7 @@ import { ethers } from "ethers";
 import type { ChainShortNameType } from "../network";
 import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP } from "../network";
 import { getValidRpc } from "./getValidRpc";
-import { dbg } from "../utils";
+import {  log } from "../utils";
 
 declare let window: any;
 export type WalletName =
@@ -194,7 +194,7 @@ export const injectedProviders: InjectedProviderMap = {
       await provider.connect();
     },
     getProvider: async () => {
-      console.log("====>getprovider walletconnect");
+      log("====>getprovider walletconnect");
       const walletConnectName = "walletConnect";
       if (providerCache[walletConnectName]) {
         return providerCache[walletConnectName];
@@ -202,9 +202,9 @@ export const injectedProviders: InjectedProviderMap = {
       const { EthereumProvider } = await import("@walletconnect/ethereum-provider");
       providerCache[walletConnectName] = await EthereumProvider.init({
         projectId: "f755239c5faf52da1746e5f240568e71", // REQUIRED your projectId
-        chains: [1], // REQUIRED chain ids
+        chains: [56], // REQUIRED chain ids
         // chains: ['eip155:1']
-        optionalChains: [5000, 56], //56 bnb
+        // optionalChains: [5000, 56], //56 bnb
         // optionalChains: [], // OPTIONAL chains
         showQrModal: true, // REQUIRED set to "true" to use @walletconnect/modal
         // methods, // REQUIRED ethereum methods
@@ -213,6 +213,7 @@ export const injectedProviders: InjectedProviderMap = {
         // optionalEvents, // OPTIONAL ethereum events
         // rpcMap: {
         // 5000: "https://rpc.mantle.xyz",
+        // [NAME2ID_MAP["combo_mainnet"]]: getValidRpc(Name2CHAIN_MAP["combo_mainnet"]),
         // },
         // OPTIONAL rpc urls for each chain
         // metadata, // OPTIONAL metadata of your app
