@@ -11,7 +11,7 @@ type Props = {
 export const Web3Provider = (props: Props) => {
   const { value, ...restProps } = props;
   const wallet = useMyWallet(value);
-  dbg("web3provider refreshed");
+  console.log("===>web3provider refreshed-1");
 
   //@ts-ignore
   globalThis.__wallet = wallet;

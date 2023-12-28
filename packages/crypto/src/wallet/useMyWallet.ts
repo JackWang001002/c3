@@ -11,10 +11,10 @@ import {
   WalletName,
   getInjectedProviderInfo,
   getInjectedWalletProvider,
-  getWalletProvider,
+  getWeb3Provider,
 } from "./injectedProviders";
 import { useOnChainChanged } from "./onChange";
-import { useAccount_ } from "./useAccount_";
+import { useAccount } from "./useAccount";
 import { jump2NativeAppOrDlPage } from "./utils";
 declare global {
   interface Window {
@@ -40,37 +40,36 @@ export type WalletType = {
 
 export const useMyWallet = (initialName: WalletName | undefined): WalletType => {
   const [name, setName] = useState(initialName);
-  const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>();
-  const account = useAccount_(provider);
+  const [web3provider, setWeb3Provider] = useState<ethers.providers.Web3Provider | undefined>();
+  const account = useAccount(web3provider);
 
   useEffect(() => {
     if (initialName) {
-      getWalletProvider(initialName).then(x => setProvider(x));
+      console.log("===>wallet name changed");
+      getWeb3Provider(initialName).then(x => setWeb3Provider(x));
     }
   }, [initialName]);
-  const providerRef = useLatest(provider);
+  const providerRef = useLatest(web3provider);
 
-  const onChainChanged = useCallback(
-    async (chainId: number) => {
-      console.log("chain changed. new chainId=", chainId);
-      if (!name) {
-        return;
-      }
-      setProvider(await getWalletProvider(name, chainId));
-    },
-    [name]
-  );
-  useOnChainChanged(provider, onChainChanged);
+  useOnChainChanged(web3provider, async (chainId: number) => {
+    console.log("===>chain changed. new chainId=", chainId);
+    if (!name) {
+      return;
+    }
+    setWeb3Provider(await getWeb3Provider(name, chainId));
+  });
 
   const addNetwork = useCallback(
     async (chain: Chain) => {
-      dbg("[addNetwork] chain=", chain);
-      if (!provider) {
+      console.log("[addNetwork] chain=", chain);
+      if (!web3provider) {
         throw new Error("provider is not ready");
       }
-      return provider?.send("wallet_addEthereumChain", [_.omit(toHexChain(chain), "shortName")]);
+      return web3provider?.send("wallet_addEthereumChain", [
+        _.omit(toHexChain(chain), "shortName"),
+      ]);
     },
-    [provider]
+    [web3provider]
   );
   //connect to network
   const connectChainIfNeeded = useCallback(async (walletName: WalletName) => {
@@ -81,49 +80,49 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   }, []);
 
   const switchProvider = useCallback(
-    async (newName: WalletName) => {
-      if (!newName) {
+    async (walletName: WalletName) => {
+      if (!walletName) {
         throw new Error("please supply wallet name");
       }
-      const injectedProvider = await getInjectedWalletProvider(newName);
+      const injectedProvider = await getInjectedWalletProvider(walletName);
       if (!injectedProvider) {
-        jump2NativeAppOrDlPage(newName);
-        throw new Error(`${newName} is not installed`);
+        jump2NativeAppOrDlPage(walletName);
+        throw new Error(`${walletName} is not installed`);
       }
-      await connectChainIfNeeded(newName);
-      const provider = new ethers.providers.Web3Provider(injectedProvider);
-      setProvider(provider);
-      setName(newName);
-      localStorage.setItem("walletName", newName || "");
-      return provider;
+      await connectChainIfNeeded(walletName);
+      const web3provider = new ethers.providers.Web3Provider(injectedProvider);
+      setWeb3Provider(web3provider);
+      setName(walletName);
+      localStorage.setItem("walletName", walletName || "");
+      return web3provider;
     },
     [connectChainIfNeeded]
   );
 
   const connectAccount = useCallback(async () => {
-    if (!provider) {
+    if (!web3provider) {
       throw new Error("provider is not ready");
     }
-    const r = await provider?.send("eth_requestAccounts", []);
+    const r = await web3provider?.send("eth_requestAccounts", []);
     return r[0];
-  }, [provider]);
+  }, [web3provider]);
 
   const switchNetwork = useCallback(
     async (chain: Chain) => {
-      if (!provider) {
+      if (!web3provider) {
         throw new Error("provider is null");
       }
       if (!account) {
         await connectAccount();
         // await waitFor(() => !!accountRef.current);
       }
-      const chainId = await (await provider.getNetwork()).chainId;
+      const chainId = await (await web3provider.getNetwork()).chainId;
       if (chainId === chain.chainId) {
-        return provider;
+        return web3provider;
       }
       try {
-        dbg("[switchNetwork] chain=", chain);
-        await provider.send("wallet_switchEthereumChain", [
+        console.log("[switchNetwork] chain=", chain);
+        await web3provider.send("wallet_switchEthereumChain", [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
@@ -135,15 +134,14 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
         }
       }
       // 等待ChainChanged事件完成
-      await waitFor(() => providerRef.current !== provider);
+      await waitFor(() => providerRef.current !== web3provider);
       return providerRef.current!;
     },
-    [account, addNetwork, connectAccount, provider, providerRef]
+    [account, addNetwork, connectAccount, web3provider, providerRef]
   );
 
   return {
-    provider,
-    // injectedProvider,
+    provider: web3provider,
     name,
     account,
     connected: !!account,
@@ -154,22 +152,22 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     connectChainIfNeeded,
 
     getBalance: async () => {
-      if (!account || !provider) {
+      if (!account || !web3provider) {
         return BigNumber.from(0);
       }
-      return provider?.getBalance(account);
+      return web3provider?.getBalance(account);
     },
     getNetwork: async () => {
-      if (!provider) {
+      if (!web3provider) {
         throw new Error("wallet provider is undefined");
       }
-      return provider?.getNetwork();
+      return web3provider?.getNetwork();
     },
     getChainId: async () => {
-      if (!provider) {
+      if (!web3provider) {
         throw new Error("wallet provider is undefined");
       }
-      const network = await provider?.getNetwork();
+      const network = await web3provider?.getNetwork();
       return network.chainId;
     },
   } as const;

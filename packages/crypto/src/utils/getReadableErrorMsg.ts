@@ -1,5 +1,6 @@
+import { dbg } from "../utils/dbg";
 export const getReadableErrorMsg = (message: string) => {
-  const defaultEror = 'Something went wrong.';
+  const defaultEror = "Something went wrong.";
   if (!message) {
     return defaultEror;
   }
@@ -9,7 +10,7 @@ export const getReadableErrorMsg = (message: string) => {
   }
   m = message.match(/(?<info>.*?) (in call exceptions|\(argument=)/);
   if (m) {
-    console.log('=====m', m);
+    console.log("=====m", m);
     return m.groups?.info;
   }
   if (message.length < 60) {

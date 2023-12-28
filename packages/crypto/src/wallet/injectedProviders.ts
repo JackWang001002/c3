@@ -9,6 +9,7 @@ import { ethers } from "ethers";
 import type { ChainShortNameType } from "../network";
 import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP } from "../network";
 import { getValidRpc } from "./getValidRpc";
+import { dbg } from "../utils";
 
 declare let window: any;
 export type WalletName =
@@ -193,11 +194,13 @@ export const injectedProviders: InjectedProviderMap = {
       await provider.connect();
     },
     getProvider: async () => {
-      if (providerCache["walletConnect"]) {
-        return providerCache["walletConnect"];
+      console.log("====>getprovider walletconnect");
+      const walletConnectName = "walletConnect";
+      if (providerCache[walletConnectName]) {
+        return providerCache[walletConnectName];
       }
       const { EthereumProvider } = await import("@walletconnect/ethereum-provider");
-      providerCache["walletConnect"] = await EthereumProvider.init({
+      providerCache[walletConnectName] = await EthereumProvider.init({
         projectId: "f755239c5faf52da1746e5f240568e71", // REQUIRED your projectId
         chains: [1], // REQUIRED chain ids
         // chains: ['eip155:1']
@@ -208,14 +211,14 @@ export const injectedProviders: InjectedProviderMap = {
         // optionalMethods, // OPTIONAL ethereum methods
         // events, // REQUIRED ethereum events
         // optionalEvents, // OPTIONAL ethereum events
-        rpcMap: {
-          5000: "https://rpc.mantle.xyz",
-        },
+        // rpcMap: {
+        // 5000: "https://rpc.mantle.xyz",
+        // },
         // OPTIONAL rpc urls for each chain
         // metadata, // OPTIONAL metadata of your app
         // qrModalOptions, // OPTIONAL - `undefined` by default, see https://docs.walletconnect.com/web3modal/options
       });
-      return providerCache["walletConnect"];
+      return providerCache[walletConnectName];
     },
   },
   bnbWallet: {
@@ -250,7 +253,7 @@ export const getInjectedWalletProvider = async (name: WalletName, chainId?: numb
   return undefined;
 };
 
-export const getWalletProvider = async (walletName: WalletName | undefined, chainId?: number) => {
+export const getWeb3Provider = async (walletName: WalletName | undefined, chainId?: number) => {
   if (!walletName) {
     return undefined;
   }

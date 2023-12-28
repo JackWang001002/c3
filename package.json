@@ -20,7 +20,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@binance/w3w-ethereum-provider": "1.1.0-alpha.0",
+    "@binance/w3w-ethereum-provider": "1.1.0",
     "@c3/dbg": "workspace:^1.0.44",
     "@c3/types": "workspace:^",
     "@c3/utils": "workspace:^1.1.88",

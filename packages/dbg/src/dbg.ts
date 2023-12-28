@@ -7,8 +7,15 @@ export function dbg(...args: unknown[]) {
 }
 
 //colorful dbg
-export function cdbg(keyword: string, style: string) {
+export function cdbg(
+  keyword: string,
+  style: string,
+  switchKeyword = "dbg",
+  level: "log" | "warn" | "debug" = "log"
+) {
   return (...args: unknown[]) => {
-    dbg(`%c${keyword}`, style, ...args);
+    if (globalThis.localStorage?.getItem(switchKeyword)) {
+      console[level](`%c${keyword}`, style, ...args);
+    }
   };
 }

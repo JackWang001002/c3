@@ -44,7 +44,7 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "import": "./src/index.ts",
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     }
