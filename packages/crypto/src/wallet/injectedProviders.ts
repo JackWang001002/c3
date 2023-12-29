@@ -221,7 +221,7 @@ export const injectedProviders: InjectedProviderMap = {
       });
       return providerCache[walletConnectName];
     },
-    disconnect: async () => {
+    disconnect: async function (this: InjectedProviderInfo) {
       const provider = await this?.getProvider();
       provider?.disconnect();
     },
@@ -230,10 +230,11 @@ export const injectedProviders: InjectedProviderMap = {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
     getProvider: async (chainId?: number) => {
-      if (providerCache["bnbWallet"]) {
-        return providerCache["bnbWallet"];
+      const bnbWalletName = "bnbWallet";
+      if (providerCache[bnbWalletName]) {
+        return providerCache[bnbWalletName];
       }
-      providerCache["bnbWallet"] = bnbGetProvider({
+      providerCache[bnbWalletName] = bnbGetProvider({
         chainId: chainId || 56,
         rpc: Object.values(ID2CHAIN_MAP).reduce((acc, cur) => {
           acc[cur.chainId] = getValidRpc(cur);
@@ -243,7 +244,11 @@ export const injectedProviders: InjectedProviderMap = {
         infuraId: "",
         lng: "en",
       });
-      return providerCache["bnbWallet"];
+      return providerCache[bnbWalletName];
+    },
+    disconnect: async function (this: InjectedProviderInfo) {
+      const provider = await this?.getProvider();
+      provider?.disconnect();
     },
   },
 };

@@ -38,7 +38,7 @@ export const useOnAccountChanged = (
     const on = (provider?.provider?.on || provider?.provider?.addListener || noop).bind(
       provider?.provider
     );
-    on("accountsChanged", cb) || noop;
+    on("accountsChanged", cb);
     return () => {
       //@ts-ignore
       const off = (provider?.provider?.off || provider?.provider?.removeListener || noop).bind(
@@ -47,4 +47,27 @@ export const useOnAccountChanged = (
       off("accountsChanged", cb);
     };
   }, [cb, provider, provider?.provider]);
+};
+
+export const useOnDisconnect = (
+  web3provider: ethers.providers.Web3Provider | undefined,
+  cb: (accounts: string[]) => void
+) => {
+  useEffect(() => {
+    if (!web3provider?.provider) {
+      return;
+    }
+    //@ts-ignore
+    const on = (web3provider?.provider?.on || web3provider?.provider?.addListener || noop).bind(
+      web3provider?.provider
+    );
+    on("disconnect", cb);
+    return () => {
+      const off = //@ts-ignore
+      (web3provider?.provider?.off || web3provider?.provider?.removeListener || noop).bind(
+        web3provider?.provider
+      );
+      off("disconnect", cb);
+    };
+  }, [cb, web3provider, web3provider?.provider]);
 };

@@ -5,7 +5,7 @@ import _ from "lodash";
 import { useCallback, useState, useEffect } from "react";
 import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
-import {  log } from "../utils";
+import { log } from "../utils";
 
 import {
   WalletName,
@@ -36,6 +36,7 @@ export type WalletType = {
   readonly getChainId: () => Promise<number>;
   readonly connected: boolean;
   readonly switchProvider: (walletName: WalletName) => Promise<ethers.providers.Web3Provider>;
+  readonly disconnect: () => Promise<void>;
 };
 
 export const useMyWallet = (initialName: WalletName | undefined): WalletType => {
@@ -169,6 +170,12 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       }
       const network = await web3provider?.getNetwork();
       return network.chainId;
+    },
+    disconnect: async () => {
+      if (!name) {
+        throw new Error("wallet name is undefined");
+      }
+      return getInjectedProviderInfo(name)?.disconnect?.();
     },
   } as const;
 };
