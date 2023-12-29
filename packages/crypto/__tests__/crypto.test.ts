@@ -9,11 +9,11 @@ describe("test cases", () => {
       acc[toHexString(cur.chainId)] = getValidRpc(cur);
       return acc;
     }, {} as any);
-    console.log(Object.keys(res).length);
-    console.log(Object.values(res).filter(e => e === "").length);
+    log(Object.keys(res).length);
+    log(Object.values(res).filter(e => e === "").length);
     for(const [k, v] of Object.entries(res)) {
       if(v === ''){
-        console.log(k, v);
+        log(k, v);
       }
     }
   });

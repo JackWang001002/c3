@@ -35,7 +35,10 @@ export const useOnAccountChanged = (
       return;
     }
     //@ts-ignore
-    provider?.provider?.on("accountsChanged", cb) || noop;
+    const on = (provider?.provider?.on || provider?.provider?.addListener || noop).bind(
+      provider?.provider
+    );
+    on("accountsChanged", cb) || noop;
     return () => {
       //@ts-ignore
       const off = (provider?.provider?.off || provider?.provider?.removeListener || noop).bind(

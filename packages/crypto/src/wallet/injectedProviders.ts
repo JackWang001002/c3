@@ -1,22 +1,15 @@
 // import detectEthereumProvider from '@metamask/detect-provider';
 
-import { ethers } from "ethers";
+import { getProvider as bnbGetProvider } from "@binance/w3w-ethereum-provider";
 import { CoinbaseWalletSDK } from "@coinbase/wallet-sdk";
+import { CyberProvider, isCyberWallet } from "@cyberlab/cyber-app-sdk";
 import { ParticleConnect } from "@particle-network/connect";
 import { ParticleProvider } from "@particle-network/provider";
-import { ParticleNetwork } from "@particle-network/auth";
-import { CyberApp, CyberProvider } from "@cyberlab/cyber-app-sdk";
-import { isCyberWallet } from "@cyberlab/cyber-app-sdk";
-import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP, rawChainList } from "../network";
-import { getProvider as bnbGetProvider } from "@binance/w3w-ethereum-provider";
-import { getValidRpc } from "./getValidRpc";
+import { ethers } from "ethers";
 import type { ChainShortNameType } from "../network";
-
-let cyberProvider: CyberProvider;
-const APP_NAME = "My Awesome App";
-const APP_LOGO_URL = "https://example.com/logo.png";
-const DEFAULT_ETH_JSONRPC_URL = "xxxx";
-const DEFAULT_CHAIN_ID = 1;
+import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP } from "../network";
+import { getValidRpc } from "./getValidRpc";
+import { log } from "../utils";
 
 declare let window: any;
 export type WalletName =
@@ -41,20 +34,25 @@ export const walletName_BNBWallet: WalletName = "bnbWallet";
 
 const providerCache: { [name in WalletName]?: any } = {};
 
-export type InjectedProvider = {
-  [name in WalletName]: {
-    getDeeplink: (url: string) => string;
-    pcDownloadUrl: string;
-    getProvider: (chainId?: number) => any; //TODO:
-  };
+export type InjectedProviderInfo = {
+  getDeeplink: (url: string) => string;
+  pcDownloadUrl: string;
+  getProvider: (chainId?: number) => Promise<any>;
+  needConnectChain?: boolean;
+  connectChain?: () => Promise<any>;
+  disconnect?: () => Promise<any>;
 };
 
-export const injectedProviders: InjectedProvider = {
+export type InjectedProviderMap = {
+  [name in WalletName]: InjectedProviderInfo;
+};
+
+export const injectedProviders: InjectedProviderMap = {
   metamask: {
     // entry: window.ethereum,
     getDeeplink: url => `https://metamask.app.link/dapp/${url}`, //不需要encodeURIComponent
     pcDownloadUrl: "https://metamask.io/download/",
-    getProvider: () => {
+    getProvider: async () => {
       if (typeof window.ethereum === "undefined") {
         return undefined;
       }
@@ -85,14 +83,14 @@ export const injectedProviders: InjectedProvider = {
   coinbase: {
     getDeeplink: (url: string) => `https://go.cb-w.com/dapp?cb_url=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://www.coinbase.com/wallet",
-    getProvider: () => {
+    getProvider: async () => {
       if (window.coinbaseWalletExtension) {
         const coinbaseWallet = new CoinbaseWalletSDK({
-          appName: APP_NAME,
-          appLogoUrl: APP_LOGO_URL,
+          appName: "My Awesome App",
+          appLogoUrl: "https://example.com/logo.png",
           darkMode: false,
         });
-        return coinbaseWallet.makeWeb3Provider(DEFAULT_ETH_JSONRPC_URL, DEFAULT_CHAIN_ID);
+        return coinbaseWallet.makeWeb3Provider(getValidRpc(Name2CHAIN_MAP["eth"]), 1);
       }
       return undefined;
     },
@@ -100,7 +98,7 @@ export const injectedProviders: InjectedProvider = {
   okx: {
     getDeeplink: (url: string) => `okx://wallet/dapp/details?dappUrl=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://www.okx.com/web3",
-    getProvider: () => {
+    getProvider: async () => {
       if (window.okxwallet) {
         return window.okxwallet;
       }
@@ -111,7 +109,7 @@ export const injectedProviders: InjectedProvider = {
     getDeeplink: (url: string) =>
       `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://trustwallet.com/",
-    getProvider: () => {
+    getProvider: async () => {
       //处理移动端window.trustwallet不是proxy，不提供功能的问题
       if (window.ethereum?.isTrust) {
         return window.ethereum;
@@ -125,7 +123,7 @@ export const injectedProviders: InjectedProvider = {
   particle: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    getProvider: () => {
+    getProvider: async () => {
       const particle = new ParticleConnect({
         projectId: "a6991b19-e1d9-4da0-a8ff-1928d4651cc6",
         clientKey: "cLxYtnw4BIiwoV7zkjNOXMHVFD04QgC2k6Opm1VM",
@@ -153,17 +151,18 @@ export const injectedProviders: InjectedProvider = {
   bitkeep: {
     getDeeplink: (url: string) => `https://bkcode.vip?action=dapp&url=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://web3.bitget.com/en/wallet-download",
-    getProvider: () => {
+    getProvider: async () => {
       return window.bitkeep && window.bitkeep.ethereum;
     },
   },
   cyber: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "https://wallet.cyber.co/apps/",
-    getProvider: () => {
-      if (cyberProvider) {
-        return cyberProvider;
+    getProvider: async () => {
+      if (providerCache["cyber"]) {
+        return providerCache["cyber"];
       }
+
       const inInCyberWallet = isCyberWallet();
       if (!inInCyberWallet) {
         return null;
@@ -177,24 +176,60 @@ export const injectedProviders: InjectedProvider = {
       if (!DEFAULT_CHAIN_ID) {
         DEFAULT_CHAIN_ID = 1;
       }
-      cyberProvider = new CyberProvider({
+      providerCache["cyber"] = new CyberProvider({
         app,
         chainId: DEFAULT_CHAIN_ID,
       });
-      return cyberProvider;
+      return providerCache["cyber"];
     },
   },
   walletConnect: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    getProvider: () => {
-      return undefined;
+    needConnectChain: true,
+    connectChain: async function (this: InjectedProviderInfo) {
+      const provider = await this?.getProvider();
+      if (!provider) {
+        return;
+      }
+      await provider.connect();
+    },
+    getProvider: async () => {
+      log("====>getprovider walletconnect");
+      const walletConnectName = "walletConnect";
+      if (providerCache[walletConnectName]) {
+        return providerCache[walletConnectName];
+      }
+      const { EthereumProvider } = await import("@walletconnect/ethereum-provider");
+      providerCache[walletConnectName] = await EthereumProvider.init({
+        projectId: "33d371b82f65791565cca81fbbb595a1", // REQUIRED your projectId
+        // chains: [56], // REQUIRED chain ids
+        optionalChains: [56], //56 bnb
+        // optionalChains: [], // OPTIONAL chains
+        showQrModal: true, // REQUIRED set to "true" to use @walletconnect/modal
+        // methods, // REQUIRED ethereum methods
+        // optionalMethods, // OPTIONAL ethereum methods
+        // events, // REQUIRED ethereum events
+        // optionalEvents, // OPTIONAL ethereum events
+        // rpcMap: {
+        // 5000: "https://rpc.mantle.xyz",
+        // [NAME2ID_MAP["combo_mainnet"]]: getValidRpc(Name2CHAIN_MAP["combo_mainnet"]),
+        // },
+        // OPTIONAL rpc urls for each chain
+        // metadata, // OPTIONAL metadata of your app
+        // qrModalOptions, // OPTIONAL - `undefined` by default, see https://docs.walletconnect.com/web3modal/options
+      });
+      return providerCache[walletConnectName];
+    },
+    disconnect: async () => {
+      const provider = await this?.getProvider();
+      provider?.disconnect();
     },
   },
   bnbWallet: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    getProvider: (chainId?: number) => {
+    getProvider: async (chainId?: number) => {
       if (providerCache["bnbWallet"]) {
         return providerCache["bnbWallet"];
       }
@@ -213,19 +248,21 @@ export const injectedProviders: InjectedProvider = {
   },
 };
 
-export const getInjectedWalletProvider = (name: WalletName, chainId?: number) => {
+export const getInjectedProviderInfo = (name: WalletName) => {
+  return injectedProviders[name];
+};
+export const getInjectedWalletProvider = async (name: WalletName, chainId?: number) => {
   if (name && injectedProviders[name]) {
     return injectedProviders[name].getProvider(chainId);
   }
-
   return undefined;
 };
 
-export const getWalletProvider = (walletName: WalletName | undefined, chainId?: number) => {
+export const getWeb3Provider = async (walletName: WalletName | undefined, chainId?: number) => {
   if (!walletName) {
     return undefined;
   }
-  const provider = getInjectedWalletProvider(walletName, chainId);
+  const provider = await getInjectedWalletProvider(walletName, chainId);
   if (!provider) {
     return undefined;
   }
@@ -234,8 +271,3 @@ export const getWalletProvider = (walletName: WalletName | undefined, chainId?: 
 
 //@ts-ignore
 globalThis.__injectedProviders = injectedProviders;
-
-export const hasInjectedProvider = () => {
-  return window.ethereum;
-};
-

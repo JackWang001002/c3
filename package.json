@@ -20,7 +20,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@binance/w3w-ethereum-provider": "1.1.0-alpha.0",
+    "@binance/w3w-ethereum-provider": "1.1.0",
     "@c3/dbg": "workspace:^1.0.44",
     "@c3/types": "workspace:^",
     "@c3/utils": "workspace:^1.1.88",
@@ -31,6 +31,8 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@walletconnect/ethereum-provider": "^2.10.6",
+    "@walletconnect/modal": "^2.6.2",
     "@web3modal/ethers5": "^3.2.0",
     "ethers": "^5.7.2",
     "lerna": "^6.0.1",
