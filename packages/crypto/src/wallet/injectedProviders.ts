@@ -9,7 +9,7 @@ import { ethers } from "ethers";
 import type { ChainShortNameType } from "../network";
 import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP } from "../network";
 import { getValidRpc } from "./getValidRpc";
-import {  log } from "../utils";
+import { log } from "../utils";
 
 declare let window: any;
 export type WalletName =
@@ -40,6 +40,7 @@ export type InjectedProviderInfo = {
   getProvider: (chainId?: number) => Promise<any>;
   needConnectChain?: boolean;
   connectChain?: () => Promise<any>;
+  disconnect?: () => Promise<any>;
 };
 
 export type InjectedProviderMap = {
@@ -201,10 +202,9 @@ export const injectedProviders: InjectedProviderMap = {
       }
       const { EthereumProvider } = await import("@walletconnect/ethereum-provider");
       providerCache[walletConnectName] = await EthereumProvider.init({
-        projectId: "f755239c5faf52da1746e5f240568e71", // REQUIRED your projectId
-        chains: [56], // REQUIRED chain ids
-        // chains: ['eip155:1']
-        // optionalChains: [5000, 56], //56 bnb
+        projectId: "33d371b82f65791565cca81fbbb595a1", // REQUIRED your projectId
+        // chains: [56], // REQUIRED chain ids
+        optionalChains: [56], //56 bnb
         // optionalChains: [], // OPTIONAL chains
         showQrModal: true, // REQUIRED set to "true" to use @walletconnect/modal
         // methods, // REQUIRED ethereum methods
@@ -220,6 +220,10 @@ export const injectedProviders: InjectedProviderMap = {
         // qrModalOptions, // OPTIONAL - `undefined` by default, see https://docs.walletconnect.com/web3modal/options
       });
       return providerCache[walletConnectName];
+    },
+    disconnect: async () => {
+      const provider = await this?.getProvider();
+      provider?.disconnect();
     },
   },
   bnbWallet: {
