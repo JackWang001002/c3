@@ -203,8 +203,9 @@ export const injectedProviders: InjectedProviderMap = {
       const { EthereumProvider } = await import("@walletconnect/ethereum-provider");
       providerCache[walletConnectName] = await EthereumProvider.init({
         projectId: "33d371b82f65791565cca81fbbb595a1", // REQUIRED your projectId
-        // chains: [56], // REQUIRED chain ids
-        optionalChains: [56], //56 bnb
+        chains: [1], // REQUIRED chain ids
+        // optionalChains: [(56, 137, 8453)], //56 bnb
+        optionalChains: Object.keys(ID2CHAIN_MAP).map(e => +e) as number[], //56 bnb
         // optionalChains: [], // OPTIONAL chains
         showQrModal: true, // REQUIRED set to "true" to use @walletconnect/modal
         // methods, // REQUIRED ethereum methods
@@ -258,7 +259,9 @@ export const getInjectedProviderInfo = (name: WalletName) => {
 };
 export const getInjectedWalletProvider = async (name: WalletName, chainId?: number) => {
   if (name && injectedProviders[name]) {
-    return injectedProviders[name].getProvider(chainId);
+    const p = await injectedProviders[name].getProvider(chainId);
+    name === "walletConnect" && log("methods:", p.signer.rpcProviders.eip155.namespace.methods);
+    return p;
   }
   return undefined;
 };
