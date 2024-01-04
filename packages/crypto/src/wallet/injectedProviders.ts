@@ -260,7 +260,8 @@ export const getInjectedProviderInfo = (name: WalletName) => {
 export const getInjectedWalletProvider = async (name: WalletName, chainId?: number) => {
   if (name && injectedProviders[name]) {
     const p = await injectedProviders[name].getProvider(chainId);
-    name === "walletConnect" && log("methods:", p.signer.rpcProviders.eip155.namespace.methods);
+    name === "walletConnect" &&
+      log("methods:", p?.signer?.rpcProviders?.eip155?.namespace?.methods);
     return p;
   }
   return undefined;
