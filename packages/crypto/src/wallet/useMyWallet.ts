@@ -2,7 +2,7 @@ import { useLatest } from "@c3/react";
 import { toHexString, waitFor } from "@c3/utils";
 import { BigNumber, ethers } from "ethers";
 import _ from "lodash";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useMemo } from "react";
 import { Chain } from "../network/types";
 import { toHexChain } from "../network/utils";
 import { log } from "../utils";
@@ -13,7 +13,7 @@ import {
   getInjectedProvider,
   getWeb3Provider,
 } from "./injectedProviders";
-import { useOnChainChanged } from "./onChange";
+import { useOnChainChanged, useOnDisconnect } from "./onChange";
 import { useAccount } from "./useAccount";
 import { jump2NativeAppOrDlPage } from "./utils";
 declare global {
@@ -68,6 +68,19 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       return;
     }
     setWeb3Provider(await getWeb3Provider(name, chainId));
+  });
+
+  //手机端App断开连接
+  useOnDisconnect(web3provider, async () => {
+    if (!name) {
+      return;
+    }
+    log("===>on disconnect event");
+    const info = getInjectedProviderInfo(name);
+    if (info?.needConnectMobileApp) {
+      await info?.disconnect?.();
+      setWeb3Provider(undefined);
+    }
   });
 
   const addNetwork = useCallback(
