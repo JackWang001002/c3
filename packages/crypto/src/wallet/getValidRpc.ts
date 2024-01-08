@@ -13,7 +13,7 @@ export const getValidRpc = (chain: Chain) => {
 
   const rpc = chain.rpcUrls.find(e => !e.includes("API_KEY") && !e.includes("${"));
   if (!rpc) {
-    log("chain=", chain.shortName);
+    log("chain=", chain.shortName, "has no rpc");
     // throw new Error("rpc is undefined");
     return "";
   }

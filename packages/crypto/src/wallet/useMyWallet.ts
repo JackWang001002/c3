@@ -10,7 +10,7 @@ import { log } from "../utils";
 import {
   WalletName,
   getInjectedProviderInfo,
-  getInjectedWalletProvider,
+  getInjectedProvider,
   getWeb3Provider,
 } from "./injectedProviders";
 import { useOnChainChanged } from "./onChange";
@@ -46,8 +46,18 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
 
   useEffect(() => {
     if (initialName) {
-      log("===>wallet name changed");
-      getWeb3Provider(initialName).then(x => setWeb3Provider(x));
+      log("===>wallet name changed to", initialName);
+      const info = getInjectedProviderInfo(initialName);
+
+      if (info.needConnectMobileApp) {
+        info.isConnectedMobileApp?.().then((connected: boolean) => {
+          if (connected) {
+            getWeb3Provider(initialName).then(x => setWeb3Provider(x));
+          }
+        });
+      } else {
+        getWeb3Provider(initialName).then(x => setWeb3Provider(x));
+      }
     }
   }, [initialName]);
   const providerRef = useLatest(web3provider);
@@ -73,10 +83,13 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     [web3provider]
   );
   //connect to network
-  const connectChainIfNeeded = useCallback(async (walletName: WalletName) => {
+  const connectMobileAppIfNeeded = useCallback(async (walletName: WalletName) => {
     const injectedProviderInfo = getInjectedProviderInfo(walletName);
-    if (injectedProviderInfo.needConnectChain) {
-      await injectedProviderInfo.connectChain?.();
+    if (
+      injectedProviderInfo.needConnectMobileApp &&
+      !(await injectedProviderInfo.isConnectedMobileApp?.())
+    ) {
+      await injectedProviderInfo.connectMobileApp?.();
     }
   }, []);
 
@@ -85,19 +98,19 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       if (!walletName) {
         throw new Error("please supply wallet name");
       }
-      const injectedProvider = await getInjectedWalletProvider(walletName);
+      const injectedProvider = await getInjectedProvider(walletName);
       if (!injectedProvider) {
         jump2NativeAppOrDlPage(walletName);
         throw new Error(`${walletName} is not installed`);
       }
-      await connectChainIfNeeded(walletName);
+      await connectMobileAppIfNeeded(walletName);
       const web3provider = new ethers.providers.Web3Provider(injectedProvider);
       setWeb3Provider(web3provider);
       setName(walletName);
       localStorage.setItem("walletName", walletName || "");
       return web3provider;
     },
-    [connectChainIfNeeded]
+    [connectMobileAppIfNeeded]
   );
 
   const connectAccount = useCallback(async () => {
@@ -150,7 +163,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     switchNetwork,
     switchProvider,
     connectAccount,
-    connectChainIfNeeded,
+    connectChainIfNeeded: connectMobileAppIfNeeded,
 
     getBalance: async () => {
       if (!account || !web3provider) {

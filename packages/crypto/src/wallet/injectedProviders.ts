@@ -38,8 +38,9 @@ export type InjectedProviderInfo = {
   getDeeplink: (url: string) => string;
   pcDownloadUrl: string;
   getProvider: (chainId?: number) => Promise<any>;
-  needConnectChain?: boolean;
-  connectChain?: () => Promise<any>;
+  needConnectMobileApp?: boolean;
+  connectMobileApp?: () => Promise<any>;
+  isConnectedMobileApp?: () => Promise<boolean>;
   disconnect?: () => Promise<any>;
 };
 
@@ -186,13 +187,20 @@ export const injectedProviders: InjectedProviderMap = {
   walletConnect: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    needConnectChain: true,
-    connectChain: async function (this: InjectedProviderInfo) {
+    needConnectMobileApp: true,
+    connectMobileApp: async function (this: InjectedProviderInfo) {
       const provider = await this?.getProvider();
       if (!provider) {
         return;
       }
       await provider.connect();
+    },
+    isConnectedMobileApp: async function (this: InjectedProviderInfo) {
+      const provider = await this?.getProvider();
+      if (!provider) {
+        return false;
+      }
+      return provider.connected;
     },
     getProvider: async () => {
       log("====>getprovider walletconnect");
@@ -230,12 +238,38 @@ export const injectedProviders: InjectedProviderMap = {
   bnbWallet: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    getProvider: async (chainId?: number) => {
-      const bnbWalletName = "bnbWallet";
-      if (providerCache[bnbWalletName]) {
-        return providerCache[bnbWalletName];
+    needConnectMobileApp: true,
+    connectMobileApp: async function (this: InjectedProviderInfo) {
+      const provider = await this?.getProvider();
+      if (!provider) {
+        return;
       }
-      providerCache[bnbWalletName] = bnbGetProvider({
+      try {
+        await provider.connect();
+      } catch (e: any) {
+        log("connectMobileApp error:", e);
+        switch (e.code) {
+          //user reject
+          case 100001:
+          case 100002:
+            providerCache[walletName_BNBWallet] = undefined; //否则无法再次连接无法显示对话框
+            break;
+        }
+        throw e;
+      }
+    },
+    isConnectedMobileApp: async function (this: InjectedProviderInfo) {
+      const provider = await this?.getProvider();
+      if (!provider) {
+        return false;
+      }
+      return provider.connected;
+    },
+    getProvider: async (chainId?: number) => {
+      if (providerCache[walletName_BNBWallet]) {
+        return providerCache[walletName_BNBWallet];
+      }
+      providerCache[walletName_BNBWallet] = bnbGetProvider({
         chainId: chainId || 56,
         rpc: Object.values(ID2CHAIN_MAP).reduce((acc, cur) => {
           acc[cur.chainId] = getValidRpc(cur);
@@ -245,7 +279,7 @@ export const injectedProviders: InjectedProviderMap = {
         infuraId: "",
         lng: "en",
       });
-      return providerCache[bnbWalletName];
+      return providerCache[walletName_BNBWallet];
     },
     disconnect: async function (this: InjectedProviderInfo) {
       const provider = await this?.getProvider();
@@ -257,7 +291,7 @@ export const injectedProviders: InjectedProviderMap = {
 export const getInjectedProviderInfo = (name: WalletName) => {
   return injectedProviders[name];
 };
-export const getInjectedWalletProvider = async (name: WalletName, chainId?: number) => {
+export const getInjectedProvider = async (name: WalletName, chainId?: number) => {
   if (name && injectedProviders[name]) {
     const p = await injectedProviders[name].getProvider(chainId);
     name === "walletConnect" &&
@@ -271,7 +305,7 @@ export const getWeb3Provider = async (walletName: WalletName | undefined, chainI
   if (!walletName) {
     return undefined;
   }
-  const provider = await getInjectedWalletProvider(walletName, chainId);
+  const provider = await getInjectedProvider(walletName, chainId);
   if (!provider) {
     return undefined;
   }
