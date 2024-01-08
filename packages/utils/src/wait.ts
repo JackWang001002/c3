@@ -1,3 +1,5 @@
+import { log } from "./shared";
+
 export function wait(timeout: number) {
   return new Promise(resolve => {
     setTimeout(() => resolve(true), timeout);
@@ -6,9 +8,9 @@ export function wait(timeout: number) {
 
 export const waitFor = async (fn: () => boolean, reject?: () => boolean) => {
   while (!fn()) {
-    console.log("waiting for...");
-    if (reject && reject()) {
-      console.log("reject by", reject);
+    log("waiting for...");
+    if (reject?.()) {
+      log("reject by", reject);
       break;
     }
     await wait(100);

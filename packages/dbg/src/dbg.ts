@@ -1,3 +1,5 @@
+import { getFnName } from "./fn";
+
 export const isEnableDbg = globalThis.localStorage?.getItem("dbg");
 
 export function dbg(...args: unknown[]) {
@@ -15,7 +17,7 @@ export function cdbg(
 ) {
   return (...args: unknown[]) => {
     if (globalThis.localStorage?.getItem(switchKeyword)) {
-      console[level](`%c${keyword}`, style, ...args);
+      console[level](`%c${keyword} [${getFnName()}] `, style, ...args);
     }
   };
 }
