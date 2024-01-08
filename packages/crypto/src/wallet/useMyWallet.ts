@@ -99,8 +99,9 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   const connectMobileAppIfNeeded = useCallback(async (walletName: WalletName) => {
     const injectedProviderInfo = getInjectedProviderInfo(walletName);
     if (
-      injectedProviderInfo.needConnectMobileApp &&
-      !(await injectedProviderInfo.isConnectedMobileApp?.())
+      injectedProviderInfo.needConnectMobileApp
+      // &&
+      // !(await injectedProviderInfo.isConnectedMobileApp?.())
     ) {
       await injectedProviderInfo.connectMobileApp?.();
     }
