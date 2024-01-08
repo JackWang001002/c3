@@ -78,7 +78,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     log("===>on disconnect event");
     const info = getInjectedProviderInfo(name);
     if (info?.needConnectMobileApp) {
-      await info?.disconnect?.();
+      // await info?.disconnect?.();
       setWeb3Provider(undefined);
     }
   });
