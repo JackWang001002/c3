@@ -1,6 +1,6 @@
 {
   "name": "@c3/chain",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "keywords": [],
   "author": "",
@@ -30,16 +30,7 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/dbg": "workspace:^",
-    "@c3/react": "workspace:^",
-    "@c3/types": "workspace:^",
-    "@c3/utils": "workspace:^",
-    "@coinbase/wallet-sdk": "^3.7.1",
-    "@cyberlab/cyber-app-sdk": "^2.4.2",
-    "@metamask/detect-provider": "^1.2.0",
-    "@particle-network/connect": "1.0.0-alpha.0",
-    "@rollup/plugin-typescript": "^8.5.0",
-    "ethers": "^5.7.2"
+    "@c3/types": "workspace:^"
   },
   "type": "module",
   "exports": {
