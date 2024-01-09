@@ -1,0 +1,55 @@
+{
+  "name": "@c3/chain",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "types": "./dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/che3vinci/c3.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c && pnpm type",
+    "clean": "rm -rf dist && rm -rf node_modules ",
+    "reset": "pnpm clean && pnpm install",
+    "type": "npx tsc --project . --paths null --emitDeclarationOnly --declaration",
+    "watchtype": "tsc --project . --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/che3vinci/c3/issues"
+  },
+  "homepage": "https://github.com/che3vinci/c3#readme",
+  "dependencies": {
+    "@c3/dbg": "workspace:^",
+    "@c3/react": "workspace:^",
+    "@c3/types": "workspace:^",
+    "@c3/utils": "workspace:^",
+    "@coinbase/wallet-sdk": "^3.7.1",
+    "@cyberlab/cyber-app-sdk": "^2.4.2",
+    "@metamask/detect-provider": "^1.2.0",
+    "@particle-network/connect": "1.0.0-alpha.0",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "ethers": "^5.7.2"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
