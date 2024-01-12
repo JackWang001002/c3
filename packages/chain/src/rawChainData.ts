@@ -11261,4 +11261,50 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Polygon zkEVM Testnet",
+    chain: "Polygon zkEVM Testnet",
+    rpc: ["https://polygon-zkevm-testnet.blockpi.network/v1/rpc/public"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "polygon_zkEvm_test",
+    chainId: 1442,
+    networkId: 1442,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://testnet-zkevm.polygonscan.com/",
+        standard: "none",
+      },
+    ],
+  },
+  {
+    name: "Dogechain Mainnet",
+    chain: "Dogechain Mainnet",
+    rpc: [" https://rpc.dogechain.dog"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "Doge",
+      symbol: "Doge",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "dogchain",
+    chainId: 2000,
+    networkId: 2000,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://explorer.dogechain.dog/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
