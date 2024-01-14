@@ -1,5 +1,3 @@
-import type { Equal } from "@type-challenges/utils";
-import { IndexedType } from "./types";
 
 /**
  * find the Item in the Tuple that has the value of V for the key K
