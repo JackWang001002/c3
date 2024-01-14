@@ -1,6 +1,6 @@
 {
   "name": "@c3/css",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "",
   "keywords": [],
   "license": "ISC",
@@ -24,7 +24,6 @@
     "url": "https://github.com/che3vinci/c3/issues"
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
-  "dependencies": {},
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
   "type": "module",
   "exports": {

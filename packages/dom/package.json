@@ -1,6 +1,6 @@
 {
   "name": "@c3/dom",
-  "version": "1.2.16",
+  "version": "1.2.17",
   "description": "",
   "keywords": [],
   "author": "che3vinci <che3vinci@gmail.com>",
@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
-    "@c3/dbg": "workspace:^1.1.5",
-    "@c3/utils": "workspace:^1.3.19"
+    "@c3/dbg": "workspace:^1.1.10",
+    "@c3/utils": "workspace:^1.3.28"
   },
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
   "type": "module",

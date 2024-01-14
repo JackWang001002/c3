@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.10](https://github.com/che3vinci/c3/compare/@c3/dbg@1.1.5...@c3/dbg@1.1.10) (2024-01-14)
+
+**Note:** Version bump only for package @c3/dbg
+
 ## [1.1.5](https://github.com/che3vinci/c3/compare/@c3/dbg@1.1.3...@c3/dbg@1.1.5) (2023-06-29)
 
 **Note:** Version bump only for package @c3/dbg

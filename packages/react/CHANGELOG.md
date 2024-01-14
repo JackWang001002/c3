@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.27](https://github.com/che3vinci/c3/compare/@c3/react@1.1.25...@c3/react@1.1.27) (2024-01-14)
+
+### Features
+
+- c3 ([78c97a7](https://github.com/che3vinci/c3/commit/78c97a7e6c699762fdaed159f59d90793f1ddb20))
+
 ## [1.1.25](https://github.com/che3vinci/c3/compare/@c3/react@1.1.23...@c3/react@1.1.25) (2023-10-29)
 
 ### Features

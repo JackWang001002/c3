@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.15](https://github.com/che3vinci/c3/compare/@c3/types@1.1.10...@c3/types@1.1.15) (2024-01-14)
+
+### Features
+
+- change types export ([3c6d633](https://github.com/che3vinci/c3/commit/3c6d6333bb3dcb274f5839f46788faabc4c0ee2c))
+- change types export ([0600b1a](https://github.com/che3vinci/c3/commit/0600b1ad92d365a6cce3da73e1b9d29cd7ada544))
+
 ## [1.1.10](https://github.com/che3vinci/c3/compare/@c3/types@1.1.9...@c3/types@1.1.10) (2023-08-13)
 
 ### Bug Fixes

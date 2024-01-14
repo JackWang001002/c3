@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.28](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.19...@c3/utils@1.3.28) (2024-01-14)
+
+### Bug Fixes
+
+- casecast ([5e5971c](https://github.com/che3vinci/c3/commit/5e5971ce5fdcc9f11d7462d361482a637832ac04))
+- toCamelCase ([b7c5bce](https://github.com/che3vinci/c3/commit/b7c5bce73d41306727736e2cef3a0d21d6fdf27d))
+- toHash ([9b66ac1](https://github.com/che3vinci/c3/commit/9b66ac1890304c55d9b8fa3637a9c04a7c5941b5))
+- update c3/utils ([cb99253](https://github.com/che3vinci/c3/commit/cb99253a1827cda689e67e177ed06892a7e53a35))
+
+### Features
+
+- add bignumber format for money ([a9da4c5](https://github.com/che3vinci/c3/commit/a9da4c5ca23dcc78a4b66a2f273f680ac5a7a8d0))
+- add scroll ([dfa327c](https://github.com/che3vinci/c3/commit/dfa327c6e13567ab86c993f71485c364e6f36414))
+- change types export ([3c6d633](https://github.com/che3vinci/c3/commit/3c6d6333bb3dcb274f5839f46788faabc4c0ee2c))
+- change types export ([0600b1a](https://github.com/che3vinci/c3/commit/0600b1ad92d365a6cce3da73e1b9d29cd7ada544))
+- publish c3/utils ([1aa9dbd](https://github.com/che3vinci/c3/commit/1aa9dbd1e190b13e3ce7784ded15475586c7d9a0))
+- update ts type ([1692f39](https://github.com/che3vinci/c3/commit/1692f394fe571d268ce0baf32b9ea3fd1200ef01))
+- walletconnect ([bf9f1db](https://github.com/che3vinci/c3/commit/bf9f1db10229860aa588950d58f87e57f043ef28))
+
 ## [1.3.19](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.17...@c3/utils@1.3.19) (2023-10-29)
 
 ### Bug Fixes

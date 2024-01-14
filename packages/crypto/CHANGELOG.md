@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.9](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.83...@c3/crypto@2.0.9) (2024-01-14)
+
+### Bug Fixes
+
+- add on Disconnect ([0ec7727](https://github.com/che3vinci/c3/commit/0ec7727c7488b7f182020a4e795f83022055977c))
+- bug for wallet connect incorrect state ([f7cd0c6](https://github.com/che3vinci/c3/commit/f7cd0c69a29704fec632aa3e4466784d93a75758))
+- bug for wallet connect incorrect state ([a1a2e9f](https://github.com/che3vinci/c3/commit/a1a2e9f6d69fe0aaf7c0e29b0b5683dcf943ca66))
+- push ([5a13c7f](https://github.com/che3vinci/c3/commit/5a13c7fbfea9e6ba1ac03410f3dfc0943efb2991))
+- toCamelCase ([b7c5bce](https://github.com/che3vinci/c3/commit/b7c5bce73d41306727736e2cef3a0d21d6fdf27d))
+- version upgrade ([3c26cc6](https://github.com/che3vinci/c3/commit/3c26cc61915c7ad211bbaf8ec5da6c9c85af95a9))
+
+### Features
+
+- add bnb wallet ([0cdc41a](https://github.com/che3vinci/c3/commit/0cdc41a8628d841c53d76697b9efec41e4f98d25))
+- add combo mainnet network information ([b0266a3](https://github.com/che3vinci/c3/commit/b0266a3722bb24971fd084be20ef661bf467f7f0))
+- add scroll ([dfa327c](https://github.com/che3vinci/c3/commit/dfa327c6e13567ab86c993f71485c364e6f36414))
+- add scroll ([7ed9332](https://github.com/che3vinci/c3/commit/7ed9332257390c3a33330ded208bc036630d0f52))
+- bnb wallet ([0e837ac](https://github.com/che3vinci/c3/commit/0e837ac1bb9dbd0d8a15b524a32c9c1efe65c25b))
+- bnb wallet reconnect ([ade05a1](https://github.com/che3vinci/c3/commit/ade05a171a58e31d930e4291c293e3012655231e))
+- bnb wallet reconnect ([6874a96](https://github.com/che3vinci/c3/commit/6874a96242ee358a91dcf3bad5614c7b40adaa59))
+- crypto ([20c5f7e](https://github.com/che3vinci/c3/commit/20c5f7e242e64ec5369fdbd9573f827e31d6496e))
+- nullcheck ([b470259](https://github.com/che3vinci/c3/commit/b470259b88419a987706f1222b2ad9c305cd1fc0))
+- nullcheck ([2e8fed0](https://github.com/che3vinci/c3/commit/2e8fed083053ac8ec143ced608585e972dc59257))
+- patch version ([8bcbf32](https://github.com/che3vinci/c3/commit/8bcbf32d6cf3145d5eb3bc8f2ae6190946db78ee))
+- publish ([58c6a1c](https://github.com/che3vinci/c3/commit/58c6a1c8d10d1111d0b49366207b32140ad6fcc9))
+- publish ([bc6a48b](https://github.com/che3vinci/c3/commit/bc6a48bc1b9677e94f819e9f5120c134c2549d15))
+- republish version ([14ecc8c](https://github.com/che3vinci/c3/commit/14ecc8cc2575962679dcf02abb2ff18e9e7eaea0))
+- revert ethers.providers.Web3Provider ([60db792](https://github.com/che3vinci/c3/commit/60db792fb62dc9849b941b5f5d64ca6c7b332534))
+- upgrade @c3/crypto ([c0d2e20](https://github.com/che3vinci/c3/commit/c0d2e208edf3165643e1ca0a16ac5e24f9895314))
+- wallet connect add optional chain ([af0eaa0](https://github.com/che3vinci/c3/commit/af0eaa0d6c3ad7a27b10a484f178ced507c2477b))
+- walletconnect ([bf9f1db](https://github.com/che3vinci/c3/commit/bf9f1db10229860aa588950d58f87e57f043ef28))
+
 ## [1.2.83](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.80...@c3/crypto@1.2.83) (2023-11-02)
 
 ### Features
