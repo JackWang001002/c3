@@ -43,7 +43,7 @@ type InnerPath<T> = T extends Array<any>
 
 export type Path<T> = RemoveLastX<InnerPath<T>, ".">;
 
-type Includes<T extends readonly any[], U> = T extends [infer F, ...infer rest]
+export type Includes<T extends readonly any[], U> = T extends [infer F, ...infer rest]
   ? IsEqual<F, U> extends true
     ? true
     : Includes<rest, U>
