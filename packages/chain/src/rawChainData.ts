@@ -10072,7 +10072,7 @@ export const rawChainList = [
   },
   {
     name: "Sepolia",
-    title: "Ethereum Testnet Sepolia",
+    title: "Sepolia Testnet ",
     chain: "ETH",
     rpc: [
       "https://rpc.sepolia.dev",
@@ -10087,14 +10087,14 @@ export const rawChainList = [
       symbol: "SEP",
       decimals: 18,
     },
-    infoURL: "https://sepolia.otterscan.io",
+    infoURL: "https://sepolia.etherscan.io",
     shortName: "sep",
     chainId: 11155111,
     networkId: 11155111,
     explorers: [
       {
-        name: "otterscan-sepolia",
-        url: "https://sepolia.otterscan.io",
+        name: "sepolia",
+        url: "https://sepolia.etherscan.io",
         standard: "EIP3091",
       },
     ],
