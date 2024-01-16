@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/che3vinci/c3#readme",
   "dependencies": {
+    "@c3/chain": "workspace:^",
     "@c3/dbg": "workspace:^",
     "@c3/react": "workspace:^",
     "@c3/types": "workspace:^",

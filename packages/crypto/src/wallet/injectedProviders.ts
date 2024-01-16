@@ -6,9 +6,7 @@ import { CyberProvider, isCyberWallet } from "@cyberlab/cyber-app-sdk";
 import { ParticleConnect } from "@particle-network/connect";
 import { ParticleProvider } from "@particle-network/provider";
 import { ethers } from "ethers";
-import type { ChainShortNameType } from "../network";
-import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP } from "../network";
-import { getValidRpc } from "./getValidRpc";
+import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP, getValidRpc, RawChainType } from "@c3/chain";
 import { log } from "../utils";
 
 declare let window: any;
@@ -169,7 +167,7 @@ export const injectedProviders: InjectedProviderMap = {
         return null;
       }
       const app = window.__cyberApp;
-      const cyberChainName: ChainShortNameType = window.__cyberChainId;
+      const cyberChainName: RawChainType["shortName"] = window.__cyberChainId;
       let DEFAULT_CHAIN_ID = NAME2ID_MAP[cyberChainName];
       if (!app) {
         return null;

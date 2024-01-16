@@ -3,8 +3,8 @@ import { toHexString, waitFor } from "@c3/utils";
 import { BigNumber, ethers } from "ethers";
 import _ from "lodash";
 import { useCallback, useState, useEffect, useMemo } from "react";
-import { Chain } from "../network/types";
-import { toHexChain } from "../network/utils";
+import { Chain } from "@c3/chain";
+import { toHexChain } from "@c3/chain";
 import { log } from "../utils";
 
 import {
