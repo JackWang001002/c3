@@ -13,10 +13,10 @@ importers:
         specifier: 1.1.0
         version: 1.1.0(react-dom@18.2.0)(react@18.2.0)
       "@c3/dbg":
-        specifier: workspace:^1.0.44
+        specifier: workspace:*
         version: link:packages/dbg
       "@c3/types":
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:packages/types
       "@c3/utils":
         specifier: workspace:^1.1.88
@@ -348,11 +348,7 @@ importers:
         specifier: ^0.22.1
         version: 0.22.1
 
-  packages/chain:
-    dependencies:
-      "@c3/types":
-        specifier: workspace:^
-        version: link:../types
+  packages/chain: {}
 
   packages/crypto:
     dependencies:
