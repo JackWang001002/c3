@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.10](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.9...@c3/crypto@2.0.10) (2024-01-16)
+
+### Features
+
+- remove chain data ([#19](https://github.com/che3vinci/c3/issues/19)) ([fb432a3](https://github.com/che3vinci/c3/commit/fb432a34af3b08afed4b722c5632d3122bc50866))
+
 ## [2.0.9](https://github.com/che3vinci/c3/compare/@c3/crypto@1.2.83...@c3/crypto@2.0.9) (2024-01-14)
 
 ### Bug Fixes
