@@ -11330,4 +11330,26 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Bitmap Testnet",
+    chain: "Bitmap Testnet",
+    rpc: ["https://testnet-rpc.merlinchain.io"],
+    nativeCurrency: {
+      name: "BTC",
+      symbol: "BTC",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "bitmap_test",
+    chainId: 686868,
+    networkId: 686868,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://testnet-scan.merlinchain.io/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];

@@ -31,7 +31,7 @@ export type ChainFullInfo = {
   readonly title?: string;
   readonly icon?: string;
   readonly rpc: readonly string[];
-  readonly faucets: readonly string[];
+  readonly faucets?: readonly string[];
   readonly nativeCurrency: Currency;
   readonly infoURL: string;
   readonly shortName: string;
