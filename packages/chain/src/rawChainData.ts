@@ -11307,4 +11307,27 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Bsquared Testnet",
+    chain: "Bsquared Testnet",
+    rpc: ["https://zkevm-rpc.bsquared.network"],
+    faucets: [""],
+    nativeCurrency: {
+      name: "BTC",
+      symbol: "BTC",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "bsquared_testnet",
+    chainId: 1002,
+    networkId: 1002,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://testnet.bsquared.network/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
