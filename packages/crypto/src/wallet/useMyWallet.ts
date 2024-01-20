@@ -49,7 +49,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
       log("===>wallet name changed to", initialName);
       const info = getInjectedProviderInfo(initialName);
 
-      if (info.needConnectMobileApp) {
+      if (info.needConnectMobileApp?.()) {
         info.isConnectedMobileApp?.().then((connected: boolean) => {
           if (connected) {
             getWeb3Provider(initialName).then(x => setWeb3Provider(x));
@@ -77,7 +77,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
     }
     log("===>on disconnect event");
     const info = getInjectedProviderInfo(name);
-    if (info?.needConnectMobileApp) {
+    if (info?.needConnectMobileApp?.()) {
       // await info?.disconnect?.();
       setWeb3Provider(undefined);
     }
@@ -99,7 +99,7 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
   const connectMobileAppIfNeeded = useCallback(async (walletName: WalletName) => {
     const injectedProviderInfo = getInjectedProviderInfo(walletName);
     if (
-      injectedProviderInfo.needConnectMobileApp
+      injectedProviderInfo.needConnectMobileApp?.()
       // &&
       // !(await injectedProviderInfo.isConnectedMobileApp?.())
     ) {

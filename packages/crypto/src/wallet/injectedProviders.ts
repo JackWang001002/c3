@@ -36,7 +36,7 @@ export type InjectedProviderInfo = {
   getDeeplink: (url: string) => string;
   pcDownloadUrl: string;
   getProvider: (chainId?: number) => Promise<any>;
-  needConnectMobileApp?: boolean;
+  needConnectMobileApp?: () => boolean;
   connectMobileApp?: () => Promise<any>;
   isConnectedMobileApp?: () => Promise<boolean>;
   disconnect?: () => Promise<any>;
@@ -185,7 +185,7 @@ export const injectedProviders: InjectedProviderMap = {
   walletConnect: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    needConnectMobileApp: true,
+    needConnectMobileApp: () => true,
     connectMobileApp: async function (this: InjectedProviderInfo) {
       const provider = await this?.getProvider();
       if (!provider) {
@@ -236,7 +236,12 @@ export const injectedProviders: InjectedProviderMap = {
   bnbWallet: {
     getDeeplink: (url: string) => "",
     pcDownloadUrl: "",
-    needConnectMobileApp: true,
+    needConnectMobileApp: () => {
+      if (window.ethereum?.isBinance) {
+        return false;
+      }
+      return true;
+    },
     connectMobileApp: async function (this: InjectedProviderInfo) {
       const provider = await this?.getProvider();
       if (!provider) {
