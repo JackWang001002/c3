@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.11](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.10...@c3/crypto@2.0.11) (2024-01-20)
+
+### Bug Fixes
+
+- opbnb-eth-1 ([ab2cd8a](https://github.com/che3vinci/c3/commit/ab2cd8a397af90904f1c6b4cc7d5bf89240a4df2))
+
 ## [2.0.10](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.9...@c3/crypto@2.0.10) (2024-01-16)
 
 ### Features
