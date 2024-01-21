@@ -1,0 +1,65 @@
+{
+  "name": "@c3/media",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "author": "che3vinci <che3vinci@gmail.com>",
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/che3vinci/c3.git"
+  },
+  "scripts": {
+    "build": "rollup -c && pnpm type",
+    "clean": "rm -rf dist && rm -rf node_modules ",
+    "reset": "pnpm clean && pnpm install",
+    "type": "tsc --project . --paths null --emitDeclarationOnly --declaration ",
+    "watchtype": "tsc --noEmit --project . --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/che3vinci/c3/issues"
+  },
+  "homepage": "https://github.com/che3vinci/c3#readme",
+  "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
+  "devDependencies": {
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-typescript": "^7.18.6",
+    "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/js-beautify": "^1.13.3",
+    "@types/lodash": "^4.14.186",
+    "@types/qs": "^6.9.7",
+    "axios": "^0.27.2",
+    "babel-jest": "^29.2.1",
+    "jest": "^27.5.1",
+    "jest-environment-jsdom": "^29.2.1",
+    "lodash": "^4.17.21",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4",
+    "vitest": "^0.22.1"
+  },
+  "dependencies": {
+    "@c3/dbg": "workspace:^",
+    "@c3/utils": "workspace:^"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
