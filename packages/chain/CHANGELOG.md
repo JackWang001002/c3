@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.11](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.10...@c3/chain@1.0.11) (2024-01-24)
+
+### Features
+
+- dogchain rpc fix ([71327d0](https://github.com/che3vinci/c3/commit/71327d0fdd0c9a32b040c9a860f3fe1b2e33804d))
+- remove dogchain ([a347a45](https://github.com/che3vinci/c3/commit/a347a450431ff1266d14b36b1417c21b9852a32a))
+
 ## [1.0.10](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.8...@c3/chain@1.0.10) (2024-01-20)
 
 **Note:** Version bump only for package @c3/chain
