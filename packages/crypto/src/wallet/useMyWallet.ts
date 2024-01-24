@@ -144,17 +144,18 @@ export const useMyWallet = (initialName: WalletName | undefined): WalletType => 
         await connectAccount();
         // await waitFor(() => !!accountRef.current);
       }
-      const chainId = await (await web3provider.getNetwork()).chainId;
-      if (chainId === chain.chainId) {
-        return web3provider;
-      }
       try {
+        // 获取当前的chainId
+        const chainId = await (await web3provider.getNetwork()).chainId;
+        if (chainId === chain.chainId) {
+          return web3provider;
+        }
         log("[switchNetwork] chain=", chain);
         await web3provider.send("wallet_switchEthereumChain", [
           { chainId: toHexString(chain.chainId) },
         ]);
       } catch (e: any) {
-        log("switchNetwork:", e);
+        console.error("switchNetwork:", e);
         if (e.code === 4902 || e.code === -32603) {
           await addNetwork(chain);
         } else {

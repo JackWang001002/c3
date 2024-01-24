@@ -1,6 +1,5 @@
 import { noop } from "@c3/utils";
 import { useEffect } from "react";
-import { Fn } from "@c3/types";
 import { ethers } from "ethers";
 
 export const useOnChainChanged = (
@@ -11,17 +10,21 @@ export const useOnChainChanged = (
     if (!provider?.provider) {
       return;
     }
+    provider.on("network", (newNetwork, oldNetwork) => {
+      console.log("⽹络切换，oldNetwork：", oldNetwork, "newNetwork:", newNetwork);
+    });
     //@ts-ignore
-    provider.provider?.on("chainChanged", cb) || noop;
+    provider.provider?.on("chainChanged", cb) || noop; // metamask会触发这个chainChanged event
     //@ts-ignore
-    provider.provider?.on("network", cb) || noop;
+    provider.provider?.on("networkChanged", cb) || noop; // bybitWallet会触发这个networkChanged event
     return () => {
+      provider.off("network");
       //@ts-ignore
       const off = (provider?.provider?.off || provider?.provider?.removeListener || noop).bind(
         provider?.provider
       );
       off("chainChanged", cb);
-      off("network", cb);
+      off("networkChanged", cb);
     };
   }, [cb, provider, provider?.provider]);
 };
@@ -64,9 +67,9 @@ export const useOnDisconnect = (
     on("disconnect", cb);
     return () => {
       const off = //@ts-ignore
-      (web3provider?.provider?.off || web3provider?.provider?.removeListener || noop).bind(
-        web3provider?.provider
-      );
+        (web3provider?.provider?.off || web3provider?.provider?.removeListener || noop).bind(
+          web3provider?.provider
+        );
       off("disconnect", cb);
     };
   }, [cb, web3provider, web3provider?.provider]);

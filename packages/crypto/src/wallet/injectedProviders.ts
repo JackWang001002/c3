@@ -19,7 +19,8 @@ export type WalletName =
   | "bitkeep"
   | "cyber"
   | "bnbWallet"
-  | "walletConnect";
+  | "walletConnect"
+  | "bybitWallet";
 export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
@@ -29,6 +30,7 @@ export const walletName_BitKeep: WalletName = "bitkeep";
 export const walletName_Cyber: WalletName = "cyber";
 export const walletName_WalletConnect: WalletName = "walletConnect";
 export const walletName_BNBWallet: WalletName = "bnbWallet";
+export const walletName_BybitWallet: WalletName = "bybitWallet";
 
 const providerCache: { [name in WalletName]?: any } = {};
 
@@ -289,6 +291,17 @@ export const injectedProviders: InjectedProviderMap = {
       provider?.disconnect();
     },
   },
+  bybitWallet: {
+    getDeeplink: (url: string) => "",
+    pcDownloadUrl:
+      "https://chromewebstore.google.com/detail/bybit-wallet/pdliaogehgdbhbnmkklieghmmjkpigpa?hl=en-GB",
+    getProvider: async () => {
+      if (typeof window.bybitWallet == "undefined") {
+        return null;
+      }
+      return window.bybitWallet;
+    },
+  },
 };
 
 export const getInjectedProviderInfo = (name: WalletName) => {
@@ -311,6 +324,9 @@ export const getWeb3Provider = async (walletName: WalletName | undefined, chainI
   const provider = await getInjectedProvider(walletName, chainId);
   if (!provider) {
     return undefined;
+  }
+  if (walletName == walletName_BybitWallet) {
+    return new ethers.providers.Web3Provider(provider, "any");
   }
   return new ethers.providers.Web3Provider(provider);
 };
