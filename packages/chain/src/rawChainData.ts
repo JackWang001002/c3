@@ -11287,7 +11287,7 @@ export const rawChainList = [
   {
     name: "Dogechain Mainnet",
     chain: "Dogechain Mainnet",
-    rpc: [" https://rpc.dogechain.dog"],
+    rpc: ["https://rpc.dogechain.dog"],
     faucets: [""],
     nativeCurrency: {
       name: "Doge",
