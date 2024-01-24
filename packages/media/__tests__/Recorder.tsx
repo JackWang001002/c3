@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { AudioRecorder } from "../";
+import { AudioRecorder } from "..";
 
 const App = () => {
   const recorderRef = useRef<AudioRecorder>(new AudioRecorder());
