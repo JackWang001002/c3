@@ -1,14 +1,32 @@
-import React, { useEffect, useRef } from "react";
-import { AudioRecorder } from "..";
+import React, { useEffect, useRef, useState } from "react";
+import { Recorder } from "..";
 
 const App = () => {
-  const recorderRef = useRef<AudioRecorder>(new AudioRecorder());
+  const recorderRef = useRef<Recorder>();
+  const [url, setUrl] = useState();
   const onStart = () => {
+    recorderRef.current = new Recorder();
     recorderRef.current.start();
+    //@ts-ignore
+    window.__recorder = recorderRef.current;
   };
-  //@ts-ignore
-  window.__recorder = recorderRef.current;
-  return <button onClick={onStart}>start</button>;
+  return (
+    <div>
+      <button onClick={onStart}>start</button>;
+      <button
+        onClick={async () => {
+          recorderRef.current.stop();
+          const { url, blob } = await recorderRef.current?.getData();
+          console.log("blob", blob);
+          setUrl(url);
+        }}
+      >
+        stop
+      </button>
+      ;
+      <audio controls src={url} id="audio" />
+    </div>
+  );
 };
 
 export default App;

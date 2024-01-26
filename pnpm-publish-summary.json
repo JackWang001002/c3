@@ -1,8 +1,8 @@
 {
 	"publishedPackages": [
 		{
-			"name": "@c3/media",
-			"version": "0.0.2"
+			"name": "@c3/chain",
+			"version": "1.0.11"
 		}
 	]
 }

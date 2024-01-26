@@ -23,6 +23,7 @@ export class Recorder {
   async start() {
     await waitFor(() => !!this.recorder);
     this.recorder!.start();
+    console.log("recorder started");
     this.recorder!.ondataavailable = (e: BlobEvent) => {
       this.#chunks.push(e.data);
       log("ondataavailable", e.data.size, this.#chunks.length);
@@ -34,14 +35,21 @@ export class Recorder {
     }
     this.recorder.stop();
   }
-  getData() {
+  async getData() {
     if (!this.recorder) {
       throw new Error("Recorder not initialized");
     }
-    const blob = new Blob(this.#chunks, { type: this.recorder.mimeType });
-    const url = window.URL.createObjectURL(blob);
-    this.#chunks = [];
-    return { blob, url };
+    return new Promise((resolve, reject) => {
+      this.recorder!.onstop = () => {
+        const blob = new Blob(this.#chunks, { type: this.recorder!.mimeType });
+        const url = window.URL.createObjectURL(blob);
+        this.#chunks = [];
+        resolve({ blob, url });
+      };
+      this.recorder!.onerror = e => {
+        reject(e);
+      };
+    });
   }
 
   on<K extends keyof MediaRecorderEventMap>(
