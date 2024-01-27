@@ -547,37 +547,6 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
 
-  packages/rhform:
-    dependencies:
-      react-hook-form:
-        specifier: ^7.38.0
-        version: 7.38.0(react@18.2.0)
-    devDependencies:
-      "@babel/preset-env":
-        specifier: ^7.19.4
-        version: 7.19.4(@babel/core@7.22.1)
-      "@babel/preset-typescript":
-        specifier: ^7.18.6
-        version: 7.18.6(@babel/core@7.22.1)
-      "@types/jest":
-        specifier: ^27.5.2
-        version: 27.5.2
-      "@types/lodash":
-        specifier: ^4.14.186
-        version: 4.14.186
-      babel-jest:
-        specifier: ^29.2.1
-        version: 29.2.1(@babel/core@7.22.1)
-      jest:
-        specifier: ^27.5.1
-        version: 27.5.1
-      jest-environment-jsdom:
-        specifier: ^29.2.1
-        version: 29.2.1
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-
   packages/router:
     dependencies:
       "@c3/dom":
@@ -1683,7 +1652,7 @@ packages:
     dependencies:
       "@babel/core": 7.21.8
       "@babel/helper-create-class-features-plugin": 7.22.1(@babel/core@7.21.8)
-      "@babel/helper-plugin-utils": 7.22.5
+      "@babel/helper-plugin-utils": 7.21.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -31820,18 +31789,6 @@ packages:
     dependencies:
       "@babel/runtime": 7.19.4
       react: 18.2.0
-
-  /react-hook-form@7.38.0(react@18.2.0):
-    resolution:
-      {
-        integrity: sha512-gxWW1kMeru9xR1GoR+Iw4hA+JBOM3SHfr4DWCUKY0xc7Vv1MLsF109oHtBeWl9shcyPFx67KHru44DheN0XY5A==,
-      }
-    engines: { node: ">=12.22.0" }
-    peerDependencies:
-      react: ^16.8.0 || ^17 || ^18
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /react-inspector@6.0.2(react@18.2.0):
     resolution:
