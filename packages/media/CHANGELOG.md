@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.4](https://github.com/che3vinci/c3/compare/@c3/media@0.0.3...@c3/media@0.0.4) (2024-01-27)
+
+### Features
+
+- getData ([12d8e6d](https://github.com/che3vinci/c3/commit/12d8e6d0e5d4d14e973b11778b54ff0d9e17fc1e))
+
 ## [0.0.3](https://github.com/che3vinci/c3/compare/@c3/media@0.0.2...@c3/media@0.0.3) (2024-01-27)
 
 ### Features
