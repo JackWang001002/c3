@@ -5,7 +5,7 @@ export class Recorder {
   #chunks: Blob[] = [];
   public recorder: MediaRecorder | undefined = undefined;
 
-  constructor(constraints = { audio: true }) {
+  constructor(constraints: MediaStreamConstraints) {
     if (!navigator.mediaDevices.getUserMedia) {
       throw new Error("getUserMedia not supported");
     }

@@ -25,6 +25,9 @@ const App = () => {
       </button>
       ;
       <audio controls src={url} id="audio" />
+      <a id="download" href={url} download="audio.webm">
+        download
+      </a>
     </div>
   );
 };
