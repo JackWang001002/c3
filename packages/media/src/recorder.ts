@@ -35,16 +35,15 @@ export class Recorder {
     }
     this.recorder.stop();
   }
-  async getData() {
+  async getData(): Promise<Blob> {
     if (!this.recorder) {
       throw new Error("Recorder not initialized");
     }
     return new Promise((resolve, reject) => {
       this.recorder!.onstop = () => {
         const blob = new Blob(this.#chunks, { type: this.recorder!.mimeType });
-        const url = window.URL.createObjectURL(blob);
         this.#chunks = [];
-        resolve({ blob, url });
+        resolve(blob);
       };
       this.recorder!.onerror = e => {
         reject(e);
