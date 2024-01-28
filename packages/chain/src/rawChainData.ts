@@ -2347,7 +2347,6 @@ export const rawChainList = [
     chain: "Polygon",
     rpc: [
       "https://polygon-bor.publicnode.com",
-      "https://polygon.llamarpc.com",
       "https://polygon-rpc.com/",
       "https://rpc-mainnet.matic.network",
       "https://matic-mainnet.chainstacklabs.com",
@@ -7737,7 +7736,8 @@ export const rawChainList = [
     rpc: [
       "https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}",
       "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
-      "https://arbitrum.llamarpc.com",
+      "https://arbitrum-one.publicnode.com",
+      "https://arbitrum-one.public.blastapi.io",
       "https://arb1.arbitrum.io/rpc",
     ],
     faucets: [],
