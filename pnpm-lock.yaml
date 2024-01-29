@@ -272,7 +272,7 @@ importers:
         specifier: workspace:^1.1.10
         version: link:../dbg
       "@c3/react":
-        specifier: workspace:^1.1.27
+        specifier: workspace:^1.1.28
         version: link:../react
       "@c3/types":
         specifier: workspace:^1.1.15

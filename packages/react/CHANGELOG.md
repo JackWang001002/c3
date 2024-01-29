@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.28](https://github.com/che3vinci/c3/compare/@c3/react@1.1.27...@c3/react@1.1.28) (2024-01-29)
+
+### Features
+
+- remove react 18 ([f4cb782](https://github.com/che3vinci/c3/commit/f4cb7824167a731c3374550f3fd7055d55e47a77))
+
 ## [1.1.27](https://github.com/che3vinci/c3/compare/@c3/react@1.1.25...@c3/react@1.1.27) (2024-01-14)
 
 ### Features
