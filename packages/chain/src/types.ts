@@ -1,8 +1,14 @@
 import { rawChainList } from "./rawChainData";
+import { btcChainList } from "./btcChainData";
 
 export type RawChainListType = typeof rawChainList;
 export type RawChainType = RawChainListType[number];
 export type ChainShortNameType = RawChainType["shortName"];
+
+// btc的
+export type BtcChainListType = typeof btcChainList;
+export type BtcChainType = BtcChainListType[number];
+export type BtcChainShortNameType = BtcChainType["shortName"];
 
 export type Currency = {
   readonly name: string;

@@ -11352,4 +11352,48 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "LumiBit Testnet",
+    chain: "LumiBit Testnet",
+    rpc: ["https://test-rpc.lumibit.org/"],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "lumibit_test",
+    chainId: 28206,
+    networkId: 28206,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://test-scan.lumibit.org/",
+        standard: "none",
+      },
+    ],
+  },
+  {
+    name: "LumiBit Testnet",
+    chain: "LumiBit Testnet",
+    rpc: ["https://test-rpc.lumibit.org/"],
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "lumibit_test",
+    chainId: 28206,
+    networkId: 28206,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://test-scan.lumibit.org/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
