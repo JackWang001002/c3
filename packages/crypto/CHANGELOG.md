@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.14](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.13...@c3/crypto@2.0.14) (2024-01-31)
+
+### Bug Fixes
+
+- remove particle for loading ([22ebd1b](https://github.com/che3vinci/c3/commit/22ebd1ba1aa1c59df1b7579e5a6819fa7a7cf975))
+
+### Features
+
+- add bybitWallet support ([90fbf6c](https://github.com/che3vinci/c3/commit/90fbf6cfa698222d4ec0368f7027680ceec36bf9))
+
 ## [2.0.13](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.12...@c3/crypto@2.0.13) (2024-01-29)
 
 **Note:** Version bump only for package @c3/crypto

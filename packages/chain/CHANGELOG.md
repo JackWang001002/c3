@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.14](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.11...@c3/chain@1.0.14) (2024-01-31)
+
+### Bug Fixes
+
+- delete LumiBit ([f6e728b](https://github.com/che3vinci/c3/commit/f6e728bb8bb7321b035ac8488294699a2dddafad))
+
+### Features
+
+- add btc testnet3 and LumiBit ([b1f0153](https://github.com/che3vinci/c3/commit/b1f0153ddebd5de257054a792eb32aa86a11af28))
+- update arbitrum rpc url ([77c48ee](https://github.com/che3vinci/c3/commit/77c48ee71f27c55cfe398b8ccf0c6d991ddd9df2))
+
 ## [1.0.11](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.10...@c3/chain@1.0.11) (2024-01-24)
 
 ### Features
