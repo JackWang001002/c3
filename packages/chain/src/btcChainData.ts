@@ -22,4 +22,4 @@ export const btcChainList = [
       decimals: 8,
     },
   },
-];
+] as const;

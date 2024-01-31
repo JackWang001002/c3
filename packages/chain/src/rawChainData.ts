@@ -10072,7 +10072,7 @@ export const rawChainList = [
   },
   {
     name: "Sepolia",
-    title: "Sepolia Testnet ",
+    title: "Sepolia Testnet",
     chain: "ETH",
     rpc: [
       "https://rpc.sepolia.dev",
