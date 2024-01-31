@@ -3,8 +3,8 @@
 import { getProvider as bnbGetProvider } from "@binance/w3w-ethereum-provider";
 import { CoinbaseWalletSDK } from "@coinbase/wallet-sdk";
 import { CyberProvider, isCyberWallet } from "@cyberlab/cyber-app-sdk";
-import { ParticleConnect } from "@particle-network/connect";
-import { ParticleProvider } from "@particle-network/provider";
+// import { ParticleConnect } from "@particle-network/connect";
+// import { ParticleProvider } from "@particle-network/provider";
 import { ethers } from "ethers";
 import { ID2CHAIN_MAP, NAME2ID_MAP, Name2CHAIN_MAP, getValidRpc, RawChainType } from "@c3/chain";
 import { log } from "../utils";
@@ -15,7 +15,7 @@ export type WalletName =
   | "coinbase"
   | "okx"
   | "trustwallet"
-  | "particle"
+  // | "particle"
   | "bitkeep"
   | "cyber"
   | "bnbWallet"
@@ -25,7 +25,7 @@ export const walletName_Metamask: WalletName = "metamask";
 export const walletName_Coinbase: WalletName = "coinbase";
 export const walletName_OKX: WalletName = "okx";
 export const walletName_TrustWallet: WalletName = "trustwallet";
-export const walletName_Particle: WalletName = "particle";
+// export const walletName_Particle: WalletName = "particle";
 export const walletName_BitKeep: WalletName = "bitkeep";
 export const walletName_Cyber: WalletName = "cyber";
 export const walletName_WalletConnect: WalletName = "walletConnect";
@@ -121,34 +121,34 @@ export const injectedProviders: InjectedProviderMap = {
       return undefined;
     },
   },
-  particle: {
-    getDeeplink: (url: string) => "",
-    pcDownloadUrl: "",
-    getProvider: async () => {
-      const particle = new ParticleConnect({
-        projectId: "a6991b19-e1d9-4da0-a8ff-1928d4651cc6",
-        clientKey: "cLxYtnw4BIiwoV7zkjNOXMHVFD04QgC2k6Opm1VM",
-        appId: "269e4911-b398-4699-a2a2-fe2fd78a335c",
-        chains: [
-          {
-            id: 1,
-            name: "Ethereum",
-          },
-          {
-            id: 97,
-            name: "bsc testnet",
-          },
-          {
-            id: 56,
-            name: "bsc mainnet",
-          },
-        ],
-      });
-      window.__particalNetwork = particle;
+  // particle: {
+  //   getDeeplink: (url: string) => "",
+  //   pcDownloadUrl: "",
+  //   getProvider: async () => {
+  //     const particle = new ParticleConnect({
+  //       projectId: "a6991b19-e1d9-4da0-a8ff-1928d4651cc6",
+  //       clientKey: "cLxYtnw4BIiwoV7zkjNOXMHVFD04QgC2k6Opm1VM",
+  //       appId: "269e4911-b398-4699-a2a2-fe2fd78a335c",
+  //       chains: [
+  //         {
+  //           id: 1,
+  //           name: "Ethereum",
+  //         },
+  //         {
+  //           id: 97,
+  //           name: "bsc testnet",
+  //         },
+  //         {
+  //           id: 56,
+  //           name: "bsc mainnet",
+  //         },
+  //       ],
+  //     });
+  //     window.__particalNetwork = particle;
 
-      return new ParticleProvider(particle.particle.auth);
-    },
-  },
+  //     return new ParticleProvider(particle.particle.auth);
+  //   },
+  // },
   bitkeep: {
     getDeeplink: (url: string) => `https://bkcode.vip?action=dapp&url=${encodeURIComponent(url)}`,
     pcDownloadUrl: "https://web3.bitget.com/en/wallet-download",
