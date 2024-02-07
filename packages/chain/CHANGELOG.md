@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.16](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.14...@c3/chain@1.0.16) (2024-02-07)
+
+### Features
+
+- 增加 bitlayer_test； 增加 rpc 重试 utils ([48a7f76](https://github.com/che3vinci/c3/commit/48a7f7621d5a5266b67f14d1fccb4025a472ed93))
+- fix btcChainList type ([ddf808d](https://github.com/che3vinci/c3/commit/ddf808d4aa2fc03a63f3b46114b23b4eaf2188f1))
+
 ## [1.0.14](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.11...@c3/chain@1.0.14) (2024-01-31)
 
 ### Bug Fixes

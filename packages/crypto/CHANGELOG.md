@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.15](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.14...@c3/crypto@2.0.15) (2024-02-07)
+
+### Features
+
+- 增加 bitlayer_test； 增加 rpc 重试 utils ([48a7f76](https://github.com/che3vinci/c3/commit/48a7f7621d5a5266b67f14d1fccb4025a472ed93))
+
 ## [2.0.14](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.13...@c3/crypto@2.0.14) (2024-01-31)
 
 ### Bug Fixes
