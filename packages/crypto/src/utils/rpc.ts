@@ -1,4 +1,4 @@
-import ethers from "ethers";
+import { ethers } from "ethers";
 import { Chain } from "@c3/chain";
 
 export type ProviderType =
