@@ -11374,4 +11374,26 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "Bitlayer Testnet",
+    chain: "Bitlayer Testnet",
+    rpc: ["https://testnet-rpc.bitlayer.org/"],
+    nativeCurrency: {
+      name: "BTC",
+      symbol: "BTC",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "bitlayer_test",
+    chainId: 200810,
+    networkId: 200810,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
