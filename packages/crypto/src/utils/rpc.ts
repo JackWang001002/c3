@@ -1,6 +1,11 @@
 import ethers from "ethers";
 import { Chain } from "@c3/chain";
 
+export type ProviderType =
+  | ethers.providers.JsonRpcProvider
+  | ethers.providers.Web3Provider
+  | ethers.providers.WebSocketProvider;
+
 export const checkRpcValid = (url: string) => {
   if (url.startsWith("https://")) {
     const data = JSON.stringify({
@@ -33,13 +38,13 @@ export const checkRpcValid = (url: string) => {
 };
 
 export const retryRpc = (
-  callback: (provider: ethers.providers.BaseProvider) => Promise<any>,
+  callback: (provider: ProviderType) => Promise<any>,
   chain: Chain,
-  provider?: ethers.providers.BaseProvider
+  provider?: ProviderType
 ) => {
   const rpcUrls = chain.rpcUrls.filter(e => !e.includes("API_KEY"));
   return async (): Promise<any> => {
-    async function inner(i: number) {
+    async function inner(i: number): Promise<any> {
       console.log("try call rpc, i = ", i);
       if (i >= rpcUrls.length) {
         throw new Error("all rpc url useed!");

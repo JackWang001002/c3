@@ -5,7 +5,10 @@ export type ContractPair<T extends ethers.Contract = ethers.Contract> = readonly
 export const createContract = <T extends ethers.Contract = ethers.Contract>(
   contractAddress: string,
   abi: ethers.ContractInterface,
-  provider: ethers.providers.JsonRpcProvider
+  provider:
+    | ethers.providers.JsonRpcProvider
+    | ethers.providers.Web3Provider
+    | ethers.providers.WebSocketProvider
 ) => {
   if (!provider) {
     throw new Error("provider is undefined");
