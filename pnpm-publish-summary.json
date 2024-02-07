@@ -1,12 +1,8 @@
 {
 	"publishedPackages": [
 		{
-			"name": "@c3/chain",
-			"version": "1.0.16"
-		},
-		{
 			"name": "@c3/crypto",
-			"version": "2.0.15"
+			"version": "2.0.16"
 		}
 	]
 }
