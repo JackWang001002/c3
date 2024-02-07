@@ -14,7 +14,7 @@
     "clean:pw": "rm -rf playwright_/.cache ",
     "reset": "pnpm clean && pnpm install",
     "storybook": "storybook dev -p 6006",
-    "release": "./scripts/cli.mjs release",
+    "release": "node ./scripts/cli.mjs release",
     "test": "jest",
     "test:pw:ct": "playwright test -c playwright-ct.config.ts"
   },
