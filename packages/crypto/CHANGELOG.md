@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.21](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.19...@c3/crypto@2.0.21) (2024-02-08)
+
+### Features
+
+- 修改 rpc 重试逻辑，支持 ws provider ([65bef49](https://github.com/che3vinci/c3/commit/65bef49c49856bf95b45861291b530cbbca9e787))
+
 ## [2.0.19](https://github.com/che3vinci/c3/compare/@c3/crypto@2.0.18...@c3/crypto@2.0.19) (2024-02-07)
 
 **Note:** Version bump only for package @c3/crypto

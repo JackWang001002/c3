@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.29](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.28...@c3/utils@1.3.29) (2024-02-08)
+
+### Features
+
+- 修改 rpc 重试逻辑，支持 ws provider ([65bef49](https://github.com/che3vinci/c3/commit/65bef49c49856bf95b45861291b530cbbca9e787))
+
 ## [1.3.28](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.19...@c3/utils@1.3.28) (2024-01-14)
 
 ### Bug Fixes
