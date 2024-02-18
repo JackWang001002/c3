@@ -15,12 +15,12 @@ export const RoundingMode = {
 } as const;
 // type RoundingModeType = (typeof RoundingMode)[keyof typeof RoundingMode];
 
-export function formatAmount(value: string, decimal: number): void;
+export function formatAmount(value: string, decimal: number): string;
 export function formatAmount(
   value: string,
   decimal: number,
   roundingMode: BigNumber.RoundingMode
-): void;
+): string;
 export function formatAmount(
   value: string,
   decimal: number,
