@@ -1,9 +1,26 @@
 //Get Raw data from https://chainid.network/chains.json
 //TODO: how to deal iwth `INFURA_API_KEY`
 
+import { BtcNetworkIds } from "./btcChainData";
 import { ChainFullInfo } from "./types";
 
 export const rawChainList = [
+  {
+    name: "Bitcoin Testnet3",
+    chain: "Bitcoin Testnet3",
+    icon: "btc",
+    chainId: BtcNetworkIds.testnet,
+    networkId: BtcNetworkIds.testnet,
+    rpc: [],
+    explorers: [{ name: "mempool", url: "https://mempool.space/testnet", standard: "none" }],
+    infoURL: "",
+    shortName: "btc_test",
+    nativeCurrency: {
+      name: "BTC",
+      symbol: "BTC",
+      decimals: 8,
+    },
+  },
   {
     name: "Ethereum Mainnet",
     chain: "ETH",
