@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.17](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.16...@c3/chain@1.0.17) (2024-02-20)
+
+### Features
+
+- add bitcoin testnet3 ([fdbf701](https://github.com/che3vinci/c3/commit/fdbf70143ab8c494d656ba3efbf8eeee4e6a4bad))
+
 ## [1.0.16](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.14...@c3/chain@1.0.16) (2024-02-07)
 
 ### Features

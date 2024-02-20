@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.30](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.29...@c3/utils@1.3.30) (2024-02-20)
+
+### Bug Fixes
+
+- fix formatAmount return type ([1f79977](https://github.com/che3vinci/c3/commit/1f7997770f4699282bb29c2024e608ea876b30a8))
+
 ## [1.3.29](https://github.com/che3vinci/c3/compare/@c3/utils@1.3.28...@c3/utils@1.3.29) (2024-02-08)
 
 ### Features
