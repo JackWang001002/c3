@@ -1,11 +1,11 @@
 export const BtcNetworkIds = {
   testnet: 100000101,
   mainnet: 100000001,
-};
+} as const;
 export const BtcNetworkAppIds = {
   testnet: 101,
   mainnet: 1,
-};
+} as const;
 
 export const btcChainList = [
   {
