@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.18](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.17...@c3/chain@1.0.18) (2024-02-20)
+
+**Note:** Version bump only for package @c3/chain
+
 ## [1.0.17](https://github.com/che3vinci/c3/compare/@c3/chain@1.0.16...@c3/chain@1.0.17) (2024-02-20)
 
 ### Features
