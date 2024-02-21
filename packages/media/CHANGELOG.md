@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/che3vinci/c3/compare/@c3/media@0.0.6...@c3/media@0.0.7) (2024-02-21)
+
+**Note:** Version bump only for package @c3/media
+
 ## [0.0.6](https://github.com/che3vinci/c3/compare/@c3/media@0.0.5...@c3/media@0.0.6) (2024-02-20)
 
 **Note:** Version bump only for package @c3/media

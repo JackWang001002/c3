@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.20](https://github.com/che3vinci/c3/compare/@c3/playwright@1.1.19...@c3/playwright@1.1.20) (2024-02-21)
+
+**Note:** Version bump only for package @c3/playwright
+
 ## [1.1.19](https://github.com/che3vinci/c3/compare/@c3/playwright@1.1.18...@c3/playwright@1.1.19) (2024-02-20)
 
 **Note:** Version bump only for package @c3/playwright
