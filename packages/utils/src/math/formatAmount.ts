@@ -25,7 +25,7 @@ export function formatAmount(
   value: string,
   decimal: number,
   roundingMode?: BigNumber.RoundingMode
-) {
+): string {
   if (roundingMode != undefined) {
     return new BigNumber(value).toFixed(decimal, roundingMode);
   }
