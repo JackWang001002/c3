@@ -12,7 +12,8 @@ export const useOnChainChanged = (
     }
     provider.on("network", (newNetwork, oldNetwork) => {
       console.log("⽹络切换，oldNetwork：", oldNetwork, "newNetwork:", newNetwork);
-      cb(newNetwork.chainId);
+      // 这里不能回调，为什么呢？因为cb里又setWebProvider, 无限循环了
+      // cb(newNetwork.chainId);
     });
     //@ts-ignore
     provider.provider?.on("chainChanged", cb) || noop; // metamask会触发这个chainChanged event
@@ -27,6 +28,7 @@ export const useOnChainChanged = (
       off("chainChanged", cb);
       off("networkChanged", cb);
     };
+    //
   }, [cb, provider, provider?.provider]);
 };
 
