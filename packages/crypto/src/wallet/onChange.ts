@@ -12,6 +12,7 @@ export const useOnChainChanged = (
     }
     provider.on("network", (newNetwork, oldNetwork) => {
       console.log("⽹络切换，oldNetwork：", oldNetwork, "newNetwork:", newNetwork);
+      cb(newNetwork.chaindId);
     });
     //@ts-ignore
     provider.provider?.on("chainChanged", cb) || noop; // metamask会触发这个chainChanged event
