@@ -10,26 +10,28 @@ export const useOnChainChanged = (
     if (!provider?.provider) {
       return;
     }
-    provider.on("network", (newNetwork, oldNetwork) => {
-      console.log("⽹络切换，oldNetwork：", oldNetwork, "newNetwork:", newNetwork);
-      // 这里不能回调，为什么呢？因为cb里又setWebProvider, 无限循环了
-      // cb(newNetwork.chainId);
-    });
+    // provider.on("network", (newNetwork, oldNetwork) => {
+    //   console.log("⽹络切换，oldNetwork：", oldNetwork, "newNetwork:", newNetwork);
+    // 这里不能回调! 因为cb里又setWebProvider, 无限循环了
+    // cb(newNetwork.chainId);
+    // });
     //@ts-ignore
     provider.provider?.on("chainChanged", cb) || noop; // metamask会触发这个chainChanged event
-    //@ts-ignore
-    provider.provider?.on("networkChanged", cb) || noop; // bybitWallet会触发这个networkChanged event
+    // if (provider.provider.isBybit) {
+    // event 'networkChanged' is deprecated and may be removed in the future. Use 'chainChanged' instead.
+    //   provider.provider?.on("networkChanged", cb) || noop;
+    // }
     return () => {
-      provider.off("network");
+      // provider.off("network");
       //@ts-ignore
       const off = (provider?.provider?.off || provider?.provider?.removeListener || noop).bind(
         provider?.provider
       );
       off("chainChanged", cb);
-      off("networkChanged", cb);
+      // off("networkChanged", cb);
     };
     //
-  }, [cb, provider, provider?.provider]);
+  }, [cb, provider?.provider]);
 };
 
 export const useOnAccountChanged = (
