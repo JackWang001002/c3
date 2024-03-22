@@ -11408,7 +11408,7 @@ export const rawChainList = [
     explorers: [
       {
         name: "explorer",
-        url: "",
+        url: "https://testnet-scan.bitlayer.org/en-us/",
         standard: "none",
       },
     ],
