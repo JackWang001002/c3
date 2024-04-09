@@ -6,7 +6,7 @@ import { $ } from "zx";
 run({
   async release(option) {
     const { semver = "patch" } = option;
-    // await $`gh auth login --with-token < ~/.github-access-token-che3vinci `;
+    await $`git.ts checkUser`;
     await $`pnpm -r build`;
     await $`git add .`;
     await $`git commit -m "chore: release"`;

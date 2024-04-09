@@ -11413,4 +11413,26 @@ export const rawChainList = [
       },
     ],
   },
+  {
+    name: "BounceBit Testnet",
+    chain: "BounceBit Testnet",
+    rpc: ["https://fullnode-testnet.bouncebitapi.com/"],
+    nativeCurrency: {
+      name: "BB",
+      symbol: "BB",
+      decimals: 18,
+    },
+    infoURL: "",
+    shortName: "bouncebit_testnet",
+    chainId: 6000,
+    networkId: 6000,
+    status: "",
+    explorers: [
+      {
+        name: "explorer",
+        url: "https://bbscan.io/",
+        standard: "none",
+      },
+    ],
+  },
 ] as const satisfies readonly ChainFullInfo[];
