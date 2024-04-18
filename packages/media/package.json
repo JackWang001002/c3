@@ -3,7 +3,7 @@
   "version": "0.0.7",
   "description": "",
   "keywords": [],
-  "author": "che3vinci <che3vinci@gmail.com>",
+  "author": "jimmy <code.with.jimmy0901@gmail.com>",
   "license": "MIT",
   "types": "./dist/index.d.ts",
   "directories": {
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/che3vinci/c3.git"
+    "url": "git+https://github.com/jim001/c3.git"
   },
   "scripts": {
     "build": "rollup -c && pnpm type",
@@ -25,9 +25,9 @@
     "watchtype": "tsc --noEmit --project . --watch"
   },
   "bugs": {
-    "url": "https://github.com/che3vinci/c3/issues"
+    "url": "https://github.com/jim001/c3/issues"
   },
-  "homepage": "https://github.com/che3vinci/c3#readme",
+  "homepage": "https://github.com/jim001/c3#readme",
   "gitHead": "a080b5bb295baccb3f8477e15c372d7091a6a1cb",
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",

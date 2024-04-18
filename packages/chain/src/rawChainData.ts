@@ -10858,7 +10858,6 @@ export const rawChainList = [
       },
     ],
   },
-  //add by jinbo.maybe some error there
   {
     name: "Gnosis Testnet",
     chain: "",
@@ -10882,7 +10881,6 @@ export const rawChainList = [
       },
     ],
   },
-  //add by jinbo.maybe some error there
   {
     name: "Metis Goerli Testnet",
     chain: "",
@@ -10906,7 +10904,6 @@ export const rawChainList = [
       },
     ],
   },
-  //add by jinbo.maybe some error there
   {
     name: "Combo Testnet",
     chain: "Combo Testnet",
@@ -10930,7 +10927,6 @@ export const rawChainList = [
       },
     ],
   },
-  //add by jinbo. maybe some error there
   {
     name: "Linea Testnet",
     chain: "Linea Testnet",
@@ -10954,7 +10950,6 @@ export const rawChainList = [
       },
     ],
   },
-  //add by jinbo. maybe some error there //主网mainnet
   {
     name: "zkSync Era",
     chain: "zkSync Era",

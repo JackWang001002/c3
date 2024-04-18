@@ -3,7 +3,7 @@
   "version": "1.1.31",
   "description": "c3/react",
   "keywords": [],
-  "author": "che3vinci <che3vinci@gmail.com>",
+  "author": "jimmy <code.with.jimmy0901@gmail.com>",
   "license": "MIT",
   "types": "./dist/index.d.ts",
   "directories": {
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/che3vinci/c3.git"
+    "url": "git+https://github.com/jim001/c3.git"
   },
   "scripts": {
     "type": "tsc --project . --paths null --emitDeclarationOnly --declaration",
@@ -26,9 +26,9 @@
     "pub": "pnpm run patch && pnpm run publish"
   },
   "bugs": {
-    "url": "https://github.com/che3vinci/c3/issues"
+    "url": "https://github.com/jim001/c3/issues"
   },
-  "homepage": "https://github.com/che3vinci/c3#readme",
+  "homepage": "https://github.com/jim001/c3#readme",
   "dependencies": {
     "@c3/dbg": "workspace:^1.1.10",
     "@c3/dom": "workspace:^1.2.20",

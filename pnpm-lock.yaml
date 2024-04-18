@@ -13963,7 +13963,7 @@ packages:
   /@types/parse-json@4.0.0:
     resolution:
       {
-        integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==,
+        integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1Njim001Z/ssFh4wA==,
       }
 
   /@types/prettier@2.7.1:
@@ -15080,7 +15080,7 @@ packages:
   /@walletconnect/ethereum-provider@2.9.1(@walletconnect/modal@2.6.2):
     resolution:
       {
-        integrity: sha512-JiMatBFVgzJSQrckpbOoOsmQmKnbTn9wzmU10MBPe9W6ZV2mf2JuxW0luWKLpQkuCmM9mL6+nCKX7nfW9V6qrQ==,
+        integrity: sha512-jim001atBFVgzJSQrckpbOoOsmQmKnbTn9wzmU10MBPe9W6ZV2mf2JuxW0luWKLpQkuCmM9mL6+nCKX7nfW9V6qrQ==,
       }
     peerDependencies:
       "@walletconnect/modal": ">=2"
@@ -15570,7 +15570,7 @@ packages:
   /@walletconnect/types@2.10.6:
     resolution:
       {
-        integrity: sha512-WgHfiTG1yakmxheaBRiXhUdEmgxwrvsAdOIWaMf/spvrzVKYh6sHI3oyEEky5qj5jjiMiyQBeB57QamzCotbcQ==,
+        integrity: sha512-WgHfiTG1yakmxheaBRiXhUdEmgxwrvsAdOIWaMf/spvrzVKYh6sHI3oyEEky5qj5jjim001iyQBeB57QamzCotbcQ==,
       }
     dependencies:
       "@walletconnect/events": 1.0.1
@@ -20985,7 +20985,7 @@ packages:
   /domexception@4.0.0:
     resolution:
       {
-        integrity: sha512-A2is4PLG+eeSfoTMA95/s4pvAoSo2mKtiM5jlHkAVewmiO8ISFTFKZjH7UAM1Atli/OT/7JHOrJRJiMKUZKYBw==,
+        integrity: sha512-A2is4PLG+eeSfoTMA95/s4pvAoSo2mKtiM5jlHkAVewmiO8ISFTFKZjH7UAM1Atli/OT/7JHOrJRjim001KUZKYBw==,
       }
     engines: { node: ">=12" }
     dependencies:
@@ -21261,7 +21261,7 @@ packages:
   /encoding@0.1.13:
     resolution:
       {
-        integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==,
+        integrity: sha512-ETBauow1T35Y/WZMkio9jim0010Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==,
       }
     requiresBuild: true
     dependencies:
@@ -21438,7 +21438,7 @@ packages:
   /es-get-iterator@1.1.2:
     resolution:
       {
-        integrity: sha512-+DTO8GYwbMCwbywjimwZMHp8AuYXOS2JZFWoi2AlPOS3ebnII9w/NLpNZtA7A0YLaVDw+O7KFCeoIV7OPvM7hQ==,
+        integrity: sha512-+DTO8GYwbMCwbywjim001wZMHp8AuYXOS2JZFWoi2AlPOS3ebnII9w/NLpNZtA7A0YLaVDw+O7KFCeoIV7OPvM7hQ==,
       }
     dependencies:
       call-bind: 1.0.2
@@ -24479,7 +24479,7 @@ packages:
   /has-unicode@2.0.1:
     resolution:
       {
-        integrity: sha512-8Rf9Y83NBReMnx0gFzA8JImQACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==,
+        integrity: sha512-8Rf9Y83NBReMnx0gFzA8jim001QACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==,
       }
 
   /has-value@0.3.1:
@@ -26321,7 +26321,7 @@ packages:
   /jest-jasmine2@27.5.1:
     resolution:
       {
-        integrity: sha512-jtq7VVyG8SqAorDpApwiJJImd0V2wv1xzdheGHRGyuT7gZm6gG47QEskOlzsN1PG/6WNaCo5pmwMHDf3AkG2pQ==,
+        integrity: sha512-jtq7VVyG8SqAorDpApwiJjim001d0V2wv1xzdheGHRGyuT7gZm6gG47QEskOlzsN1PG/6WNaCo5pmwMHDf3AkG2pQ==,
       }
     engines: { node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0 }
     dependencies:
@@ -28805,7 +28805,7 @@ packages:
   /mute-stream@0.0.8:
     resolution:
       {
-        integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==,
+        integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjim0012nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==,
       }
 
   /mz@2.7.0:
@@ -32124,7 +32124,7 @@ packages:
   /regenerator-runtime@0.13.10:
     resolution:
       {
-        integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==,
+        integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjim001Z1t7gpze+26QqtdGqw==,
       }
 
   /regenerator-runtime@0.13.11:

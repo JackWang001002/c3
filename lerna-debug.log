@@ -11,7 +11,7 @@
 0 silly argv   bump: 'patch'
 0 silly argv }
 1 notice cli v6.0.1
-2 verbose rootPath /Users/che3vinci/code/personal/c3
+2 verbose rootPath /Users/jim001/code/personal/c3
 3 info versioning independent
 4 verbose packageConfigs Package manager 'pnpm' detected. Resolving packages using 'pnpm-workspace.yaml'.
 5 silly isAnythingCommitted
@@ -25,9 +25,9 @@
 11 error error: Could not fetch fork
 11 error Fetching origin
 11 error Fetching fork
-11 error     at makeError (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/execa@5.1.1/node_modules/execa/lib/error.js:60:11)
-11 error     at module.exports.sync (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/execa@5.1.1/node_modules/execa/index.js:194:17)
-11 error     at Object.execSync (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+child-process@6.0.1/node_modules/@lerna/child-process/index.js:39:16)
-11 error     at updateRemote (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/lib/is-behind-upstream.js:34:16)
-11 error     at isBehindUpstream (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/lib/is-behind-upstream.js:16:3)
-11 error     at VersionCommand.initialize (/Users/che3vinci/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/index.js:156:9)
+11 error     at makeError (/Users/jim001/code/personal/c3/node_modules/.pnpm/execa@5.1.1/node_modules/execa/lib/error.js:60:11)
+11 error     at module.exports.sync (/Users/jim001/code/personal/c3/node_modules/.pnpm/execa@5.1.1/node_modules/execa/index.js:194:17)
+11 error     at Object.execSync (/Users/jim001/code/personal/c3/node_modules/.pnpm/@lerna+child-process@6.0.1/node_modules/@lerna/child-process/index.js:39:16)
+11 error     at updateRemote (/Users/jim001/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/lib/is-behind-upstream.js:34:16)
+11 error     at isBehindUpstream (/Users/jim001/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/lib/is-behind-upstream.js:16:3)
+11 error     at VersionCommand.initialize (/Users/jim001/code/personal/c3/node_modules/.pnpm/@lerna+version@6.0.1_nx@15.0.1_typescript@4.9.5/node_modules/@lerna/version/index.js:156:9)

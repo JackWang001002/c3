@@ -10,7 +10,6 @@
         "${workspaceRoot}/node_modules/.bin/jest",
         "--runInBand",
         "--runTestsByPath",
-        "/Users/chevinci/code/c3/packages/api/src/__test__/api.test.js"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
